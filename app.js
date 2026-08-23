@@ -4,7 +4,8 @@ const closeButton = dialog.querySelector('.lightbox-close');
 
 const translations = {
   ru: {
-    navWork: 'Работы', navProduction: 'Производство', navContact: 'Контакты',
+    navWork: 'Работы', navProduction: 'Производство', navContact: 'Контакты', fidelitySection: '06 / ИДЕНТИЧНОСТЬ И ТОЧНОСТЬ ПРОДУКТА',
+    acceptedFinals: 'принятых финальных кадров', imageSystems: 'коммерческих визуальных систем', fidelityRenders: 'рендеров с сохранением идентичности', privateProduction: 'локального производства',
     heroEyebrow: 'ЛОКАЛЬНОЕ AI-ПРОИЗВОДСТВО · 2026',
     heroTitle: 'Один исходник.<br><em>Целая кампания.</em>',
     heroLede: 'Коммерческие визуальные системы для продуктов, которые должны оставаться узнаваемыми.',
@@ -23,7 +24,8 @@ const translations = {
     contactTitle: 'Принесите продукт.<br>Построим визуальную систему.'
   },
   en: {
-    navWork: 'Work', navProduction: 'Production', navContact: 'Contact',
+    navWork: 'Work', navProduction: 'Production', navContact: 'Contact', fidelitySection: '06 / IDENTITY + PRODUCT FIDELITY',
+    acceptedFinals: 'accepted production finals', imageSystems: 'commercial image systems', fidelityRenders: 'new fidelity renders', privateProduction: 'privately run production',
     heroEyebrow: 'CONTROLLED AI PRODUCTION · 2026',
     heroTitle: 'One source.<br><em>A whole campaign.</em>',
     heroLede: 'Commercial image systems for products that must stay recognizable.',
@@ -45,7 +47,7 @@ const translations = {
 
 function setLanguage(language) {
   document.documentElement.lang = language;
-  document.title = language === 'ru' ? 'Northstar Studio | Локальное AI-производство' : 'Northstar Studio | Controlled AI production';
+  document.title = language === 'ru' ? 'Tonofa Studio | Локальное AI-производство' : 'Tonofa Studio | Controlled AI production';
   const description = document.querySelector('meta[name="description"]');
   if (description) description.content = language === 'ru'
     ? 'Коммерческие визуальные системы, созданные локально на выделенной RTX 5090.'
