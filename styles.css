@@ -30,6 +30,9 @@ a { color: inherit; }
 .nav nav { display: flex; gap: clamp(20px, 3vw, 48px); }
 .nav nav a { color: var(--muted); text-decoration: none; font-size: 13px; }
 .nav nav a:hover, .nav nav a:focus-visible { color: var(--ink); }
+.locale-switch { display: inline-flex; align-items: center; gap: 6px; margin-left: 12px; color: var(--muted); font-size: 11px; letter-spacing: .12em; }
+.locale-switch button { padding: 0; border: 0; background: none; color: inherit; cursor: pointer; font-size: inherit; letter-spacing: inherit; }
+.locale-switch button[aria-pressed="true"] { color: var(--ink); font-weight: 800; }
 
 .hero { min-height: calc(100svh - 72px); display: grid; grid-template-columns: 1.08fr .92fr; gap: clamp(28px, 6vw, 96px); align-items: center; padding: 56px 0; }
 .hero > * { min-width: 0; }
@@ -193,6 +196,7 @@ a { color: inherit; }
 .contact { margin-bottom: 80px; min-height: 70vh; padding: 100px clamp(32px, 7vw, 110px); background: var(--accent); color: white; display: flex; flex-direction: column; justify-content: space-between; }
 .contact > span { font-size: 11px; font-weight: 800; letter-spacing: .16em; }
 .contact h2 { max-width: 1100px; font-size: clamp(54px, 8.2vw, 126px); }
+.contact-links { display: flex; flex-wrap: wrap; gap: 28px; }
 .contact a { width: fit-content; font-size: 20px; font-weight: 800; text-decoration: none; border-bottom: 1px solid white; padding-bottom: 8px; }
 footer { width: var(--page); margin: 0 auto; padding: 0 0 40px; display: flex; justify-content: space-between; gap: 24px; color: var(--muted); font-size: 11px; }
 
@@ -253,9 +257,10 @@ footer { width: var(--page); margin: 0 auto; padding: 0 0 40px; display: flex; j
 @media (max-width: 620px) {
   .nav { height: 64px; }
   .brand { font-size: 12px; }
-  .nav nav { gap: 14px; }
-  .nav nav a { font-size: 11px; }
-  .nav nav a:last-child { display: none; }
+  .nav nav { gap: 8px; }
+  .nav nav a { font-size: 10px; }
+  .nav nav a:nth-child(2) { display: none; }
+  .locale-switch { margin-left: 0; font-size: 10px; }
   .hero { min-height: auto; padding-bottom: 90px; }
   .hero h1 { font-size: 14.5vw; }
   .text-link { max-width: 100%; flex-wrap: wrap; }
@@ -299,6 +304,7 @@ footer { width: var(--page); margin: 0 auto; padding: 0 0 40px; display: flex; j
   .production-metrics article, .production-metrics article:nth-child(2) { border-right: 0; border-bottom: 1px solid var(--line); }
   .production-metrics article:last-child { border-bottom: 0; }
   .contact { min-height: 62vh; padding: 62px 24px; }
+  .contact-links { flex-direction: column; gap: 18px; }
   footer { flex-direction: column; }
 }
 
