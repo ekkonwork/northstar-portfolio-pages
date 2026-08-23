@@ -14,6 +14,9 @@ const translations = {
     selectedBody: 'Каждый кейс начинается с исходных материалов и заканчивается цельной коммерческой серией, созданной локально на выделенном оборудовании.',
     privateEyebrow: 'ЛОКАЛЬНОЕ ПРОИЗВОДСТВО',
     privateTitle: 'Собрано внутри студии.<br>Измерено на RTX 5090.',
+    metricNote: 'Замерено на одной RTX 5090 после запуска. Время машины не включает арт-дирекцию и ручной отбор. Вся работа выполняется локально на выделенном оборудовании, без загрузки материалов в потребительские облачные инструменты.',
+    localAdvantages: 'Локальное производство оставляет чувствительные референсы продуктов и материалы клиентов внутри студии, делает итерации воспроизводимыми и даёт прямой контроль над масками, референсами, seed и финальным разрешением. В сравнении с универсальными облачными интерфейсами вроде Nano Banana или GPT Image 2 этот процесс рассчитан на повторяемые SKU-серии: нет round-trip загрузки, настройки пайплайна стабильны, пары input/output можно проверить, а машинное время проще считать. Облачные инструменты удобны для быстрых идей; локальный процесс выигрывает там, где важны контроль, приватность и консистентность.',
+    storyResolution: '<b>до 4K</b> финальное разрешение зависит от исходных материалов', localProduction: '<b>100%</b> локальное производство',
     deliveryEyebrow: 'ФОРМАТ ПОСТАВКИ',
     deliveryTitle: 'Готово выйти за пределы мудборда.',
     contactEyebrow: 'WHITE-LABEL · КАМПАНИИ · SKU-СЕРИИ',
@@ -30,6 +33,9 @@ const translations = {
     selectedBody: 'Each case starts with supplied source material and ends as a cohesive commercial series, produced privately on dedicated hardware.',
     privateEyebrow: 'PRIVATE PRODUCTION',
     privateTitle: 'Built in-house.<br>Measured on RTX 5090.',
+    metricNote: 'Measured on one dedicated RTX 5090 after startup. Machine time excludes art direction and human selection. All work is run locally and professionally on dedicated hardware, without consumer cloud image tools.',
+    localAdvantages: 'Local production keeps sensitive product references and client materials inside the studio, makes iterations reproducible, and gives direct control over masks, references, seeds and output resolution. Compared with general-purpose hosted image interfaces such as Nano Banana or GPT Image 2, this workflow is built for repeatable SKU batches: no upload round-trip, stable pipeline settings, auditable input/output pairs and predictable machine-time costing. Hosted tools can still be useful for fast ideation; local production wins when control, privacy and consistency matter.',
+    storyResolution: '<b>up to 4K</b> final resolution, source-dependent', localProduction: '<b>100%</b> local production',
     deliveryEyebrow: 'DELIVERY FORMAT',
     deliveryTitle: 'Built to leave the moodboard.',
     contactEyebrow: 'WHITE-LABEL · CAMPAIGNS · SKU BATCHES',
@@ -39,6 +45,12 @@ const translations = {
 
 function setLanguage(language) {
   document.documentElement.lang = language;
+  document.title = language === 'ru' ? 'Northstar Studio | Локальное AI-производство' : 'Northstar Studio | Controlled AI production';
+  const description = document.querySelector('meta[name="description"]');
+  if (description) description.content = language === 'ru'
+    ? 'Коммерческие визуальные системы, созданные локально на выделенной RTX 5090.'
+    : 'Commercial image systems for products that must stay recognizable, produced locally on a dedicated RTX 5090.';
+  translateVisibleText(language);
   document.querySelectorAll('[data-i18n]').forEach((node) => {
     const key = node.dataset.i18n;
     if (translations[language][key]) node.innerHTML = translations[language][key];
@@ -48,6 +60,64 @@ function setLanguage(language) {
   });
   localStorage.setItem('northstar-language', language);
 }
+
+const originalTextNodes = [];
+const ruRules = [
+  ['Skip to work', 'Перейти к работам'], ['Language', 'Язык'], ['SELECTED SYSTEMS', 'ИЗБРАННЫЕ СИСТЕМЫ'],
+  ['FASHION TRANSFER', 'ПЕРЕНОС ОДЕЖДЫ'], ['FASHION CAMPAIGNS', 'МОДНЫЕ КАМПАНИИ'], ['HOSPITALITY', 'РЕСТОРАННЫЕ КАМПАНИИ'],
+  ['FURNITURE', 'МЕБЕЛЬ'], ['PROPERTY MEDIA', 'НЕДВИЖИМОСТЬ'], ['IDENTITY + PRODUCT FIDELITY', 'ИДЕНТИЧНОСТЬ И ТОЧНОСТЬ ПРОДУКТА'],
+  ['SUPPLIED INPUTS', 'ПРЕДОСТАВЛЕННЫЕ ИСХОДНИКИ'], ['CONTROLLED OUTPUTS', 'КОНТРОЛИРУЕМЫЕ РЕЗУЛЬТАТЫ'], ['SIX EXPLICIT TRANSFERS', 'ШЕСТЬ ЯВНЫХ ПЕРЕНОСОВ'],
+  ['GENERATED OUTPUT', 'СОЗДАННЫЙ РЕЗУЛЬТАТ'], ['GENERATED MENU OUTPUTS', 'СОЗДАННЫЕ БЛЮДА ДЛЯ МЕНЮ'], ['ALTERNATE DIRECTION', 'АЛЬТЕРНАТИВНОЕ НАПРАВЛЕНИЕ'],
+  ['PRODUCT INPUT', 'ИСХОДНИК ПРОДУКТА'], ['ROOM INPUT', 'ИСХОДНИК ПОМЕЩЕНИЯ'], ['GENERATED SPATIAL OUTPUTS', 'СОЗДАННЫЕ ПРОСТРАНСТВЕННЫЕ СЦЕНЫ'],
+  ['PRODUCT INVARIANTS', 'НЕИЗМЕННЫЕ СВОЙСТВА ПРОДУКТА'], ['VIRTUAL STAGING', 'ВИРТУАЛЬНАЯ МЕБЛИРОВКА'], ['DECLUTTER + REMOVE', 'УБОРКА И УДАЛЕНИЕ'],
+  ['LISTING CAMPAIGN', 'КАМПАНИЯ ДЛЯ ОБЪЯВЛЕНИЯ'], ['LABELED VISUALIZATION', 'ВИЗУАЛИЗАЦИЯ С ПОМЕТКОЙ'], ['CHARACTER STORY', 'ИСТОРИЯ С ПЕРСОНАЖАМИ'],
+  ['WATCHES + JEWELLERY', 'ЧАСЫ И ЮВЕЛИРНЫЕ ИЗДЕЛИЯ'], ['SELECTED FINAL', 'ВЫБРАННЫЙ ФИНАЛ'], ['Campaign still', 'Рекламный кадр'],
+  ['Emerald campaign', 'Изумрудная кампания'], ['Jewellery campaign', 'Ювелирная кампания'], ['PRIVATE PRODUCTION', 'ЛОКАЛЬНОЕ ПРОИЗВОДСТВО'],
+  ['DELIVERY FORMAT', 'ФОРМАТ ПОСТАВКИ'], ['Full-resolution PNG masters', 'PNG-мастера в полном разрешении'], ['Responsive web derivatives', 'Адаптированные версии для сайта'],
+  ['Clear input / output comparisons', 'Понятные сравнения исходников и результатов'], ['Campaign-ready grouped exports', 'Сгруппированные материалы, готовые для кампании'],
+  ['average inference', 'среднее время инференса'], ['final resolution', 'финальное разрешение'], ['local production', 'локальное производство'],
+  ['manually accepted', 'принято вручную'], ['Accepted', 'Принято'], ['Inference', 'Время инференса'], ['Production', 'Производство'],
+  ['Measured time', 'Время инференса'], ['Output', 'Результат'], ['Coverage', 'Охват'], ['Series', 'Серия'], ['Settings', 'Сценарии'], ['Rule', 'Правило'],
+  ['INPUT', 'ИСХОДНИК'], ['OUTPUT', 'РЕЗУЛЬТАТ'], ['FINAL', 'ФИНАЛ'], ['Input', 'Исходник'], ['Output', 'Результат'],
+  ['Child identity', 'Внешность ребёнка'], ['Mascot identity', 'Внешность маскота'], ['Trampoline', 'Батут'], ['Space museum', 'Космический музей'],
+  ['Cobalt bistro', 'Кобальтовое бистро'], ['Red delivery campaign', 'Красная кампания доставки'], ['Cobalt chair', 'Кобальтовое кресло'],
+  ['Cold penthouse', 'Холодный пентхаус'], ['Postmodern gallery', 'Постмодернистская галерея'], ['Scandinavian staging', 'Скандинавская меблировка'],
+  ['Warm contemporary staging', 'Тёплая современная меблировка'], ['Clutter removed', 'Беспорядок убран'], ['Movable furniture removed', 'Подвижная мебель удалена'],
+  ['Day-to-dusk listing image', 'Кадр объявления от дня к сумеркам'], ['Vertical social asset', 'Вертикальный материал для соцсетей'], ['Proposed renovation visualization', 'Визуализация предлагаемого ремонта'],
+  ['Average Full HD render', 'Среднее время рендера Full HD'], ['Complete garment render', 'Полный рендер одежды'], ['Five-item batch', 'Пакет из пяти вещей'], ['Accepted masters', 'Принятые мастер-файлы'],
+  ['Car doorway', 'Дверь автомобиля'], ['Architectural walk', 'Прогулка у современной архитектуры'], ['Glass atrium', 'Стеклянный атриум'], ['Private jet', 'Частный самолёт'], ['Cliff pool', 'Бассейн на утёсе'], ['Design district', 'Дизайнерский квартал'], ['Spiral museum', 'Спиральный музей'], ['Opera at blue hour', 'Оперный театр в синий час'], ['Yacht at sunset', 'Яхта на закате']
+  ,['Two garments.', 'Две вещи.'], ['Three editorial worlds.', 'Три редакционных мира.'], ['Six garments.', 'Шесть вещей.'], ['Four narrative locations.', 'Четыре сюжетные локации.'], ['One set.', 'Один сет.'], ['A complete menu.', 'Полное меню.'], ['One chair.', 'Одно кресло.'], ['Two spatial identities.', 'Два пространственных образа.'], ['One listing.', 'Один объект.'], ['The complete launch kit.', 'Полный комплект для запуска.'],
+  ['A cobalt ripstop jacket and a micro-houndstooth cardigan are transferred onto three real commercial poses. The person, setting and lower outfit remain stable.', 'Кобальтовая куртка из рипстопа и кардиган в мелкую «гусиную лапку» перенесены на три коммерческие позы. Человек, окружение и нижняя часть образа сохраняются.'],
+  ['Swim, skirts, eveningwear and tailoring move into a cliff pool, yacht, spiral museum, opera house and private runway. The matrix tests real category changes across natural commercial poses.', 'Купальники, юбки, вечерние образы и костюмы переносятся в разные коммерческие сцены. Матрица показывает смену категорий на естественных позах.'],
+  ['An empty cobalt bistro table becomes a four-dish menu series without changing its plate, lens, light, napkin or glass. A red set opens a second campaign direction.', 'Пустой кобальтовый столик бистро превращается в серию из четырёх блюд без изменения посуды, объектива, света, салфетки и бокала. Красный сет открывает второе направление кампании.'],
+  ['A cobalt mohair chair moves between cold penthouse luxury and a warm postmodern gallery. Its shell, cushion, material and chrome frame remain recognizable.', 'Кобальтовое кресло из мохера переносится из холодной роскоши пентхауса в тёплую постмодернистскую галерею. Его корпус, подушка, материал и хромированный каркас остаются узнаваемыми.'],
+  ['Virtual staging, decluttering, furniture removal, day-to-dusk, listing social and a clearly labeled renovation visualization. Every source original remains available; permanent property features are checked against it.', 'Виртуальная меблировка, удаление лишних предметов, переход от дня к сумеркам, визуал для соцсетей и чётко обозначенная визуализация ремонта. Исходники сохраняются, а постоянные элементы объекта сверяются с оригиналом.'],
+  ['Two accepted scenes from the same supplied child and mascot. Only manually approved finals are shown.', 'Две принятые сцены с одним ребёнком и маскотом из исходников. Показаны только финалы, прошедшие ручной отбор.'],
+  ['Every row pairs the exact supplied product photograph with its selected commercial final.', 'В каждой строке показаны исходная фотография продукта и выбранный коммерческий результат.'],
+  ['Only the upper garment changes. Pose, identity, setting and lower styling stay anchored to each model input.', 'Меняется только верхняя часть одежды. Поза, внешность, окружение и нижняя часть образа сохраняются по исходной фотографии.'],
+  ['Two garment references and three untouched model photographs define the full transfer contract.', 'Два референса одежды и три исходные фотографии моделей задают условия переноса.'],
+  ['Every row names both inputs and places the generated campaign frame beside them.', 'В каждой строке показаны исходные материалы и созданный рядом коммерческий кадр.'],
+  ['The dish changes within each supplied set. The production surface and campaign identity stay fixed.', 'В каждом сете меняется блюдо, а поверхность съёмки и визуальная идентичность кампании сохраняются.'],
+  ['One exact chair reference and two empty room references define product identity and spatial direction separately.', 'Один точный референс кресла и два пустых интерьера отдельно задают продукт и пространство.'],
+  ['The rooms set the environment. The chair reference remains the product identity contract.', 'Помещения задают окружение, а референс кресла сохраняет идентичность продукта.'],
+  ['Built in-house.', 'Собрано внутри студии.'], ['Measured on RTX 5090.', 'Измерено на RTX 5090.'], ['One empty room, two furnishing directions.', 'Одна пустая комната. Два варианта меблировки.'], ['One occupied apartment, two levels of cleanup.', 'Одна обжитая квартира. Два уровня очистки.'], ['One daylight exterior, two launch assets.', 'Один дневной вид снаружи. Два материала для запуска.'], ['Unfinished condition to proposed renovation.', 'От текущего состояния к концепции ремонта.']
+  ,['Private RTX 5090 production', 'Локальное производство на RTX 5090'], ['Private RTX 5090', 'Локально на RTX 5090'], ['≈63s complete render', '≈63 с на полный рендер'], ['Full HD master', 'Мастер-файл в Full HD'], ['GARMENT 01', 'ВЕЩЬ 01'], ['GARMENT 02', 'ВЕЩЬ 02'], ['MODEL 01', 'МОДЕЛЬ 01'], ['MODEL 02', 'МОДЕЛЬ 02'], ['MODEL 03', 'МОДЕЛЬ 03'], ['Cobalt ripstop jacket', 'Кобальтовая куртка из рипстопа'], ['Houndstooth cardigan', 'Кардиган в узор «гусиная лапка»'], ['Dress transferred, scene retained', 'Платье перенесено, сцена сохранена'], ['Swimwear transferred, pose retained', 'Купальник перенесён, поза сохранена'], ['Skirt transferred, styling retained', 'Юбка перенесена, стилизация сохранена'], ['Denim transferred, architecture retained', 'Деним перенесён, архитектура сохранена'], ['Tailoring transferred, light retained', 'Костюм перенесён, освещение сохранено'], ['Two-piece transferred, scene retained', 'Комплект перенесён, сцена сохранена'], ['GENERATED OUTPUT', 'СОЗДАННЫЙ РЕЗУЛЬТАТ'], ['MODEL + LOCATION INPUT', 'ИСХОДНИК МОДЕЛИ + ЛОКАЦИИ'], ['GARMENT INPUT', 'ИСХОДНИК ОДЕЖДЫ'], ['SET INPUT 01', 'ИСХОДНИК СЕТА 01'], ['SET INPUT 02', 'ИСХОДНИК СЕТА 02'], ['ROOM INPUT 01', 'ИСХОДНИК ПОМЕЩЕНИЯ 01'], ['ROOM INPUT 02', 'ИСХОДНИК ПОМЕЩЕНИЯ 02'], ['OUTPUT 01', 'РЕЗУЛЬТАТ 01'], ['OUTPUT 02', 'РЕЗУЛЬТАТ 02'], ['FINAL 01', 'ФИНАЛ 01'], ['FINAL 02', 'ФИНАЛ 02']
+  ,['Measured across five accepted 1080×1920 production samples.', 'Измерено на пяти принятых производственных образцах 1080×1920.'], ['One prepared item, including garment isolation and final rendering.', 'Одна подготовленная вещь, включая выделение одежды и финальный рендер.'], ['Five different garments processed consecutively after startup.', 'Пять разных вещей обработаны последовательно после запуска.'], ['Every final is Full HD or larger and manually reviewed before delivery.', 'Каждый финал имеет разрешение Full HD или выше и проходит ручную проверку перед передачей.'], ['Input / output', 'Исходники и результаты'], ['Built to leave the moodboard.', 'Готово выйти за пределы мудборда.'], ['WHITE-LABEL · CAMPAIGNS · SKU BATCHES', 'WHITE-LABEL · КАМПАНИИ · СЕРИИ SKU']
+];
+
+function translateVisibleText(language) {
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  if (!originalTextNodes.length) while (walker.nextNode()) originalTextNodes.push({ node: walker.currentNode, text: walker.currentNode.nodeValue });
+  originalTextNodes.forEach(({ node, text }) => {
+    if (language === 'en') { node.nodeValue = text; return; }
+    let value = text;
+    ruRules.forEach(([from, to]) => { value = value.replaceAll(from, to); });
+    node.nodeValue = value;
+  });
+}
+
+const initialTextWalker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+while (initialTextWalker.nextNode()) originalTextNodes.push({ node: initialTextWalker.currentNode, text: initialTextWalker.currentNode.nodeValue });
 
 document.querySelectorAll('[data-lang]').forEach((button) => {
   button.addEventListener('click', () => setLanguage(button.dataset.lang));
