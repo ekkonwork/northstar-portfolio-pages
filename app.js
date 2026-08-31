@@ -184,6 +184,10 @@ dialog.addEventListener('close', () => {
   dialogImage.removeAttribute('src');
 });
 
+document.querySelectorAll('.transfer-row, .property-task, .product-row').forEach((element) => {
+  element.classList.add('reveal');
+});
+
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (reducedMotion || !('IntersectionObserver' in window)) {
   document.querySelectorAll('.reveal').forEach((element) => element.classList.add('is-visible'));
