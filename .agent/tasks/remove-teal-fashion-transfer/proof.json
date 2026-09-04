@@ -1,0 +1,14 @@
+{
+  "task_id": "remove-teal-fashion-transfer",
+  "overall_verdict": "UNKNOWN",
+  "acceptance_criteria": [
+    {"id":"AC1","status":"UNKNOWN","proof":[],"reason":"Not verified."},
+    {"id":"AC2","status":"UNKNOWN","proof":[],"reason":"Not verified."},
+    {"id":"AC3","status":"UNKNOWN","proof":[],"reason":"Not verified."},
+    {"id":"AC4","status":"UNKNOWN","proof":[],"reason":"Not verified."}
+  ],
+  "changed_files": [],
+  "checks": [],
+  "problems": [],
+  "residual_risks": []
+}
