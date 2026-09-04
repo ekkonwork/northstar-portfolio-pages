@@ -74,12 +74,55 @@
     }
   };
 
+  const fashionCampaignCopy = {
+    en: {
+      title: 'Five garments.<br>Five narrative locations.',
+      summary: 'Swimwear, skirts, eveningwear and tailoring move into a private jet, cliff pool, design district, spiral museum and opera house. The matrix tests real category changes across natural commercial poses.',
+      coverage: '5 garments · 5 scenes',
+      output: '5 shown · 1088 × 1920',
+      heading: 'FIVE EXPLICIT TRANSFERS',
+      footer: 'Five garments. Five supplied model scenes. Five directly auditable transfers.'
+    },
+    ru: {
+      title: 'Пять вещей.<br>Пять локаций.',
+      summary: 'Купальник, юбки, вечернее платье и комбинезон переносятся в пять разных коммерческих сцен: частный самолёт, бассейн у скалы, дизайн-квартал, спиральный музей и оперный театр. Матрица проверяет перенос разных категорий на естественных коммерческих позах.',
+      coverage: '5 вещей · 5 сцен',
+      output: '5 показано · 1088 × 1920',
+      heading: 'ПЯТЬ ЯВНЫХ ПЕРЕНОСОВ',
+      footer: 'Пять вещей. Пять исходных сцен с моделями. Пять напрямую проверяемых переносов.'
+    }
+  };
+
   Object.assign(translations.en, copy.en);
   Object.assign(translations.ru, copy.ru);
+
+  function applyFashionCampaignFixes(language) {
+    const campaign = document.querySelector('#fashion-campaigns');
+    if (!campaign) return;
+
+    const tealSource = campaign.querySelector('button[data-full="assets/web/references/fashion-expanded/teal-wrap-twopiece-source.webp"]');
+    const tealRow = tealSource ? tealSource.closest('.transfer-row') : null;
+    if (tealRow) tealRow.remove();
+
+    const localized = fashionCampaignCopy[language] || fashionCampaignCopy.en;
+    const title = campaign.querySelector('.case-header h2');
+    const summary = campaign.querySelector('.case-summary > p');
+    const summaryValues = campaign.querySelectorAll('.case-summary dd');
+    const heading = campaign.querySelector('.campaign-map > .flow-heading > span');
+    const footer = campaign.querySelector('.campaign-map-footer p');
+
+    if (title) title.innerHTML = localized.title;
+    if (summary) summary.textContent = localized.summary;
+    if (summaryValues[1]) summaryValues[1].textContent = localized.coverage;
+    if (summaryValues[2]) summaryValues[2].textContent = localized.output;
+    if (heading) heading.textContent = localized.heading;
+    if (footer) footer.textContent = localized.footer;
+  }
 
   const originalSetLanguage = setLanguage;
   setLanguage = function setPortfolioLanguage(language) {
     originalSetLanguage(language);
+    applyFashionCampaignFixes(language);
     document.title = language === 'ru'
       ? 'Михаил | ComfyUI / Generative AI Workflow Engineer'
       : 'Mikhail | ComfyUI / Generative AI Workflow Engineer';
