@@ -96,7 +96,7 @@ function setLanguage(language) {
   document.querySelectorAll('[data-lang]').forEach((button) => {
     button.setAttribute('aria-pressed', String(button.dataset.lang === language));
   });
-  localStorage.setItem('northstar-language', language);
+  try { localStorage.setItem('northstar-language', language); } catch (_) {}
 }
 
 const originalTextNodes = [];
@@ -161,7 +161,9 @@ while (initialTextWalker.nextNode()) originalTextNodes.push({ node: initialTextW
 document.querySelectorAll('[data-lang]').forEach((button) => {
   button.addEventListener('click', () => setLanguage(button.dataset.lang));
 });
-setLanguage(localStorage.getItem('northstar-language') || 'en');
+let savedLanguage = 'en';
+try { savedLanguage = localStorage.getItem('northstar-language') || 'en'; } catch (_) {}
+setLanguage(savedLanguage === 'ru' ? 'ru' : 'en');
 
 function openLightbox(source, alt = '') {
   dialogImage.src = source;
@@ -204,5 +206,5 @@ if (reducedMotion || !('IntersectionObserver' in window)) {
 
 window.addEventListener('load', () => {
   if (!window.location.hash) return;
-  document.querySelector(window.location.hash)?.scrollIntoView({ behavior: 'auto', block: 'start' });
+  document.getElementById(decodeURIComponent(window.location.hash.slice(1)))?.scrollIntoView({ behavior: 'auto', block: 'start' });
 });
