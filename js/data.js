@@ -656,7 +656,7 @@ const WORKS = [
     "index": "04",
     "category": "product",
     "year": "2026",
-    "featured": false,
+    "featured": true,
     "accent": "#2f4cff",
     "cover": "assets/web/final/furniture/cobalt-chair-gallery-scale.webp",
     "coverAlt": {
@@ -1105,6 +1105,7 @@ const WORKS = [
     "compare": [
       {
         "input": "assets/portfolio-2026/products/inputs/rolex-daytona.webp",
+        "inputFrame": { "width": 80, "height": 118, "left": 8, "top": -15 },
         "output": "assets/portfolio-2026/products/finals/rolex-daytona.webp",
         "label": {
           "en": "Rolex Daytona · campaign still",
@@ -1334,7 +1335,7 @@ const COPY = {
     "workAll": "All case studies",
     "proofEyebrow": "03 / EVIDENCE",
     "proofTitle": "Input on the left.\nOutput on the right.",
-    "proofLede": "Full images, side by side. Switch to the slider to inspect changes; source framing and generated geometry may differ.",
+    "proofLede": "Drag to compare full frames without crop. Source framing and generated geometry may differ.",
     "profileEyebrow": "04 / THE ENGINEER",
     "profileTitle": "Creative ambition.\nProduction discipline.",
     "profileBody": "I build production-oriented ComfyUI systems for virtual try-on, product imagery and consistent people or characters. I work across reference images, masks, depth, pose, segmentation and video inputs; build and modify custom nodes plus Python preprocessing and postprocessing; and turn experiments into repeatable workflows with QA and regeneration loops, version pinning and a clean handoff.",
@@ -1510,7 +1511,7 @@ const COPY = {
     "workAll": "Все кейсы",
     "proofEyebrow": "03 / ДОКАЗАТЕЛЬСТВО",
     "proofTitle": "Исходник слева.\nРезультат справа.",
-    "proofLede": "Полные изображения рядом. Включите слайдер для проверки изменений: кадрирование исходника и геометрия результата могут различаться.",
+    "proofLede": "Потяните слайдер: кадры показаны целиком, без обрезки. Кадрирование исходника и геометрия результата могут различаться.",
     "profileEyebrow": "04 / ОБ ИНЖЕНЕРЕ",
     "profileTitle": "Креативный замысел.\nИнженерная точность.",
     "profileBody": "Строю production-oriented системы в ComfyUI для virtual try-on, продуктовых изображений и консистентных людей и персонажей. Работаю с референсами, масками, depth, pose, segmentation и video inputs; создаю и модифицирую custom nodes и Python preprocessing/postprocessing; превращаю эксперименты в повторяемые workflow с QA-циклами, фиксацией версий и чистым handoff.",
@@ -1623,4 +1624,5 @@ const COPY = {
     "caseNotFoundBody": "Возможно, он переименован или удалён. Посмотрите все работы."
   }
 };
+
 

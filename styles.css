@@ -700,7 +700,6 @@ button { background: none; border: 0; cursor: pointer; -webkit-tap-highlight-col
 /* Portrait sources cropped into landscape boxes lose their subject's head.
    Biasing the crop upward fixes it and is a no-op for landscape sources. */
 .card-media img,
-.compare img,
 .strip figure img,
 .gal figure img { object-position: center 26%; }
 
@@ -850,10 +849,13 @@ button { background: none; border: 0; cursor: pointer; -webkit-tap-highlight-col
   inset: 0;
   width: 100%; height: 100%;
   object-fit: contain;
+  object-position: center;
+  transform: none;
   pointer-events: none;
 }
 .compare .cmp-out { z-index: 1; }
 .compare .cmp-in {
+  position: absolute; inset: 0;
   z-index: 2;
   clip-path: inset(0 calc(100% - var(--pos)) 0 0);
 }
@@ -912,13 +914,6 @@ button { background: none; border: 0; cursor: pointer; -webkit-tap-highlight-col
 .cmp-cap b { color: var(--ink); font-weight: 500; min-width: 0; }
 .cmp-cap .mono { flex-shrink: 0; }
 .cmp-fig { display: flex; flex-direction: column; }
-.cmp-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-.cmp-pair[hidden], .compare[hidden] { display: none; }
-.cmp-pane { min-width: 0; display: flex; flex-direction: column; gap: 8px; }
-.cmp-pane-label { font: .65rem var(--mono); color: var(--muted); }
-.cmp-pane .media-open { width: 100%; height: auto; aspect-ratio: 3/4; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
-.cmp-pane .media-open img { width: 100%; height: 100%; object-fit: contain; transform: none; }
-.cmp-pane .media-open:hover img { transform: none; }
 .compare--compact { aspect-ratio: 3/2; }
 
 /* -------------------------------------------------------------- misc ui -- */

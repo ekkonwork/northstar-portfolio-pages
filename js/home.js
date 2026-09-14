@@ -15,14 +15,16 @@
     'fashion-campaigns',
     'product-fidelity',
     'hospitality',
-    'property'
+    'property',
+    'furniture'
   ];
   const LAYOUT = {
     'fashion-transfer':  { size: 'std' },
     'fashion-campaigns': { size: 'std' },
     'product-fidelity':  { size: 'std' },
-    'hospitality':       { size: 'half' },
-    'property':          { size: 'half' }
+    'hospitality':       { size: 'std' },
+    'property':          { size: 'std' },
+    'furniture':         { size: 'std' }
   };
 
   const PROOF_PICKS = ['fashion-transfer', 'property', 'hospitality', 'product-fidelity'];

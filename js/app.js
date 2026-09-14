@@ -133,7 +133,15 @@
   function compare(item) {
     const w=document.createElement('div');w.className='compare';w.tabIndex=0;
     w.setAttribute('role','slider');w.setAttribute('aria-label',L(item.label));w.setAttribute('aria-valuemin','0');w.setAttribute('aria-valuemax','100');w.setAttribute('aria-valuenow','50');
-    w.innerHTML=`<img class="cmp-out" src="${escape(item.output)}" alt="${escape(t('caseOutput')+': '+L(item.label))}" loading="lazy" decoding="async"><img class="cmp-in" src="${escape(item.input)}" alt="${escape(t('caseInput')+': '+L(item.label))}" loading="lazy" decoding="async"><span class="cmp-bar" aria-hidden="true"></span><span class="cmp-knob" aria-hidden="true">↔</span><span class="cmp-tag cmp-tag--l">${escape(t('caseInput'))}</span><span class="cmp-tag cmp-tag--r">${escape(t('caseOutput'))}</span>`;
+    w.innerHTML=`<img class="cmp-out" src="${escape(item.output)}" alt="${escape(t('caseOutput')+': '+L(item.label))}" loading="lazy" decoding="async"><div class="cmp-in"><img src="${escape(item.input)}" alt="${escape(t('caseInput')+': '+L(item.label))}" loading="lazy" decoding="async"></div><span class="cmp-bar" aria-hidden="true"></span><span class="cmp-knob" aria-hidden="true">↔</span><span class="cmp-tag cmp-tag--l">${escape(t('caseInput'))}</span><span class="cmp-tag cmp-tag--r">${escape(t('caseOutput'))}</span>`;
+    if(item.inputFrame){const img=w.querySelector('.cmp-in img');
+      for(const key of ['width','height','left','top'])if(Number.isFinite(item.inputFrame[key]))img.style[key]=item.inputFrame[key]+'%';
+    }
+    const images=[...w.querySelectorAll('img')];
+    const sizeFrame=()=>{if(images.every(img=>img.naturalWidth&&img.naturalHeight)){
+      const output=images[0];w.style.aspectRatio=String(output.naturalWidth/output.naturalHeight);
+    }};
+    images.forEach(img=>{img.addEventListener('load',sizeFrame);});sizeFrame();
     function set(v){v=Math.max(0,Math.min(100,v));w.style.setProperty('--pos',v+'%');w.setAttribute('aria-valuenow',String(Math.round(v)));}
     const fromPointer=e=>{const r=w.getBoundingClientRect();if(r.width)set((e.clientX-r.left)/r.width*100);};
     let dragging=false;
@@ -144,23 +152,12 @@
     return w;
   }
   function compareBlock(item) {
-    const fig=document.createElement('figure');fig.className='cmp-fig';
-    const slider=compare(item);slider.hidden=true;
-    const pair=document.createElement('div');pair.className='cmp-pair';
-    [{src:item.input,key:'caseInput'},{src:item.output,key:'caseOutput'}].forEach(({src,key})=>{
-      const pane=document.createElement('div');pane.className='cmp-pane';
-      const title=document.createElement('span');title.className='cmp-pane-label';title.textContent=t(key);
-      pane.append(title,media({src,caption:t(key)+' · '+L(item.label)}));pair.append(pane);
-    });
-    fig.append(pair,slider);
+    const fig=document.createElement('figure');fig.className='cmp-fig';fig.append(compare(item));
     const cap=document.createElement('figcaption');cap.className='cmp-cap';
     const label=document.createElement('b');label.textContent=L(item.label);cap.append(label);
     const button=document.createElement('button');button.type='button';button.className='compare-full';button.textContent=t('viewFull')+' ↗';
     button.addEventListener('click',()=>openLightbox([{src:item.input,caption:t('caseInput')+' · '+L(item.label)},{src:item.output,caption:t('caseOutput')+' · '+L(item.label)}],1));
-    const toggle=document.createElement('button');toggle.type='button';toggle.className='compare-full';toggle.setAttribute('aria-pressed','false');
-    toggle.textContent=lang==='ru'?'Слайдер сравнения':'Comparison slider';
-    toggle.addEventListener('click',()=>{const active=slider.hidden;slider.hidden=!active;pair.hidden=active;toggle.setAttribute('aria-pressed',String(active));});
-    cap.append(toggle,button);fig.append(cap);return fig;
+    cap.append(button);fig.append(cap);return fig;
   }
   function buildCard(work,opts={}) {
     const a=document.createElement('a');a.className='card'+(opts.size?' card--'+opts.size:'');a.href='case.html?case='+encodeURIComponent(work.id);
