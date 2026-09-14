@@ -144,11 +144,23 @@
     return w;
   }
   function compareBlock(item) {
-    const fig=document.createElement('figure');fig.className='cmp-fig';fig.append(compare(item));
+    const fig=document.createElement('figure');fig.className='cmp-fig';
+    const slider=compare(item);slider.hidden=true;
+    const pair=document.createElement('div');pair.className='cmp-pair';
+    [{src:item.input,key:'caseInput'},{src:item.output,key:'caseOutput'}].forEach(({src,key})=>{
+      const pane=document.createElement('div');pane.className='cmp-pane';
+      const title=document.createElement('span');title.className='cmp-pane-label';title.textContent=t(key);
+      pane.append(title,media({src,caption:t(key)+' · '+L(item.label)}));pair.append(pane);
+    });
+    fig.append(pair,slider);
     const cap=document.createElement('figcaption');cap.className='cmp-cap';
     const label=document.createElement('b');label.textContent=L(item.label);cap.append(label);
     const button=document.createElement('button');button.type='button';button.className='compare-full';button.textContent=t('viewFull')+' ↗';
-    button.addEventListener('click',()=>openLightbox([{src:item.input,caption:t('caseInput')+' · '+L(item.label)},{src:item.output,caption:t('caseOutput')+' · '+L(item.label)}],1));cap.append(button);fig.append(cap);return fig;
+    button.addEventListener('click',()=>openLightbox([{src:item.input,caption:t('caseInput')+' · '+L(item.label)},{src:item.output,caption:t('caseOutput')+' · '+L(item.label)}],1));
+    const toggle=document.createElement('button');toggle.type='button';toggle.className='compare-full';toggle.setAttribute('aria-pressed','false');
+    toggle.textContent=lang==='ru'?'Слайдер сравнения':'Comparison slider';
+    toggle.addEventListener('click',()=>{const active=slider.hidden;slider.hidden=!active;pair.hidden=active;toggle.setAttribute('aria-pressed',String(active));});
+    cap.append(toggle,button);fig.append(cap);return fig;
   }
   function buildCard(work,opts={}) {
     const a=document.createElement('a');a.className='card'+(opts.size?' card--'+opts.size:'');a.href='case.html?case='+encodeURIComponent(work.id);

@@ -1334,7 +1334,7 @@ const COPY = {
     "workAll": "All case studies",
     "proofEyebrow": "03 / EVIDENCE",
     "proofTitle": "Input on the left.\nOutput on the right.",
-    "proofLede": "Drag to compare. Framing and source sizes may differ; open the full-size originals to inspect fine details.",
+    "proofLede": "Full images, side by side. Switch to the slider to inspect changes; source framing and generated geometry may differ.",
     "profileEyebrow": "04 / THE ENGINEER",
     "profileTitle": "Creative ambition.\nProduction discipline.",
     "profileBody": "I build production-oriented ComfyUI systems for virtual try-on, product imagery and consistent people or characters. I work across reference images, masks, depth, pose, segmentation and video inputs; build and modify custom nodes plus Python preprocessing and postprocessing; and turn experiments into repeatable workflows with QA and regeneration loops, version pinning and a clean handoff.",
@@ -1429,7 +1429,7 @@ const COPY = {
     "viewList": "Index",
     "caseInput": "Supplied input",
     "caseOutput": "Generated output",
-    "caseDrag": "Drag to compare",
+    "caseDrag": "Compare full images",
     "caseInputs": "Supplied inputs",
     "caseOutputs": "Delivered outputs",
     "caseGallery": "Full gallery",
@@ -1510,7 +1510,7 @@ const COPY = {
     "workAll": "Все кейсы",
     "proofEyebrow": "03 / ДОКАЗАТЕЛЬСТВО",
     "proofTitle": "Исходник слева.\nРезультат справа.",
-    "proofLede": "Перетащите ползунок для сравнения. Кадрирование и размеры исходников могут различаться; детали проверяйте в полном размере.",
+    "proofLede": "Полные изображения рядом. Включите слайдер для проверки изменений: кадрирование исходника и геометрия результата могут различаться.",
     "profileEyebrow": "04 / ОБ ИНЖЕНЕРЕ",
     "profileTitle": "Креативный замысел.\nИнженерная точность.",
     "profileBody": "Строю production-oriented системы в ComfyUI для virtual try-on, продуктовых изображений и консистентных людей и персонажей. Работаю с референсами, масками, depth, pose, segmentation и video inputs; создаю и модифицирую custom nodes и Python preprocessing/postprocessing; превращаю эксперименты в повторяемые workflow с QA-циклами, фиксацией версий и чистым handoff.",
@@ -1605,7 +1605,7 @@ const COPY = {
     "viewList": "Список",
     "caseInput": "Исходник",
     "caseOutput": "Результат",
-    "caseDrag": "Потяните для сравнения",
+    "caseDrag": "Сравните полные изображения",
     "caseInputs": "Переданные исходники",
     "caseOutputs": "Готовые результаты",
     "caseGallery": "Полная галерея",
@@ -1623,3 +1623,4 @@ const COPY = {
     "caseNotFoundBody": "Возможно, он переименован или удалён. Посмотрите все работы."
   }
 };
+

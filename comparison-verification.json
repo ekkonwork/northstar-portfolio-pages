@@ -1,0 +1,118 @@
+{
+  "generatedAt": "2026-09-14T11:09:09.569Z",
+  "results": [
+    {
+      "path": "index.html",
+      "width": 390,
+      "count": 8,
+      "full": true,
+      "defaultPair": true,
+      "overflow": 0
+    },
+    {
+      "path": "case.html?case=fashion-transfer",
+      "width": 390,
+      "count": 4,
+      "full": true,
+      "defaultPair": true,
+      "overflow": 0
+    },
+    {
+      "path": "case.html?case=fashion-campaigns",
+      "width": 390,
+      "count": 10,
+      "full": true,
+      "defaultPair": true,
+      "overflow": 0
+    },
+    {
+      "path": "case.html?case=hospitality",
+      "width": 390,
+      "count": 4,
+      "full": true,
+      "defaultPair": true,
+      "overflow": 0
+    },
+    {
+      "path": "case.html?case=furniture",
+      "width": 390,
+      "count": 4,
+      "full": true,
+      "defaultPair": true,
+      "overflow": 0
+    },
+    {
+      "path": "case.html?case=property",
+      "width": 390,
+      "count": 8,
+      "full": true,
+      "defaultPair": true,
+      "overflow": 0
+    },
+    {
+      "path": "case.html?case=product-fidelity",
+      "width": 390,
+      "count": 8,
+      "full": true,
+      "defaultPair": true,
+      "overflow": 0
+    },
+    {
+      "path": "index.html",
+      "width": 1440,
+      "count": 8,
+      "full": true,
+      "defaultPair": true,
+      "overflow": 0
+    },
+    {
+      "path": "case.html?case=fashion-transfer",
+      "width": 1440,
+      "count": 4,
+      "full": true,
+      "defaultPair": true,
+      "overflow": 0
+    },
+    {
+      "path": "case.html?case=fashion-campaigns",
+      "width": 1440,
+      "count": 10,
+      "full": true,
+      "defaultPair": true,
+      "overflow": 0
+    },
+    {
+      "path": "case.html?case=hospitality",
+      "width": 1440,
+      "count": 4,
+      "full": true,
+      "defaultPair": true,
+      "overflow": 0
+    },
+    {
+      "path": "case.html?case=furniture",
+      "width": 1440,
+      "count": 4,
+      "full": true,
+      "defaultPair": true,
+      "overflow": 0
+    },
+    {
+      "path": "case.html?case=property",
+      "width": 1440,
+      "count": 8,
+      "full": true,
+      "defaultPair": true,
+      "overflow": 0
+    },
+    {
+      "path": "case.html?case=product-fidelity",
+      "width": 1440,
+      "count": 8,
+      "full": true,
+      "defaultPair": true,
+      "overflow": 0
+    }
+  ],
+  "errors": []
+}

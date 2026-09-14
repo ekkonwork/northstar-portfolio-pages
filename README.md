@@ -72,7 +72,7 @@ A comparison entry uses `input`, `output` and bilingual `label`. Gallery/input e
 - Light initial appearance; a saved dark preference is preserved. EN/RU and theme settings persist where browser storage is available.
 - The project CTA opens the contact section, not the catalogue.
 - Mobile navigation can be closed with the same toggle or Escape; keyboard focus stays inside the menu while it is open.
-- Comparisons support drag, Left/Right arrows, Home and End. Use the visible full-size button to inspect both images without crop; the compact comparison uses a common viewing frame, so differently shaped originals may not align pixel-for-pixel.
+- Comparisons show both full images side by side without crop or hover zoom. An optional slider supports drag, Left/Right arrows, Home and End and uses contain sizing. Different source framing or generated geometry may still cause visible drift; images are not warped to conceal it. Click either image or use the full-size button for the viewer.
 - Source and gallery images are native buttons, keyboard accessible. The full-size viewer supports Previous/Next and Escape, then restores focus.
 - No artificial loading percentage or moving cursor targets. Earlier background implementations are retained; they are decorative, not evidence of a production system. Reduced-motion support is not a certified accessibility audit.
 
@@ -92,6 +92,7 @@ Timing, resolution and experience figures are source-reported, not independently
 - `styles.css`: layout, typography, themes and responsive rules.
 - `verification.json`: browser checks from the final acceptance run, with actual pass/fail values.
 - `asset-integrity.json`: byte comparison against the original ZIP.
+- `comparison-verification.json`: current full-frame comparison, slider and viewer checks at mobile and desktop widths.
 
 Browser checks target Chromium. They do not constitute Safari/Firefox coverage, a complete WCAG audit, a new generation benchmark or a deployment test. No emails/messages were sent; external contact services were not tested.
 
@@ -104,4 +105,5 @@ Deployment target: GitHub Pages, served from the repository main branch root. Pu
 If moving hosts, update the HTML metadata and `BASE` in `js/case.js`.
 
 Case-specific metadata is updated client-side; social crawlers that do not execute JavaScript will see the generic case preview. For unique social cards/search indexing per case, a later static-generation step is needed. Query-based case links work without host rewrite rules.
+
 
