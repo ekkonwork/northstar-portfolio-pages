@@ -1120,6 +1120,7 @@ const WORKS = [
       {
         "input": "assets/portfolio-2026/products/inputs/rolex-daytona.webp",
         "alignment": [[0.79375884,0.01286001,0.09306345],[-0.00871865,1.17079429,-0.14613444]],
+        "outputScaleX": 0.95,
         "output": "assets/portfolio-2026/products/finals/rolex-daytona.webp",
         "label": {
           "en": "Rolex Daytona · campaign still",

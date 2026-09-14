@@ -133,6 +133,10 @@
     const w=document.createElement('div');w.className='compare';w.tabIndex=0;
     w.setAttribute('role','slider');w.setAttribute('aria-label',L(item.label));w.setAttribute('aria-valuemin','0');w.setAttribute('aria-valuemax','100');w.setAttribute('aria-valuenow','50');
     w.innerHTML=`<img class="cmp-out" src="${escape(item.output)}" alt="${escape(t('caseOutput')+': '+L(item.label))}" loading="lazy" decoding="async"><div class="cmp-in"><img src="${escape(item.input)}" alt="${escape(t('caseInput')+': '+L(item.label))}" loading="lazy" decoding="async"></div><span class="cmp-bar" aria-hidden="true"></span><span class="cmp-knob" aria-hidden="true">↔</span><span class="cmp-tag cmp-tag--l">${escape(t('caseInput'))}</span><span class="cmp-tag cmp-tag--r">${escape(t('caseOutput'))}</span>`;
+    if(Number.isFinite(item.outputScaleX)){
+      const output=w.querySelector('.cmp-out');
+      output.style.transformOrigin='center';output.style.transform=`scaleX(${item.outputScaleX})`;
+    }
     const aligned=w.querySelector('.cmp-in img');
     function align(){
       if(!item.alignment)return;
