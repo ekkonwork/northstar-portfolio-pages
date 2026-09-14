@@ -1446,21 +1446,20 @@ button { background: none; border: 0; cursor: pointer; -webkit-tap-highlight-col
   overflow: hidden;
   border: 1px solid var(--line);
   background: var(--surface);
-  aspect-ratio: 4/5;
+  align-self: start;
 }
-.gal figure.g-w { grid-column: span 2; aspect-ratio: 16/10; }
+.gal figure.g-w { grid-column: span 1; }
+.gal .media-open { height: auto; }
+.gal .media-open img { display: block; width: 100%; height: auto; max-height: 72svh; object-fit: contain; object-position: center; }
 .gal figcaption {
-  position: absolute;
-  left: 12px; bottom: 10px;
-  z-index: 2;
+  position: static;
+  padding: 12px;
   font-family: var(--mono);
   font-size: .56rem;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: #fff;
-  text-shadow: 0 1px 8px rgba(0,0,0,.85);
+  color: var(--muted);
 }
-.gal figure::after,
 .strip figure::after {
   content: "";
   position: absolute; inset: 0;
@@ -1541,7 +1540,7 @@ button { background: none; border: 0; cursor: pointer; -webkit-tap-highlight-col
   .metrics { grid-template-columns: 1fr; }
   .hero-cards .hero-card:nth-child(3) { display: none; }
   .work-grid.is-list .card { grid-template-columns: 96px 1fr; }
-  .gal figure.g-w { grid-column: span 2; }
+  .gal figure.g-w { grid-column: span 1; }
   .case-nav { grid-template-columns: 1fr; }
   .case-nav a:last-child { text-align: left; align-items: flex-start; }
   .footer-top { flex-direction: column; }
