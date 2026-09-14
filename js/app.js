@@ -25,7 +25,6 @@
     applyStatic();
     document.title = `${document.documentElement.dataset.titleKey === 'work' ? t('workPageTitle') + ' — ' : ''}${lang === 'ru' ? 'Михаил' : 'Mikhail'} / Generative AI`;
     document.dispatchEvent(new CustomEvent('northstar:lang', {detail:{lang}}));
-    ticker();
   }
   function setTheme(mode, persist = true) {
     mode = mode === 'dark' ? 'dark' : 'light';
@@ -139,7 +138,9 @@
     }
     const images=[...w.querySelectorAll('img')];
     const sizeFrame=()=>{if(images.every(img=>img.naturalWidth&&img.naturalHeight)){
-      const output=images[0];w.style.aspectRatio=String(output.naturalWidth/output.naturalHeight);
+      const output=images[0],ratio=output.naturalWidth/output.naturalHeight;
+      w.style.aspectRatio=String(ratio);
+      w.style.setProperty('--compare-width',`${72*ratio}svh`);
     }};
     images.forEach(img=>{img.addEventListener('load',sizeFrame);});sizeFrame();
     function set(v){v=Math.max(0,Math.min(100,v));w.style.setProperty('--pos',v+'%');w.setAttribute('aria-valuenow',String(Math.round(v)));}
@@ -164,7 +165,7 @@
     a.setAttribute('aria-label',L(work.title)+' — '+L(work.tagline));if(work.accent)a.style.setProperty('--card-accent',work.accent);
     a.innerHTML=`<div class="card-media"><span class="card-idx">${escape(work.index)}</span><span class="card-cat">${escape(NS.catLabel(work.category))}</span><img src="${escape(work.cover)}" alt="${escape(L(work.coverAlt))}" loading="lazy" decoding="async"><span class="card-go" aria-hidden="true">↗</span></div><div class="card-body"><h3 class="card-title">${escape(L(work.title))}<span>${escape(work.year)}</span></h3><p class="card-tag">${escape(L(work.tagline))}</p><div class="card-tags">${(work.tags||[]).map(tag=>'<span class="chip">'+escape(tag)+'</span>').join('')}</div></div>`;return a;
   }
-  function ticker(){const track=$('.ticker-track');if(track){const html=(t('ticker')||[]).map(s=>'<span>'+escape(s)+'</span>').join('');track.innerHTML=html+html;}}
+
   window.NS={$, $$, L,t,escape,lang:()=>lang,setLang,setTheme,applyStatic,reveal,counters,magnetic,wireLightbox,openLightbox,media,compare,compareBlock,buildCard,get work(){return WORKS;},get categories(){return CATEGORIES;},catLabel(id){return L(CATEGORIES.find(c=>c.id===id)?.label)||id;}};
   function boot(){
     $('.loader')?.remove();document.body.classList.add('is-ready');

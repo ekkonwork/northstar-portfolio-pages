@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-14T11:14:18.950Z",
+  "generatedAt": "2026-09-14T11:31:23.942Z",
   "results": [
     {
       "path": "index.html",
@@ -7,6 +7,9 @@
       "count": 8,
       "full": true,
       "nativeRatio": true,
+      "layers": true,
+      "bounded": true,
+      "ticker": false,
       "pairs": 0,
       "overflow": 0
     },
@@ -16,6 +19,9 @@
       "count": 4,
       "full": true,
       "nativeRatio": true,
+      "layers": true,
+      "bounded": true,
+      "ticker": false,
       "pairs": 0,
       "overflow": 0
     },
@@ -25,6 +31,9 @@
       "count": 10,
       "full": true,
       "nativeRatio": true,
+      "layers": true,
+      "bounded": true,
+      "ticker": false,
       "pairs": 0,
       "overflow": 0
     },
@@ -34,6 +43,9 @@
       "count": 4,
       "full": true,
       "nativeRatio": true,
+      "layers": true,
+      "bounded": true,
+      "ticker": false,
       "pairs": 0,
       "overflow": 0
     },
@@ -43,6 +55,9 @@
       "count": 4,
       "full": true,
       "nativeRatio": true,
+      "layers": true,
+      "bounded": true,
+      "ticker": false,
       "pairs": 0,
       "overflow": 0
     },
@@ -52,6 +67,9 @@
       "count": 8,
       "full": true,
       "nativeRatio": true,
+      "layers": true,
+      "bounded": true,
+      "ticker": false,
       "pairs": 0,
       "overflow": 0
     },
@@ -61,6 +79,9 @@
       "count": 8,
       "full": true,
       "nativeRatio": true,
+      "layers": true,
+      "bounded": true,
+      "ticker": false,
       "pairs": 0,
       "overflow": 0
     },
@@ -70,6 +91,9 @@
       "count": 8,
       "full": true,
       "nativeRatio": true,
+      "layers": true,
+      "bounded": true,
+      "ticker": false,
       "pairs": 0,
       "overflow": 0
     },
@@ -79,6 +103,9 @@
       "count": 4,
       "full": true,
       "nativeRatio": true,
+      "layers": true,
+      "bounded": true,
+      "ticker": false,
       "pairs": 0,
       "overflow": 0
     },
@@ -88,6 +115,9 @@
       "count": 10,
       "full": true,
       "nativeRatio": true,
+      "layers": true,
+      "bounded": true,
+      "ticker": false,
       "pairs": 0,
       "overflow": 0
     },
@@ -97,6 +127,9 @@
       "count": 4,
       "full": true,
       "nativeRatio": true,
+      "layers": true,
+      "bounded": true,
+      "ticker": false,
       "pairs": 0,
       "overflow": 0
     },
@@ -106,6 +139,9 @@
       "count": 4,
       "full": true,
       "nativeRatio": true,
+      "layers": true,
+      "bounded": true,
+      "ticker": false,
       "pairs": 0,
       "overflow": 0
     },
@@ -115,6 +151,9 @@
       "count": 8,
       "full": true,
       "nativeRatio": true,
+      "layers": true,
+      "bounded": true,
+      "ticker": false,
       "pairs": 0,
       "overflow": 0
     },
@@ -124,6 +163,9 @@
       "count": 8,
       "full": true,
       "nativeRatio": true,
+      "layers": true,
+      "bounded": true,
+      "ticker": false,
       "pairs": 0,
       "overflow": 0
     }

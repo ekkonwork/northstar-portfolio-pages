@@ -604,36 +604,7 @@ button { background: none; border: 0; cursor: pointer; -webkit-tap-highlight-col
 }
 @keyframes cue { 0%{transform:translateY(-100%)} 60%,100%{transform:translateY(100%)} }
 
-/* --------------------------------------------------------------- ticker -- */
-.ticker {
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: 22px 0;
-  overflow: hidden;
-  display: flex;
-  user-select: none;
-}
-.ticker-track {
-  display: flex;
-  gap: 0;
-  flex-shrink: 0;
-  animation: ticker 42s linear infinite;
-}
-.ticker:hover .ticker-track { animation-play-state: paused; }
-.ticker-track span {
-  display: inline-flex;
-  align-items: center;
-  gap: 26px;
-  padding: 0 26px;
-  font-family: var(--mono);
-  font-size: .72rem;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: var(--muted);
-  white-space: nowrap;
-}
-.ticker-track span::after { content: "◆"; color: var(--accent); font-size: .5rem; }
-@keyframes ticker { to { transform: translateX(-50%); } }
+
 
 /* -------------------------------------------------------------- section -- */
 .section { padding: clamp(70px, 12vh, 160px) 0; position: relative; }
@@ -834,6 +805,10 @@ button { background: none; border: 0; cursor: pointer; -webkit-tap-highlight-col
 /* --------------------------------------------------------------- compare -- */
 .compare {
   position: relative;
+  width: 100%;
+  max-width: var(--compare-width, 100%);
+  align-self: center;
+  flex-shrink: 0;
   overflow: hidden;
   border-radius: var(--r);
   border: 1px solid var(--line);
@@ -856,6 +831,7 @@ button { background: none; border: 0; cursor: pointer; -webkit-tap-highlight-col
 .compare .cmp-out { z-index: 1; }
 .compare .cmp-in {
   position: absolute; inset: 0;
+  background: var(--surface);
   z-index: 2;
   clip-path: inset(0 calc(100% - var(--pos)) 0 0);
 }
