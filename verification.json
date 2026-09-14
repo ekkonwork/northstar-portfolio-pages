@@ -1,0 +1,1139 @@
+{
+  "generatedAt": "2026-09-14T10:05:40.584Z",
+  "passed": 281,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Catalogue has six cases",
+      "pass": true
+    },
+    {
+      "name": "Fashion filter shows two",
+      "pass": true
+    },
+    {
+      "name": "Product filter includes mixed product/character case",
+      "pass": true
+    },
+    {
+      "name": "Empty search is visible",
+      "pass": true
+    },
+    {
+      "name": "Tag search finds fashion cases",
+      "pass": true
+    },
+    {
+      "name": "Sort and view are in URL",
+      "pass": true
+    },
+    {
+      "name": "Reload preserves list and sort",
+      "pass": true
+    },
+    {
+      "name": "Reload preserves sorted order",
+      "pass": true
+    },
+    {
+      "name": "Russian heading",
+      "pass": true
+    },
+    {
+      "name": "Language and theme persist across pages",
+      "pass": true
+    },
+    {
+      "name": "Project CTA goes to contact",
+      "pass": true
+    },
+    {
+      "name": "Loader does not obstruct page",
+      "pass": true
+    },
+    {
+      "name": "Mobile menu opens",
+      "pass": true
+    },
+    {
+      "name": "Menu toggle remains on top",
+      "pass": true
+    },
+    {
+      "name": "Mobile menu closes by toggle",
+      "pass": true
+    },
+    {
+      "name": "Escape returns focus to menu toggle",
+      "pass": true
+    },
+    {
+      "name": "fashion-transfer title exists",
+      "pass": true
+    },
+    {
+      "name": "fashion-transfer images decode",
+      "pass": true,
+      "details": []
+    },
+    {
+      "name": "fashion-transfer canonical uses public URL",
+      "pass": true
+    },
+    {
+      "name": "fashion-transfer slider End key",
+      "pass": true
+    },
+    {
+      "name": "fashion-transfer slider arrow key",
+      "pass": true
+    },
+    {
+      "name": "fashion-transfer slider drag",
+      "pass": true
+    },
+    {
+      "name": "fashion-transfer comparison opens two full images",
+      "pass": true
+    },
+    {
+      "name": "fashion-transfer viewer previous image",
+      "pass": true
+    },
+    {
+      "name": "fashion-transfer keyboard opens source gallery",
+      "pass": true
+    },
+    {
+      "name": "fashion-transfer returns focus to image button",
+      "pass": true
+    },
+    {
+      "name": "fashion-transfer repeated locale changes preserve case",
+      "pass": true
+    },
+    {
+      "name": "fashion-campaigns title exists",
+      "pass": true
+    },
+    {
+      "name": "fashion-campaigns images decode",
+      "pass": true,
+      "details": []
+    },
+    {
+      "name": "fashion-campaigns canonical uses public URL",
+      "pass": true
+    },
+    {
+      "name": "fashion-campaigns slider End key",
+      "pass": true
+    },
+    {
+      "name": "fashion-campaigns slider arrow key",
+      "pass": true
+    },
+    {
+      "name": "fashion-campaigns slider drag",
+      "pass": true
+    },
+    {
+      "name": "fashion-campaigns comparison opens two full images",
+      "pass": true
+    },
+    {
+      "name": "fashion-campaigns viewer previous image",
+      "pass": true
+    },
+    {
+      "name": "fashion-campaigns keyboard opens source gallery",
+      "pass": true
+    },
+    {
+      "name": "fashion-campaigns returns focus to image button",
+      "pass": true
+    },
+    {
+      "name": "fashion-campaigns repeated locale changes preserve case",
+      "pass": true
+    },
+    {
+      "name": "hospitality title exists",
+      "pass": true
+    },
+    {
+      "name": "hospitality images decode",
+      "pass": true,
+      "details": []
+    },
+    {
+      "name": "hospitality canonical uses public URL",
+      "pass": true
+    },
+    {
+      "name": "hospitality slider End key",
+      "pass": true
+    },
+    {
+      "name": "hospitality slider arrow key",
+      "pass": true
+    },
+    {
+      "name": "hospitality slider drag",
+      "pass": true
+    },
+    {
+      "name": "hospitality comparison opens two full images",
+      "pass": true
+    },
+    {
+      "name": "hospitality viewer previous image",
+      "pass": true
+    },
+    {
+      "name": "hospitality keyboard opens source gallery",
+      "pass": true
+    },
+    {
+      "name": "hospitality returns focus to image button",
+      "pass": true
+    },
+    {
+      "name": "hospitality repeated locale changes preserve case",
+      "pass": true
+    },
+    {
+      "name": "furniture title exists",
+      "pass": true
+    },
+    {
+      "name": "furniture images decode",
+      "pass": true,
+      "details": []
+    },
+    {
+      "name": "furniture canonical uses public URL",
+      "pass": true
+    },
+    {
+      "name": "furniture slider End key",
+      "pass": true
+    },
+    {
+      "name": "furniture slider arrow key",
+      "pass": true
+    },
+    {
+      "name": "furniture slider drag",
+      "pass": true
+    },
+    {
+      "name": "furniture comparison opens two full images",
+      "pass": true
+    },
+    {
+      "name": "furniture viewer previous image",
+      "pass": true
+    },
+    {
+      "name": "furniture keyboard opens source gallery",
+      "pass": true
+    },
+    {
+      "name": "furniture returns focus to image button",
+      "pass": true
+    },
+    {
+      "name": "furniture repeated locale changes preserve case",
+      "pass": true
+    },
+    {
+      "name": "property title exists",
+      "pass": true
+    },
+    {
+      "name": "property images decode",
+      "pass": true,
+      "details": []
+    },
+    {
+      "name": "property canonical uses public URL",
+      "pass": true
+    },
+    {
+      "name": "property slider End key",
+      "pass": true
+    },
+    {
+      "name": "property slider arrow key",
+      "pass": true
+    },
+    {
+      "name": "property slider drag",
+      "pass": true
+    },
+    {
+      "name": "property comparison opens two full images",
+      "pass": true
+    },
+    {
+      "name": "property viewer previous image",
+      "pass": true
+    },
+    {
+      "name": "property keyboard opens source gallery",
+      "pass": true
+    },
+    {
+      "name": "property returns focus to image button",
+      "pass": true
+    },
+    {
+      "name": "property repeated locale changes preserve case",
+      "pass": true
+    },
+    {
+      "name": "product-fidelity title exists",
+      "pass": true
+    },
+    {
+      "name": "product-fidelity images decode",
+      "pass": true,
+      "details": []
+    },
+    {
+      "name": "product-fidelity canonical uses public URL",
+      "pass": true
+    },
+    {
+      "name": "product-fidelity slider End key",
+      "pass": true
+    },
+    {
+      "name": "product-fidelity slider arrow key",
+      "pass": true
+    },
+    {
+      "name": "product-fidelity slider drag",
+      "pass": true
+    },
+    {
+      "name": "product-fidelity comparison opens two full images",
+      "pass": true
+    },
+    {
+      "name": "product-fidelity viewer previous image",
+      "pass": true
+    },
+    {
+      "name": "product-fidelity keyboard opens source gallery",
+      "pass": true
+    },
+    {
+      "name": "product-fidelity returns focus to image button",
+      "pass": true
+    },
+    {
+      "name": "product-fidelity repeated locale changes preserve case",
+      "pass": true
+    },
+    {
+      "name": "Unknown case fallback",
+      "pass": true
+    },
+    {
+      "name": "Unknown case fallback translates",
+      "pass": true
+    },
+    {
+      "name": "index.html 320px en light",
+      "pass": true
+    },
+    {
+      "name": "work.html 320px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-transfer 320px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-campaigns 320px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=hospitality 320px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=furniture 320px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=property 320px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=product-fidelity 320px en light",
+      "pass": true
+    },
+    {
+      "name": "index.html 390px en light",
+      "pass": true
+    },
+    {
+      "name": "work.html 390px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-transfer 390px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-campaigns 390px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=hospitality 390px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=furniture 390px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=property 390px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=product-fidelity 390px en light",
+      "pass": true
+    },
+    {
+      "name": "index.html 768px en light",
+      "pass": true
+    },
+    {
+      "name": "work.html 768px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-transfer 768px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-campaigns 768px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=hospitality 768px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=furniture 768px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=property 768px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=product-fidelity 768px en light",
+      "pass": true
+    },
+    {
+      "name": "index.html 1024px en light",
+      "pass": true
+    },
+    {
+      "name": "work.html 1024px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-transfer 1024px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-campaigns 1024px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=hospitality 1024px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=furniture 1024px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=property 1024px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=product-fidelity 1024px en light",
+      "pass": true
+    },
+    {
+      "name": "index.html 1440px en light",
+      "pass": true
+    },
+    {
+      "name": "work.html 1440px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-transfer 1440px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-campaigns 1440px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=hospitality 1440px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=furniture 1440px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=property 1440px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=product-fidelity 1440px en light",
+      "pass": true
+    },
+    {
+      "name": "index.html 1920px en light",
+      "pass": true
+    },
+    {
+      "name": "work.html 1920px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-transfer 1920px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-campaigns 1920px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=hospitality 1920px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=furniture 1920px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=property 1920px en light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=product-fidelity 1920px en light",
+      "pass": true
+    },
+    {
+      "name": "index.html 320px en dark",
+      "pass": true
+    },
+    {
+      "name": "work.html 320px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-transfer 320px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-campaigns 320px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=hospitality 320px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=furniture 320px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=property 320px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=product-fidelity 320px en dark",
+      "pass": true
+    },
+    {
+      "name": "index.html 390px en dark",
+      "pass": true
+    },
+    {
+      "name": "work.html 390px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-transfer 390px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-campaigns 390px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=hospitality 390px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=furniture 390px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=property 390px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=product-fidelity 390px en dark",
+      "pass": true
+    },
+    {
+      "name": "index.html 768px en dark",
+      "pass": true
+    },
+    {
+      "name": "work.html 768px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-transfer 768px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-campaigns 768px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=hospitality 768px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=furniture 768px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=property 768px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=product-fidelity 768px en dark",
+      "pass": true
+    },
+    {
+      "name": "index.html 1024px en dark",
+      "pass": true
+    },
+    {
+      "name": "work.html 1024px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-transfer 1024px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-campaigns 1024px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=hospitality 1024px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=furniture 1024px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=property 1024px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=product-fidelity 1024px en dark",
+      "pass": true
+    },
+    {
+      "name": "index.html 1440px en dark",
+      "pass": true
+    },
+    {
+      "name": "work.html 1440px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-transfer 1440px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-campaigns 1440px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=hospitality 1440px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=furniture 1440px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=property 1440px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=product-fidelity 1440px en dark",
+      "pass": true
+    },
+    {
+      "name": "index.html 1920px en dark",
+      "pass": true
+    },
+    {
+      "name": "work.html 1920px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-transfer 1920px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-campaigns 1920px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=hospitality 1920px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=furniture 1920px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=property 1920px en dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=product-fidelity 1920px en dark",
+      "pass": true
+    },
+    {
+      "name": "index.html 320px ru light",
+      "pass": true
+    },
+    {
+      "name": "work.html 320px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-transfer 320px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-campaigns 320px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=hospitality 320px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=furniture 320px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=property 320px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=product-fidelity 320px ru light",
+      "pass": true
+    },
+    {
+      "name": "index.html 390px ru light",
+      "pass": true
+    },
+    {
+      "name": "work.html 390px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-transfer 390px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-campaigns 390px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=hospitality 390px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=furniture 390px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=property 390px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=product-fidelity 390px ru light",
+      "pass": true
+    },
+    {
+      "name": "index.html 768px ru light",
+      "pass": true
+    },
+    {
+      "name": "work.html 768px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-transfer 768px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-campaigns 768px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=hospitality 768px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=furniture 768px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=property 768px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=product-fidelity 768px ru light",
+      "pass": true
+    },
+    {
+      "name": "index.html 1024px ru light",
+      "pass": true
+    },
+    {
+      "name": "work.html 1024px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-transfer 1024px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-campaigns 1024px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=hospitality 1024px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=furniture 1024px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=property 1024px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=product-fidelity 1024px ru light",
+      "pass": true
+    },
+    {
+      "name": "index.html 1440px ru light",
+      "pass": true
+    },
+    {
+      "name": "work.html 1440px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-transfer 1440px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-campaigns 1440px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=hospitality 1440px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=furniture 1440px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=property 1440px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=product-fidelity 1440px ru light",
+      "pass": true
+    },
+    {
+      "name": "index.html 1920px ru light",
+      "pass": true
+    },
+    {
+      "name": "work.html 1920px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-transfer 1920px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-campaigns 1920px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=hospitality 1920px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=furniture 1920px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=property 1920px ru light",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=product-fidelity 1920px ru light",
+      "pass": true
+    },
+    {
+      "name": "index.html 320px ru dark",
+      "pass": true
+    },
+    {
+      "name": "work.html 320px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-transfer 320px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-campaigns 320px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=hospitality 320px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=furniture 320px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=property 320px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=product-fidelity 320px ru dark",
+      "pass": true
+    },
+    {
+      "name": "index.html 390px ru dark",
+      "pass": true
+    },
+    {
+      "name": "work.html 390px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-transfer 390px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-campaigns 390px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=hospitality 390px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=furniture 390px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=property 390px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=product-fidelity 390px ru dark",
+      "pass": true
+    },
+    {
+      "name": "index.html 768px ru dark",
+      "pass": true
+    },
+    {
+      "name": "work.html 768px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-transfer 768px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-campaigns 768px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=hospitality 768px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=furniture 768px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=property 768px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=product-fidelity 768px ru dark",
+      "pass": true
+    },
+    {
+      "name": "index.html 1024px ru dark",
+      "pass": true
+    },
+    {
+      "name": "work.html 1024px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-transfer 1024px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-campaigns 1024px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=hospitality 1024px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=furniture 1024px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=property 1024px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=product-fidelity 1024px ru dark",
+      "pass": true
+    },
+    {
+      "name": "index.html 1440px ru dark",
+      "pass": true
+    },
+    {
+      "name": "work.html 1440px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-transfer 1440px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-campaigns 1440px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=hospitality 1440px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=furniture 1440px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=property 1440px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=product-fidelity 1440px ru dark",
+      "pass": true
+    },
+    {
+      "name": "index.html 1920px ru dark",
+      "pass": true
+    },
+    {
+      "name": "work.html 1920px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-transfer 1920px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=fashion-campaigns 1920px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=hospitality 1920px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=furniture 1920px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=property 1920px ru dark",
+      "pass": true
+    },
+    {
+      "name": "case.html?case=product-fidelity 1920px ru dark",
+      "pass": true
+    },
+    {
+      "name": "file:// catalogue loads",
+      "pass": true
+    },
+    {
+      "name": "file:// filter works",
+      "pass": true
+    },
+    {
+      "name": "No-JS contact fallback",
+      "pass": true
+    },
+    {
+      "name": "No-JS loader hidden",
+      "pass": true
+    },
+    {
+      "name": "No uncaught browser/HTTP errors",
+      "pass": true,
+      "details": []
+    }
+  ],
+  "issues": []
+}

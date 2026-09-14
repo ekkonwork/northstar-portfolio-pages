@@ -1,55 +1,107 @@
-# Mikhail / GenAI — обновлённое портфолио
+# Northstar — Mikhail / Generative AI portfolio
 
-Статический сайт без сборки, npm-зависимостей, CDN и внешних шрифтов.
+A static portfolio with a dedicated case catalogue and reusable case pages.
+No npm installation, build step, CDN, external fonts or tracking are required to view the site.
 
-## Посмотреть локально
+## Open the site
 
-Распакуйте архив целиком и откройте `index.html` в современном браузере. Файлы `assets/`, `styles.css` и все три JavaScript-файла должны оставаться рядом с ним.
+Extract the entire ZIP, then open `index.html`. Keep `assets/`, `js/` and `styles.css` beside it.
+Do not open individual HTML files from inside the ZIP viewer.
 
-Альтернатива — из папки проекта запустите `python3 -m http.server 8000` и откройте `http://localhost:8000`. Остановить сервер: Ctrl+C.
+Alternatively, from the extracted folder:
 
-## Что изменено
+```bash
+python -m http.server 8000 --bind 127.0.0.1
+```
 
-- Полностью переписана визуальная система: светлый нейтральный фон, контрастный текст, синий акцент, новая типографика, размеры и отступы.
-- Новый первый экран с тремя примерами работ, основным и дополнительным действием.
-- Каталог из шести кейсов с фильтрами по категориям.
-- Подробные кейсы раскрываются по выбору вместо огромной непрерывной ленты. Сравнения исходников и результатов сохранены.
-- Светлая и тёмная темы. При первом посещении учитывается системная тема; ручной выбор сохраняется в браузере.
-- Английский и русский интерфейсы; новый текст и элементы переведены на оба языка. Сохранены существующие переводы подробных кейсов и английские технические термины.
-- Переработаны разделы об инженере, workflow, техническом тесте и контактах.
-- Адаптивные сетки и кадрирование изображений, видимый фокус клавиатуры, поддержка reduced motion, закрытие просмотра изображения через Escape.
-- Добавлены размеры изображений для устойчивой раскладки и новый favicon.
-- Исправлены несколько повреждённых русских строк и обработка недоступного/некорректного localStorage.
-- Сохранены все 81 исходный файл из assets, контакты, метаданные и существующий canonical URL. Пятый fashion campaign остаётся последним: уже отключённый в исходном positioning.js бирюзовый комплект не возвращён в публичную галерею. Его файлы сохранены.
+Open `http://127.0.0.1:8000/`. JavaScript is required for the catalogue and case content; a contact fallback is shown when scripting is disabled.
 
-## Публикация в GitHub Pages
+## Pages
 
-1. Сохраните текущую версию репозитория отдельным коммитом или резервной копией.
-2. Скопируйте **содержимое** папки из архива в корень сайта, где находился исходный `index.html`. Не создавайте лишний вложенный уровень.
-3. Добавьте новые `design.js` и `favicon.svg`, замените `index.html`, `styles.css`, `app.js`; сохраните `positioning.js`, `assets/` и `.nojekyll`.
-4. Выполните обычный коммит и публикацию через ваш существующий процесс GitHub Pages.
+- `index.html`: introduction, selected work, comparisons, engineer profile and contact.
+- `work.html`: all six case studies, category filters, bilingual search, sorting and grid/list views.
+- `case.html?case=fashion-transfer`: individual case, source images, full-size viewer and comparisons.
+- The other case IDs are `fashion-campaigns`, `hospitality`, `furniture`, `property` and `product-fidelity`.
 
-Папки `verification/` и `previews/` нужны для проверки и не обязательны для публикации. Этот архив не был отправлен в GitHub, а опубликованная версия сайта не менялась.
+## Add a future project
 
-## Где редактировать
+1. Put the actual source and output images in a new folder under `assets/`.
+2. Open `js/data.js` and append an object to the `WORKS` array. Copy an existing case as a template.
+3. Give it a unique `id`, display `index`, category, year, cover and EN/RU text.
+4. Fill `compare`, `inputs`, `gallery`, `meta`, `metrics` and `sections` with your real evidence. Empty optional arrays are allowed.
+5. Set `featured: true` only if it should appear on the homepage.
 
-- `index.html`: структура, изображения, ссылки и подробное содержимое кейсов.
-- `styles.css`: полностью новая система оформления; цвета заданы CSS-переменными в начале файла.
-- `app.js`: существующая локализация и просмотр изображений, с исправлениями устойчивости.
-- `positioning.js`: сохранённая профессиональная подача и корректировки fashion campaign.
-- `design.js`: новые заголовки EN/RU, фильтры, темы и раскрытие кейсов по прямым ссылкам. Его словарь имеет приоритет над текстами предыдущих скриптов.
+The catalogue counts, search and individual page use the same data. You do not need to create a separate HTML file for each project. Existing homepage cases have an editorial order in `js/home.js`; new featured entries appear after them.
 
-## Проверки
+Supported primary categories: `fashion`, `product`, `spaces`, `characters`.
+An optional `categories` array adds secondary filters, e.g. `["product", "characters"]`.
+Chronological sorting uses an optional ISO `date` field, otherwise `year`; equal dates retain the database order.
 
-Проверено в Chromium в этой среде:
+### Minimal example (replace every sample value)
 
-- 39 автоматических проверок: фильтры, повторное переключение языков, шесть кейсов, просмотр изображения, Escape, тёмная тема, прямые ссылки и работа раскрываемых кейсов без JavaScript.
-- Нет горизонтального переполнения на ширинах 320, 390, 768, 1024 и 1440 px в EN/RU, включая состояние со всеми открытыми кейсами.
-- Все изображения успешно декодируются; исходные файлы assets побайтово совпадают с предоставленным архивом.
-- Проверены локальные ресурсы, внутренние якоря, уникальность ID и синтаксис всех JavaScript-файлов.
-- Девять основных пар цветов текста проходят порог контраста 4.5:1. Это проверка ключевой палитры, не полный аудит WCAG.
-- Просмотрены снимки desktop/mobile, светлой/тёмной темы, каталога, шести кейсов, разделов engineering/contact и просмотра изображения.
+```js
+{
+  id: "new-project",
+  index: "07",
+  category: "product",
+  year: "2026",
+  date: "2026-09-14",
+  featured: false,
+  accent: "#2f4cff",
+  cover: "assets/new-project/cover.webp",
+  coverAlt: { en: "Description of the actual image", ru: "Описание изображения" },
+  ratio: "landscape",
+  title: { en: "Project title", ru: "Название проекта" },
+  tagline: { en: "Short description", ru: "Краткое описание" },
+  summary: { en: "What was done and what was verified.", ru: "Что сделано и проверено." },
+  tags: ["ComfyUI"],
+  meta: [],
+  metrics: [],
+  compare: [],
+  gallery: [],
+  inputs: [],
+  sections: []
+}
+```
 
-Подробные результаты: `verification/checks.json`. Примеры оформления: `previews/`.
+Text is plain text, not HTML. Quote strings correctly and separate array entries with commas.
+A comparison entry uses `input`, `output` and bilingual `label`. Gallery/input entries use `src` and bilingual `caption`; `size: "w"` spans two gallery columns on larger screens.
 
-Ограничения: Safari/Firefox, реальные мобильные устройства и публикация GitHub Pages в этой среде не проверялись. Внешние контакты сохранены, но их доступность по сети не подтверждалась. Показатели опыта и производительности взяты из исходного портфолио, а не подтверждены новым бенчмарком.
+## Interaction and accessibility
+
+- Light initial appearance; a saved dark preference is preserved. EN/RU and theme settings persist where browser storage is available.
+- The project CTA opens the contact section, not the catalogue.
+- Mobile navigation can be closed with the same toggle or Escape; keyboard focus stays inside the menu while it is open.
+- Comparisons support drag, Left/Right arrows, Home and End. Use the visible full-size button to inspect both images without crop; the compact comparison uses a common viewing frame, so differently shaped originals may not align pixel-for-pixel.
+- Source and gallery images are native buttons, keyboard accessible. The full-size viewer supports Previous/Next and Escape, then restores focus.
+- No artificial loading percentage or moving cursor targets. Earlier background implementations are retained; they are decorative, not evidence of a production system. Reduced-motion support is not a certified accessibility audit.
+
+## Content integrity
+
+These are independent synthetic studies, not commissioned brand campaigns. Brand disclaimers remain.
+All 81 asset files from the supplied archive are retained. Public fashion campaign selection stays at five garment/scene pairs; the excluded teal outfit is not republished.
+Timing, resolution and experience figures are source-reported, not independently benchmarked during this redesign. The original claim of 37 masters is not the number of image elements rendered on this website. Added unsupported perfect-fidelity claims and expanded delivery counts were removed.
+
+## Files and verification
+
+- `js/data.js`: bilingual content and case database.
+- `js/app.js`: shared controls, localization, image viewer and comparison UI.
+- `js/work.js`: validated URL/filter/search/sort state, including file-URL fallback.
+- `js/case.js`: case rendering and public metadata.
+- `js/home.js`: homepage sections and featured selection.
+- `styles.css`: layout, typography, themes and responsive rules.
+- `verification.json`: browser checks from the final acceptance run, with actual pass/fail values.
+- `asset-integrity.json`: byte comparison against the original ZIP.
+
+Browser checks target Chromium. They do not constitute Safari/Firefox coverage, a complete WCAG audit, a new generation benchmark or a deployment test. No emails/messages were sent; external contact services were not tested.
+
+## Publish
+
+Back up the existing repository first. Copy this folder's website files into the site root, preserving the `assets/`, `js/` and `.nojekyll` layout. Old root-level `app.js`, `design.js` and `positioning.js` are no longer referenced, so they do not need to be deleted for this version to work.
+
+Deployment target: GitHub Pages, served from the repository main branch root. Public base:
+`https://ekkonwork.github.io/northstar-portfolio-pages/`.
+If moving hosts, update the HTML metadata and `BASE` in `js/case.js`.
+
+Case-specific metadata is updated client-side; social crawlers that do not execute JavaScript will see the generic case preview. For unique social cards/search indexing per case, a later static-generation step is needed. Query-based case links work without host rewrite rules.
+

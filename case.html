@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-title-key="case">
+<head>
+<meta charset="utf-8"/>
+<script>
+(function(){try{
+  var t=localStorage.getItem('northstar-theme');
+  document.documentElement.dataset.theme = t==='dark' ? 'dark' : 'light';
+  var l=localStorage.getItem('northstar-lang');
+  if(!l){ l=(navigator.language||'en').toLowerCase().indexOf('ru')===0 ? 'ru' : 'en'; }
+  document.documentElement.lang=l==='ru'?'ru':'en';
+}catch(e){ document.documentElement.dataset.theme='light'; }})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#f4f3ef"/>
+<title>Case — Mikhail / Generative AI</title>
+<meta name="description" content="Case study: supplied inputs, generated outputs and the constraints that held them together."/>
+<meta name="author" content="Mikhail"/>
+<meta name="robots" content="index,follow"/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="Case — Mikhail / Generative AI"/>
+<meta property="og:image" content="https://ekkonwork.github.io/northstar-portfolio-pages/assets/web/final/fashion/cobalt-car-editorial.webp"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"/>
+<link rel="stylesheet" href="styles.css"/>
+<link rel="canonical" href="https://ekkonwork.github.io/northstar-portfolio-pages/case.html">
+<meta property="og:url" content="https://ekkonwork.github.io/northstar-portfolio-pages/case.html">
+<meta property="og:description" content="Independent synthetic case studies in controlled generative workflows.">
+<meta property="og:image:alt" content="Selected independent portfolio study">
+<meta name="twitter:title" content="Mikhail / Generative AI">
+<meta name="twitter:description" content="Controlled generation: inputs, outputs and case studies.">
+<meta name="twitter:image" content="https://ekkonwork.github.io/northstar-portfolio-pages/assets/web/final/fashion/cobalt-car-editorial.webp">
+</head>
+<body>
+<noscript><style>.loader{display:none!important}.reveal,.hero-title .line>span{opacity:1!important;transform:none!important}.hero-title .line>span{animation:none!important}</style><p class="noscript">This catalogue needs JavaScript. / Для каталога нужен JavaScript. <a href="mailto:ekkonwork@gmail.com">ekkonwork@gmail.com</a></p></noscript>
+
+<a class="skip" href="#case-body">Skip to case</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"></div>
+
+<div class="loader" role="status" aria-label="Loading">
+  <div class="loader-inner">
+    <div class="loader-mark">northstar</div>
+    <div class="loader-bar"><span></span></div>
+    <div class="loader-pct"><b>000%</b><span>case file</span></div>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-label="Mikhail, Generative AI engineer — home">
+      <span class="brand-mark">m.</span>
+      <span class="brand-text"><b>MIKHAIL</b><span>GENERATIVE AI ENGINEER</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="index.html" data-i18n="navHome">Home</a>
+      <a href="work.html" data-i18n="navWork" aria-current="page">Work</a>
+      <a href="index.html#engineering" data-i18n="navEngineering">Engineering</a>
+      <a href="index.html#contact" data-i18n="navContact">Contact</a>
+    </nav>
+    <div class="nav-tools">
+      <div class="tool lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <span aria-hidden="true">/</span>
+        <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+      </div>
+      <button class="tool theme-toggle" type="button" aria-label="Toggle colour theme">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+          <circle cx="7.5" cy="7.5" r="6.5" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M7.5 1a6.5 6.5 0 010 13z" fill="currentColor"/>
+        </svg>
+      </button>
+      <button class="tool burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M1 4.5h14M1 11.5h14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" role="navigation" aria-label="Mobile navigation" hidden inert>
+  <a href="index.html"><span data-i18n="navHome">Home</span><span>01</span></a>
+  <a href="work.html"><span data-i18n="navWork">Work</span><span>02</span></a>
+  <a href="index.html#engineering"><span data-i18n="navEngineering">Engineering</span><span>03</span></a>
+  <a href="index.html#contact"><span data-i18n="navContact">Contact</span><span>04</span></a>
+</div>
+
+<main id="case-body">
+
+  <section class="case-hero">
+    <div class="page">
+      <nav class="case-kicker" aria-label="Breadcrumb">
+        <a class="linky" href="work.html" data-i18n="caseBack">All case studies</a>
+        <span class="dot" aria-hidden="true"></span>
+        <span id="kicker"></span>
+      </nav>
+
+      <h1 class="case-title reveal reveal-d1" id="title"></h1>
+      <p class="case-tagline reveal reveal-d2" id="tagline"></p>
+
+      <div class="case-cover reveal reveal-d3" id="coverWrap"></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="page">
+      <div class="case-layout">
+
+        <aside class="case-aside reveal">
+          <p class="eyebrow" style="margin-bottom:18px" data-i18n="caseMeta">Details</p>
+          <dl class="meta-list" id="meta"></dl>
+          <div class="aside-tags" id="tags"></div>
+          <a class="btn btn--ghost btn--sm" href="work.html" style="margin-top:26px" data-magnetic="0.14">
+            <span aria-hidden="true">←</span><span data-i18n="caseBack">All case studies</span>
+          </a>
+        </aside>
+
+        <article>
+          <p class="prose reveal" id="summary" style="font-size:clamp(1.05rem,1.45vw,1.35rem);color:var(--ink)"></p>
+          <div class="metrics-inline" id="metrics"></div>
+
+          <div id="sections"></div>
+
+          <div class="block-title reveal">
+            <h2 data-i18n="proofTitle">Input on the left.</h2>
+            <span data-i18n="proofEyebrow">03 / EVIDENCE</span>
+          </div>
+          <div class="cmp-stack" id="compares"></div>
+
+          <div class="block-title reveal" id="inputsTitle">
+            <h2 data-i18n="caseInputs">Supplied inputs</h2>
+            <span data-i18n="proofEyebrow">03 / EVIDENCE</span>
+          </div>
+          <div class="strip" id="inputs"></div>
+
+          <div class="block-title reveal" id="galleryTitle">
+            <h2 data-i18n="caseGallery">Full gallery</h2>
+            <span data-i18n="caseOutputs">Delivered outputs</span>
+          </div>
+          <div class="gal" id="gallery"></div>
+
+          <nav class="case-nav" id="caseNav" aria-label="Case navigation"></nav>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="page">
+    <div class="footer-top">
+      <div class="footer-mark" aria-hidden="true">northstar</div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <b data-i18n="navWork">Work</b>
+          <a href="work.html" data-i18n="workAll">All case studies</a>
+          <a href="index.html#proof" data-i18n="proofEyebrow">Evidence</a>
+        </div>
+        <div class="footer-col">
+          <b data-i18n="navContact">Contact</b>
+          <a href="mailto:ekkonwork@gmail.com">ekkonwork@gmail.com</a>
+          <a href="https://t.me/Mikhail_ML_ComfyUI" target="_blank" rel="noreferrer">Telegram</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>MIKHAIL / GENAI</span>
+      <span data-i18n="footerNote">ComfyUI / Generative AI workflow engineering · 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script src="js/case.js"></script>
+</body>
+</html>
