@@ -133,14 +133,21 @@
     const w=document.createElement('div');w.className='compare';w.tabIndex=0;
     w.setAttribute('role','slider');w.setAttribute('aria-label',L(item.label));w.setAttribute('aria-valuemin','0');w.setAttribute('aria-valuemax','100');w.setAttribute('aria-valuenow','50');
     w.innerHTML=`<img class="cmp-out" src="${escape(item.output)}" alt="${escape(t('caseOutput')+': '+L(item.label))}" loading="lazy" decoding="async"><div class="cmp-in"><img src="${escape(item.input)}" alt="${escape(t('caseInput')+': '+L(item.label))}" loading="lazy" decoding="async"></div><span class="cmp-bar" aria-hidden="true"></span><span class="cmp-knob" aria-hidden="true">↔</span><span class="cmp-tag cmp-tag--l">${escape(t('caseInput'))}</span><span class="cmp-tag cmp-tag--r">${escape(t('caseOutput'))}</span>`;
-    if(item.inputFrame){const img=w.querySelector('.cmp-in img');
-      for(const key of ['width','height','left','top'])if(Number.isFinite(item.inputFrame[key]))img.style[key]=item.inputFrame[key]+'%';
+    const aligned=w.querySelector('.cmp-in img');
+    function align(){
+      if(!item.alignment)return;
+      const [a,b]=item.alignment,width=w.clientWidth,height=w.clientHeight;
+      if(!width||!height)return;
+      aligned.style.objectFit='fill';aligned.style.transformOrigin='0 0';
+      aligned.style.transform=`matrix(${a[0]},${b[0]*height/width},${a[1]*width/height},${b[1]},${a[2]*width},${b[2]*height})`;
     }
+    const resize=new ResizeObserver(()=>{if(!w.isConnected){resize.disconnect();return;}align();});resize.observe(w);
     const images=[...w.querySelectorAll('img')];
     const sizeFrame=()=>{if(images.every(img=>img.naturalWidth&&img.naturalHeight)){
       const output=images[0],ratio=output.naturalWidth/output.naturalHeight;
       w.style.aspectRatio=String(ratio);
       w.style.setProperty('--compare-width',`${72*ratio}svh`);
+      align();
     }};
     images.forEach(img=>{img.addEventListener('load',sizeFrame);});sizeFrame();
     function set(v){v=Math.max(0,Math.min(100,v));w.style.setProperty('--pos',v+'%');w.setAttribute('aria-valuenow',String(Math.round(v)));}

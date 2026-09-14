@@ -72,7 +72,7 @@ A comparison entry uses `input`, `output` and bilingual `label`. Gallery/input e
 - Light initial appearance; a saved dark preference is preserved. EN/RU and theme settings persist where browser storage is available.
 - The project CTA opens the contact section, not the catalogue.
 - Mobile navigation can be closed with the same toggle or Escape; keyboard focus stays inside the menu while it is open.
-- Comparisons use a slider by default, with the output image aspect ratio and full-frame contain sizing centered on both layers. Drag and keyboard controls remain available. Images are not cropped or warped to conceal generated geometry differences.
+- Comparisons use a slider by default, with the output image aspect ratio and full-frame contain sizing centered on both layers. Drag and keyboard controls remain available. Each registered pair has a measured per-image similarity transform (scale, rotation and translation). The input is clipped to the output frame; the original files remain available in the full-size viewer. Registration cannot remove pose, perspective or locally generated geometry changes.
 - Source and gallery images are native buttons, keyboard accessible. The full-size viewer supports Previous/Next and Escape, then restores focus.
 - No artificial loading percentage or moving cursor targets. Earlier background implementations are retained; they are decorative, not evidence of a production system. Reduced-motion support is not a certified accessibility audit.
 
@@ -105,5 +105,3 @@ Deployment target: GitHub Pages, served from the repository main branch root. Pu
 If moving hosts, update the HTML metadata and `BASE` in `js/case.js`.
 
 Case-specific metadata is updated client-side; social crawlers that do not execute JavaScript will see the generic case preview. For unique social cards/search indexing per case, a later static-generation step is needed. Query-based case links work without host rewrite rules.
-
-

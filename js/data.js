@@ -145,6 +145,7 @@ const WORKS = [
     "compare": [
       {
         "input": "assets/web/references/fashion/model-car-door-source.webp",
+        "alignment": [[0.99414743,0.00084419,0.00146362],[-0.00026909,1.00151148,-0.00040136]],
         "output": "assets/web/final/fashion/cobalt-car-editorial.webp",
         "label": {
           "en": "Car doorway · cobalt jacket",
@@ -153,6 +154,7 @@ const WORKS = [
       },
       {
         "input": "assets/web/references/fashion/model-brutalist-walk-source.webp",
+        "alignment": [[0.99378272,-0.00039238,0.0028942],[0.00012507,1.00114407,-0.00077684]],
         "output": "assets/web/final/fashion/houndstooth-brutalist-walk.webp",
         "label": {
           "en": "Architectural walk · houndstooth",
@@ -334,6 +336,7 @@ const WORKS = [
     "compare": [
       {
         "input": "assets/web/references/fashion-expanded/model-private-jet-source.webp",
+        "alignment": [[1.41404897,-0.00014209,-0.20780763],[0.00006442,1.00161802,-0.00055578]],
         "output": "assets/web/final/fashion/violet-slip-private-jet.webp",
         "label": {
           "en": "Private jet · violet satin",
@@ -342,6 +345,7 @@ const WORKS = [
       },
       {
         "input": "assets/web/references/fashion-expanded/model-cliff-pool-source.webp",
+        "alignment": [[1.41553951,0.00039384,-0.208613],[-0.00017854,1.00267382,-0.00088625]],
         "output": "assets/web/final/fashion/coral-onepiece-cliff-pool.webp",
         "label": {
           "en": "Cliff pool · coral swimwear",
@@ -350,6 +354,7 @@ const WORKS = [
       },
       {
         "input": "assets/web/references/fashion-expanded/model-design-district-source.webp",
+        "alignment": [[1.1313144,0.00060672,-0.06716724],[-0.00022004,1.00168462,-0.00064455]],
         "output": "assets/web/final/fashion/cobalt-skirt-design-district.webp",
         "label": {
           "en": "Design district · cobalt skirt",
@@ -358,6 +363,7 @@ const WORKS = [
       },
       {
         "input": "assets/web/references/fashion-expanded/model-spiral-museum-source.webp",
+        "alignment": [[1.13058567,0.00001353,-0.06672273],[-0.00000491,1.00103939,-0.00031521]],
         "output": "assets/web/final/fashion/rust-denim-skirt-spiral-museum.webp",
         "label": {
           "en": "Spiral museum · rust denim",
@@ -366,6 +372,7 @@ const WORKS = [
       },
       {
         "input": "assets/web/references/fashion-expanded/model-opera-bluehour-source.webp",
+        "alignment": [[1.06091548,0.00142702,-0.0352972],[-0.00048519,1.00197573,-0.00061805]],
         "output": "assets/web/final/fashion/ivory-jumpsuit-opera-bluehour.webp",
         "label": {
           "en": "Opera · ivory jumpsuit",
@@ -563,6 +570,7 @@ const WORKS = [
     "compare": [
       {
         "input": "assets/web/references/food/cobalt-menu-set-source.webp",
+        "alignment": [[1.07723591,0.00410675,-0.0095395],[-0.00246405,1.00990867,-0.00502622]],
         "output": "assets/web/final/food/cobalt-menu-pappardelle.webp",
         "label": {
           "en": "Empty set → pappardelle",
@@ -571,6 +579,7 @@ const WORKS = [
       },
       {
         "input": "assets/web/references/food/red-graphic-menu-set-source.webp",
+        "alignment": [[1.00082697,0.00477344,-0.00338946],[-0.00477344,1.00082697,0.00185046]],
         "output": "assets/web/final/food/red-campaign-tuna-bowl.webp",
         "label": {
           "en": "Red set → tuna bowl",
@@ -739,6 +748,7 @@ const WORKS = [
     "compare": [
       {
         "input": "assets/web/references/furniture/cold-penthouse-room-source.webp",
+        "alignment": [[1.00318658,0.00006117,-0.00255019],[-0.00010874,1.00318658,0.00235602]],
         "output": "assets/web/final/furniture/cobalt-chair-penthouse-wide.webp",
         "label": {
           "en": "Cold penthouse · wide",
@@ -899,6 +909,7 @@ const WORKS = [
     "compare": [
       {
         "input": "assets/web/references/real-estate/villa-daylight-source.webp",
+        "alignment": [[1.00183173,-0.00038051,-0.00109293],[0.00067646,1.00183173,0.00276015]],
         "output": "assets/web/final/real-estate/villa-day-to-dusk.webp",
         "label": {
           "en": "Daylight → dusk listing image",
@@ -907,6 +918,7 @@ const WORKS = [
       },
       {
         "input": "assets/web/references/real-estate/empty-living-room-source.webp",
+        "alignment": [[1.00011131,0.00004802,-0.00002983],[-0.00008538,1.00011131,-0.0000199]],
         "output": "assets/web/final/real-estate/living-room-scandinavian-staging.webp",
         "label": {
           "en": "Empty room → Scandinavian staging",
@@ -915,6 +927,7 @@ const WORKS = [
       },
       {
         "input": "assets/web/references/real-estate/cluttered-apartment-source.webp",
+        "alignment": [[1.00740367,-0.00207053,-0.01037411],[0.00368094,1.00740367,-0.00803831]],
         "output": "assets/web/final/real-estate/apartment-decluttered.webp",
         "label": {
           "en": "Occupied → decluttered",
@@ -923,6 +936,7 @@ const WORKS = [
       },
       {
         "input": "assets/web/references/real-estate/unfinished-condo-source.webp",
+        "alignment": [[1.00026608,-0.00226783,-0.0029692],[0.00403169,1.00026608,0.00142712]],
         "output": "assets/web/final/real-estate/condo-renovation-visualization.webp",
         "label": {
           "en": "Proposed renovation — visualisation, not existing condition",
@@ -1105,7 +1119,7 @@ const WORKS = [
     "compare": [
       {
         "input": "assets/portfolio-2026/products/inputs/rolex-daytona.webp",
-        "inputFrame": { "width": 80, "height": 118, "left": 8, "top": -15 },
+        "alignment": [[0.79375884,0.01286001,0.09306345],[-0.00871865,1.17079429,-0.14613444]],
         "output": "assets/portfolio-2026/products/finals/rolex-daytona.webp",
         "label": {
           "en": "Rolex Daytona · campaign still",
@@ -1114,6 +1128,7 @@ const WORKS = [
       },
       {
         "input": "assets/portfolio-2026/products/inputs/cartier-santos.webp",
+        "alignment": [[0.49457849,-0.48160613,0.49838981],[0.48160613,0.49457849,-0.0360774]],
         "output": "assets/portfolio-2026/products/finals/cartier-santos.webp",
         "label": {
           "en": "Cartier Santos · emerald campaign",
@@ -1130,6 +1145,7 @@ const WORKS = [
       },
       {
         "input": "assets/portfolio-2026/products/inputs/juste-un-clou.webp",
+        "alignment": [[1,0,0],[0,1,0]],
         "output": "assets/portfolio-2026/products/finals/juste-un-clou.webp",
         "label": {
           "en": "Juste un Clou · product study",
