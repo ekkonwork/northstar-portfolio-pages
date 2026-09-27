@@ -1,0 +1,411 @@
+{
+  "unchanged_original_assets": 81,
+  "original_archive_sha256": "e8c7969cc41bebdf11eaab64fbaa57ec086cfa94dd87547d6078f1566e687b83",
+  "files": [
+    {
+      "path": "assets/portfolio-2026/products/finals/cartier-santos.webp",
+      "bytes": 185990,
+      "sha256": "64db809c8889edb8aabc9bc86fc33989cc648b8ceb13ce7c8c5bdaeaa309edd1"
+    },
+    {
+      "path": "assets/portfolio-2026/products/finals/juste-un-clou.webp",
+      "bytes": 227068,
+      "sha256": "0efb1d6aa891104f59e18fdaf3e2468262c6d5c92ea2c442e9d0e0d0f534c769"
+    },
+    {
+      "path": "assets/portfolio-2026/products/finals/rolex-daytona.webp",
+      "bytes": 121492,
+      "sha256": "96e3d9e5f0887ca6502242055e4e936bfbd8954f8320ee1d398450e9f316824a"
+    },
+    {
+      "path": "assets/portfolio-2026/products/inputs/cartier-santos.webp",
+      "bytes": 181076,
+      "sha256": "d73729bb6bee4420d9f1ed4e37a49cb025513dab7c3d30cc39170c7e64472399"
+    },
+    {
+      "path": "assets/portfolio-2026/products/inputs/juste-un-clou.webp",
+      "bytes": 81328,
+      "sha256": "d0e9de80f871482d76ed9a8dd05c47ee99fa15fb05c5918661c154a7ee1a82cc"
+    },
+    {
+      "path": "assets/portfolio-2026/products/inputs/rolex-daytona.webp",
+      "bytes": 56704,
+      "sha256": "79f82d6f5cdbf795849a3abee59027988b135e3143e316de66f99bf4c57c4fea"
+    },
+    {
+      "path": "assets/portfolio-2026/story/finals/museum.webp",
+      "bytes": 135092,
+      "sha256": "b30c7789e1bd3dee0eee191c9b58db3d3b44766602b659f51d36b15e40868ea9"
+    },
+    {
+      "path": "assets/portfolio-2026/story/finals/trampoline.webp",
+      "bytes": 128590,
+      "sha256": "69573c6c1ca95f4bb531fa518cb85dd25ead1e77f66fb239914d1b426566f89d"
+    },
+    {
+      "path": "assets/portfolio-2026/story/inputs/child-reference.webp",
+      "bytes": 155172,
+      "sha256": "37f27dbe9886f120b115d1b770465f591ab34407e38dc7311f7cf887bfdc72cf"
+    },
+    {
+      "path": "assets/portfolio-2026/story/inputs/mascot-reference.webp",
+      "bytes": 82842,
+      "sha256": "d52cf2d4ae9153b26f4f227669e8d9d1d35c02c936a5647f2e5814c8aef5683b"
+    },
+    {
+      "path": "assets/references/real-estate/staging-zone-mask.svg",
+      "bytes": 369,
+      "sha256": "8b38496291751505b7c5931212bfbf74c0e7c94560680ae399dca84749e52ed9"
+    },
+    {
+      "path": "assets/web/final/fashion/cobalt-atrium-seated.webp",
+      "bytes": 116392,
+      "sha256": "f8085a3e3db0dadd1af79664de88a557b19d9d78abc0547b6debf85efb950e26"
+    },
+    {
+      "path": "assets/web/final/fashion/cobalt-brutalist-walk.webp",
+      "bytes": 92688,
+      "sha256": "5aac2f14725051a09f296369dda65447ba799e90e2f5fc6550ae74816b13bc9a"
+    },
+    {
+      "path": "assets/web/final/fashion/cobalt-car-editorial.webp",
+      "bytes": 96682,
+      "sha256": "97a407873c2dc5a0296c0ee39ad346932f2655b576edf3b87628ba9a303d14f9"
+    },
+    {
+      "path": "assets/web/final/fashion/cobalt-skirt-design-district.webp",
+      "bytes": 157822,
+      "sha256": "c1ed2f375f2e312b8e9238d3ee45e024a7d66897ae64adf59ef6f054ff45b94d"
+    },
+    {
+      "path": "assets/web/final/fashion/cobalt-skirt-spiral-museum.webp",
+      "bytes": 66388,
+      "sha256": "697a13610f92af35246b5bca9168259a5b91cef3d9b304508a38f365dcc9e6cf"
+    },
+    {
+      "path": "assets/web/final/fashion/coral-onepiece-cliff-pool.webp",
+      "bytes": 136446,
+      "sha256": "81f35cf824c7cac30c084f56ad7c002d9d7a8c1bbf1c11a88e9a5e982b1367bd"
+    },
+    {
+      "path": "assets/web/final/fashion/coral-onepiece-yacht-sunset.webp",
+      "bytes": 155422,
+      "sha256": "ef0c93de0d4dbe06039ec3d517196c9ecec02adc0efdea20047ecfe1e036bff8"
+    },
+    {
+      "path": "assets/web/final/fashion/houndstooth-atrium-seated.webp",
+      "bytes": 144340,
+      "sha256": "4bae83198fecfb8e832606c6a6307249df185ecec44aab77238e9015b0fc2ff9"
+    },
+    {
+      "path": "assets/web/final/fashion/houndstooth-brutalist-walk.webp",
+      "bytes": 121460,
+      "sha256": "f9c9374d9e1964e73dcc5247772647049537e3eaf80bbed61250ce03ec72a8d8"
+    },
+    {
+      "path": "assets/web/final/fashion/houndstooth-car-editorial.webp",
+      "bytes": 127340,
+      "sha256": "a437a247a4a4d50833807595141ecc27091268c72ec11520ed24ab5f97b8f09e"
+    },
+    {
+      "path": "assets/web/final/fashion/ivory-jumpsuit-opera-bluehour.webp",
+      "bytes": 143726,
+      "sha256": "07bf8b2e4f94b2730b83f70099be1e5d0b4769dec1c6f272832c13c8262cf586"
+    },
+    {
+      "path": "assets/web/final/fashion/ivory-jumpsuit-private-jet.webp",
+      "bytes": 130332,
+      "sha256": "f1c43707e90d7f57661c8168355c1492aa92b10e82d0945ef37c6309edb1b3c2"
+    },
+    {
+      "path": "assets/web/final/fashion/rust-denim-skirt-design-district.webp",
+      "bytes": 159722,
+      "sha256": "619108870ee824c011cbf6ce3f65802dd87535ec3ab4588f369eea9384085863"
+    },
+    {
+      "path": "assets/web/final/fashion/rust-denim-skirt-spiral-museum.webp",
+      "bytes": 70494,
+      "sha256": "280ae50c97628f83ed55eb67654601c53fca7c2fabd7538ab79532706bd576f7"
+    },
+    {
+      "path": "assets/web/final/fashion/teal-twopiece-cliff-pool.webp",
+      "bytes": 136756,
+      "sha256": "794c06aa63ef718e557038225462f8f8302d5ae6d33a03349343bb7363167baf"
+    },
+    {
+      "path": "assets/web/final/fashion/teal-twopiece-yacht-sunset.webp",
+      "bytes": 158488,
+      "sha256": "cff5da85c8bb5040dcb1f42ac6381b6e6015dab5ddf8bfc580cd3950b3162347"
+    },
+    {
+      "path": "assets/web/final/fashion/violet-slip-opera-bluehour.webp",
+      "bytes": 136514,
+      "sha256": "ca8b40abe6d814164d7d3b61da842e82a4bac90f41cb1b7030ede19636736688"
+    },
+    {
+      "path": "assets/web/final/fashion/violet-slip-private-jet.webp",
+      "bytes": 136692,
+      "sha256": "6bf55c96364a9a021c7fd4a9675a8a36d1d2510c6cda67a8f0ff17b1913b0e7a"
+    },
+    {
+      "path": "assets/web/final/food/cobalt-menu-beet-salad.webp",
+      "bytes": 170470,
+      "sha256": "17e7f8b5570e08833104fcedab8609c906e2d13bd2ef78485759e54f9ac3b5ac"
+    },
+    {
+      "path": "assets/web/final/food/cobalt-menu-chocolate-tart.webp",
+      "bytes": 153442,
+      "sha256": "1c0ebd8fa73eeb65b205d61e777abcfe8012bf4c1d9807c5bb4b8feb652740ae"
+    },
+    {
+      "path": "assets/web/final/food/cobalt-menu-pappardelle.webp",
+      "bytes": 167278,
+      "sha256": "fd3ea2d5d063c2fc7690fdf92152da69decd77f2d99fe920b2f87f4352144df2"
+    },
+    {
+      "path": "assets/web/final/food/cobalt-menu-salmon.webp",
+      "bytes": 162304,
+      "sha256": "76578004b263633c70b21cd3b5ac2ec1c4cdfd60bb3d7629bfcdcbbc83deffe4"
+    },
+    {
+      "path": "assets/web/final/food/red-campaign-tuna-bowl.webp",
+      "bytes": 148272,
+      "sha256": "acd912e4eecf7acd901803014b6c4a62f1f9b1737f33fcb044977ef5fa01aaac"
+    },
+    {
+      "path": "assets/web/final/furniture/cobalt-chair-gallery-scale.webp",
+      "bytes": 224204,
+      "sha256": "ee780c6e49d8cfbd0744c94d95d480f1114a77845727dae758c32a57d9f1fa29"
+    },
+    {
+      "path": "assets/web/final/furniture/cobalt-chair-gallery-wide.webp",
+      "bytes": 199276,
+      "sha256": "fb566298bfadaafc2c6aa485a1703cb3a3bff9b34591977a1229defa711d13e5"
+    },
+    {
+      "path": "assets/web/final/furniture/cobalt-chair-penthouse-detail.webp",
+      "bytes": 184928,
+      "sha256": "637ffa08d7e982437e43217cec0cae34d6cd5efee685ad4eed176aca0880781b"
+    },
+    {
+      "path": "assets/web/final/furniture/cobalt-chair-penthouse-wide.webp",
+      "bytes": 327940,
+      "sha256": "1f42a3ae7a2fd4d7b38e1d388dd84a1fd4274e244adeacbba6acc0db3d6db241"
+    },
+    {
+      "path": "assets/web/final/real-estate/apartment-decluttered.webp",
+      "bytes": 216876,
+      "sha256": "d7a0368fa9bdf55178e9b9b2c5faa07b612b616efef70d5c2f97ce107dc24a0c"
+    },
+    {
+      "path": "assets/web/final/real-estate/apartment-furniture-removed.webp",
+      "bytes": 210298,
+      "sha256": "92b0fb2f50e77bcb3e94c2b033543655a0addf6153a2f90f92ec3b04c5072400"
+    },
+    {
+      "path": "assets/web/final/real-estate/condo-renovation-visualization.webp",
+      "bytes": 100170,
+      "sha256": "8871c0b4b9786629bc17d9417aa82a37efa5d87a4d4c5ef319fc10fbfd52fb05"
+    },
+    {
+      "path": "assets/web/final/real-estate/living-room-scandinavian-staging.webp",
+      "bytes": 180478,
+      "sha256": "e961540017105e105533c806923fe339f1adab1dff730c77979976f9da4a0f1e"
+    },
+    {
+      "path": "assets/web/final/real-estate/living-room-warm-contemporary-staging.webp",
+      "bytes": 160300,
+      "sha256": "6e9637f880f4e3800ed2018942402c3dbbb2f044cb23a101571f3a3230834b39"
+    },
+    {
+      "path": "assets/web/final/real-estate/villa-day-to-dusk.webp",
+      "bytes": 218964,
+      "sha256": "92d37f27a655f9d52e87b38f6d3e736a2c05801846cced28b600a8428e0b48ca"
+    },
+    {
+      "path": "assets/web/final/real-estate/villa-listing-social-hero.webp",
+      "bytes": 252816,
+      "sha256": "ce1ce374a5c2abeef16f4e525a96fcc4f51d8123f53aa6fc5acc6d0f22793601"
+    },
+    {
+      "path": "assets/web/proof/fashion-expansion-input-to-output.webp",
+      "bytes": 127492,
+      "sha256": "9cf76753b71f4e2e29f3e64deca9d4a3fea3de44596e0ede9dea853d9202b414"
+    },
+    {
+      "path": "assets/web/proof/fashion-input-to-output.webp",
+      "bytes": 111602,
+      "sha256": "956bac6b5c3f00f4ffe06fd988bcfce574b1dd3647c4692168327094b6ef7dcd"
+    },
+    {
+      "path": "assets/web/proof/food-menu-series-board.webp",
+      "bytes": 125386,
+      "sha256": "48e20586a0629a0cfdcdfe5fe407100260f123ba786bcad9182fa3c4f14c252f"
+    },
+    {
+      "path": "assets/web/proof/furniture-input-to-output.webp",
+      "bytes": 119520,
+      "sha256": "8e0878ec132cbd4389d0c7aded703984531fed64e898461bc7f709e63558e96e"
+    },
+    {
+      "path": "assets/web/proof/real-estate-input-to-output.webp",
+      "bytes": 146690,
+      "sha256": "c804fd94647cd19353d20e4d174e4418f07b9d5db7f1e86f9e9f06b452b3bd57"
+    },
+    {
+      "path": "assets/web/proof/story-input-to-output.webp",
+      "bytes": 179660,
+      "sha256": "05500e4be79029796bcb1f8c383ece9336cd47661d1bff07cc98e3ba59fd77a4"
+    },
+    {
+      "path": "assets/web/references/cafe-background-reference.webp",
+      "bytes": 138044,
+      "sha256": "c1a2781af74393a56fbdf6745d638fa67ca902ced36726835940b997d1b6ea19"
+    },
+    {
+      "path": "assets/web/references/fashion-expanded/cobalt-pleated-midi-skirt-source.webp",
+      "bytes": 63402,
+      "sha256": "a2efadb7d5176b65f8676d6322b5b26e3cc7180dee629e84c6f4b4ffef7cb9ac"
+    },
+    {
+      "path": "assets/web/references/fashion-expanded/coral-sculpt-onepiece-source.webp",
+      "bytes": 53960,
+      "sha256": "2a118bbb3f7894ad0a0514de65c860bc47dad3ae97e74e7b25592c28cae3225d"
+    },
+    {
+      "path": "assets/web/references/fashion-expanded/ivory-tailored-jumpsuit-source.webp",
+      "bytes": 11774,
+      "sha256": "79a8f5b338f902a226e2ed22ea7bc87f12a20b409b0c3befd30d624167e6872c"
+    },
+    {
+      "path": "assets/web/references/fashion-expanded/model-cliff-pool-source.webp",
+      "bytes": 144244,
+      "sha256": "8f1e5fa7127ed67eb40c83ff04b88fe9b3e453b723aeae9f3cdbaa52bc2a0a32"
+    },
+    {
+      "path": "assets/web/references/fashion-expanded/model-design-district-source.webp",
+      "bytes": 149746,
+      "sha256": "93cb6d8abb877fde9a8baec41891e1a69d1a9107d713a1560052fe03bb4d0393"
+    },
+    {
+      "path": "assets/web/references/fashion-expanded/model-opera-bluehour-source.webp",
+      "bytes": 130702,
+      "sha256": "9e036c42eaf648ac1a16c4454a8318d9ddac8e5f9536899f7cbb7480f48d7c0c"
+    },
+    {
+      "path": "assets/web/references/fashion-expanded/model-private-jet-source.webp",
+      "bytes": 151236,
+      "sha256": "1dacf352d52ccfe8ac6db1fa70e1994f42476d810d2c9d9d588212f7c4c13e20"
+    },
+    {
+      "path": "assets/web/references/fashion-expanded/model-spiral-museum-source.webp",
+      "bytes": 58180,
+      "sha256": "424516387c46c45357bab8c0f7cfe1ba5003c0586833e85f4fe05d42000e3375"
+    },
+    {
+      "path": "assets/web/references/fashion-expanded/model-yacht-sunset-source.webp",
+      "bytes": 157060,
+      "sha256": "ef49783baebfd733744fed40efc783973eb4b47cc8337af3c9e5298628fe1189"
+    },
+    {
+      "path": "assets/web/references/fashion-expanded/rust-denim-maxi-skirt-source.webp",
+      "bytes": 92052,
+      "sha256": "7183a3b3e7d35b312821a0b62e068fb250d8ce77706f5eb8d52cd84c703785cc"
+    },
+    {
+      "path": "assets/web/references/fashion-expanded/teal-wrap-twopiece-source.webp",
+      "bytes": 70706,
+      "sha256": "ed0e352c766ddc615c844ecc8f238a0f955bb2d363e91a2cbbd21a87b92488f1"
+    },
+    {
+      "path": "assets/web/references/fashion-expanded/violet-satin-slip-dress-source.webp",
+      "bytes": 33600,
+      "sha256": "3e7074106b1e68d56c0e072cf5dc7bddf4efbf35a78b966e6f027a579599e0f1"
+    },
+    {
+      "path": "assets/web/references/fashion/cobalt-ripstop-jacket-source.webp",
+      "bytes": 76264,
+      "sha256": "056ca49f5d1433fbbbe66a6d8007f8db7efcd39560d2639f38eebb84fcbf3dfe"
+    },
+    {
+      "path": "assets/web/references/fashion/houndstooth-cardigan-source.webp",
+      "bytes": 252906,
+      "sha256": "6366ef7efd669f3aa79cb4a2e582324a508c2e9014cb91938ecd11745c9e9435"
+    },
+    {
+      "path": "assets/web/references/fashion/model-brutalist-walk-source.webp",
+      "bytes": 85540,
+      "sha256": "9de29365a43d1287b5054aabf011ff90f0d214b6a624b06d5fcb910785d4ccb9"
+    },
+    {
+      "path": "assets/web/references/fashion/model-car-door-source.webp",
+      "bytes": 85348,
+      "sha256": "a5170dfe175cd9b5e7f4ae0c6ebeb79cc3d5bd10fddb5c4d1db7dd41c8a9a0f5"
+    },
+    {
+      "path": "assets/web/references/fashion/model-glass-atrium-source.webp",
+      "bytes": 111086,
+      "sha256": "1df07bacfe4669d34843a9e4c61b1ac3783cc0b3d0c398e95817b13c321bae02"
+    },
+    {
+      "path": "assets/web/references/food/cobalt-menu-set-source.webp",
+      "bytes": 111158,
+      "sha256": "e2bcf8f02f0a603619703549ac1fbe491130e215f731cbfcaf279cfae65f7ae0"
+    },
+    {
+      "path": "assets/web/references/food/red-graphic-menu-set-source.webp",
+      "bytes": 79884,
+      "sha256": "6325fe2a98c0534aa282c35fb4bc08079db298944906a0af00e448f2a4338558"
+    },
+    {
+      "path": "assets/web/references/furniture/cobalt-chrome-chair-source.webp",
+      "bytes": 54742,
+      "sha256": "d3452336d96b64c018af753ec3e7e4bf8679a39cfa2ebdef433e75522b39ad24"
+    },
+    {
+      "path": "assets/web/references/furniture/cold-penthouse-room-source.webp",
+      "bytes": 233210,
+      "sha256": "ec2333a9da5ba55792bd029ac295109575563e5ef8bf4873d6380da5c730cacc"
+    },
+    {
+      "path": "assets/web/references/furniture/postmodern-gallery-room-source.webp",
+      "bytes": 136066,
+      "sha256": "28716ac0dcea528e174c392858dd50a98e5428e025502a78b7f260af726e6f38"
+    },
+    {
+      "path": "assets/web/references/olive-technical-overshirt.webp",
+      "bytes": 75652,
+      "sha256": "cad11e588431af7adbb1341cd24a370ccb43a742844cb8d9efd4f1d39f068da6"
+    },
+    {
+      "path": "assets/web/references/real-estate/cluttered-apartment-source.webp",
+      "bytes": 160176,
+      "sha256": "3accc60a5720f5b20d3548ca6141153751ed2d8a8dbfa3df7ce52c4fb1239b57"
+    },
+    {
+      "path": "assets/web/references/real-estate/empty-living-room-source.webp",
+      "bytes": 110810,
+      "sha256": "57fd7ba7c5c8e23e7d0bea1de34f7d048aba801521fea827ab0405f37a89ceb6"
+    },
+    {
+      "path": "assets/web/references/real-estate/staging-zone-mask.webp",
+      "bytes": 7002,
+      "sha256": "b940e13e23f6d744980460b6695cb6a5c8a05f6d52fa1e08fccef2a638614d49"
+    },
+    {
+      "path": "assets/web/references/real-estate/unfinished-condo-source.webp",
+      "bytes": 96434,
+      "sha256": "de0f5a7e937a9f257d8d02f1cad0e2cf8fd0512591b891b6eb1d487cd93154ee"
+    },
+    {
+      "path": "assets/web/references/real-estate/villa-daylight-source.webp",
+      "bytes": 223684,
+      "sha256": "defec3f8a2e7a3060ca793542c81041b4eda6ce6c11b0d86986ed52526e32c21"
+    },
+    {
+      "path": "assets/web/references/rust-boucle-chair.webp",
+      "bytes": 184644,
+      "sha256": "bba61f1b402141d20ba8d2eecfdc8abdd0ff59547e24bbb4517e9049dbad0edf"
+    }
+  ]
+}

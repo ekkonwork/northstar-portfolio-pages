@@ -1,0 +1,272 @@
+{
+  "date": "2026-09-14T11:39:51.664Z",
+  "checks": [
+    {
+      "id": "fashion-transfer",
+      "index": 0,
+      "width": 390,
+      "stableTransform": "matrix(0.994147, -0.000476259, 0.000476974, 1.00151, 0.515194, -0.250047)",
+      "geometry": true
+    },
+    {
+      "id": "fashion-transfer",
+      "index": 1,
+      "width": 390,
+      "stableTransform": "matrix(0.993783, 0.00022136, -0.000221698, 1.00114, 1.01876, -0.483971)",
+      "geometry": true
+    },
+    {
+      "id": "fashion-campaigns",
+      "index": 0,
+      "width": 390,
+      "stableTransform": "matrix(1.41405, 0.000114016, -8.0282e-05, 1.00162, -73.1483, -0.346251)",
+      "geometry": true
+    },
+    {
+      "id": "fashion-campaigns",
+      "index": 1,
+      "width": 390,
+      "stableTransform": "matrix(1.41554, -0.000315996, 0.000222523, 1.00267, -73.4318, -0.552134)",
+      "geometry": true
+    },
+    {
+      "id": "fashion-campaigns",
+      "index": 2,
+      "width": 390,
+      "stableTransform": "matrix(1.13131, -0.000389446, 0.000342802, 1.00168, -23.6429, -0.401555)",
+      "geometry": true
+    },
+    {
+      "id": "fashion-campaigns",
+      "index": 3,
+      "width": 390,
+      "stableTransform": "matrix(1.13059, -8.69014e-06, 7.64456e-06, 1.00104, -23.4864, -0.196376)",
+      "geometry": true
+    },
+    {
+      "id": "fashion-campaigns",
+      "index": 4,
+      "width": 390,
+      "stableTransform": "matrix(1.06092, -0.000858731, 0.000806278, 1.00198, -12.4246, -0.385045)",
+      "geometry": true
+    },
+    {
+      "id": "hospitality",
+      "index": 0,
+      "width": 390,
+      "stableTransform": "matrix(1.07724, -0.00329007, 0.00307569, 1.00991, -3.3579, -2.36232)",
+      "geometry": true
+    },
+    {
+      "id": "hospitality",
+      "index": 1,
+      "width": 390,
+      "stableTransform": "matrix(1.00083, -0.00477344, 0.00477344, 1.00083, -1.19309, 0.651362)",
+      "geometry": true
+    },
+    {
+      "id": "furniture",
+      "index": 0,
+      "width": 390,
+      "stableTransform": "matrix(1.00319, -8.1555e-05, 8.156e-05, 1.00319, -0.897667, 0.621989)",
+      "geometry": true
+    },
+    {
+      "id": "furniture",
+      "index": 1,
+      "width": 390,
+      "stableTransform": "contain",
+      "geometry": true
+    },
+    {
+      "id": "property",
+      "index": 0,
+      "width": 390,
+      "stableTransform": "matrix(1.00183, 0.000507345, -0.000507347, 1.00183, -0.384711, 0.72868)",
+      "geometry": true
+    },
+    {
+      "id": "property",
+      "index": 1,
+      "width": 390,
+      "stableTransform": "matrix(1.00011, -6.4035e-05, 6.40267e-05, 1.00011, -0.0105002, -0.0052536)",
+      "geometry": true
+    },
+    {
+      "id": "property",
+      "index": 2,
+      "width": 390,
+      "stableTransform": "matrix(1.0074, 0.00276071, -0.00276071, 1.0074, -3.65169, -2.12211)",
+      "geometry": true
+    },
+    {
+      "id": "property",
+      "index": 3,
+      "width": 390,
+      "stableTransform": "matrix(1.00027, 0.00302377, -0.00302377, 1.00027, -1.04516, 0.37676)",
+      "geometry": true
+    },
+    {
+      "id": "product-fidelity",
+      "index": 0,
+      "width": 390,
+      "stableTransform": "matrix(0.793759, -0.00871865, 0.01286, 1.17079, 32.7583, -51.4393)",
+      "geometry": true
+    },
+    {
+      "id": "product-fidelity",
+      "index": 1,
+      "width": 390,
+      "stableTransform": "matrix(0.494578, 0.481606, -0.481606, 0.494578, 175.433, -12.6992)",
+      "geometry": true
+    },
+    {
+      "id": "product-fidelity",
+      "index": 2,
+      "width": 390,
+      "stableTransform": "contain",
+      "geometry": true
+    },
+    {
+      "id": "product-fidelity",
+      "index": 3,
+      "width": 390,
+      "stableTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "geometry": true
+    },
+    {
+      "id": "fashion-transfer",
+      "index": 0,
+      "width": 1440,
+      "stableTransform": "matrix(0.994147, -0.000475878, 0.000477355, 1.00151, 0.59423, -0.288176)",
+      "geometry": true
+    },
+    {
+      "id": "fashion-transfer",
+      "index": 1,
+      "width": 1440,
+      "stableTransform": "matrix(0.993783, 0.000221183, -0.000221875, 1.00114, 1.17505, -0.557771)",
+      "geometry": true
+    },
+    {
+      "id": "fashion-campaigns",
+      "index": 0,
+      "width": 1440,
+      "stableTransform": "matrix(1.41405, 0.000113925, -8.03462e-05, 1.00162, -84.3699, -0.39905)",
+      "geometry": true
+    },
+    {
+      "id": "fashion-campaigns",
+      "index": 1,
+      "width": 1440,
+      "stableTransform": "matrix(1.41554, -0.000315743, 0.000222701, 1.00267, -84.6969, -0.636328)",
+      "geometry": true
+    },
+    {
+      "id": "fashion-campaigns",
+      "index": 2,
+      "width": 1440,
+      "stableTransform": "matrix(1.13131, -0.000389135, 0.000343076, 1.00168, -27.2699, -0.462787)",
+      "geometry": true
+    },
+    {
+      "id": "fashion-campaigns",
+      "index": 3,
+      "width": 1440,
+      "stableTransform": "matrix(1.13059, -8.6832e-06, 7.65067e-06, 1.00104, -27.0894, -0.226321)",
+      "geometry": true
+    },
+    {
+      "id": "fashion-campaigns",
+      "index": 4,
+      "width": 1440,
+      "stableTransform": "matrix(1.06092, -0.000858045, 0.000806922, 1.00198, -14.3307, -0.44376)",
+      "geometry": true
+    },
+    {
+      "id": "hospitality",
+      "index": 0,
+      "width": 1440,
+      "stableTransform": "matrix(1.07724, -0.00328845, 0.0030772, 1.00991, -5.13225, -3.60883)",
+      "geometry": true
+    },
+    {
+      "id": "hospitality",
+      "index": 1,
+      "width": 1440,
+      "stableTransform": "matrix(1.00083, -0.00477344, 0.00477344, 1.00083, -2.43363, 1.32863)",
+      "geometry": true
+    },
+    {
+      "id": "furniture",
+      "index": 0,
+      "width": 1440,
+      "stableTransform": "matrix(1.00319, -8.14982e-05, 8.16168e-05, 1.00319, -2.44308, 1.69162)",
+      "geometry": true
+    },
+    {
+      "id": "furniture",
+      "index": 1,
+      "width": 1440,
+      "stableTransform": "contain",
+      "geometry": true
+    },
+    {
+      "id": "property",
+      "index": 0,
+      "width": 1440,
+      "stableTransform": "matrix(1.00183, 0.000506992, -0.0005077, 1.00183, -1.04703, 1.98179)",
+      "geometry": true
+    },
+    {
+      "id": "property",
+      "index": 1,
+      "width": 1440,
+      "stableTransform": "matrix(1.00011, -6.39904e-05, 6.40713e-05, 1.00011, -0.0285771, -0.0142882)",
+      "geometry": true
+    },
+    {
+      "id": "property",
+      "index": 2,
+      "width": 1440,
+      "stableTransform": "matrix(1.0074, 0.00275878, -0.00276263, 1.0074, -9.9384, -5.77151)",
+      "geometry": true
+    },
+    {
+      "id": "property",
+      "index": 3,
+      "width": 1440,
+      "stableTransform": "matrix(1.00027, 0.00302166, -0.00302588, 1.00027, -2.84449, 1.02467)",
+      "geometry": true
+    },
+    {
+      "id": "product-fidelity",
+      "index": 0,
+      "width": 1440,
+      "stableTransform": "matrix(0.793759, -0.00871865, 0.01286, 1.17079, 66.8196, -104.925)",
+      "geometry": true
+    },
+    {
+      "id": "product-fidelity",
+      "index": 1,
+      "width": 1440,
+      "stableTransform": "matrix(0.494578, 0.481606, -0.481606, 0.494578, 357.844, -25.9036)",
+      "geometry": true
+    },
+    {
+      "id": "product-fidelity",
+      "index": 2,
+      "width": 1440,
+      "stableTransform": "contain",
+      "geometry": true
+    },
+    {
+      "id": "product-fidelity",
+      "index": 3,
+      "width": 1440,
+      "stableTransform": "matrix(1, 0, 0, 1, 0, 0)",
+      "geometry": true
+    }
+  ],
+  "errors": []
+}

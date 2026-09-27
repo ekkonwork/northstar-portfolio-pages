@@ -1,0 +1,1790 @@
+/* CONTENT DATABASE: add one WORKS object to add a case. All text uses {en,ru}.
+   Numbers are source-reported; see case disclosures. No external data is fetched. */
+const CATEGORIES = [
+  {
+    "id": "all",
+    "label": {
+      "en": "All work",
+      "ru": "Все работы"
+    }
+  },
+  {
+    "id": "fashion",
+    "label": {
+      "en": "Virtual Try On",
+      "ru": "Виртуальная примерка"
+    }
+  },
+  {
+    "id": "product",
+    "label": {
+      "en": "Product",
+      "ru": "Продукт"
+    }
+  },
+  {
+    "id": "jewelry",
+    "label": {
+      "en": "Jewelry & Watches",
+      "ru": "Украшения и часы"
+    }
+  },
+  {
+    "id": "furniture",
+    "label": {
+      "en": "Furniture",
+      "ru": "Мебель"
+    }
+  },
+  {
+    "id": "spaces",
+    "label": {
+      "en": "Spaces",
+      "ru": "Пространства"
+    }
+  },
+  {
+    "id": "characters",
+    "label": {
+      "en": "Characters",
+      "ru": "Персонажи"
+    }
+  }
+];
+
+const FILTER_ORDER = [
+  "all",
+  "fashion",
+  "product",
+  "jewelry",
+  "furniture",
+  "spaces",
+  "characters"
+];
+
+const WORKS = [
+  {
+    "id": "fashion-transfer",
+    "index": "01",
+    "category": "fashion",
+    "year": "2026",
+    "featured": true,
+    "accent": "#2f4cff",
+    "cover": "assets/web/final/fashion/cobalt-car-editorial.webp",
+    "coverAlt": {
+      "en": "Cobalt ripstop jacket transferred onto a model seated in a luxury car",
+      "ru": "Кобальтовая куртка, перенесённая на модель в салоне автомобиля"
+    },
+    "ratio": "portrait",
+    "title": {
+      "en": "Virtual try-on",
+      "ru": "Виртуальная примерка"
+    },
+    "tagline": {
+      "en": "Garment fidelity · matched poses",
+      "ru": "Точность одежды · сохранение поз"
+    },
+    "summary": {
+      "en": "Two garments are transferred onto three real commercial poses. The person, the setting and the lower half of the outfit stay anchored to the source frame — only the upper garment changes.",
+      "ru": "Две вещи переносятся на три реальные коммерческие позы. Человек, сцена и нижняя часть образа остаются привязаны к исходному кадру — меняется только верхняя одежда."
+    },
+    "tags": [
+      "VTON",
+      "Identity lock",
+      "Pose retain"
+    ],
+    "meta": [
+      {
+        "k": {
+          "en": "Type",
+          "ru": "Тип"
+        },
+        "v": {
+          "en": "Independent spec study",
+          "ru": "Независимый spec-кейс"
+        }
+      },
+      {
+        "k": {
+          "en": "Inputs",
+          "ru": "Исходники"
+        },
+        "v": {
+          "en": "2 garments · 3 poses",
+          "ru": "2 вещи · 3 позы"
+        }
+      },
+      {
+        "k": {
+          "en": "Render time",
+          "ru": "Рендер"
+        },
+        "v": {
+          "en": "≈63 s complete pass",
+          "ru": "≈63 с полный проход"
+        }
+      },
+      {
+        "k": {
+          "en": "Output",
+          "ru": "Результат"
+        },
+        "v": {
+          "en": "4 displayed finals",
+          "ru": "4 показанных финала"
+        }
+      }
+    ],
+    "metrics": [
+      {
+        "v": "≈63s",
+        "l": {
+          "en": "complete garment render",
+          "ru": "полный рендер образа"
+        }
+      },
+      {
+        "v": "2",
+        "l": {
+          "en": "garment references",
+          "ru": "референса одежды"
+        }
+      },
+      {
+        "v": "3",
+        "l": {
+          "en": "matched source poses",
+          "ru": "исходные позы"
+        }
+      }
+    ],
+    "compare": [
+      {
+        "input": "assets/web/references/fashion/model-car-door-source.webp",
+        "alignment": [[0.99414743,0.00084419,0.00146362],[-0.00026909,1.00151148,-0.00040136]],
+        "output": "assets/web/final/fashion/cobalt-car-editorial.webp",
+        "label": {
+          "en": "Car doorway · cobalt jacket",
+          "ru": "У автомобиля · кобальтовая куртка"
+        }
+      },
+      {
+        "input": "assets/web/references/fashion/model-brutalist-walk-source.webp",
+        "alignment": [[0.99378272,-0.00039238,0.0028942],[0.00012507,1.00114407,-0.00077684]],
+        "output": "assets/web/final/fashion/houndstooth-brutalist-walk.webp",
+        "label": {
+          "en": "Architectural walk · houndstooth",
+          "ru": "Прогулка у брутализма · гусиная лапка"
+        }
+      }
+    ],
+    "gallery": [
+      {
+        "src": "assets/web/final/fashion/houndstooth-car-editorial.webp",
+        "caption": {
+          "en": "Houndstooth · car editorial",
+          "ru": "Гусиная лапка · автомобильная съёмка"
+        },
+        "size": "t"
+      },
+      {
+        "src": "assets/web/final/fashion/cobalt-brutalist-walk.webp",
+        "caption": {
+          "en": "Cobalt · brutalist walk",
+          "ru": "Кобальт · прогулка у брутализма"
+        },
+        "size": "t"
+      },
+      {
+        "src": "assets/web/final/fashion/cobalt-car-editorial.webp",
+        "caption": {
+          "en": "Cobalt · car editorial",
+          "ru": "Кобальт · автомобильная съёмка"
+        },
+        "size": "t"
+      }
+    ],
+    "inputs": [
+      {
+        "src": "assets/web/references/fashion/cobalt-ripstop-jacket-source.webp",
+        "caption": {
+          "en": "Garment input 01",
+          "ru": "Исходник одежды 01"
+        }
+      },
+      {
+        "src": "assets/web/references/fashion/houndstooth-cardigan-source.webp",
+        "caption": {
+          "en": "Garment input 02",
+          "ru": "Исходник одежды 02"
+        }
+      },
+      {
+        "src": "assets/web/references/fashion/model-car-door-source.webp",
+        "caption": {
+          "en": "Model input 01",
+          "ru": "Исходник модели 01"
+        }
+      },
+      {
+        "src": "assets/web/references/fashion/model-brutalist-walk-source.webp",
+        "caption": {
+          "en": "Model input 02",
+          "ru": "Исходник модели 02"
+        }
+      },
+      {
+        "src": "assets/web/references/fashion/model-glass-atrium-source.webp",
+        "caption": {
+          "en": "Model input 03",
+          "ru": "Исходник модели 03"
+        }
+      }
+    ],
+    "sections": [
+      {
+        "h": {
+          "en": "Transfer constraints",
+          "ru": "Ограничения переноса"
+        },
+        "p": {
+          "en": "The study changes the upper garment while aiming to retain the supplied person, pose, setting and lower styling. Compare the original and output at full resolution to assess garment detail and any remaining differences.",
+          "ru": "В кейсе меняется верхняя одежда с задачей сохранить человека, позу, сцену и нижнюю часть образа. Сравните исходник и результат в полном размере, чтобы оценить детали одежды и оставшиеся различия."
+        }
+      },
+      {
+        "h": {
+          "en": "About this case",
+          "ru": "Об этом кейсе"
+        },
+        "p": {
+          "en": "Independent synthetic case study. Timing, resolution and experience figures are retained from the supplied portfolio, not re-benchmarked for this redesign. Public examples do not include private production workflows.",
+          "ru": "Независимый синтетический кейс. Время обработки, разрешение и опыт перенесены из исходного портфолио, без нового бенчмарка при редизайне. Закрытые production-workflow в публичные примеры не входят."
+        }
+      }
+    ]
+  },
+  {
+    "id": "fashion-campaigns",
+    "index": "02",
+    "category": "fashion",
+    "year": "2026",
+    "featured": true,
+    "accent": "#6b4cff",
+    "cover": "assets/web/final/fashion/ivory-jumpsuit-opera-bluehour.webp",
+    "coverAlt": {
+      "en": "Ivory tailored jumpsuit transferred onto a model outside an opera house at blue hour",
+      "ru": "Айвори-комбинезон, перенесённый на модель у оперного театра в синий час"
+    },
+    "ratio": "portrait",
+    "title": {
+      "en": "Fashion, in context",
+      "ru": "Одежда в новом контексте"
+    },
+    "tagline": {
+      "en": "Five garments · five narrative locations",
+      "ru": "Пять вещей · пять локаций"
+    },
+    "summary": {
+      "en": "Five garment references are paired with five supplied model scenes: private jet, cliff pool, design district, spiral museum and opera house. These are independent synthetic studies, not commissioned brand campaigns.",
+      "ru": "Пять референсов одежды сопоставлены с пятью исходными сценами: частный самолёт, бассейн у скалы, дизайн-квартал, спиральный музей и опера. Это независимые синтетические кейсы, не заказные кампании брендов."
+    },
+    "tags": [
+      "VTON",
+      "Category matrix",
+      "Art direction"
+    ],
+    "meta": [
+      {
+        "k": {
+          "en": "Type",
+          "ru": "Тип"
+        },
+        "v": {
+          "en": "Independent spec study",
+          "ru": "Независимый spec-кейс"
+        }
+      },
+      {
+        "k": {
+          "en": "Coverage",
+          "ru": "Покрытие"
+        },
+        "v": {
+          "en": "5 garments · 5 scenes",
+          "ru": "5 вещей · 5 сцен"
+        }
+      },
+      {
+        "k": {
+          "en": "Output",
+          "ru": "Результат"
+        },
+        "v": {
+          "en": "5 shown · 1088 × 1920",
+          "ru": "5 показано · 1088 × 1920"
+        }
+      }
+    ],
+    "metrics": [
+      {
+        "v": "5",
+        "l": {
+          "en": "garment categories",
+          "ru": "категорий одежды"
+        }
+      },
+      {
+        "v": "5",
+        "l": {
+          "en": "selected scenes",
+          "ru": "отобранных сцен"
+        }
+      },
+      {
+        "v": "100%",
+        "l": {
+          "en": "local production",
+          "ru": "локальное производство"
+        }
+      }
+    ],
+    "compare": [
+      {
+        "input": "assets/web/references/fashion-expanded/model-private-jet-source.webp",
+        "alignment": [[1.41404897,-0.00014209,-0.20780763],[0.00006442,1.00161802,-0.00055578]],
+        "output": "assets/web/final/fashion/violet-slip-private-jet.webp",
+        "label": {
+          "en": "Private jet · violet satin",
+          "ru": "Самолёт · фиолетовый сатин"
+        }
+      },
+      {
+        "input": "assets/web/references/fashion-expanded/model-cliff-pool-source.webp",
+        "alignment": [[1.41553951,0.00039384,-0.208613],[-0.00017854,1.00267382,-0.00088625]],
+        "output": "assets/web/final/fashion/coral-onepiece-cliff-pool.webp",
+        "label": {
+          "en": "Cliff pool · coral swimwear",
+          "ru": "Бассейн · коралловый купальник"
+        }
+      },
+      {
+        "input": "assets/web/references/fashion-expanded/model-design-district-source.webp",
+        "alignment": [[1.1313144,0.00060672,-0.06716724],[-0.00022004,1.00168462,-0.00064455]],
+        "output": "assets/web/final/fashion/cobalt-skirt-design-district.webp",
+        "label": {
+          "en": "Design district · cobalt skirt",
+          "ru": "Дизайн-квартал · кобальтовая юбка"
+        }
+      },
+      {
+        "input": "assets/web/references/fashion-expanded/model-spiral-museum-source.webp",
+        "alignment": [[1.13058567,0.00001353,-0.06672273],[-0.00000491,1.00103939,-0.00031521]],
+        "output": "assets/web/final/fashion/rust-denim-skirt-spiral-museum.webp",
+        "label": {
+          "en": "Spiral museum · rust denim",
+          "ru": "Музей · деним"
+        }
+      },
+      {
+        "input": "assets/web/references/fashion-expanded/model-opera-bluehour-source.webp",
+        "alignment": [[1.06091548,0.00142702,-0.0352972],[-0.00048519,1.00197573,-0.00061805]],
+        "output": "assets/web/final/fashion/ivory-jumpsuit-opera-bluehour.webp",
+        "label": {
+          "en": "Opera · ivory jumpsuit",
+          "ru": "Опера · айвори-комбинезон"
+        }
+      }
+    ],
+    "gallery": [
+      {
+        "src": "assets/web/final/fashion/violet-slip-private-jet.webp",
+        "caption": {
+          "en": "Private jet · violet satin",
+          "ru": "Самолёт · фиолетовый сатин"
+        },
+        "size": "t"
+      },
+      {
+        "src": "assets/web/final/fashion/coral-onepiece-cliff-pool.webp",
+        "caption": {
+          "en": "Cliff pool · coral swimwear",
+          "ru": "Бассейн · коралловый купальник"
+        },
+        "size": "t"
+      },
+      {
+        "src": "assets/web/final/fashion/cobalt-skirt-design-district.webp",
+        "caption": {
+          "en": "Design district · cobalt skirt",
+          "ru": "Дизайн-квартал · кобальтовая юбка"
+        },
+        "size": "t"
+      },
+      {
+        "src": "assets/web/final/fashion/rust-denim-skirt-spiral-museum.webp",
+        "caption": {
+          "en": "Spiral museum · rust denim",
+          "ru": "Музей · деним"
+        },
+        "size": "t"
+      },
+      {
+        "src": "assets/web/final/fashion/ivory-jumpsuit-opera-bluehour.webp",
+        "caption": {
+          "en": "Opera · ivory jumpsuit",
+          "ru": "Опера · айвори-комбинезон"
+        },
+        "size": "t"
+      }
+    ],
+    "inputs": [
+      {
+        "src": "assets/web/references/fashion-expanded/violet-satin-slip-dress-source.webp",
+        "caption": {
+          "en": "Violet satin slip",
+          "ru": "Фиолетовый слип"
+        }
+      },
+      {
+        "src": "assets/web/references/fashion-expanded/coral-sculpt-onepiece-source.webp",
+        "caption": {
+          "en": "Coral one-piece",
+          "ru": "Коралловый купальник"
+        }
+      },
+      {
+        "src": "assets/web/references/fashion-expanded/cobalt-pleated-midi-skirt-source.webp",
+        "caption": {
+          "en": "Cobalt midi skirt",
+          "ru": "Кобальтовая юбка"
+        }
+      },
+      {
+        "src": "assets/web/references/fashion-expanded/rust-denim-maxi-skirt-source.webp",
+        "caption": {
+          "en": "Rust denim skirt",
+          "ru": "Ржавый деним"
+        }
+      },
+      {
+        "src": "assets/web/references/fashion-expanded/ivory-tailored-jumpsuit-source.webp",
+        "caption": {
+          "en": "Ivory jumpsuit",
+          "ru": "Айвори-комбинезон"
+        }
+      }
+    ],
+    "sections": [
+      {
+        "h": {
+          "en": "Five explicit transfers",
+          "ru": "Пять явных переносов"
+        },
+        "p": {
+          "en": "Each comparison pairs its supplied model scene with the selected output. Garment references are listed separately below. The previously excluded teal outfit stays out of the public selection.",
+          "ru": "Каждое сравнение связывает исходную сцену с отобранным результатом. Референсы одежды отдельно показаны ниже. Ранее исключённый бирюзовый комплект не возвращён в публичную подборку."
+        }
+      },
+      {
+        "h": {
+          "en": "About this case",
+          "ru": "Об этом кейсе"
+        },
+        "p": {
+          "en": "Independent synthetic case study. Timing, resolution and experience figures are retained from the supplied portfolio, not re-benchmarked for this redesign. Public examples do not include private production workflows.",
+          "ru": "Независимый синтетический кейс. Время обработки, разрешение и опыт перенесены из исходного портфолио, без нового бенчмарка при редизайне. Закрытые production-workflow в публичные примеры не входят."
+        }
+      }
+    ]
+  },
+  {
+    "id": "hospitality",
+    "index": "03",
+    "category": "product",
+    "year": "2026",
+    "featured": true,
+    "accent": "#ff4d3d",
+    "cover": "assets/web/final/food/cobalt-menu-beet-salad.webp",
+    "coverAlt": {
+      "en": "Beet salad photographed on a cobalt bistro table set",
+      "ru": "Свекольный салат на кобальтовой бистро-съёмке"
+    },
+    "ratio": "landscape",
+    "title": {
+      "en": "A menu, not a one-off",
+      "ru": "Не один кадр, а целое меню"
+    },
+    "tagline": {
+      "en": "Art direction · consistent series",
+      "ru": "Арт-дирекция · единая серия"
+    },
+    "summary": {
+      "en": "An empty cobalt bistro set becomes a four-dish menu series without moving the plate, the lens, the light, the napkin or the glass. A second red set opens a graphic delivery direction.",
+      "ru": "Пустой кобальтовый бистро-сет превращается в серию из четырёх блюд, при этом тарелка, оптика, свет, салфетка и бокал остаются на месте. Второй, красный сет открывает графическое delivery-направление."
+    },
+    "tags": [
+      "Product series",
+      "Fixed camera",
+      "Colorway system"
+    ],
+    "meta": [
+      {
+        "k": {
+          "en": "Type",
+          "ru": "Тип"
+        },
+        "v": {
+          "en": "Independent spec study",
+          "ru": "Независимый spec-кейс"
+        }
+      },
+      {
+        "k": {
+          "en": "Series",
+          "ru": "Серия"
+        },
+        "v": {
+          "en": "2 sets · 5 dishes",
+          "ru": "2 сета · 5 блюд"
+        }
+      },
+      {
+        "k": {
+          "en": "Output",
+          "ru": "Результат"
+        },
+        "v": {
+          "en": "5 × Full HD+",
+          "ru": "5 × Full HD+"
+        }
+      }
+    ],
+    "metrics": [
+      {
+        "v": "4",
+        "l": {
+          "en": "dishes on the cobalt set",
+          "ru": "блюда в кобальтовом сете"
+        }
+      },
+      {
+        "v": "1",
+        "l": {
+          "en": "red-set direction",
+          "ru": "красное направление"
+        }
+      },
+      {
+        "v": "2",
+        "l": {
+          "en": "supplied sets",
+          "ru": "исходных сета"
+        }
+      }
+    ],
+    "compare": [
+      {
+        "input": "assets/web/references/food/cobalt-menu-set-source.webp",
+        "alignment": [[1.07723591,0.00410675,-0.0095395],[-0.00246405,1.00990867,-0.00502622]],
+        "output": "assets/web/final/food/cobalt-menu-pappardelle.webp",
+        "label": {
+          "en": "Empty set → pappardelle",
+          "ru": "Пустой сет → паппарделле"
+        }
+      },
+      {
+        "input": "assets/web/references/food/red-graphic-menu-set-source.webp",
+        "alignment": [[1.00082697,0.00477344,-0.00338946],[-0.00477344,1.00082697,0.00185046]],
+        "output": "assets/web/final/food/red-campaign-tuna-bowl.webp",
+        "label": {
+          "en": "Red set → tuna bowl",
+          "ru": "Красный сет → боул с тунцом"
+        }
+      }
+    ],
+    "gallery": [
+      {
+        "src": "assets/web/final/food/cobalt-menu-chocolate-tart.webp",
+        "caption": {
+          "en": "Chocolate tart · cobalt set",
+          "ru": "Шоколадный тарт · кобальтовый сет"
+        },
+        "size": "w"
+      },
+      {
+        "src": "assets/web/final/food/cobalt-menu-salmon.webp",
+        "caption": {
+          "en": "Salmon · cobalt set",
+          "ru": "Лосось · кобальтовый сет"
+        },
+        "size": "w"
+      },
+      {
+        "src": "assets/web/final/food/cobalt-menu-pappardelle.webp",
+        "caption": {
+          "en": "Pappardelle · cobalt set",
+          "ru": "Паппарделле · кобальтовый сет"
+        },
+        "size": "w"
+      },
+      {
+        "src": "assets/web/final/food/cobalt-menu-beet-salad.webp",
+        "caption": {
+          "en": "Beet salad · cobalt set",
+          "ru": "Свекольный салат · кобальтовый сет"
+        },
+        "size": "w"
+      }
+    ],
+    "inputs": [
+      {
+        "src": "assets/web/references/food/cobalt-menu-set-source.webp",
+        "caption": {
+          "en": "Set input 01",
+          "ru": "Исходник сета 01"
+        }
+      },
+      {
+        "src": "assets/web/references/food/red-graphic-menu-set-source.webp",
+        "caption": {
+          "en": "Set input 02",
+          "ru": "Исходник сета 02"
+        }
+      }
+    ],
+    "sections": [
+      {
+        "h": {
+          "en": "A consistent series",
+          "ru": "Единая серия"
+        },
+        "p": {
+          "en": "The supplied table settings define the framing, tableware and colour direction. Food is the intended variable. The selected images show the approach; they are not a guarantee of unchanged pixels.",
+          "ru": "Исходные сеты задают кадрирование, посуду и цветовое направление. Изменяемая часть — блюдо. Отобранные изображения демонстрируют подход, но не гарантируют неизменность каждого пикселя."
+        }
+      },
+      {
+        "h": {
+          "en": "About this case",
+          "ru": "Об этом кейсе"
+        },
+        "p": {
+          "en": "Independent synthetic case study. Timing, resolution and experience figures are retained from the supplied portfolio, not re-benchmarked for this redesign. Public examples do not include private production workflows.",
+          "ru": "Независимый синтетический кейс. Время обработки, разрешение и опыт перенесены из исходного портфолио, без нового бенчмарка при редизайне. Закрытые production-workflow в публичные примеры не входят."
+        }
+      }
+    ]
+  },
+  {
+    "id": "furniture",
+    "index": "04",
+    "category": "product",
+    "categories": ["furniture"],
+    "year": "2026",
+    "featured": true,
+    "accent": "#2f4cff",
+    "cover": "assets/web/final/furniture/cobalt-chair-gallery-scale.webp",
+    "coverAlt": {
+      "en": "Person seated in a cobalt mohair chair inside a postmodern gallery",
+      "ru": "Человек в кобальтовом кресле в постмодернистской галерее"
+    },
+    "ratio": "portrait",
+    "title": {
+      "en": "One product. New spaces.",
+      "ru": "Один продукт. Новые пространства."
+    },
+    "tagline": {
+      "en": "Product identity · spatial control",
+      "ru": "Идентичность продукта · контроль пространства"
+    },
+    "summary": {
+      "en": "A cobalt mohair chair moves between cold penthouse luxury and a warm postmodern gallery. Its shell, cushion, material and chrome frame stay recognisable in every frame.",
+      "ru": "Кобальтовое кресло из мохера перемещается между холодным пентхаусом и тёплой постмодернистской галереей. Корпус, подушка, материал и хромированное основание остаются узнаваемыми в каждом кадре."
+    },
+    "tags": [
+      "Product fidelity",
+      "Interior staging",
+      "Scale study"
+    ],
+    "meta": [
+      {
+        "k": {
+          "en": "Type",
+          "ru": "Тип"
+        },
+        "v": {
+          "en": "Independent spec study",
+          "ru": "Независимый spec-кейс"
+        }
+      },
+      {
+        "k": {
+          "en": "Settings",
+          "ru": "Сцены"
+        },
+        "v": {
+          "en": "2 interior directions",
+          "ru": "2 интерьерных направления"
+        }
+      },
+      {
+        "k": {
+          "en": "Output",
+          "ru": "Результат"
+        },
+        "v": {
+          "en": "4 × Full HD+",
+          "ru": "4 × Full HD+"
+        }
+      }
+    ],
+    "metrics": [
+      {
+        "v": "4",
+        "l": {
+          "en": "invariants held",
+          "ru": "неизменных признака"
+        }
+      },
+      {
+        "v": "2",
+        "l": {
+          "en": "interior identities",
+          "ru": "интерьерных образа"
+        }
+      },
+      {
+        "v": "1",
+        "l": {
+          "en": "product reference",
+          "ru": "продуктовый референс"
+        }
+      }
+    ],
+    "compare": [
+      {
+        "input": "assets/web/references/furniture/cold-penthouse-room-source.webp",
+        "alignment": [[1.00318658,0.00006117,-0.00255019],[-0.00010874,1.00318658,0.00235602]],
+        "output": "assets/web/final/furniture/cobalt-chair-penthouse-wide.webp",
+        "label": {
+          "en": "Cold penthouse · wide",
+          "ru": "Холодный пентхаус · общий план"
+        }
+      },
+      {
+        "input": "assets/web/references/furniture/postmodern-gallery-room-source.webp",
+        "output": "assets/web/final/furniture/cobalt-chair-gallery-scale.webp",
+        "label": {
+          "en": "Postmodern gallery · human scale",
+          "ru": "Галерея · человеческий масштаб"
+        }
+      }
+    ],
+    "gallery": [
+      {
+        "src": "assets/web/final/furniture/cobalt-chair-penthouse-detail.webp",
+        "caption": {
+          "en": "Penthouse · material detail",
+          "ru": "Пентхаус · деталь материала"
+        },
+        "size": "t"
+      },
+      {
+        "src": "assets/web/final/furniture/cobalt-chair-gallery-wide.webp",
+        "caption": {
+          "en": "Gallery · wide",
+          "ru": "Галерея · общий план"
+        },
+        "size": "t"
+      }
+    ],
+    "inputs": [
+      {
+        "src": "assets/web/references/furniture/cobalt-chrome-chair-source.webp",
+        "caption": {
+          "en": "Product input",
+          "ru": "Продуктовый исходник"
+        }
+      },
+      {
+        "src": "assets/web/references/furniture/cold-penthouse-room-source.webp",
+        "caption": {
+          "en": "Room input 01",
+          "ru": "Исходник комнаты 01"
+        }
+      },
+      {
+        "src": "assets/web/references/furniture/postmodern-gallery-room-source.webp",
+        "caption": {
+          "en": "Room input 02",
+          "ru": "Исходник комнаты 02"
+        }
+      }
+    ],
+    "sections": [
+      {
+        "h": {
+          "en": "Product identity",
+          "ru": "Идентичность продукта"
+        },
+        "p": {
+          "en": "Cobalt mohair, the curved shell, separate cushion and chrome frame are the target product features. The supplied chair and room references allow the results to be compared directly.",
+          "ru": "Кобальтовый мохер, гнутый корпус, отдельная подушка и хромированное основание — целевые признаки продукта. Исходники кресла и помещений позволяют сравнить результат с референсами."
+        }
+      },
+      {
+        "h": {
+          "en": "About this case",
+          "ru": "Об этом кейсе"
+        },
+        "p": {
+          "en": "Independent synthetic case study. Timing, resolution and experience figures are retained from the supplied portfolio, not re-benchmarked for this redesign. Public examples do not include private production workflows.",
+          "ru": "Независимый синтетический кейс. Время обработки, разрешение и опыт перенесены из исходного портфолио, без нового бенчмарка при редизайне. Закрытые production-workflow в публичные примеры не входят."
+        }
+      }
+    ]
+  },
+  {
+    "id": "property",
+    "index": "05",
+    "category": "spaces",
+    "year": "2026",
+    "featured": true,
+    "accent": "#1f8a6d",
+    "cover": "assets/web/final/real-estate/villa-day-to-dusk.webp",
+    "coverAlt": {
+      "en": "Modern villa photographed at dusk with lit interiors",
+      "ru": "Современная вилла в сумерках с подсвеченными интерьерами"
+    },
+    "ratio": "landscape",
+    "title": {
+      "en": "Spaces, reimagined",
+      "ru": "Пространство по-новому"
+    },
+    "tagline": {
+      "en": "Staging · cleanup · day to dusk",
+      "ru": "Меблировка · очистка · сумерки"
+    },
+    "summary": {
+      "en": "A complete listing launch kit: virtual staging, decluttering, furniture removal, day-to-dusk, a vertical social crop and a clearly labelled renovation visualisation. Permanent property features are always checked against the original.",
+      "ru": "Полный набор для запуска объекта: виртуальная меблировка, расхламление, удаление мебели, переход день→сумерки, вертикальный social-кроп и явно помеченная визуализация ремонта. Постоянные элементы объекта всегда сверяются с оригиналом."
+    },
+    "tags": [
+      "Virtual staging",
+      "Declutter",
+      "Day to dusk"
+    ],
+    "meta": [
+      {
+        "k": {
+          "en": "Type",
+          "ru": "Тип"
+        },
+        "v": {
+          "en": "Independent spec study",
+          "ru": "Независимый spec-кейс"
+        }
+      },
+      {
+        "k": {
+          "en": "Rule",
+          "ru": "Правило"
+        },
+        "v": {
+          "en": "No invented permanent features",
+          "ru": "Никаких выдуманных постоянных элементов"
+        }
+      },
+      {
+        "k": {
+          "en": "Output",
+          "ru": "Результат"
+        },
+        "v": {
+          "en": "7 × Full HD+",
+          "ru": "7 × Full HD+"
+        }
+      }
+    ],
+    "metrics": [
+      {
+        "v": "7",
+        "l": {
+          "en": "launch assets",
+          "ru": "ассета для запуска"
+        }
+      },
+      {
+        "v": "4",
+        "l": {
+          "en": "transformation types",
+          "ru": "типа преобразований"
+        }
+      }
+    ],
+    "compare": [
+      {
+        "input": "assets/web/references/real-estate/villa-daylight-source.webp",
+        "alignment": [[1.00183173,-0.00038051,-0.00109293],[0.00067646,1.00183173,0.00276015]],
+        "output": "assets/web/final/real-estate/villa-day-to-dusk.webp",
+        "label": {
+          "en": "Daylight → dusk listing image",
+          "ru": "День → сумерки, листинг"
+        }
+      },
+      {
+        "input": "assets/web/references/real-estate/empty-living-room-source.webp",
+        "alignment": [[1.00011131,0.00004802,-0.00002983],[-0.00008538,1.00011131,-0.0000199]],
+        "output": "assets/web/final/real-estate/living-room-scandinavian-staging.webp",
+        "label": {
+          "en": "Empty room → Scandinavian staging",
+          "ru": "Пустая комната → скандинавская меблировка"
+        }
+      },
+      {
+        "input": "assets/web/references/real-estate/cluttered-apartment-source.webp",
+        "alignment": [[1.00740367,-0.00207053,-0.01037411],[0.00368094,1.00740367,-0.00803831]],
+        "output": "assets/web/final/real-estate/apartment-decluttered.webp",
+        "label": {
+          "en": "Occupied → decluttered",
+          "ru": "Жилая → расхламлённая"
+        }
+      },
+      {
+        "input": "assets/web/references/real-estate/unfinished-condo-source.webp",
+        "alignment": [[1.00026608,-0.00226783,-0.0029692],[0.00403169,1.00026608,0.00142712]],
+        "output": "assets/web/final/real-estate/condo-renovation-visualization.webp",
+        "label": {
+          "en": "Proposed renovation — visualisation, not existing condition",
+          "ru": "Предлагаемый ремонт — визуализация, не текущее состояние"
+        }
+      }
+    ],
+    "gallery": [
+      {
+        "src": "assets/web/final/real-estate/living-room-warm-contemporary-staging.webp",
+        "caption": {
+          "en": "Warm contemporary staging",
+          "ru": "Тёплая современная меблировка"
+        },
+        "size": "w"
+      },
+      {
+        "src": "assets/web/final/real-estate/apartment-furniture-removed.webp",
+        "caption": {
+          "en": "Movable furniture removed",
+          "ru": "Мебель удалена"
+        },
+        "size": "w"
+      },
+      {
+        "src": "assets/web/final/real-estate/villa-listing-social-hero.webp",
+        "caption": {
+          "en": "Vertical social asset",
+          "ru": "Вертикальный social-ассет"
+        },
+        "size": "t"
+      },
+      {
+        "src": "assets/web/final/real-estate/condo-renovation-visualization.webp",
+        "caption": {
+          "en": "Labelled renovation visualisation",
+          "ru": "Помеченная визуализация ремонта"
+        },
+        "size": "t"
+      }
+    ],
+    "inputs": [
+      {
+        "src": "assets/web/references/real-estate/empty-living-room-source.webp",
+        "caption": {
+          "en": "Empty living room",
+          "ru": "Пустая гостиная"
+        }
+      },
+      {
+        "src": "assets/web/references/real-estate/cluttered-apartment-source.webp",
+        "caption": {
+          "en": "Occupied apartment",
+          "ru": "Жилая квартира"
+        }
+      },
+      {
+        "src": "assets/web/references/real-estate/villa-daylight-source.webp",
+        "caption": {
+          "en": "Villa daylight",
+          "ru": "Вилла днём"
+        }
+      },
+      {
+        "src": "assets/web/references/real-estate/unfinished-condo-source.webp",
+        "caption": {
+          "en": "Unfinished condo",
+          "ru": "Незавершённая квартира"
+        }
+      }
+    ],
+    "sections": [
+      {
+        "h": {
+          "en": "Honesty is part of the deliverable",
+          "ru": "Честность — часть результата"
+        },
+        "p": {
+          "en": "Staging and cleanup may only touch what a photographer could move. Walls, windows, floors and the camera stay tied to the original, and renovation concepts are labelled as concepts, never sold as photographs.",
+          "ru": "Меблировка и очистка касаются только того, что мог бы передвинуть фотограф. Стены, окна, полы и камера привязаны к оригиналу, а концепции ремонта помечаются как концепции и не выдаются за фотографии."
+        }
+      },
+      {
+        "h": {
+          "en": "About this case",
+          "ru": "Об этом кейсе"
+        },
+        "p": {
+          "en": "Independent synthetic case study. Timing, resolution and experience figures are retained from the supplied portfolio, not re-benchmarked for this redesign. Public examples do not include private production workflows.",
+          "ru": "Независимый синтетический кейс. Время обработки, разрешение и опыт перенесены из исходного портфолио, без нового бенчмарка при редизайне. Закрытые production-workflow в публичные примеры не входят."
+        }
+      }
+    ]
+  },
+  {
+    "id": "product-fidelity",
+    "index": "06",
+    "category": "characters",
+    "year": "2026",
+    "featured": true,
+    "accent": "#c9a227",
+    "cover": "assets/portfolio-2026/products/finals/rolex-daytona.webp",
+    "coverAlt": {
+      "en": "Rolex Daytona commercial still produced as an independent spec study",
+      "ru": "Коммерческий кадр Rolex Daytona в рамках независимого spec-кейса"
+    },
+    "ratio": "square",
+    "title": {
+      "en": "Identity is the constant",
+      "ru": "Идентичность — неизменна"
+    },
+    "tagline": {
+      "en": "Characters · watches · jewellery",
+      "ru": "Персонажи · часы · украшения"
+    },
+    "summary": {
+      "en": "Supplied people, characters and products move into new commercial scenes while keeping the details that make them recognisable. Only manually approved finals are published.",
+      "ru": "Переданные люди, персонажи и продукты переносятся в новые коммерческие сцены, сохраняя детали, по которым они узнаются. Публикуются только вручную одобренные финалы."
+    },
+    "tags": [
+      "Character consistency",
+      "Product fidelity",
+      "Manual gate"
+    ],
+    "meta": [
+      {
+        "k": {
+          "en": "Type",
+          "ru": "Тип"
+        },
+        "v": {
+          "en": "Independent spec study",
+          "ru": "Независимый spec-кейс"
+        }
+      },
+      {
+        "k": {
+          "en": "Selected",
+          "ru": "Отобрано"
+        },
+        "v": {
+          "en": "2 character scenes · 3 products",
+          "ru": "2 сцены с персонажами · 3 продукта"
+        }
+      },
+      {
+        "k": {
+          "en": "Inference",
+          "ru": "Инференс"
+        },
+        "v": {
+          "en": "87.7–114.3 s per frame",
+          "ru": "87,7–114,3 с на кадр"
+        }
+      }
+    ],
+    "metrics": [
+      {
+        "v": "≈114s",
+        "l": {
+          "en": "average inference",
+          "ru": "средний инференс"
+        }
+      },
+      {
+        "v": "up to 4K",
+        "l": {
+          "en": "final resolution, source-dependent",
+          "ru": "финальное разрешение, зависит от источника"
+        }
+      },
+      {
+        "v": "3",
+        "l": {
+          "en": "selected products",
+          "ru": "отобранных продукта"
+        }
+      }
+    ],
+    "compare": [
+      {
+        "input": "assets/portfolio-2026/products/inputs/rolex-daytona.webp",
+        "alignment": [[0.79375884,0.01286001,0.09306345],[-0.00871865,1.17079429,-0.14613444]],
+        "outputScaleX": 0.97,
+        "output": "assets/portfolio-2026/products/finals/rolex-daytona.webp",
+        "label": {
+          "en": "Rolex Daytona · campaign still",
+          "ru": "Rolex Daytona · рекламный кадр"
+        }
+      },
+      {
+        "input": "assets/portfolio-2026/products/inputs/cartier-santos.webp",
+        "alignment": [[0.49457849,-0.48160613,0.49838981],[0.48160613,0.49457849,-0.0360774]],
+        "output": "assets/portfolio-2026/products/finals/cartier-santos.webp",
+        "label": {
+          "en": "Cartier Santos · emerald campaign",
+          "ru": "Cartier Santos · изумрудная кампания"
+        }
+      },
+      {
+        "input": "assets/portfolio-2026/story/inputs/child-reference.webp",
+        "output": "assets/portfolio-2026/story/finals/trampoline.webp",
+        "label": {
+          "en": "Child identity · new scene",
+          "ru": "Идентичность ребёнка · новая сцена"
+        }
+      },
+      {
+        "input": "assets/portfolio-2026/products/inputs/juste-un-clou.webp",
+        "alignment": [[1,0,0],[0,1,0]],
+        "output": "assets/portfolio-2026/products/finals/juste-un-clou.webp",
+        "label": {
+          "en": "Juste un Clou · product study",
+          "ru": "Juste un Clou · продуктовый кейс"
+        }
+      }
+    ],
+    "gallery": [
+      {
+        "src": "assets/portfolio-2026/products/finals/juste-un-clou.webp",
+        "caption": {
+          "en": "Juste un Clou · jewellery campaign",
+          "ru": "Juste un Clou · ювелирная кампания"
+        },
+        "size": "s"
+      },
+      {
+        "src": "assets/portfolio-2026/story/finals/museum.webp",
+        "caption": {
+          "en": "Child + mascot · space museum",
+          "ru": "Ребёнок и маскот · космический музей"
+        },
+        "size": "s"
+      },
+      {
+        "src": "assets/portfolio-2026/products/finals/cartier-santos.webp",
+        "caption": {
+          "en": "Cartier Santos · emerald campaign",
+          "ru": "Cartier Santos · изумрудная кампания"
+        },
+        "size": "s"
+      }
+    ],
+    "inputs": [
+      {
+        "src": "assets/portfolio-2026/story/inputs/child-reference.webp",
+        "caption": {
+          "en": "Child identity",
+          "ru": "Идентичность ребёнка"
+        }
+      },
+      {
+        "src": "assets/portfolio-2026/story/inputs/mascot-reference.webp",
+        "caption": {
+          "en": "Mascot identity",
+          "ru": "Идентичность маскота"
+        }
+      },
+      {
+        "src": "assets/portfolio-2026/products/inputs/juste-un-clou.webp",
+        "caption": {
+          "en": "Juste un Clou",
+          "ru": "Juste un Clou"
+        }
+      }
+    ],
+    "sections": [
+      {
+        "h": {
+          "en": "Independent demonstration",
+          "ru": "Независимая демонстрация"
+        },
+        "p": {
+          "en": "Selected character and product images demonstrate consistency across scenes. Outputs were manually selected in the original portfolio. Fine logos, proportions and facial details remain important review points.",
+          "ru": "Отобранные изображения персонажей и продуктов демонстрируют постоянство в разных сценах. В исходном портфолио финалы отбирались вручную. Мелкие логотипы, пропорции и детали лица требуют внимания при проверке."
+        }
+      },
+      {
+        "h": {
+          "en": "No brand affiliation",
+          "ru": "Без связи с брендами"
+        },
+        "p": {
+          "en": "Independent spec study. Brand names and references are shown only for demonstration. No affiliation, commission or endorsement by Rolex or Cartier is implied.",
+          "ru": "Независимый spec-кейс. Бренды и референсы показаны только для демонстрации. Связь, заказ или одобрение со стороны Rolex или Cartier не подразумеваются."
+        }
+      },
+      {
+        "h": {
+          "en": "About this case",
+          "ru": "Об этом кейсе"
+        },
+        "p": {
+          "en": "Independent synthetic case study. Timing, resolution and experience figures are retained from the supplied portfolio, not re-benchmarked for this redesign. Public examples do not include private production workflows.",
+          "ru": "Независимый синтетический кейс. Время обработки, разрешение и опыт перенесены из исходного портфолио, без нового бенчмарка при редизайне. Закрытые production-workflow в публичные примеры не входят."
+        }
+      }
+    ],
+    "categories": [
+      "product",
+      "characters",
+      "jewelry"
+    ]
+  },
+  {
+    "id": "green-jacket-series",
+    "index": "07",
+    "category": "fashion",
+    "year": "2026",
+    "date": "2026-09-27",
+    "featured": true,
+    "accent": "#254a37",
+    "cover": "assets/portfolio-2026/fashion-campaign/green-jacket-man-boardwalk.webp",
+    "coverAlt": {"en": "Adult model wearing a forest-green jacket beside the sea", "ru": "Взрослая модель в тёмно-зелёной куртке у моря"},
+    "ratio": "portrait",
+    "title": {"en": "One jacket, five locations", "ru": "Одна куртка, пять локаций"},
+    "tagline": {"en": "Virtual try-on · changing pose and place", "ru": "Виртуальная примерка · разные позы и локации"},
+    "summary": {"en": "An ordinary phone-style jacket reference becomes an adult model try-on and a five-frame commercial series, including a winter setting. The setting and pose change; the garment remains visible from front or three-quarter front for design checks.", "ru": "Обычное телефонное фото куртки превращается в примерку на взрослой модели и коммерческую серию из пяти кадров, включая зиму. Локации и позы меняются; куртка видна спереди или под небольшим углом для проверки деталей."},
+    "tags": ["Virtual try-on", "Product fidelity"],
+    "meta": [
+      {"k": {"en": "Type", "ru": "Тип"}, "v": {"en": "Independent synthetic study", "ru": "Независимый синтетический кейс"}},
+      {"k": {"en": "Reference", "ru": "Референс"}, "v": {"en": "1 phone-style jacket photo + 1 model photo", "ru": "1 телефонное фото куртки + 1 фото модели"}},
+      {"k": {"en": "Series", "ru": "Серия"}, "v": {"en": "Five selected campaign images", "ru": "Пять отобранных коммерческих кадров"}}
+    ],
+    "metrics": [
+      {"v": "5", "l": {"en": "distinct poses and places", "ru": "разные позы и локации"}},
+      {"v": "4", "l": {"en": "garment details checked", "ru": "детали куртки проверены"}}
+    ],
+    "compare": [
+      {"input": "assets/portfolio-2026/fashion-campaign/man-model-reference.webp", "output": "assets/portfolio-2026/fashion-campaign/green-jacket-man-apartment-selected.webp", "label": {"en": "Model before and after try-on", "ru": "Модель до и после примерки"}}
+    ],
+    "inputs": [
+      {"src": "assets/portfolio-2026/fashion-campaign/green-jacket-phone-reference.webp", "caption": {"en": "Unbranded jacket, phone-style reference", "ru": "Куртка без бренда, телефонный референс"}},
+      {"src": "assets/portfolio-2026/fashion-campaign/man-model-reference.webp", "caption": {"en": "Synthetic adult model source", "ru": "Синтетический исходник взрослой модели"}}
+    ],
+    "gallery": [
+      {"src": "assets/portfolio-2026/fashion-campaign/green-jacket-man-apartment-selected.webp", "caption": {"en": "Apartment: standing front view", "ru": "Квартира: стоя, вид спереди"}},
+      {"src": "assets/portfolio-2026/fashion-campaign/green-jacket-man-station.webp", "caption": {"en": "City concourse: walking toward camera", "ru": "Городской переход: шаг навстречу камере"}},
+      {"src": "assets/portfolio-2026/fashion-campaign/green-jacket-man-cafe.webp", "caption": {"en": "Street cafe: seated", "ru": "Уличное кафе: сидя"}},
+      {"src": "assets/portfolio-2026/fashion-campaign/green-jacket-man-boardwalk.webp", "caption": {"en": "Coast: leaning on a railing", "ru": "Побережье: опора на перила"}},
+      {"src": "assets/portfolio-2026/fashion-campaign/green-jacket-man-snow.webp", "caption": {"en": "Snow: walking and adjusting hood", "ru": "Снег: шаг и поправка капюшона"}}
+    ],
+    "sections": [
+      {"h": {"en": "Design anchors", "ru": "Опорные детали"}, "p": {"en": "The jacket's hood, center zipper, cream-edged low flap pockets and tiny diamond stitch are checked against the single front reference in each image. All poses keep these front features visible.", "ru": "Капюшон, центральная молния, нижние карманы с кремовой окантовкой и маленький ромб на груди сверяются с одним фронтальным референсом в каждом кадре. Позы оставляют эти детали видимыми."}},
+      {"h": {"en": "Synthetic production", "ru": "Синтетическое производство"}, "p": {"en": "Source model and jacket photo are synthetic. Images are selected and reviewed manually; this study makes no claim of exact pixel-level identity or a client commission.", "ru": "Модель и фото куртки синтетические. Кадры отобраны и проверены вручную; кейс не заявляет пиксельную идентичность или заказ клиента."}}
+    ]
+  },
+  {
+    "id": "cobalt-cup",
+    "index": "08",
+    "category": "product",
+    "year": "2026",
+    "date": "2026-09-27",
+    "featured": true,
+    "accent": "#244d8b",
+    "cover": "assets/portfolio-2026/product-campaign/cobalt-cup-cafe.webp",
+    "coverAlt": {"en": "Cobalt cup in a warm cafe scene", "ru": "Кобальтовая чашка в кафе"},
+    "ratio": "landscape",
+    "title": {"en": "Phone photo to product image", "ru": "Из телефонного фото в товарный кадр"},
+    "tagline": {"en": "Product identity in a new setting", "ru": "Товар в новой обстановке"},
+    "summary": {"en": "An ordinary phone-style reference becomes a commercial cafe photograph. The square handle, ivory interior and three ivory dots remain legible.", "ru": "Обычный телефонный референс превращается в коммерческий кадр кафе. Квадратная ручка, светлая внутренняя поверхность и три светлые точки различимы."},
+    "tags": ["Product", "Reference fidelity"],
+    "meta": [
+      {"k": {"en": "Type", "ru": "Тип"}, "v": {"en": "Independent synthetic study", "ru": "Независимый синтетический кейс"}},
+      {"k": {"en": "Setting", "ru": "Сцена"}, "v": {"en": "Warm cafe", "ru": "Тёплое кафе"}}
+    ],
+    "metrics": [{"v": "3", "l": {"en": "original dots retained", "ru": "исходные точки сохранены"}}],
+    "compare": [{"input": "assets/portfolio-2026/product-campaign/espresso-cup-phone-source.webp", "output": "assets/portfolio-2026/product-campaign/cobalt-cup-cafe.webp", "label": {"en": "Phone reference and generated scene", "ru": "Телефонный референс и новый кадр"}}],
+    "inputs": [{"src": "assets/portfolio-2026/product-campaign/espresso-cup-phone-source.webp", "caption": {"en": "Synthetic phone-style source", "ru": "Синтетический исходник в стиле телефонного фото"}}],
+    "gallery": [{"src": "assets/portfolio-2026/product-campaign/cobalt-cup-cafe.webp", "caption": {"en": "Warm cafe product photograph", "ru": "Товарный кадр в кафе"}}],
+    "sections": [{"h": {"en": "Detail audit", "ru": "Проверка деталей"}, "p": {"en": "The cup silhouette, squared handle, ivory inner surface and three dots were checked visually against the reference. The setting and product were checked visually against the source.", "ru": "Силуэт чашки, квадратную ручку, светлую внутреннюю поверхность и три точки проверили по референсу. Обстановку и товар проверили визуально по исходнику."}}]
+  },
+  {
+    "id": "watch-ring",
+    "index": "09",
+    "category": "jewelry",
+    "year": "2026",
+    "date": "2026-09-27",
+    "featured": true,
+    "accent": "#386b67",
+    "cover": "assets/portfolio-2026/product-campaign/silver-ring-macro.webp",
+    "coverAlt": {"en": "Open silver ring with one teal cabochon", "ru": "Разомкнутое серебряное кольцо с бирюзовым кабошоном"},
+    "ratio": "landscape",
+    "title": {"en": "Small detail, large frame", "ru": "Мелкая деталь, крупный кадр"},
+    "tagline": {"en": "Jewelry and watch reference transfer", "ru": "Перенос референсов украшения и часов"},
+    "summary": {"en": "Two unbranded phone-style references become commercial images. The ring retains one stone and three grooves; the watch keeps its blue dial, orange hand and date 18.", "ru": "Два телефонных референса без брендов превращаются в коммерческие кадры. Кольцо сохраняет один камень и три насечки; часы — синий циферблат, оранжевую стрелку и дату 18."},
+    "tags": ["Jewelry", "Watches"],
+    "meta": [
+      {"k": {"en": "Type", "ru": "Тип"}, "v": {"en": "Independent synthetic study", "ru": "Независимый синтетический кейс"}},
+      {"k": {"en": "Series", "ru": "Серия"}, "v": {"en": "Ring and watch images", "ru": "Кадры кольца и часов"}}
+    ],
+    "metrics": [{"v": "2", "l": {"en": "unbranded product studies", "ru": "товарных исследования без брендов"}}],
+    "compare": [
+      {"input": "assets/portfolio-2026/product-campaign/silver-ring-phone-source.webp", "output": "assets/portfolio-2026/product-campaign/silver-ring-macro.webp", "label": {"en": "Ring source and commercial macro", "ru": "Исходник кольца и коммерческий макро"}},
+      {"input": "assets/portfolio-2026/product-campaign/watch-phone-source.webp", "output": "assets/portfolio-2026/product-campaign/blue-watch-studio.webp", "label": {"en": "Watch source and studio image", "ru": "Исходник часов и студийный кадр"}}
+    ],
+    "inputs": [
+      {"src": "assets/portfolio-2026/product-campaign/silver-ring-phone-source.webp", "caption": {"en": "Open silver ring reference", "ru": "Референс разомкнутого кольца"}},
+      {"src": "assets/portfolio-2026/product-campaign/watch-phone-source.webp", "caption": {"en": "Steel watch reference", "ru": "Референс стальных часов"}}
+    ],
+    "gallery": [
+      {"src": "assets/portfolio-2026/product-campaign/silver-ring-macro.webp", "caption": {"en": "Ring: stone and three grooves", "ru": "Кольцо: камень и три насечки"}},
+      {"src": "assets/portfolio-2026/product-campaign/blue-watch-studio.webp", "caption": {"en": "Watch: blue dial and date 18", "ru": "Часы: синий циферблат и дата 18"}}
+    ],
+    "sections": [{"h": {"en": "Verifiable features", "ru": "Проверяемые признаки"}, "p": {"en": "The open ring band, one teal stone and three grooves are visually present. The watch retains its case, bracelet layout, blue dial, orange seconds hand and date 18. No exact pixel-level match is claimed.", "ru": "У кольца видны разомкнутый обод, один бирюзовый камень и три насечки. У часов сохранились корпус, схема браслета, синий циферблат, оранжевая секундная стрелка и дата 18. Пиксельная идентичность не заявляется."}}]
+  },
+  {
+    "id": "walnut-chair",
+    "index": "10",
+    "category": "furniture",
+    "year": "2026",
+    "date": "2026-09-27",
+    "featured": true,
+    "accent": "#7b5439",
+    "cover": "assets/portfolio-2026/product-campaign/walnut-chair-interiors.webp",
+    "coverAlt": {"en": "Walnut and oatmeal chair in a warm interior", "ru": "Кресло из ореха и светлой ткани в тёплом интерьере"},
+    "ratio": "portrait",
+    "title": {"en": "A chair in a new interior", "ru": "Кресло в новом интерьере"},
+    "tagline": {"en": "Furniture identity across scenes", "ru": "Узнаваемая мебель в новой сцене"},
+    "summary": {"en": "A plain phone-style chair photo becomes an interior campaign image while retaining the open oval walnut arms, oatmeal upholstery, black legs and rust-colored fabric tab.", "ru": "Простое телефонное фото кресла становится интерьерным рекламным кадром. Сохранились овальные вырезы в ореховых подлокотниках, светлая обивка, чёрные ножки и рыжий тканевый ярлык."},
+    "tags": ["Furniture", "Interiors"],
+    "meta": [
+      {"k": {"en": "Type", "ru": "Тип"}, "v": {"en": "Independent synthetic study", "ru": "Независимый синтетический кейс"}},
+      {"k": {"en": "Setting", "ru": "Сцена"}, "v": {"en": "Warm interior", "ru": "Тёплый интерьер"}}
+    ],
+    "metrics": [{"v": "4", "l": {"en": "design anchors checked", "ru": "опорных признака проверено"}}],
+    "compare": [{"input": "assets/portfolio-2026/product-campaign/lounge-chair-phone-source.webp", "output": "assets/portfolio-2026/product-campaign/walnut-chair-interiors.webp", "label": {"en": "Chair reference and generated interior", "ru": "Исходник кресла и новый интерьер"}}],
+    "inputs": [{"src": "assets/portfolio-2026/product-campaign/lounge-chair-phone-source.webp", "caption": {"en": "Synthetic phone-style source", "ru": "Синтетический телефонный исходник"}}],
+    "gallery": [{"src": "assets/portfolio-2026/product-campaign/walnut-chair-interiors.webp", "caption": {"en": "Warm commercial interior", "ru": "Тёплый коммерческий интерьер"}}],
+    "sections": [{"h": {"en": "Product identity", "ru": "Идентичность предмета"}, "p": {"en": "Both oval arm cutouts, oatmeal weave, black legs and small rust-colored tab remain visible in the generated frame. The new setting supports a clear view of the chair.", "ru": "Оба овальных выреза, светлая фактура ткани, чёрные ножки и маленький рыжий ярлык видны в новом кадре. Новая обстановка оставляет кресло хорошо видимым."}}]
+  }
+];
+
+const PROOF_BOARDS = [
+  {
+    "src": "assets/web/proof/fashion-input-to-output.webp",
+    "label": {
+      "en": "Fashion transfer",
+      "ru": "Перенос одежды"
+    }
+  },
+  {
+    "src": "assets/web/proof/food-menu-series-board.webp",
+    "label": {
+      "en": "Menu series",
+      "ru": "Серия меню"
+    }
+  },
+  {
+    "src": "assets/web/proof/furniture-input-to-output.webp",
+    "label": {
+      "en": "Product in space",
+      "ru": "Продукт в пространстве"
+    }
+  },
+  {
+    "src": "assets/web/proof/real-estate-input-to-output.webp",
+    "label": {
+      "en": "Property kit",
+      "ru": "Набор для объекта"
+    }
+  },
+  {
+    "src": "assets/web/proof/story-input-to-output.webp",
+    "label": {
+      "en": "Character story",
+      "ru": "История персонажа"
+    }
+  },
+  {
+    "src": "assets/web/proof/fashion-expansion-input-to-output.webp",
+    "label": {
+      "en": "Category matrix",
+      "ru": "Матрица категорий"
+    }
+  }
+];
+
+const COPY = {
+  "en": {
+    "brand": "MIKHAIL",
+    "brandSub": "GENERATIVE AI ENGINEER",
+    "navHome": "Home",
+    "navWork": "Work",
+    "navEngineering": "Engineering",
+    "navContact": "Contact",
+    "menu": "Menu",
+    "close": "Close",
+    "heroEyebrow": "COMFYUI / GENERATIVE AI WORKFLOW ENGINEER",
+    "heroLine1": "Creative output.",
+    "heroLine2": "Engineered to repeat.",
+    "heroLede": "I turn difficult image-generation problems into controlled ComfyUI systems — virtual try-on, product imagery and consistent characters, built for production rather than a good first frame.",
+    "heroCta": "See the work",
+    "heroCta2": "Start a project",
+    "heroScroll": "Scroll",
+    "ticker": [
+      "VIRTUAL TRY-ON",
+      "PRODUCT IMAGERY",
+      "IDENTITY LOCK",
+      "QA LOOPS",
+      "CUSTOM NODES",
+      "VRAM OPTIMISATION",
+      "PRODUCTION HANDOFF",
+      "R&D"
+    ],
+    "statsEyebrow": "01 / AT A GLANCE",
+    "statsTitle": "Creative range.\nEngineering underneath.",
+    "stats": [
+      {
+        "v": "3+",
+        "l": {
+          "en": "years in GenAI R&D and production",
+          "ru": "года в GenAI R&D и production"
+        }
+      },
+      {
+        "v": "8×H20",
+        "l": {
+          "en": "production cluster experience",
+          "ru": "опыт production-кластера"
+        }
+      },
+      {
+        "v": "37",
+        "l": {
+          "en": "selected masters reported in the source",
+          "ru": "мастер-кадров заявлено в исходнике"
+        }
+      },
+      {
+        "v": "100%",
+        "l": {
+          "en": "produced locally, end to end",
+          "ru": "произведено локально, от начала до конца"
+        }
+      }
+    ],
+    "workEyebrow": "02 / SELECTED WORK",
+    "workTitle": "The image is the proof.\nThe system is the work.",
+    "workLede": "Independent synthetic case studies in fidelity, consistency and control. Open a case to see the supplied inputs, the generated outputs and the constraints that held them together.",
+    "workAll": "All case studies",
+    "proofEyebrow": "03 / EVIDENCE",
+    "proofTitle": "Input on the left.\nOutput on the right.",
+    "proofLede": "Drag to compare full frames without crop. Source framing and generated geometry may differ.",
+    "profileEyebrow": "04 / THE ENGINEER",
+    "profileTitle": "Creative ambition.\nProduction discipline.",
+    "profileBody": "I build production-oriented ComfyUI systems for virtual try-on, product imagery and consistent people or characters. I work across reference images, masks, depth, pose, segmentation and video inputs; build and modify custom nodes plus Python preprocessing and postprocessing; and turn experiments into repeatable workflows with QA and regeneration loops, version pinning and a clean handoff.",
+    "capabilities": [
+      {
+        "t": "VTON + product",
+        "d": "Controlled garment and product fidelity with commercial-grade output."
+      },
+      {
+        "t": "Consistency",
+        "d": "People, characters and products that survive a change of scene."
+      },
+      {
+        "t": "R&D → production",
+        "d": "Model evaluation, VRAM and latency optimisation, reproducible delivery."
+      },
+      {
+        "t": "Custom nodes",
+        "d": "ComfyUI node authoring and Python preprocessing / postprocessing."
+      }
+    ],
+    "engineEyebrow": "05 / UNDER THE HOOD",
+    "engineTitle": "From experiment to repeatable workflow.",
+    "engineLede": "Source-reported timings on one dedicated RTX 5090 after startup; not re-benchmarked for this redesign. Machine processing excludes art direction, iteration and human selection.",
+    "engineMetrics": [
+      {
+        "v": "≈41s",
+        "l": "average Full HD render",
+        "d": "Across five accepted 1080×1920 production samples."
+      },
+      {
+        "v": "≈63s",
+        "l": "complete garment render",
+        "d": "One prepared item, isolation through final render."
+      },
+      {
+        "v": "≈5.2m",
+        "l": "five-item batch",
+        "d": "Five different garments processed back to back."
+      },
+      {
+        "v": "37",
+        "l": "selected masters",
+        "d": "Source-reported selection, not a count of images currently shown."
+      }
+    ],
+    "engineNote": "I can build and modify custom ComfyUI nodes, write Python pre/postprocessing, diagnose failure points, optimise VRAM and latency, pin ComfyUI and node versions, mirror model files, deploy from scratch on Vast.ai and add functional API, queue and webhook integration. For larger backend or DevOps systems I coordinate the handoff rather than presenting myself as a DevOps engineer.",
+    "latticeEyebrow": "SYSTEM MAP · LIVE 3D",
+    "latticeTitle": "Every frame passes through the same graph.",
+    "latticeBody": "Inputs are isolated on the left, the controlled stage does the work in the middle, and only manually approved frames leave on the right. The shape is identical whether the subject is a garment, a dish, a room or a watch — that repetition is the product.",
+    "processEyebrow": "06 / HOW WE START",
+    "processTitle": "Your inputs.\nA working proof.",
+    "process": [
+      {
+        "n": "01",
+        "t": "Real inputs",
+        "d": "You send actual client material and explicit acceptance criteria."
+      },
+      {
+        "n": "02",
+        "t": "Parallel approaches",
+        "d": "One to three technical paths tested against the same goal."
+      },
+      {
+        "n": "03",
+        "t": "Working handover",
+        "d": "Selected outputs, a runnable ComfyUI workflow and technical notes."
+      },
+      {
+        "n": "04",
+        "t": "Hardening",
+        "d": "Stable API and production hardening scoped separately when you need them."
+      }
+    ],
+    "contactEyebrow": "PAID TECHNICAL TEST · RETAINER · R&D PARTNER",
+    "contactTitle": "Bring a real GenAI problem.\nI will prove the approach on a paid test.",
+    "contactCta": "Start with a paid technical test",
+    "footerNote": "ComfyUI / Generative AI workflow engineering · 2026",
+    "workPageTitle": "Case studies",
+    "workPageLede": "Every project, in one place. Filter by discipline or search by technique.",
+    "searchPlaceholder": "Search cases, techniques, tags…",
+    "resultsOne": "case",
+    "resultsMany": "cases",
+    "emptyTitle": "Nothing matches that filter",
+    "emptyBody": "Try a different discipline or clear the search field.",
+    "clearFilters": "Clear filters",
+    "sortLabel": "Sort",
+    "sortNewest": "Newest first",
+    "sortOldest": "Oldest first",
+    "sortAz": "A → Z",
+    "viewGrid": "Grid",
+    "viewList": "Index",
+    "caseInput": "Supplied input",
+    "caseOutput": "Generated output",
+    "caseDrag": "Compare full images",
+    "caseInputs": "Supplied inputs",
+    "caseOutputs": "Delivered outputs",
+    "caseGallery": "Full gallery",
+    "caseOverview": "Overview",
+    "caseMeta": "Details",
+    "caseBack": "All case studies",
+    "caseNext": "Next case",
+    "casePrev": "Previous case",
+    "openCase": "Open case",
+    "viewFull": "View full size",
+    "closeViewer": "Close",
+    "themeToggle": "Toggle colour theme",
+    "langToggle": "Switch language",
+    "caseNotFound": "That case could not be found.",
+    "caseNotFoundBody": "It may have been renamed or removed. Browse everything instead."
+  },
+  "ru": {
+    "brand": "МИХАИЛ",
+    "brandSub": "GENERATIVE AI ENGINEER",
+    "navHome": "Главная",
+    "navWork": "Работы",
+    "navEngineering": "Инжиниринг",
+    "navContact": "Контакты",
+    "menu": "Меню",
+    "close": "Закрыть",
+    "heroEyebrow": "COMFYUI / GENERATIVE AI WORKFLOW ENGINEER",
+    "heroLine1": "Креативный результат.",
+    "heroLine2": "Повторяемый по замыслу.",
+    "heroLede": "Превращаю сложные задачи генерации изображений в управляемые системы ComfyUI: виртуальная примерка, продуктовые кадры и постоянство персонажей. Это рабочий production, а не удачный первый кадр.",
+    "heroCta": "Смотреть работы",
+    "heroCta2": "Обсудить проект",
+    "heroScroll": "Вниз",
+    "ticker": [
+      "ВИРТУАЛЬНАЯ ПРИМЕРКА",
+      "ПРОДУКТОВЫЕ КАДРЫ",
+      "IDENTITY LOCK",
+      "QA-ЦИКЛЫ",
+      "CUSTOM NODES",
+      "ОПТИМИЗАЦИЯ VRAM",
+      "PRODUCTION HANDOFF",
+      "R&D"
+    ],
+    "statsEyebrow": "01 / КОРОТКО",
+    "statsTitle": "Разные задачи.\nОбщая инженерная основа.",
+    "stats": [
+      {
+        "v": "3+",
+        "l": {
+          "en": "years in GenAI R&D and production",
+          "ru": "года в GenAI R&D и production"
+        }
+      },
+      {
+        "v": "8×H20",
+        "l": {
+          "en": "production cluster experience",
+          "ru": "опыт production-кластера"
+        }
+      },
+      {
+        "v": "37",
+        "l": {
+          "en": "selected masters reported in the source",
+          "ru": "мастер-кадров заявлено в исходнике"
+        }
+      },
+      {
+        "v": "100%",
+        "l": {
+          "en": "produced locally, end to end",
+          "ru": "произведено локально, от начала до конца"
+        }
+      }
+    ],
+    "workEyebrow": "02 / ИЗБРАННЫЕ РАБОТЫ",
+    "workTitle": "Изображение — доказательство.\nСистема — моя работа.",
+    "workLede": "Независимые синтетические кейсы о точности, постоянстве и контроле. Откройте кейс, чтобы увидеть исходники, результаты и ограничения, которые их удержали.",
+    "workAll": "Все кейсы",
+    "proofEyebrow": "03 / ДОКАЗАТЕЛЬСТВО",
+    "proofTitle": "Исходник слева.\nРезультат справа.",
+    "proofLede": "Потяните слайдер: кадры показаны целиком, без обрезки. Кадрирование исходника и геометрия результата могут различаться.",
+    "profileEyebrow": "04 / ОБ ИНЖЕНЕРЕ",
+    "profileTitle": "Креативный замысел.\nИнженерная точность.",
+    "profileBody": "Строю production-oriented системы в ComfyUI для virtual try-on, продуктовых изображений и консистентных людей и персонажей. Работаю с референсами, масками, depth, pose, segmentation и video inputs; создаю и модифицирую custom nodes и Python preprocessing/postprocessing; превращаю эксперименты в повторяемые workflow с QA-циклами, фиксацией версий и чистым handoff.",
+    "capabilities": [
+      {
+        "t": "VTON + продукт",
+        "d": "Контролируемая точность одежды и продукта на коммерческом уровне."
+      },
+      {
+        "t": "Постоянство",
+        "d": "Люди, персонажи и продукты, переживающие смену сцены."
+      },
+      {
+        "t": "R&D → production",
+        "d": "Оценка моделей, оптимизация VRAM и latency, воспроизводимая передача."
+      },
+      {
+        "t": "Custom nodes",
+        "d": "Разработка нод для ComfyUI и Python pre/postprocessing."
+      }
+    ],
+    "engineEyebrow": "05 / ПОД КАПОТОМ",
+    "engineTitle": "От эксперимента до повторяемого workflow.",
+    "engineLede": "Замеры из исходного портфолио на выделенной RTX 5090 после прогрева; при редизайне не повторялись. Машинное время не включает арт-дирекцию, итерации и ручной отбор.",
+    "engineMetrics": [
+      {
+        "v": "≈41с",
+        "l": "средний рендер Full HD",
+        "d": "По пяти принятым production-сэмплам 1080×1920."
+      },
+      {
+        "v": "≈63с",
+        "l": "полный рендер образа",
+        "d": "Один подготовленный предмет: от изоляции до финального кадра."
+      },
+      {
+        "v": "≈5,2м",
+        "l": "пачка из пяти предметов",
+        "d": "Пять разных вещей подряд."
+      },
+      {
+        "v": "37",
+        "l": "отобранных мастер-кадров",
+        "d": "Подборка, заявленная в исходнике, не число изображений на этой странице."
+      }
+    ],
+    "engineNote": "Могу создавать и модифицировать custom nodes в ComfyUI, писать Python pre/postprocessing, диагностировать точки отказа, оптимизировать VRAM и latency, фиксировать версии ComfyUI и нод, зеркалировать файлы моделей, поднимать окружение с нуля на Vast.ai и собирать функциональную API/queue/webhook-обвязку. Для крупных backend- и DevOps-систем делаю корректный handoff, а не выдаю себя за DevOps-инженера.",
+    "latticeEyebrow": "КАРТА СИСТЕМЫ · 3D",
+    "latticeTitle": "Каждый кадр проходит через один и тот же граф.",
+    "latticeBody": "Слева изолируются исходники, в центре работает управляемая стадия, справа выходят только вручную одобренные кадры. Форма одна и та же — неважно, что на входе: одежда, блюдо, комната или часы. Именно это повторение и есть продукт.",
+    "processEyebrow": "06 / С ЧЕГО НАЧНЁМ",
+    "processTitle": "Ваши исходники.\nРабочее доказательство.",
+    "process": [
+      {
+        "n": "01",
+        "t": "Реальные исходники",
+        "d": "Вы присылаете настоящие материалы клиента и явные критерии приёмки."
+      },
+      {
+        "n": "02",
+        "t": "Параллельные подходы",
+        "d": "От одного до трёх технических путей проверяются на одной цели."
+      },
+      {
+        "n": "03",
+        "t": "Рабочая передача",
+        "d": "Отобранные результаты, запускаемый ComfyUI workflow и технические заметки."
+      },
+      {
+        "n": "04",
+        "t": "Усиление",
+        "d": "Стабильный API и production hardening оцениваются отдельно, когда нужны."
+      }
+    ],
+    "contactEyebrow": "ТЕХНИЧЕСКИЙ ТЕСТ · СОПРОВОЖДЕНИЕ · R&D-ПАРТНЁР",
+    "contactTitle": "Есть реальная GenAI-задача?\nДокажу подход на платном тесте.",
+    "contactCta": "Начать с технического теста",
+    "footerNote": "ComfyUI / Generative AI workflow engineering · 2026",
+    "workPageTitle": "Кейсы",
+    "workPageLede": "Все проекты в одном месте. Фильтруйте по направлению или ищите по технике.",
+    "searchPlaceholder": "Поиск по кейсам, техникам, тегам…",
+    "resultsOne": "кейс",
+    "resultsMany": "кейсов",
+    "emptyTitle": "Ничего не найдено",
+    "emptyBody": "Попробуйте другое направление или очистите поиск.",
+    "clearFilters": "Сбросить фильтры",
+    "sortLabel": "Сортировка",
+    "sortNewest": "Сначала новые",
+    "sortOldest": "Сначала старые",
+    "sortAz": "А → Я",
+    "viewGrid": "Сетка",
+    "viewList": "Список",
+    "caseInput": "Исходник",
+    "caseOutput": "Результат",
+    "caseDrag": "Сравните полные изображения",
+    "caseInputs": "Переданные исходники",
+    "caseOutputs": "Готовые результаты",
+    "caseGallery": "Полная галерея",
+    "caseOverview": "Обзор",
+    "caseMeta": "Детали",
+    "caseBack": "Все кейсы",
+    "caseNext": "Следующий кейс",
+    "casePrev": "Предыдущий кейс",
+    "openCase": "Открыть кейс",
+    "viewFull": "Открыть в полном размере",
+    "closeViewer": "Закрыть",
+    "themeToggle": "Переключить тему",
+    "langToggle": "Сменить язык",
+    "caseNotFound": "Кейс не найден.",
+    "caseNotFoundBody": "Возможно, он переименован или удалён. Посмотрите все работы."
+  }
+};
+
+

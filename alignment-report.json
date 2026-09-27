@@ -1,0 +1,428 @@
+{
+  "method": "SIFT matching and RANSAC similarity transform; no source pixels changed",
+  "limitations": "Feature residual measures only matched points, not perfect whole-image agreement. Child pose and gallery perspective differ.",
+  "pairs": [
+    {
+      "index": 0,
+      "id": "fashion-transfer",
+      "input": "assets/web/references/fashion/model-car-door-source.webp",
+      "output": "assets/web/final/fashion/cobalt-car-editorial.webp",
+      "matches": 323,
+      "matrix": [
+        [
+          0.9941474256005637,
+          0.0008441896608087341,
+          0.0014636154353951608
+        ],
+        [
+          -0.000269085454382784,
+          1.0015114806050123,
+          -0.00040135634428506466
+        ]
+      ],
+      "inliers": 298,
+      "medianError": 0.67,
+      "angle": -0.03,
+      "status": "registered"
+    },
+    {
+      "index": 1,
+      "id": "fashion-transfer",
+      "input": "assets/web/references/fashion/model-brutalist-walk-source.webp",
+      "output": "assets/web/final/fashion/houndstooth-brutalist-walk.webp",
+      "matches": 333,
+      "matrix": [
+        [
+          0.9937827186333277,
+          -0.0003923824706596778,
+          0.0028942008140581325
+        ],
+        [
+          0.00012507191252277228,
+          1.0011440721046856,
+          -0.0007768398244475246
+        ]
+      ],
+      "inliers": 307,
+      "medianError": 0.48,
+      "angle": 0.01,
+      "status": "registered"
+    },
+    {
+      "index": 2,
+      "id": "fashion-campaigns",
+      "input": "assets/web/references/fashion-expanded/model-private-jet-source.webp",
+      "output": "assets/web/final/fashion/violet-slip-private-jet.webp",
+      "matches": 541,
+      "matrix": [
+        [
+          1.4140489664958318,
+          -0.00014209309350808835,
+          -0.20780763083875278
+        ],
+        [
+          6.441553572366672e-05,
+          1.0016180179345475,
+          -0.0005557828253663408
+        ]
+      ],
+      "inliers": 498,
+      "medianError": 0.59,
+      "angle": 0.0,
+      "status": "registered"
+    },
+    {
+      "index": 3,
+      "id": "fashion-campaigns",
+      "input": "assets/web/references/fashion-expanded/model-cliff-pool-source.webp",
+      "output": "assets/web/final/fashion/coral-onepiece-cliff-pool.webp",
+      "matches": 517,
+      "matrix": [
+        [
+          1.415539505286277,
+          0.0003938416251413037,
+          -0.2086129951690603
+        ],
+        [
+          -0.00017854153673072437,
+          1.0026738162444462,
+          -0.0008862497465781838
+        ]
+      ],
+      "inliers": 508,
+      "medianError": 0.43,
+      "angle": -0.01,
+      "status": "registered"
+    },
+    {
+      "index": 4,
+      "id": "fashion-campaigns",
+      "input": "assets/web/references/fashion-expanded/model-design-district-source.webp",
+      "output": "assets/web/final/fashion/cobalt-skirt-design-district.webp",
+      "matches": 843,
+      "matrix": [
+        [
+          1.1313143959254566,
+          0.0006067150271105759,
+          -0.0671672441636631
+        ],
+        [
+          -0.00022003531649876886,
+          1.0016846213923314,
+          -0.0006445535556236151
+        ]
+      ],
+      "inliers": 781,
+      "medianError": 0.47,
+      "angle": -0.02,
+      "status": "registered"
+    },
+    {
+      "index": 5,
+      "id": "fashion-campaigns",
+      "input": "assets/web/references/fashion-expanded/model-spiral-museum-source.webp",
+      "output": "assets/web/final/fashion/rust-denim-skirt-spiral-museum.webp",
+      "matches": 250,
+      "matrix": [
+        [
+          1.1305856695113259,
+          1.3534355012707985e-05,
+          -0.06672272943642443
+        ],
+        [
+          -4.9084594179420965e-06,
+          1.00103939487982,
+          -0.00031520836466226353
+        ]
+      ],
+      "inliers": 216,
+      "medianError": 0.42,
+      "angle": -0.0,
+      "status": "registered"
+    },
+    {
+      "index": 6,
+      "id": "fashion-campaigns",
+      "input": "assets/web/references/fashion-expanded/model-opera-bluehour-source.webp",
+      "output": "assets/web/final/fashion/ivory-jumpsuit-opera-bluehour.webp",
+      "matches": 750,
+      "matrix": [
+        [
+          1.0609154779736598,
+          0.0014270221740230523,
+          -0.0352971963732089
+        ],
+        [
+          -0.00048518753916783786,
+          1.0019757291973455,
+          -0.0006180497841229351
+        ]
+      ],
+      "inliers": 683,
+      "medianError": 0.52,
+      "angle": -0.05,
+      "status": "registered"
+    },
+    {
+      "index": 7,
+      "id": "hospitality",
+      "input": "assets/web/references/food/cobalt-menu-set-source.webp",
+      "output": "assets/web/final/food/cobalt-menu-pappardelle.webp",
+      "matches": 372,
+      "matrix": [
+        [
+          1.077235912177229,
+          0.004106751925289947,
+          -0.009539500103364087
+        ],
+        [
+          -0.002464051155173968,
+          1.0099086676661522,
+          -0.0050262206612870656
+        ]
+      ],
+      "inliers": 96,
+      "medianError": 1.72,
+      "angle": -0.17,
+      "status": "registered"
+    },
+    {
+      "index": 8,
+      "id": "hospitality",
+      "input": "assets/web/references/food/red-graphic-menu-set-source.webp",
+      "output": "assets/web/final/food/red-campaign-tuna-bowl.webp",
+      "matches": 36,
+      "matrix": [
+        [
+          1.000826972662124,
+          0.0047734375309191005,
+          -0.00338945967053392
+        ],
+        [
+          -0.0047734375309191005,
+          1.000826972662124,
+          0.0018504611280441158
+        ]
+      ],
+      "inliers": 19,
+      "medianError": 0.72,
+      "angle": -0.27,
+      "status": "registered"
+    },
+    {
+      "index": 9,
+      "id": "furniture",
+      "input": "assets/web/references/furniture/cold-penthouse-room-source.webp",
+      "output": "assets/web/final/furniture/cobalt-chair-penthouse-wide.webp",
+      "matches": 437,
+      "matrix": [
+        [
+          1.0031865816904937,
+          6.116609603577237e-05,
+          -0.0025501887990466783
+        ],
+        [
+          -0.00010873972628581753,
+          1.0031865816904937,
+          0.0023560207062597294
+        ]
+      ],
+      "inliers": 329,
+      "medianError": 1.37,
+      "angle": -0.0,
+      "status": "registered"
+    },
+    {
+      "index": 10,
+      "id": "furniture",
+      "input": "assets/web/references/furniture/postmodern-gallery-room-source.webp",
+      "output": "assets/web/final/furniture/cobalt-chair-gallery-scale.webp",
+      "matches": 14,
+      "matrix": [
+        [
+          1.0268902672152374,
+          0.08440836629568275,
+          -0.08237772762901482
+        ],
+        [
+          -0.08440836629568275,
+          0.5776257753085711,
+          0.2145126632302844
+        ]
+      ],
+      "inliers": 3,
+      "medianError": 1.17,
+      "angle": -6.25,
+      "status": "different-scene-geometry"
+    },
+    {
+      "index": 11,
+      "id": "property",
+      "input": "assets/web/references/real-estate/villa-daylight-source.webp",
+      "output": "assets/web/final/real-estate/villa-day-to-dusk.webp",
+      "matches": 478,
+      "matrix": [
+        [
+          1.0018317346999865,
+          -0.00038050889636776457,
+          -0.0010929338662948303
+        ],
+        [
+          0.0006764602602093592,
+          1.0018317346999865,
+          0.002760146839117602
+        ]
+      ],
+      "inliers": 414,
+      "medianError": 1.24,
+      "angle": 0.03,
+      "status": "registered"
+    },
+    {
+      "index": 12,
+      "id": "property",
+      "input": "assets/web/references/real-estate/empty-living-room-source.webp",
+      "output": "assets/web/final/real-estate/living-room-scandinavian-staging.webp",
+      "matches": 870,
+      "matrix": [
+        [
+          1.0001113066499803,
+          4.802431134230891e-05,
+          -2.9830011540964535e-05
+        ],
+        [
+          -8.537655349743806e-05,
+          1.0001113066499803,
+          -1.990123268650232e-05
+        ]
+      ],
+      "inliers": 864,
+      "medianError": 0.14,
+      "angle": -0.0,
+      "status": "registered"
+    },
+    {
+      "index": 13,
+      "id": "property",
+      "input": "assets/web/references/real-estate/cluttered-apartment-source.webp",
+      "output": "assets/web/final/real-estate/apartment-decluttered.webp",
+      "matches": 466,
+      "matrix": [
+        [
+          1.0074036664438693,
+          -0.0020705301369318557,
+          -0.010374107148923555
+        ],
+        [
+          0.0036809424656566326,
+          1.0074036664438693,
+          -0.008038312162020798
+        ]
+      ],
+      "inliers": 306,
+      "medianError": 1.16,
+      "angle": 0.16,
+      "status": "registered"
+    },
+    {
+      "index": 14,
+      "id": "property",
+      "input": "assets/web/references/real-estate/unfinished-condo-source.webp",
+      "output": "assets/web/final/real-estate/condo-renovation-visualization.webp",
+      "matches": 136,
+      "matrix": [
+        [
+          1.0002660794097689,
+          -0.002267825504845098,
+          -0.002969199248939455
+        ],
+        [
+          0.004031689786391284,
+          1.0002660794097689,
+          0.001427118958967958
+        ]
+      ],
+      "inliers": 104,
+      "medianError": 1.14,
+      "angle": 0.17,
+      "status": "registered"
+    },
+    {
+      "index": 15,
+      "id": "product-fidelity",
+      "input": "assets/portfolio-2026/products/inputs/rolex-daytona.webp",
+      "output": "assets/portfolio-2026/products/finals/rolex-daytona.webp",
+      "matches": 676,
+      "matrix": [
+        [
+          0.7937588419758754,
+          0.012860008330056308,
+          0.09306345183719995
+        ],
+        [
+          -0.008718649715292412,
+          1.1707942919144163,
+          -0.14613443959515143
+        ]
+      ],
+      "inliers": 190,
+      "medianError": 1.31,
+      "angle": -0.63,
+      "status": "registered"
+    },
+    {
+      "index": 16,
+      "id": "product-fidelity",
+      "input": "assets/portfolio-2026/products/inputs/cartier-santos.webp",
+      "output": "assets/portfolio-2026/products/finals/cartier-santos.webp",
+      "matches": 87,
+      "matrix": [
+        [
+          0.4945784946933602,
+          -0.4816061296235358,
+          0.4983898119430212
+        ],
+        [
+          0.4816061296235358,
+          0.4945784946933602,
+          -0.03607739978497063
+        ]
+      ],
+      "inliers": 16,
+      "medianError": 1.35,
+      "angle": 44.24,
+      "status": "registered"
+    },
+    {
+      "index": 17,
+      "id": "product-fidelity",
+      "input": "assets/portfolio-2026/story/inputs/child-reference.webp",
+      "output": "assets/portfolio-2026/story/finals/trampoline.webp",
+      "matches": 64,
+      "matrix": [
+        [
+          0.9699910542833383,
+          -0.016286506648843686,
+          -0.01522797583615186
+        ],
+        [
+          0.00977190398930621,
+          0.9093666133906296,
+          0.08669607176977587
+        ]
+      ],
+      "inliers": 25,
+      "medianError": 1.14,
+      "angle": 0.77,
+      "status": "different-scene-geometry"
+    },
+    {
+      "index": 18,
+      "id": "product-fidelity",
+      "input": "assets/portfolio-2026/products/inputs/juste-un-clou.webp",
+      "output": "assets/portfolio-2026/products/finals/juste-un-clou.webp",
+      "matches": 0,
+      "status": "same-frame-manual"
+    }
+  ]
+}
