@@ -51,11 +51,8 @@
 <div id="sectorTransition">
   <div id="transCurtain" class="trans-curtain"></div>
   <div id="transModal" class="trans-modal">
-    <div class="trans-icon-frame">
-      <img id="transIcon" src="assets/icons/icon_vton.svg" width="56" height="56" alt="Sector Icon">
-    </div>
+    <span id="transKicker" class="trans-kicker">[ 01 · VTON · DIRECT ENTRY ]</span>
     <h2 id="transTitle" class="trans-title">VIRTUAL TRY ON</h2>
-    <p id="transSub" class="trans-sub">COMMERCIAL FASHION TECH</p>
     <div class="trans-loader-bar">
       <div id="transBarInner" class="trans-bar-inner"></div>
     </div>
@@ -117,116 +114,133 @@
   <!-- ========================================================================
        VIEW 1: 4-PILLAR MAIN HUB PORTAL
        ======================================================================== -->
-  <section id="hubSection">
-    <div class="hub-head-bar">
-      <div class="hub-head-titles">
-        <h1 data-i18n="hubHeading">Портфолио & Направления</h1>
-        <p data-i18n="hubLead">Выберите интересующую сферу для просмотра специализированных кейсов, интерактивных сравнений и метрик производства.</p>
-      </div>
-
-      <div class="hub-quick-contact">
-        <a href="https://t.me/Mikhail_ML_ComfyUI" target="_blank" rel="noreferrer" class="quick-chip">
-          <span>Telegram: @Mikhail_ML_ComfyUI</span>
-          <span aria-hidden="true">↗</span>
-        </a>
-        <a href="mailto:ekkonwork@gmail.com" class="quick-chip">
-          <span>ekkonwork@gmail.com</span>
-          <span aria-hidden="true">↗</span>
-        </a>
-      </div>
+  <section id="hubSection" class="slash-portal">
+    <!-- Floating Minimal Art-Direction Prompt -->
+    <div class="slash-hint">
+      <span class="slash-hint-dot">●</span>
+      <span data-i18n="slashHint">Выберите сферу · Наведите курсор для раскрытия</span>
     </div>
 
-    <!-- The 4 Main Pillars Grid -->
-    <div class="hub-pillars-grid">
+    <div class="slash-track">
       
-      <!-- Pillar 1: Virtual Try On -->
-      <article class="pillar-card" data-sec="vton">
-        <div class="pillar-card-bg" style="background-image: url('assets/hero/vton_hero.jpg');"></div>
-        <div class="pillar-card-shade"></div>
-        <div class="pillar-card-content">
-          <div class="pillar-icon-box">
-            <img src="assets/icons/icon_vton.svg" width="38" height="38" alt="Virtual Try On">
+      <!-- Sector 01: Virtual Try On -->
+      <article class="slash-panel" data-sec="vton">
+        <div class="slash-panel-bg" style="background-image: url('assets/hero/vton_hero.jpg');"></div>
+        <div class="slash-panel-overlay"></div>
+        <div class="slash-panel-glow"></div>
+        
+        <!-- Rest/Idle Indicator -->
+        <div class="slash-idle-label">
+          <span class="slash-idle-num">01</span>
+          <span class="slash-idle-name">VIRTUAL TRY ON</span>
+        </div>
+
+        <!-- Full Rich Dossier (reveals on hover) -->
+        <div class="slash-panel-content">
+          <div class="slash-panel-header">
+            <span class="slash-tag">[ 01 · FASHION TECH ]</span>
+            <span class="slash-watermark">01</span>
           </div>
-          <span class="pillar-badge">Fashion Tech</span>
-          <h2 class="pillar-title">Virtual Try On</h2>
-          <p class="pillar-desc">Примерка одежды на моделях, лукбуки, струящиеся ткани и каталоги без съемочных павильонов.</p>
-          <div class="pillar-tags">
-            <span class="pillar-tag">VTON 4K</span>
-            <span class="pillar-tag">Pose Retain</span>
-            <span class="pillar-tag">Lookbook</span>
+          <h2 class="slash-title">VIRTUAL<br>TRY ON</h2>
+          <p class="slash-desc">Цифровая примерка одежды и аксессуаров для брендов и маркетплейсов без студийных съёмок. Сохранение кроя, позы и драпировки.</p>
+          <div class="slash-chips">
+            <span>VTON 4K</span>
+            <span>POSE RETAIN</span>
+            <span>LOOKBOOK</span>
           </div>
-          <div class="pillar-cta-row">
+          <div class="slash-cta">
             <span>Смотреть работы</span>
-            <span aria-hidden="true">→</span>
+            <span class="slash-cta-arrow" aria-hidden="true">→</span>
           </div>
         </div>
       </article>
 
-      <!-- Pillar 2: Food Design -->
-      <article class="pillar-card" data-sec="food">
-        <div class="pillar-card-bg" style="background-image: url('assets/hero/food_hero.jpg');"></div>
-        <div class="pillar-card-shade"></div>
-        <div class="pillar-card-content">
-          <div class="pillar-icon-box">
-            <img src="assets/icons/icon_food.svg" width="38" height="38" alt="Food Design">
+      <!-- Sector 02: Food Design -->
+      <article class="slash-panel" data-sec="food">
+        <div class="slash-panel-bg" style="background-image: url('assets/hero/food_hero.jpg');"></div>
+        <div class="slash-panel-overlay"></div>
+        <div class="slash-panel-glow"></div>
+        
+        <div class="slash-idle-label">
+          <span class="slash-idle-num">02</span>
+          <span class="slash-idle-name">FOOD DESIGN</span>
+        </div>
+
+        <div class="slash-panel-content">
+          <div class="slash-panel-header">
+            <span class="slash-tag">[ 02 · COMMERCIAL FOOD ]</span>
+            <span class="slash-watermark">02</span>
           </div>
-          <span class="pillar-badge">Commercial Food VFX</span>
-          <h2 class="pillar-title">Food Design</h2>
-          <p class="pillar-desc">Сочные высокоскоростные всплески, левитирующие ингредиенты, пар и аппетитная макросъемка.</p>
-          <div class="pillar-tags">
-            <span class="pillar-tag">1000 FPS</span>
-            <span class="pillar-tag">Menu Worlds</span>
-            <span class="pillar-tag">Gastronomy</span>
+          <h2 class="slash-title">FOOD<br>DESIGN</h2>
+          <p class="slash-desc">Сочная фуд-реклама кинематографичного уровня: левитирующие ингредиенты, брызги 1000 FPS, пар и аппетитная макросъёмка.</p>
+          <div class="slash-chips">
+            <span>1000 FPS</span>
+            <span>MENU WORLDS</span>
+            <span>GASTRONOMY</span>
           </div>
-          <div class="pillar-cta-row">
+          <div class="slash-cta">
             <span>Смотреть работы</span>
-            <span aria-hidden="true">→</span>
+            <span class="slash-cta-arrow" aria-hidden="true">→</span>
           </div>
         </div>
       </article>
 
-      <!-- Pillar 3: Jewelry & Watch -->
-      <article class="pillar-card" data-sec="jewelry">
-        <div class="pillar-card-bg" style="background-image: url('assets/hero/jewelry_hero.jpg');"></div>
-        <div class="pillar-card-shade"></div>
-        <div class="pillar-card-content">
-          <div class="pillar-icon-box">
-            <img src="assets/icons/icon_jewelry.svg" width="38" height="38" alt="Jewelry & Watch">
+      <!-- Sector 03: Jewelry & Watch -->
+      <article class="slash-panel" data-sec="jewelry">
+        <div class="slash-panel-bg" style="background-image: url('assets/hero/jewelry_hero.jpg');"></div>
+        <div class="slash-panel-overlay"></div>
+        <div class="slash-panel-glow"></div>
+        
+        <div class="slash-idle-label">
+          <span class="slash-idle-num">03</span>
+          <span class="slash-idle-name">JEWELRY & WATCH</span>
+        </div>
+
+        <div class="slash-panel-content">
+          <div class="slash-panel-header">
+            <span class="slash-tag">[ 03 · HAUTE HORLOGERIE ]</span>
+            <span class="slash-watermark">03</span>
           </div>
-          <span class="pillar-badge">Haute Horlogerie</span>
-          <h2 class="pillar-title">Jewelry & Watch</h2>
-          <p class="pillar-desc">Прецизионная механика шестерен, блеск граней бриллиантов, золото 18K и сапфировый макро-блеск.</p>
-          <div class="pillar-tags">
-            <span class="pillar-tag">Rolex Daytona</span>
-            <span class="pillar-tag">Diamond Fire</span>
-            <span class="pillar-tag">Micro-CGI</span>
+          <h2 class="slash-title">JEWELRY<br>& WATCH</h2>
+          <p class="slash-desc">Абсолютная точность граней, блеск бриллиантов, золото 18K и кинематографичная хореография сложнейших часовых механизмов.</p>
+          <div class="slash-chips">
+            <span>ROLEX DAYTONA</span>
+            <span>DIAMOND FIRE</span>
+            <span>MICRO-CGI</span>
           </div>
-          <div class="pillar-cta-row">
+          <div class="slash-cta">
             <span>Смотреть работы</span>
-            <span aria-hidden="true">→</span>
+            <span class="slash-cta-arrow" aria-hidden="true">→</span>
           </div>
         </div>
       </article>
 
-      <!-- Pillar 4: Furniture & Interior -->
-      <article class="pillar-card" data-sec="furniture">
-        <div class="pillar-card-bg" style="background-image: url('assets/hero/furniture_hero.jpg');"></div>
-        <div class="pillar-card-shade"></div>
-        <div class="pillar-card-content">
-          <div class="pillar-icon-box">
-            <img src="assets/icons/icon_furniture.svg" width="38" height="38" alt="Furniture & Interior">
+      <!-- Sector 04: Furniture & Interior -->
+      <article class="slash-panel" data-sec="furniture">
+        <div class="slash-panel-bg" style="background-image: url('assets/hero/furniture_hero.jpg');"></div>
+        <div class="slash-panel-overlay"></div>
+        <div class="slash-panel-glow"></div>
+        
+        <div class="slash-idle-label">
+          <span class="slash-idle-num">04</span>
+          <span class="slash-idle-name">FURNITURE & INTERIOR</span>
+        </div>
+
+        <div class="slash-panel-content">
+          <div class="slash-panel-header">
+            <span class="slash-tag">[ 04 · TACTILE ARCHITECTURE ]</span>
+            <span class="slash-watermark">04</span>
           </div>
-          <span class="pillar-badge">Tactile Architecture</span>
-          <h2 class="pillar-title">Furniture & Interior</h2>
-          <p class="pillar-desc">Скульптурная мебель, букле, травертин, орех и естественный свет в пространстве Japandi/Bauhaus.</p>
-          <div class="pillar-tags">
-            <span class="pillar-tag">8K PBR</span>
-            <span class="pillar-tag">Day→Dusk</span>
-            <span class="pillar-tag">Virtual Staging</span>
+          <h2 class="slash-title">FURNITURE<br>& INTERIOR</h2>
+          <p class="slash-desc">Скульптурная авторская мебель, тактильные текстуры букле, ореха и травертина в естественном архитектурном освещении.</p>
+          <div class="slash-chips">
+            <span>8K PBR</span>
+            <span>DAY→DUSK</span>
+            <span>VIRTUAL STAGING</span>
           </div>
-          <div class="pillar-cta-row">
+          <div class="slash-cta">
             <span>Смотреть работы</span>
-            <span aria-hidden="true">→</span>
+            <span class="slash-cta-arrow" aria-hidden="true">→</span>
           </div>
         </div>
       </article>
@@ -274,11 +288,8 @@
         <div class="sec-hero-side">
           <div class="sec-hero-card">
             <div class="sec-card-header">
-              <img id="secCardIcon" class="sec-card-icon" src="assets/icons/icon_vton.svg" alt="Icon">
-              <div>
-                <h3 id="secCardTitle" class="sec-card-title">Virtual Try On</h3>
-                <span id="secCardSub" class="sec-card-subtitle">Коммерческие параметры</span>
-              </div>
+              <h3 id="secCardTitle" class="sec-card-title">Virtual Try On</h3>
+              <span id="secCardSub" class="sec-card-badge">01 · VTON</span>
             </div>
 
             <div id="secStatsQuad" class="sec-stats-quad"></div>
