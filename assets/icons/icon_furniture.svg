@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%" fill="none">
+  <defs>
+    <linearGradient id="furnGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E3D8CC" />
+      <stop offset="50%" stop-color="#C89D7C" />
+      <stop offset="100%" stop-color="#8B5A2B" />
+    </linearGradient>
+  </defs>
+  <style>
+    .armchair { stroke: url(#furnGrad); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; fill: rgba(200, 157, 124, 0.08); }
+    .arch-line { stroke: #C89D7C; stroke-width: 1.2; opacity: 0.35; stroke-dasharray: 4 3; }
+    .shadow-ray { animation: lightShift 5s ease-in-out infinite alternate; transform-origin: 20% 20%; }
+    @keyframes lightShift {
+      0% { opacity: 0.15; transform: skewX(-5deg); }
+      100% { opacity: 0.45; transform: skewX(8deg); }
+    }
+  </style>
+  
+  <!-- Architectural Perspective Grid / Elevation lines -->
+  <line class="arch-line" x1="10" y1="84" x2="90" y2="84" />
+  <line class="arch-line" x1="20" y1="20" x2="20" y2="84" />
+  <line class="arch-line" x1="20" y1="20" x2="80" y2="20" />
+  <line class="arch-line" x1="80" y1="20" x2="80" y2="84" />
+  
+  <!-- Architectural Sunlight / Shadow polygon -->
+  <polygon class="shadow-ray" points="20,20 65,20 85,84 40,84" fill="url(#furnGrad)" opacity="0.2" />
+
+  <!-- Designer Lounge Armchair (Modernist Japanese / Scandinavian) -->
+  <!-- Backrest Curve -->
+  <path class="armchair" d="M30 40 C30 26, 70 26, 70 40 C70 52, 68 62, 68 64 L32 64 C32 62, 30 52, 30 40 Z" />
+  <!-- Seat Cushion -->
+  <path class="armchair" d="M24 58 C24 54, 76 54, 76 58 C78 64, 76 72, 74 72 L26 72 C24 72, 22 64, 24 58 Z" />
+  <!-- Armrests -->
+  <path d="M24 54 C20 54, 18 64, 22 72" stroke="url(#furnGrad)" stroke-width="2.2" stroke-linecap="round" />
+  <path d="M76 54 C80 54, 82 64, 78 72" stroke="url(#furnGrad)" stroke-width="2.2" stroke-linecap="round" />
+  
+  <!-- Architectural Wooden Legs (Tapered) -->
+  <line x1="28" y1="72" x2="22" y2="88" stroke="#8B5A2B" stroke-width="2.6" stroke-linecap="round" />
+  <line x1="72" y1="72" x2="78" y2="88" stroke="#8B5A2B" stroke-width="2.6" stroke-linecap="round" />
+  <line x1="36" y1="72" x2="33" y2="85" stroke="#68421E" stroke-width="2" stroke-linecap="round" />
+  <line x1="64" y1="72" x2="67" y2="85" stroke="#68421E" stroke-width="2" stroke-linecap="round" />
+</svg>
