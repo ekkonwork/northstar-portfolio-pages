@@ -1,12 +1,12 @@
 /**
  * ==========================================================================
- * NORTHSTAR SECTORS ENGINE — 4 COMMERCIAL CATEGORIES (REFINED EDITION)
+ * NORTHSTAR SECTORS ENGINE — 4 COMMERCIAL CATEGORIES
  * ==========================================================================
  * - Uncropped photography (contain mode with dynamic aspect ratio)
- * - Zero cartoon icons: sleek typographic monogram badges
- * - Deep linking (#vton, #food, #jewelry, #furniture) with branded intro
+ * - Zero AI generated placeholders: uses Mikhail's real portfolio masterworks
+ * - Deep linking (#vton, #food, #jewelry, #furniture) with direct client URLs
  * - Responsive interactive Before/After comparison sliders
- * - Adaptive ambient particles
+ * - Clean switching between Main Landing Page and Dedicated Sector Views
  * ==========================================================================
  */
 
@@ -24,7 +24,7 @@
       badge: { en: 'Fashion Tech', ru: 'Fashion Tech' },
       themeClass: 'theme-vton',
       accent: '#C2A68D',
-      heroImage: 'assets/hero/vton_hero.jpg',
+      heroImage: 'assets/web/final/fashion/cobalt-car-editorial.webp',
       tagline: {
         en: 'Photorealistic garment and accessory fitting for e-commerce and luxury fashion brands without studio shoots.',
         ru: 'Фотореалистичная виртуальная примерка одежды и аксессуаров для брендов и маркетплейсов без студийных съёмок.'
@@ -58,7 +58,7 @@
       badge: { en: 'Commercial Food VFX', ru: 'Commercial Food VFX' },
       themeClass: 'theme-food',
       accent: '#F59E0B',
-      heroImage: 'assets/hero/food_hero.jpg',
+      heroImage: 'assets/web/final/food/cobalt-menu-beet-salad.webp',
       tagline: {
         en: 'Dynamic culinary commercials: high-speed splashes, levitating ingredients, steam and macro textures.',
         ru: 'Сочная фуд-реклама кинематографичного уровня: левитирующие ингредиенты, брызги 1000fps, пар и макросъёмка.'
@@ -92,7 +92,7 @@
       badge: { en: 'Haute Horlogerie', ru: 'Haute Horlogerie' },
       themeClass: 'theme-jewelry',
       accent: '#D4AF37',
-      heroImage: 'assets/hero/jewelry_hero.jpg',
+      heroImage: 'assets/portfolio-2026/products/finals/rolex-daytona.webp',
       tagline: {
         en: 'Absolute precision on micro-facets, diamond fire, 18K metals and Swiss tourbillon choreographies.',
         ru: 'Абсолютная точность граней, блеск бриллиантов, золото 18K и кинематографичная хореография часовых механизмов.'
@@ -126,7 +126,7 @@
       badge: { en: 'Tactile Architecture', ru: 'Tactile Architecture' },
       themeClass: 'theme-furniture',
       accent: '#C89D7C',
-      heroImage: 'assets/hero/furniture_hero.jpg',
+      heroImage: 'assets/portfolio-2026/product-campaign/walnut-chair-interiors.webp',
       tagline: {
         en: 'Sculptural designer furniture, tactile textiles and natural architectural daylight in Japandi/Bauhaus spaces.',
         ru: 'Скульптурная мебель, тактильные текстуры ткани, дерева и травертина в естественном утреннем свете.'
@@ -163,7 +163,7 @@
   };
 
   function resolveSector(hash) {
-    if (!hash || hash === '#' || hash === '#hub' || hash === '#all') return null;
+    if (!hash || hash === '#' || hash === '#top' || hash === '#home' || hash === '#sectors' || hash === '#all') return null;
     const clean = hash.replace(/^#/, '').toLowerCase().trim();
     for (const key in SECTOR_CONFIG) {
       const sec = SECTOR_CONFIG[key];
@@ -184,33 +184,42 @@
     const title = document.getElementById('transTitle');
     const bar = document.getElementById('transBarInner');
 
+    if (!overlay || !curtain || !modal) {
+      if (onMidpoint) onMidpoint();
+      if (onDone) onDone();
+      isTransitioning = false;
+      return;
+    }
+
     if (targetSector) {
       if (kicker) kicker.textContent = `[ ${targetSector.code} · DIRECT ENTRY ]`;
       if (title) title.textContent = L(targetSector.title);
       overlay.style.setProperty('--trans-accent', targetSector.accent);
     } else {
       if (kicker) kicker.textContent = '[ SECTORS OVERVIEW ]';
-      if (title) title.textContent = 'PORTFOLIO';
+      if (title) title.textContent = document.documentElement.lang === 'ru' ? 'ВСЕ НАПРАВЛЕНИЯ' : 'ALL SECTORS';
       overlay.style.setProperty('--trans-accent', '#FFFFFF');
     }
 
     overlay.classList.add('is-active');
     overlay.style.opacity = '1';
-    curtain.style.transition = 'transform 0.4s cubic-bezier(0.77, 0, 0.175, 1)';
+    curtain.style.transition = 'transform 0.35s cubic-bezier(0.77, 0, 0.175, 1)';
     curtain.style.transform = 'translateY(0%)';
 
     setTimeout(() => {
-      modal.style.transition = 'opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
+      modal.style.transition = 'opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
       modal.style.opacity = '1';
       modal.style.transform = 'scale(1)';
-      bar.style.transition = 'width 0.45s cubic-bezier(0.16, 1, 0.3, 1)';
-      bar.style.width = '100%';
-    }, 120);
+      if (bar) {
+        bar.style.transition = 'width 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
+        bar.style.width = '100%';
+      }
+    }, 100);
 
     setTimeout(() => {
       if (onMidpoint) onMidpoint();
       window.scrollTo({ top: 0, behavior: 'instant' });
-    }, 450);
+    }, 380);
 
     setTimeout(() => {
       modal.style.opacity = '0';
@@ -222,11 +231,11 @@
         curtain.style.transform = 'translateY(100%)';
         overlay.classList.remove('is-active');
         overlay.style.opacity = '0';
-        bar.style.width = '0%';
+        if (bar) bar.style.width = '0%';
         isTransitioning = false;
         if (onDone) onDone();
-      }, 350);
-    }, 850);
+      }, 300);
+    }, 720);
   }
 
   // ==========================================================================
@@ -241,10 +250,13 @@
       document.body.classList.add(sector.themeClass);
 
       // DOM Views
-      const hub = document.getElementById('hubSection');
+      const landing = document.getElementById('mainLanding');
       const sec = document.getElementById('sectorSection');
-      if (hub) hub.classList.add('hidden');
-      if (sec) sec.classList.add('visible');
+      if (landing) landing.style.display = 'none';
+      if (sec) {
+        sec.style.display = 'block';
+        sec.classList.add('visible');
+      }
 
       // Update Top Nav Pills
       updatePills(sector.id);
@@ -262,7 +274,9 @@
       if (headline) headline.textContent = L(sector.title);
       if (strapline) strapline.textContent = L(sector.subtitle);
       if (para) para.textContent = L(sector.tagline);
-      if (primaryBtn) primaryBtn.textContent = (document.documentElement.lang === 'ru' ? 'Обсудить проект' : 'Start project') + ' →';
+      if (primaryBtn) {
+        primaryBtn.innerHTML = `<span>${document.documentElement.lang === 'ru' ? 'Обсудить проект' : 'Start project'}</span> <span aria-hidden="true">→</span>`;
+      }
 
       // Render Hero Right Card
       const cardTitle = document.getElementById('secCardTitle');
@@ -311,9 +325,53 @@
     };
 
     if (isInitial) {
-      playTransition(sector, render);
+      render();
     } else {
       playTransition(sector, render);
+    }
+  }
+
+  // ==========================================================================
+  // RENDER MAIN LANDING PAGE VIEW
+  // ==========================================================================
+  function showMainLanding(isInitial) {
+    const wasInSector = !!currentSector;
+    const render = () => {
+      currentSector = null;
+      document.body.className = '';
+
+      const landing = document.getElementById('mainLanding');
+      const sec = document.getElementById('sectorSection');
+      if (sec) {
+        sec.style.display = 'none';
+        sec.classList.remove('visible');
+      }
+      if (landing) {
+        landing.style.display = 'block';
+      }
+
+      updatePills(null);
+      setAmbientCanvasMode('landing');
+      document.title = (document.documentElement.lang === 'ru' ? 'Михаил' : 'Mikhail') + ' | ComfyUI / Generative AI Workflow Engineer';
+
+      // If hash points to an anchor on the landing page, scroll to it
+      if (window.location.hash && window.location.hash !== '#' && window.location.hash !== '#top') {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+          setTimeout(() => {
+            target.scrollIntoView({ behavior: isInitial ? 'auto' : 'smooth' });
+          }, isInitial ? 20 : 60);
+        }
+      }
+
+      // Ensure reveals and counters on landing are active
+      if (window.NS && window.NS.reveal) window.NS.reveal();
+    };
+
+    if (isInitial || !wasInSector) {
+      render();
+    } else {
+      playTransition(null, render);
     }
   }
 
@@ -382,85 +440,28 @@
   }
 
   // ==========================================================================
-  // RENDER MAIN HUB VIEW
-  // ==========================================================================
-  function showHub(isInitial) {
-    const render = () => {
-      currentSector = null;
-      document.body.className = '';
-      document.body.classList.add('mode-hub');
-
-      const hub = document.getElementById('hubSection');
-      const sec = document.getElementById('sectorSection');
-      if (sec) sec.classList.remove('visible');
-      if (hub) hub.classList.remove('hidden');
-
-      updatePills(null);
-      setAmbientCanvasMode('hub');
-      document.title = (document.documentElement.lang === 'ru' ? 'Михаил' : 'Mikhail') + ' — AI Video & CGI Director Portfolio';
-
-      // Check query param for simulating hover state in screenshots/demo
-      const urlParams = new URLSearchParams(window.location.search);
-      const hoverSec = urlParams.get('hover');
-      if (hoverSec) {
-        const panel = document.querySelector(`.slash-panel[data-sec="${hoverSec}"]`);
-        if (panel) {
-          panel.classList.add('is-active-hover');
-          panel.closest('.slash-track')?.classList.add('has-hovered');
-        }
-      }
-    };
-
-    if (isInitial) {
-      render();
-    } else {
-      playTransition(null, render);
-    }
-  }
-
-  // ==========================================================================
   // TOP NAV PILLS & LINKING
   // ==========================================================================
   function initNav() {
-    const container = document.getElementById('navSectorPills');
-    if (!container) return;
-    container.innerHTML = '';
+    const pills = document.querySelectorAll('.nav-sector-pill');
+    pills.forEach(pill => {
+      pill.addEventListener('click', (e) => {
+        const secId = pill.dataset.secId;
+        if (secId) {
+          e.preventDefault();
+          window.location.hash = `#${secId}`;
+        }
+      });
+    });
 
-    for (const key in SECTOR_CONFIG) {
-      const sec = SECTOR_CONFIG[key];
-      const a = document.createElement('a');
-      a.href = `#${sec.id}`;
-      a.className = 'nav-sector-pill';
-      a.dataset.secId = sec.id;
-      a.textContent = L(sec.title);
-      a.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.location.hash = `#${sec.id}`;
-      });
-      container.appendChild(a);
-    }
-
-    const hubTrigger = document.getElementById('navHubTrigger');
-    if (hubTrigger) {
-      hubTrigger.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.location.hash = '#hub';
-      });
-    }
-
-    // Monolithic Slash Panels Click & Hover Interactions
-    document.querySelectorAll('.slash-panel, .pillar-card').forEach(panel => {
-      panel.addEventListener('click', () => {
-        const secId = panel.dataset.sec;
-        window.location.hash = `#${secId}`;
-      });
-      panel.addEventListener('mouseenter', () => {
-        const track = panel.closest('.slash-track');
-        if (track) track.classList.add('has-hovered');
-      });
-      panel.addEventListener('mouseleave', () => {
-        const track = panel.closest('.slash-track');
-        if (track) track.classList.remove('has-hovered');
+    // Landing Sector Portal Cards click
+    document.querySelectorAll('.sector-portal-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        const secId = card.dataset.sec;
+        if (secId) {
+          e.preventDefault();
+          window.location.hash = `#${secId}`;
+        }
       });
     });
 
@@ -468,6 +469,15 @@
     const shareBtn = document.getElementById('secShareBtn');
     if (shareBtn) {
       shareBtn.addEventListener('click', copyDirectLink);
+    }
+
+    // Back Button in Sector Hero
+    const backBtn = document.getElementById('secBackBtn');
+    if (backBtn) {
+      backBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.hash = '#sectors';
+      });
     }
 
     // Hero Primary CTA Scrolls to footer contacts
@@ -551,20 +561,22 @@
         showSector(targetSector, isInitial);
       }
     } else {
-      showHub(isInitial);
+      if (currentSector !== null || isInitial) {
+        showMainLanding(isInitial);
+      }
     }
   }
 
   window.addEventListener('hashchange', () => handleRoute(false));
   document.addEventListener('northstar:lang', () => {
     if (currentSector) showSector(currentSector, false);
-    else showHub(false);
+    else showMainLanding(false);
   });
 
   // ==========================================================================
   // ADAPTIVE AMBIENT CANVAS (Luxury Subdued Physics)
   // ==========================================================================
-  let canvasMode = 'hub';
+  let canvasMode = 'landing';
   let canvas, ctx, width, height;
   let particles = [];
 
@@ -591,6 +603,8 @@
 
   function initParticles() {
     particles = [];
+    if (canvasMode === 'landing') return; // Keep canvas quiet on main landing so #fx shader shines
+
     const count = 35;
     for (let i = 0; i < count; i++) {
       particles.push({
@@ -610,17 +624,7 @@
     if (!ctx) return;
     ctx.clearRect(0, 0, width, height);
 
-    if (canvasMode === 'hub') {
-      particles.forEach(p => {
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0) p.x = width; if (p.x > width) p.x = 0;
-        if (p.y < 0) p.y = height; if (p.y > height) p.y = 0;
-        ctx.fillStyle = `rgba(255, 255, 255, ${p.alpha * 0.3})`;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
-      });
-    } else if (canvasMode === 'vton') {
+    if (canvasMode === 'vton') {
       particles.forEach(p => {
         p.x += p.vx * 0.6; p.y += p.vy * 0.6;
         if (p.x < 0) p.x = width; if (p.x > width) p.x = 0;

@@ -1459,7 +1459,12 @@ const COPY = {
       "PRODUCTION HANDOFF",
       "R&D"
     ],
-    "statsEyebrow": "01 / AT A GLANCE",
+    "sectorsEyebrow": "01 / COMMERCIAL SPECIALIZATIONS",
+    "sectorsTitle": "Four dedicated production pipelines.",
+    "sectorsLede": "Independent ComfyUI systems engineered for specific industry workflows, client requirements and delivery standards.",
+    "secBack": "All Specializations",
+    "secOpen": "Explore Sector",
+    "statsEyebrow": "02 / AT A GLANCE",
     "statsTitle": "Creative range.\nEngineering underneath.",
     "stats": [
       {
@@ -1635,7 +1640,12 @@ const COPY = {
       "PRODUCTION HANDOFF",
       "R&D"
     ],
-    "statsEyebrow": "01 / КОРОТКО",
+    "sectorsEyebrow": "01 / НАПРАВЛЕНИЯ ПОРТФОЛИО",
+    "sectorsTitle": "Четыре специализированных направления генерации.",
+    "sectorsLede": "Автономные пайплайны ComfyUI под конкретные задачи индустрии, требования клиентов и стандарты сдачи.",
+    "secBack": "Все направления",
+    "secOpen": "Открыть раздел",
+    "statsEyebrow": "02 / КОРОТКО",
     "statsTitle": "Разные задачи.\nОбщая инженерная основа.",
     "stats": [
       {
