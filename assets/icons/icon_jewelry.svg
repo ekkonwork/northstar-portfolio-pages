@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%" fill="none">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F3E5AB" />
+      <stop offset="50%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#AA771C" />
+    </linearGradient>
+    <radialGradient id="sparkleGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#E2F1FF" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <style>
+    .gear { transform-origin: 50% 50%; animation: gearRotate 18s linear infinite; stroke: url(#goldGrad); stroke-width: 1.8; fill: none; }
+    .diamond { stroke: #F3E5AB; stroke-width: 2.2; fill: rgba(56, 189, 248, 0.1); stroke-linejoin: round; stroke-linecap: round; }
+    .sparkle { transform-origin: 75% 25%; animation: sparkleGleam 2.8s ease-in-out infinite; }
+    .facet { stroke: rgba(243, 229, 171, 0.6); stroke-width: 1.2; }
+    @keyframes gearRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes sparkleGleam {
+      0%, 100% { transform: scale(0.4) rotate(0deg); opacity: 0.2; }
+      50% { transform: scale(1.1) rotate(45deg); opacity: 1; }
+    }
+  </style>
+  
+  <!-- Subtle Watch Horology Cog Background -->
+  <g class="gear">
+    <circle cx="50" cy="50" r="38" stroke-dasharray="6 4" stroke-width="2" />
+    <circle cx="50" cy="50" r="28" stroke-width="1.2" opacity="0.4" />
+    <line x1="50" y1="12" x2="50" y2="88" opacity="0.3" stroke="url(#goldGrad)" stroke-width="1.2" />
+    <line x1="12" y1="50" x2="88" y2="50" opacity="0.3" stroke="url(#goldGrad)" stroke-width="1.2" />
+  </g>
+
+  <!-- Faceted Diamond Crown & Pavilion -->
+  <polygon class="diamond" points="30,36 70,36 84,52 50,78 16,52" />
+  
+  <!-- Facet lines -->
+  <line class="facet" x1="16" y1="52" x2="84" y2="52" />
+  <line class="facet" x1="30" y1="36" x2="40" y2="52" />
+  <line class="facet" x1="70" y1="36" x2="60" y2="52" />
+  <line class="facet" x1="40" y1="52" x2="50" y2="36" />
+  <line class="facet" x1="60" y1="52" x2="50" y2="36" />
+  <line class="facet" x1="40" y1="52" x2="50" y2="78" />
+  <line class="facet" x1="60" y1="52" x2="50" y2="78" />
+
+  <!-- Prismatic Sparkle Star -->
+  <g class="sparkle">
+    <path d="M75 14 Q75 25 86 25 Q75 25 75 36 Q75 25 64 25 Q75 25 75 14 Z" fill="url(#goldGrad)" />
+    <circle cx="75" cy="25" r="4" fill="url(#sparkleGlow)" />
+  </g>
+  <circle cx="24" cy="68" r="1.5" fill="#38BDF8" opacity="0.8" />
+  <circle cx="80" cy="62" r="1.5" fill="#F3E5AB" opacity="0.8" />
+</svg>
