@@ -1,557 +1,84 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="light">
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="utf-8"/>
-<script>
-/* Theme + language restore, before first paint. No flash of the wrong theme. */
-(function(){try{
-  var t=localStorage.getItem('northstar-theme');
-  document.documentElement.dataset.theme = t==='dark' ? 'dark' : 'light';
-  var l=localStorage.getItem('northstar-lang');
-  if(!l){ l=(navigator.language||'en').toLowerCase().indexOf('ru')===0 ? 'ru' : 'en'; }
-  document.documentElement.lang=l==='ru'?'ru':'en';
-}catch(e){ document.documentElement.dataset.theme='light'; }})();
-</script>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<meta name="theme-color" content="#f4f3ef"/>
-<title>Mikhail | ComfyUI / Generative AI Workflow Engineer</title>
-<meta name="description" content="ComfyUI and Generative AI workflow engineering: virtual try-on, product imagery, identity consistency, QA loops, optimisation and production handoff."/>
-<meta name="author" content="Mikhail"/>
-<meta name="robots" content="index,follow"/>
-<link rel="canonical" href="https://ekkonwork.github.io/northstar-portfolio-pages/"/>
-<meta property="og:type" content="website"/>
-<meta property="og:site_name" content="Mikhail / GenAI"/>
-<meta property="og:title" content="Mikhail | ComfyUI / Generative AI Workflow Engineer"/>
-<meta property="og:description" content="Production-oriented ComfyUI workflows for virtual try-on, product imagery, consistency and repeatable GenAI systems."/>
-<meta property="og:url" content="https://ekkonwork.github.io/northstar-portfolio-pages/"/>
-<meta property="og:image" content="https://ekkonwork.github.io/northstar-portfolio-pages/assets/web/final/fashion/cobalt-car-editorial.webp"/>
-<meta property="og:image:alt" content="Generated fashion campaign frame from Mikhail's synthetic portfolio"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Mikhail | ComfyUI / Generative AI Workflow Engineer"/>
-<meta name="twitter:description" content="Virtual try-on, product imagery, consistent characters and repeatable ComfyUI production workflows."/>
-<meta name="twitter:image" content="https://ekkonwork.github.io/northstar-portfolio-pages/assets/web/final/fashion/cobalt-car-editorial.webp"/>
-<link rel="preload" as="image" href="assets/web/final/fashion/cobalt-car-editorial.webp" type="image/webp"/>
-<link rel="icon" href="favicon.svg" type="image/svg+xml"/>
-<link rel="stylesheet" href="styles.css?v=20260914-rolex7"/>
-<link rel="stylesheet" href="css/sectors.css"/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ef">
+  <meta name="description" content="Mikhail creates considered commercial imagery for fashion, food, jewelry, watches and interiors. Explore selected images alongside their original product references.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mikhail — AI image creator">
+  <meta property="og:description" content="Commercial imagery with an eye for product, light and detail.">
+  <meta property="og:image" content="https://ekkonwork.github.io/northstar-portfolio-pages/assets/curated/23_food_coffee_splash_motion.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://ekkonwork.github.io/northstar-portfolio-pages/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="assets/curated/23_food_coffee_splash_motion.webp" type="image/webp">
+  <link rel="stylesheet" href="css/editorial.css">
+  <title>Mikhail — AI image creator</title>
 </head>
 <body>
-<noscript><style>.loader{display:none!important}.reveal,.hero-title .line>span{opacity:1!important;transform:none!important}.hero-title .line>span{animation:none!important}</style><p class="noscript">This catalogue needs JavaScript. / Для каталога нужен JavaScript. <a href="mailto:ekkonwork@gmail.com">ekkonwork@gmail.com</a></p></noscript>
-
-<a class="skip" href="#work">Skip to work</a>
-
-<div class="grain" aria-hidden="true"></div>
-<div class="vignette" aria-hidden="true"></div>
-<div class="progress" aria-hidden="true"></div>
-
-<!-- Ambient Sector Canvas -->
-<canvas id="ambientCanvas"></canvas>
-
-<!-- Cinematic Themed Transition Overlay -->
-<div id="sectorTransition">
-  <div id="transCurtain" class="trans-curtain"></div>
-  <div id="transModal" class="trans-modal">
-    <span id="transKicker" class="trans-kicker">[ 01 · VTON · DIRECT ENTRY ]</span>
-    <h2 id="transTitle" class="trans-title">VIRTUAL TRY ON</h2>
-    <div class="trans-loader-bar">
-      <div id="transBarInner" class="trans-bar-inner"></div>
-    </div>
-  </div>
-</div>
-
-<header class="nav">
-  <div class="nav-inner">
-    <a class="brand" href="index.html#top" aria-label="Mikhail, Generative AI engineer — home">
-      <span class="brand-mark">m.</span>
-      <span class="brand-text"><b>MIKHAIL</b><span>GENERATIVE AI ENGINEER</span></span>
-    </a>
-    <nav class="nav-links" aria-label="Primary navigation">
-      <div id="navSectorPills" class="nav-sector-pills">
-        <a href="#vton" class="nav-sector-pill" data-sec-id="vton">Virtual Try On</a>
-        <a href="#food" class="nav-sector-pill" data-sec-id="food">Food Design</a>
-        <a href="#jewelry" class="nav-sector-pill" data-sec-id="jewelry">Jewelry &amp; Watch</a>
-        <a href="#furniture" class="nav-sector-pill" data-sec-id="furniture">Furniture</a>
-      </div>
-      <a href="#work" data-i18n="navWork">Work</a>
-      <a href="#engineering" data-i18n="navEngineering">Engineering</a>
-      <a href="#contact" data-i18n="navContact">Contact</a>
+  <a class="skip" href="#work">Skip to work</a>
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="Mikhail — home">M<span class="brand-dot">.</span></a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="#work" data-en="Work" data-ru="Работы">Work</a>
+      <a href="#approach" data-en="Approach" data-ru="Подход">Approach</a>
+      <a href="#contact" data-en="Contact" data-ru="Контакт">Contact</a>
     </nav>
-    <div class="nav-tools">
-      <div class="tool lang" role="group" aria-label="Language">
-        <button type="button" data-lang="en" aria-pressed="true">EN</button>
-        <span aria-hidden="true">/</span>
-        <button type="button" data-lang="ru" aria-pressed="false">RU</button>
-      </div>
-      <button class="tool theme-toggle" type="button" aria-label="Toggle colour theme">
-        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
-          <circle cx="7.5" cy="7.5" r="6.5" stroke="currentColor" stroke-width="1.2"/>
-          <path d="M7.5 1a6.5 6.5 0 010 13z" fill="currentColor"/>
-        </svg>
-      </button>
-      <a href="https://t.me/Mikhail_ML_ComfyUI" target="_blank" rel="noreferrer" class="nav-contact-btn">
-        <span>Telegram</span>
-        <span>↗</span>
-      </a>
-      <button class="tool burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M1 4.5h14M1 11.5h14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-        </svg>
-      </button>
+    <div class="header-right">
+      <button class="lang-switch" id="langSwitch" type="button" aria-label="Switch language">RU</button>
+      <a class="header-contact" href="mailto:ekkonwork@gmail.com" data-en="Let's talk ↗" data-ru="Обсудим ↗">Let's talk ↗</a>
     </div>
-  </div>
-</header>
+  </header>
 
-<div class="drawer" id="drawer" role="navigation" aria-label="Mobile navigation" hidden inert>
-  <a href="index.html#top"><span>Главная / All Work</span><span>00</span></a>
-  <a href="#vton"><span>Virtual Try On</span><span>01</span></a>
-  <a href="#food"><span>Food Design</span><span>02</span></a>
-  <a href="#jewelry"><span>Jewelry &amp; Watch</span><span>03</span></a>
-  <a href="#furniture"><span>Furniture</span><span>04</span></a>
-  <a href="#work"><span data-i18n="navWork">Work</span><span>05</span></a>
-  <a href="#engineering"><span data-i18n="navEngineering">Engineering</span><span>06</span></a>
-  <a href="#contact"><span data-i18n="navContact">Contact</span><span>07</span></a>
-</div>
-
-<main id="top">
-
-  <!-- ========================================================================
-       VIEW 1: COMPLETE MAIN LANDING PAGE (DEFAULT VIEW)
-       ======================================================================== -->
-  <div id="mainLanding">
-
-    <!-- ================================================================ HERO -->
-    <section class="hero">
-      <canvas id="fx" aria-hidden="true"></canvas>
-      <div class="hero-inner">
-        <p class="eyebrow hero-eyebrow reveal" data-i18n="heroEyebrow">COMFYUI / GENERATIVE AI WORKFLOW ENGINEER</p>
-
-        <h1 class="hero-title">
-          <span class="line"><span data-i18n="heroLine1">Creative output.</span></span>
-          <span class="line"><span><em data-i18n="heroLine2">Engineered to repeat.</em></span></span>
-        </h1>
-
-        <div class="hero-foot">
-          <div class="hero-copy reveal reveal-d1">
-            <p class="hero-lede" data-i18n="heroLede">I turn difficult image-generation problems into controlled ComfyUI systems.</p>
-            <div class="hero-actions">
-              <a class="btn" href="#sectors" data-magnetic="0.18">
-                <span data-i18n="heroCta">See the work</span>
-                <span class="arw" aria-hidden="true">↗</span>
-              </a>
-              <a class="btn btn--ghost" href="#contact" data-magnetic="0.18">
-                <span data-i18n="heroCta2">Start a project</span>
-              </a>
-            </div>
-          </div>
-
-          <div class="hero-side reveal reveal-d2">
-            <div class="hero-cards" data-parallax="0.02">
-              <a class="hero-card" href="#vton" data-cursor="Sector 01">
-                <img src="assets/web/final/fashion/cobalt-car-editorial.webp" alt="Virtual Try-On editorial fashion" width="1020" height="1800" fetchpriority="high" decoding="async"/>
-                <b>01 · VTON</b>
-              </a>
-              <a class="hero-card" href="#furniture" data-cursor="Sector 04">
-                <img src="assets/portfolio-2026/product-campaign/walnut-chair-interiors.webp" alt="Walnut chair in architectural interior" width="1800" height="1350" decoding="async"/>
-                <b>04 · SPACES</b>
-              </a>
-              <a class="hero-card" href="#jewelry" data-cursor="Sector 03">
-                <img src="assets/portfolio-2026/products/finals/rolex-daytona.webp" alt="Rolex Daytona commercial still" width="1536" height="1536" decoding="async"/>
-                <b>03 · WATCHES</b>
-              </a>
-            </div>
-            <p class="hero-note">
-              <b data-i18n="statsEyebrow">02 / AT A GLANCE</b>
-              <span>3+ years · 8×H20 · 37 selected masters</span>
-            </p>
-          </div>
-        </div>
+  <main>
+    <section class="intro wrap" aria-labelledby="introTitle">
+      <div class="intro-copy">
+        <p class="eyebrow" data-en="Independent AI image creator · 2026" data-ru="Независимый AI-креатор · 2026">Independent AI image creator · 2026</p>
+        <h1 id="introTitle" data-en="Images with a<br><em>point of view.</em>" data-ru="Изображения<br><em>с характером.</em>">Images with a<br><em>point of view.</em></h1>
+        <p class="intro-description" data-en="Commercial visuals shaped around the product — from a simple reference to a complete visual world." data-ru="Коммерческие кадры вокруг продукта: от простого референса до цельного визуального мира.">Commercial visuals shaped around the product — from a simple reference to a complete visual world.</p>
+        <a class="text-link" href="#work" data-en="Explore selected work <span>↘</span>" data-ru="Смотреть работы <span>↘</span>">Explore selected work <span>↘</span></a>
       </div>
-      <div class="scroll-cue" aria-hidden="true"><i></i><span data-i18n="heroScroll">Scroll</span></div>
-    </section>
-
-    <!-- ============================================================ SECTORS -->
-    <section class="section section--sectors" id="sectors">
-      <div class="page">
-        <div class="sec-head">
-          <div>
-            <p class="eyebrow reveal" data-i18n="sectorsEyebrow">01 / COMMERCIAL SPECIALIZATIONS</p>
-            <h2 class="sec-title reveal reveal-d1" data-i18n-html="sectorsTitle">Four dedicated production pipelines.</h2>
-          </div>
-          <div class="sec-lede sec-lede--top reveal reveal-d2">
-            <p data-i18n="sectorsLede">Independent GenAI systems engineered for specific industry workflows, client requirements and delivery standards.</p>
-          </div>
-        </div>
-
-        <div class="sectors-grid">
-          <!-- Sector 01: VTON -->
-          <a href="#vton" class="sector-portal-card" data-sec="vton">
-            <div class="spc-visual">
-              <img src="assets/web/final/fashion/cobalt-car-editorial.webp" alt="Virtual Try On" loading="lazy">
-              <span class="spc-badge">01 · VTON</span>
-            </div>
-            <div class="spc-content">
-              <span class="spc-kicker">FASHION TECH</span>
-              <h3 class="spc-title">Virtual Try On</h3>
-              <p class="spc-desc">Цифровая примерка одежды и коммерческие лукбуки для брендов без студийных съёмок. 100% сохранение кроя и драпировки ткани.</p>
-              <div class="spc-chips">
-                <span>VTON 4K</span>
-                <span>Pose Retain</span>
-                <span>Lookbook</span>
-              </div>
-              <div class="spc-cta">
-                <span data-i18n="secOpen">Открыть раздел</span>
-                <span class="spc-arrow" aria-hidden="true">→</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Sector 02: FOOD -->
-          <a href="#food" class="sector-portal-card" data-sec="food">
-            <div class="spc-visual">
-              <img src="assets/web/final/food/cobalt-menu-beet-salad.webp" alt="Food Design" loading="lazy">
-              <span class="spc-badge">02 · FOOD</span>
-            </div>
-            <div class="spc-content">
-              <span class="spc-kicker">CULINARY CGI</span>
-              <h3 class="spc-title">Food Design</h3>
-              <p class="spc-desc">Сочная фуд-реклама кинематографичного уровня: левитирующие ингредиенты, брызги 1000fps, стабильный свет и ресторанные сеты меню.</p>
-              <div class="spc-chips">
-                <span>Slow-Mo</span>
-                <span>Locked Light</span>
-                <span>Menu VFX</span>
-              </div>
-              <div class="spc-cta">
-                <span data-i18n="secOpen">Открыть раздел</span>
-                <span class="spc-arrow" aria-hidden="true">→</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Sector 03: JEWELRY -->
-          <a href="#jewelry" class="sector-portal-card" data-sec="jewelry">
-            <div class="spc-visual">
-              <img src="assets/portfolio-2026/products/finals/rolex-daytona.webp" alt="Jewelry &amp; Watch" loading="lazy">
-              <span class="spc-badge">03 · WATCHES</span>
-            </div>
-            <div class="spc-content">
-              <span class="spc-kicker">HAUTE HORLOGERIE</span>
-              <h3 class="spc-title">Jewelry &amp; Watch</h3>
-              <p class="spc-desc">Абсолютная точность циферблата, безеля и стрелок, 18K золото, бриллиантовая дисперсия и макро-CGI швейцарского уровня.</p>
-              <div class="spc-chips">
-                <span>Rolex Daytona</span>
-                <span>Submicron</span>
-                <span>Caustics</span>
-              </div>
-              <div class="spc-cta">
-                <span data-i18n="secOpen">Открыть раздел</span>
-                <span class="spc-arrow" aria-hidden="true">→</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Sector 04: FURNITURE -->
-          <a href="#furniture" class="sector-portal-card" data-sec="furniture">
-            <div class="spc-visual">
-              <img src="assets/portfolio-2026/product-campaign/walnut-chair-interiors.webp" alt="Furniture &amp; Interior" loading="lazy">
-              <span class="spc-badge">04 · INTERIORS</span>
-            </div>
-            <div class="spc-content">
-              <span class="spc-kicker">TACTILE ARCHITECTURE</span>
-              <h3 class="spc-title">Furniture &amp; Interior</h3>
-              <p class="spc-desc">Скульптурная дизайнерская мебель, тактильные текстуры букле и ореха в естественном архитектурном освещении и staging интерьеров.</p>
-              <div class="spc-chips">
-                <span>8K PBR</span>
-                <span>Day→Dusk</span>
-                <span>Staging</span>
-              </div>
-              <div class="spc-cta">
-                <span data-i18n="secOpen">Открыть раздел</span>
-                <span class="spc-arrow" aria-hidden="true">→</span>
-              </div>
-            </div>
-          </a>
-        </div>
+      <div class="intro-image">
+        <img src="assets/curated/23_food_coffee_splash_motion.webp" alt="Patterned takeaway coffee cup in a dynamic commercial campaign" width="1760" height="2368" fetchpriority="high">
+        <span class="image-credit" data-en="Selected study / Food design" data-ru="Избранная работа / Еда">Selected study / Food design</span>
       </div>
     </section>
 
-    <!-- =============================================================== STATS -->
-    <section class="section section--tight">
-      <div class="page">
-        <div class="sec-head">
-          <div>
-            <p class="eyebrow reveal" data-i18n="statsEyebrow">02 / AT A GLANCE</p>
-            <h2 class="sec-title reveal reveal-d1" data-i18n-html="statsTitle">Three years of generation.</h2>
-          </div>
-          <div class="sec-lede sec-lede--top reveal reveal-d2">
-            <p data-i18n="profileBody">I build production-oriented ComfyUI systems.</p>
-          </div>
-        </div>
-        <div class="stats" id="stats"></div>
+    <section class="work wrap" id="work" aria-labelledby="workTitle">
+      <div class="section-heading">
+        <div><p class="eyebrow" data-en="Selected portfolio" data-ru="Избранные работы">Selected portfolio</p><h2 id="workTitle" data-en="Four ways of seeing." data-ru="Четыре направления.">Four ways of seeing.</h2></div>
+        <p data-en="A curated selection. Open an image to see the original reference alongside the final frame." data-ru="Отобранные кадры. Откройте работу, чтобы увидеть исходный референс рядом с результатом.">A curated selection. Open an image to see the original reference alongside the final frame.</p>
+      </div>
+      <div class="section-nav" role="navigation" aria-label="Portfolio categories">
+        <a href="#virtual-try-on" data-en="01 <span>Virtual Try On</span>" data-ru="01 <span>Примерка</span>">01 <span>Virtual Try On</span></a>
+        <a href="#food-design" data-en="02 <span>Food Design</span>" data-ru="02 <span>Фуд-дизайн</span>">02 <span>Food Design</span></a>
+        <a href="#jewelry-watch" data-en="03 <span>Jewelry &amp; Watch</span>" data-ru="03 <span>Украшения и часы</span>">03 <span>Jewelry &amp; Watch</span></a>
+        <a href="#furniture" data-en="04 <span>Furniture</span>" data-ru="04 <span>Мебель</span>">04 <span>Furniture</span></a>
+      </div>
+      <div id="gallery"></div>
+    </section>
+
+    <section class="approach" id="approach" aria-labelledby="approachTitle">
+      <div class="wrap approach-inner">
+        <p class="eyebrow" data-en="The approach" data-ru="Подход">The approach</p>
+        <h2 id="approachTitle" data-en="Keep the product.<br><em>Change the feeling.</em>" data-ru="Сохраняем продукт.<br><em>Меняем впечатление.</em>">Keep the product.<br><em>Change the feeling.</em></h2>
+        <p data-en="Every image starts with a real visual reference. I build the scene, light and composition around the details that make the object recognisable. The result should feel like a photograph made for that product." data-ru="Каждая работа начинается с визуального референса. Сцену, свет и композицию я выстраиваю вокруг деталей, по которым узнаётся сам предмет. Результат должен ощущаться как съёмка, сделанная именно для него.">Every image starts with a real visual reference. I build the scene, light and composition around the details that make the object recognisable. The result should feel like a photograph made for that product.</p>
       </div>
     </section>
 
-    <!-- ================================================================ WORK -->
-    <section class="section" id="work">
-      <div class="page">
-        <div class="sec-head">
-          <div>
-            <p class="eyebrow reveal" data-i18n="workEyebrow">03 / SELECTED WORK</p>
-            <h2 class="sec-title reveal reveal-d1" data-i18n-html="workTitle">The image is the proof.</h2>
-          </div>
-          <div class="sec-lede sec-lede--top reveal reveal-d2">
-            <p data-i18n="workLede">Independent synthetic case studies.</p>
-          </div>
-        </div>
+    <footer class="site-footer wrap" id="contact">
+      <div><p class="eyebrow" data-en="Have a product in mind?" data-ru="Есть задача для проекта?">Have a product in mind?</p><h2 data-en="Let's make it<br><em>worth looking at.</em>" data-ru="Сделаем так,<br><em>чтобы хотелось смотреть.</em>">Let's make it<br><em>worth looking at.</em></h2></div>
+      <a class="footer-email" href="mailto:ekkonwork@gmail.com">ekkonwork@gmail.com <span>↗</span></a>
+      <div class="footer-bottom"><span>© Mikhail, 2026</span><a href="#top" data-en="Back to top ↑" data-ru="Наверх ↑">Back to top ↑</a></div>
+    </footer>
+  </main>
 
-        <div class="work-grid" id="featured"></div>
-
-        <div style="margin-top:clamp(34px,6vh,64px);display:flex;justify-content:center">
-          <a class="btn btn--ghost" href="work.html" data-magnetic="0.18">
-            <span data-i18n="workAll">All case studies</span>
-            <span class="arw" aria-hidden="true">↗</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- =============================================================== PROOF -->
-    <section class="section" id="proof" style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-      <div class="page">
-        <div class="sec-head">
-          <div>
-            <p class="eyebrow reveal" data-i18n="proofEyebrow">04 / EVIDENCE</p>
-            <h2 class="sec-title reveal reveal-d1" data-i18n-html="proofTitle">Input on the left.</h2>
-          </div>
-          <div class="sec-lede sec-lede--top reveal reveal-d2">
-            <p data-i18n="proofLede">Every case is auditable at a glance.</p>
-          </div>
-        </div>
-        <div class="proof-grid" id="proofGrid"></div>
-      </div>
-    </section>
-
-    <!-- ============================================================= PROFILE -->
-    <section class="section" id="profile">
-      <div class="page">
-        <div class="profile-split">
-          <div>
-            <p class="eyebrow reveal" data-i18n="profileEyebrow">05 / THE ENGINEER</p>
-            <h2 class="sec-title reveal reveal-d1" data-i18n-html="profileTitle">Creative ambition.</h2>
-            <div class="caps" id="caps" style="margin-top:clamp(30px,5vh,50px)"></div>
-          </div>
-          <div class="reveal reveal-d2">
-            <p class="prose" style="font-size:clamp(1.02rem,1.3vw,1.22rem);color:var(--ink-soft)" data-i18n="profileBody">I build production-oriented ComfyUI systems.</p>
-            <div class="metrics-inline" id="profileFacts"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================== ENGINEERING -->
-    <section class="section" id="engineering" style="background:var(--bg-soft);border-top:1px solid var(--line)">
-      <div class="page">
-        <div class="sec-head">
-          <div>
-            <p class="eyebrow reveal" data-i18n="engineEyebrow">06 / UNDER THE HOOD</p>
-            <h2 class="sec-title reveal reveal-d1" data-i18n="engineTitle">From experiment to repeatable workflow.</h2>
-          </div>
-          <div class="sec-lede sec-lede--top reveal reveal-d2">
-            <p data-i18n="engineLede">Measured on a single dedicated RTX 5090.</p>
-          </div>
-        </div>
-        <div class="metrics" id="engineMetrics"></div>
-        <p class="metric-note" data-i18n="engineNote"></p>
-
-        <div class="lattice-panel reveal">
-          <canvas id="lattice" aria-hidden="true"></canvas>
-          <div class="lattice-caption">
-            <p class="mono" style="color:var(--muted)" data-i18n="latticeEyebrow">SYSTEM MAP</p>
-            <h3 data-i18n="latticeTitle">Every frame passes through the same graph.</h3>
-            <p data-i18n="latticeBody">Inputs are isolated, the controlled stage does the work.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================= PROCESS -->
-    <section class="section" id="process">
-      <div class="page">
-        <div class="sec-head">
-          <div>
-            <p class="eyebrow reveal" data-i18n="processEyebrow">07 / HOW WE START</p>
-            <h2 class="sec-title reveal reveal-d1" data-i18n-html="processTitle">Your inputs.</h2>
-          </div>
-        </div>
-        <div class="steps" id="steps"></div>
-      </div>
-    </section>
-
-    <!-- ============================================================= CONTACT -->
-    <section class="section cta-band" id="contact">
-      <div class="page">
-        <div class="contact-cta">
-          <div class="reveal">
-            <p class="eyebrow" data-i18n="contactEyebrow">PAID TECHNICAL TEST · RETAINER · R&amp;D PARTNER</p>
-            <h2 class="contact-title" style="margin-top:26px" data-i18n-html="contactTitle">Bring a real GenAI problem.</h2>
-          </div>
-          <div class="reveal reveal-d2">
-            <div class="contact-links">
-              <a href="mailto:ekkonwork@gmail.com">ekkonwork@gmail.com <span aria-hidden="true">↗</span></a>
-              <a href="https://t.me/Mikhail_ML_ComfyUI" target="_blank" rel="noreferrer">@Mikhail_ML_ComfyUI <span aria-hidden="true">↗</span></a>
-            </div>
-            <a class="btn" href="mailto:ekkonwork@gmail.com" style="margin-top:26px" data-magnetic="0.18">
-              <span data-i18n="contactCta">Start with a paid technical test</span>
-              <span class="arw" aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </div>
-
-  <!-- ========================================================================
-       VIEW 2: DEDICATED SECTOR PORTFOLIO VIEW (TRIGGERED BY SECTOR HASH)
-       ======================================================================== -->
-  <section id="sectorSection" style="display:none;">
-    
-    <!-- Hero Banner of Active Sector -->
-    <div class="sec-hero-banner">
-      <div id="secHeroArt" class="sec-hero-art"></div>
-      <div class="sec-hero-fade"></div>
-
-      <div class="sec-hero-wrapper">
-        <div class="sec-hero-main">
-          
-          <div class="sec-hero-nav-row">
-            <a id="secBackBtn" href="#sectors" class="btn-sec-back">
-              <span aria-hidden="true">←</span>
-              <span data-i18n="secBack">Все направления</span>
-            </a>
-            <div id="secKicker" class="sec-kicker-pill">
-              <span>●</span> COMMERCIAL FASHION TECH
-            </div>
-          </div>
-
-          <h1 id="secHeadline" class="sec-headline">VIRTUAL TRY ON</h1>
-          <h2 id="secStrapline" class="sec-strapline">Digital Fitting &amp; Commercial Fashion Lookbooks</h2>
-          <p id="secParagraph" class="sec-paragraph">
-            Фотореалистичная виртуальная примерка одежды и аксессуаров для брендов и маркетплейсов без студийных съёмок.
-          </p>
-
-          <div class="sec-hero-buttons">
-            <a id="secPrimaryBtn" href="#secFooterBanner" class="btn-sec-primary">
-              <span>Обсудить проект</span>
-              <span aria-hidden="true">→</span>
-            </a>
-            <a href="#secShowcaseGrid" class="btn-sec-outline">
-              <span>Смотреть кейсы</span>
-              <span aria-hidden="true">↓</span>
-            </a>
-            <button id="secShareBtn" class="btn-sec-share" type="button" title="Скопировать прямую ссылку на раздел для заказчика">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
-              <span data-i18n="secShareBtn">Поделиться разделом</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="sec-hero-side">
-          <div class="sec-hero-card">
-            <div class="sec-card-header">
-              <h3 id="secCardTitle" class="sec-card-title">Virtual Try On</h3>
-              <span id="secCardSub" class="sec-card-badge">01 · VTON</span>
-            </div>
-
-            <div id="secStatsQuad" class="sec-stats-quad"></div>
-            <ul id="secCapsList" class="sec-caps-list"></ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sector Showcase Grid with Real Works & Comparisons -->
-    <div id="secShowcaseGrid" class="sec-showcase">
-      <div class="sec-showcase-bar">
-        <div class="sec-showcase-title">
-          <h2>Избранные кейсы направления</h2>
-          <p>Реальные коммерческие рендеры, интерактивные сравнения до/после и анализ качества</p>
-        </div>
-      </div>
-
-      <div id="secProjectsGrid" class="sec-projects-grid"></div>
-    </div>
-
-    <!-- Sector Footer CTA -->
-    <div id="secFooterBanner" class="sec-footer-banner">
-      <div class="sec-footer-box">
-        <h3 id="secFooterTitle">Готовы запустить проект?</h3>
-        <p id="secFooterDesc">Обсудите задачу, исходники и форматы напрямую с автором.</p>
-
-        <div class="sec-contact-row">
-          <a href="https://t.me/Mikhail_ML_ComfyUI" target="_blank" rel="noreferrer" class="btn-cta-link is-tg">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-            <span>Написать в Telegram</span>
-          </a>
-          <a href="mailto:ekkonwork@gmail.com" class="btn-cta-link is-email">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-            <span>ekkonwork@gmail.com</span>
-          </a>
-        </div>
-
-        <div class="sec-other-nav">
-          <span class="sec-other-title">Другие направления портфолио:</span>
-          <div id="secOtherLinks" class="sec-other-links"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="footer">
-  <div class="page">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <span class="brand-mark">m.</span>
-        <b>MIKHAIL</b>
-        <p data-i18n="footerTag">ComfyUI / Generative AI Workflow Engineer</p>
-      </div>
-      <div class="footer-cols">
-        <div class="footer-col">
-          <b data-i18n="sectorsEyebrow">Sectors</b>
-          <a href="#vton">Virtual Try On</a>
-          <a href="#food">Food Design</a>
-          <a href="#jewelry">Jewelry &amp; Watch</a>
-          <a href="#furniture">Furniture</a>
-        </div>
-        <div class="footer-col">
-          <b data-i18n="navEngineering">Engineering</b>
-          <a href="#profile" data-i18n="profileEyebrow">The engineer</a>
-          <a href="#engineering" data-i18n="engineEyebrow">Under the hood</a>
-          <a href="work.html" data-i18n="workAll">All case studies</a>
-        </div>
-        <div class="footer-col">
-          <b data-i18n="navContact">Contact</b>
-          <a href="mailto:ekkonwork@gmail.com">ekkonwork@gmail.com</a>
-          <a href="https://t.me/Mikhail_ML_ComfyUI" target="_blank" rel="noreferrer">Telegram: @Mikhail_ML_ComfyUI</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-base">
-      <span>MIKHAIL / GENAI</span>
-      <span data-i18n="footerNote">ComfyUI / Generative AI workflow engineering · 2026</span>
-    </div>
-  </div>
-</footer>
-
-<!-- Toast Notification -->
-<div id="sectorToast">Ссылка на раздел скопирована!</div>
-
-<script src="js/data.js?v=20260914-rolex7"></script>
-<script src="js/app.js?v=20260914-rolex7"></script>
-<script src="js/sectors.js"></script>
-<script src="js/fx.js?v=20260914-rolex7"></script>
-<script src="js/lattice.js?v=20260914-rolex7"></script>
-<script src="js/home.js?v=20260914-rolex7"></script>
+  <dialog class="detail-dialog" id="detailDialog" aria-label="Project detail">
+    <button class="dialog-close" id="dialogClose" type="button" aria-label="Close">×</button>
+    <div id="dialogContent"></div>
+  </dialog>
+  <script src="js/curated.js" defer></script>
+  <script src="js/editorial.js" defer></script>
 </body>
 </html>
