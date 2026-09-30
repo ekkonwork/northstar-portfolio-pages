@@ -12,7 +12,7 @@ $template = @'
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f5f3ef">
+  <meta name="theme-color" content="#f4f4f0">
   <meta name="description" content="Selected TITLE work by Mikhail. Original product references and full-frame results.">
   <link rel="canonical" href="https://ekkonwork.github.io/northstar-portfolio-pages/FILE">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -22,7 +22,7 @@ $template = @'
 <body data-page="ID">
   <a class="skip" href="#gallery">Skip to work</a>
   <header class="site-header" id="top">
-    <a class="brand" href="index.html" aria-label="Mikhail — home">M<span class="brand-dot">.</span></a>
+    <a class="brand" href="index.html" aria-label="Mikhail — home">mikhail<span class="brand-dot">✳</span></a>
     <nav class="desktop-nav" aria-label="Portfolio sections">
       <a href="vton.html" data-en="Virtual Try On" data-ru="Примерка">Virtual Try On</a>
       <a href="food.html" data-en="Food Design" data-ru="Фуд-дизайн">Food Design</a>
@@ -53,6 +53,7 @@ $template = @'
   </dialog>
   <script src="js/curated.js" defer></script>
   <script src="js/editorial.js" defer></script>
+  <script src="js/spatial.js" defer></script>
 </body>
 </html>
 '@

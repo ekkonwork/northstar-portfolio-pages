@@ -6,8 +6,10 @@
   const dialogContent = document.getElementById('dialogContent');
   const switchButton = document.getElementById('langSwitch');
   const page = document.body.dataset.page || 'home';
-  let language = localStorage.getItem('northstar-lang') === 'ru' ? 'ru' : 'en';
+  let language = 'en';
+  try { language = localStorage.getItem('northstar-lang') === 'ru' ? 'ru' : 'en'; } catch (_) {}
   let returnFocus = null;
+  let activeItem = null;
 
   const label = (item, key) => item[key === 'note' ? (language === 'ru' ? 'noteRu' : 'noteEn') : language];
   const resultPath = id => `assets/curated/${id}.webp`;
@@ -63,7 +65,7 @@
       const caption = document.createElement('span');
       caption.className = 'sector-caption';
       const number = document.createElement('small');
-      number.textContent = `${section.number} / 04`;
+      number.textContent = section.number;
       const title = document.createElement('strong');
       title.textContent = label(section);
       const note = document.createElement('span');
@@ -86,16 +88,39 @@
       if (link.getAttribute('href') === section.page) link.setAttribute('aria-current', 'page');
     });
     const groups = portfolio.groups[section.id] || [];
+    const count = portfolio.items.filter(item => item.section === section.id).length;
+    const stats = document.createElement('div');
+    stats.className = 'category-stats';
+    const quantity = document.createElement('span');
+    quantity.textContent = `${String(count).padStart(2, '0')} ${language === 'ru' ? 'кадров' : 'selected images'}`;
+    const instruction = document.createElement('span');
+    instruction.textContent = language === 'ru' ? 'Откройте кадр, чтобы увидеть исходник' : 'Open an image to see the original reference';
+    stats.append(quantity, instruction);
+    gallery.append(stats);
+    const indexNav = document.createElement('nav');
+    indexNav.className = 'project-index';
+    indexNav.setAttribute('aria-label', language === 'ru' ? 'Серии работ' : 'Project series');
+    groups.forEach((group, index) => {
+      const link = document.createElement('a');
+      link.href = `#series-${index + 1}`;
+      link.textContent = label(group);
+      indexNav.append(link);
+    });
+    gallery.append(indexNav);
     groups.forEach((group, index) => {
       const block = document.createElement('section');
       block.className = 'project-group';
+      block.id = `series-${index + 1}`;
       const header = document.createElement('div');
       header.className = 'group-header';
       const number = document.createElement('span');
-      number.textContent = `${String(index + 1).padStart(2, '0')} / ${String(groups.length).padStart(2, '0')}`;
+      number.textContent = String(index + 1).padStart(2, '0');
       const title = document.createElement('h2');
       title.textContent = label(group);
-      header.append(number, title);
+      const groupCount = document.createElement('small');
+      groupCount.className = 'group-count';
+      groupCount.textContent = `${String(group.ids.length).padStart(2, '0')} ${language === 'ru' ? (group.ids.length === 1 ? 'кадр' : group.ids.length < 5 ? 'кадра' : 'кадров') : 'images'}`;
+      header.append(number, title, groupCount);
       const grid = document.createElement('div');
       grid.className = 'project-grid';
       group.ids.forEach(id => {
@@ -126,10 +151,12 @@
       if (!section) throw new Error(`Unknown portfolio page: ${page}`);
       renderCategory(section);
     }
+    document.dispatchEvent(new CustomEvent('portfolio:render'));
   }
 
   function openDetail(item, trigger) {
-    returnFocus = trigger;
+    activeItem = item;
+    if (trigger) returnFocus = trigger;
     const section = portfolio.sections.find(value => value.id === item.section);
     const sourceLabel = item.referenceKind === 'model'
       ? (language === 'ru' ? 'Исходная модель' : 'Original model')
@@ -157,24 +184,71 @@
       figure.append(figcaption, image);
       pair.append(figure);
     });
-    inner.append(top, pair);
+    const tools = document.createElement('div');
+    tools.className = 'detail-tools';
+    const pager = document.createElement('div');
+    pager.className = 'detail-pager';
+    const items = portfolio.groups[item.section].flatMap(group => group.ids).map(id => portfolio.items.find(value => value.id === id));
+    const index = items.indexOf(item);
+    const previous = document.createElement('button');
+    previous.type = 'button';
+    previous.textContent = '←';
+    previous.setAttribute('aria-label', language === 'ru' ? 'Предыдущий кадр' : 'Previous image');
+    previous.addEventListener('click', () => stepDetail(-1));
+    const next = document.createElement('button');
+    next.type = 'button';
+    next.textContent = '→';
+    next.setAttribute('aria-label', language === 'ru' ? 'Следующий кадр' : 'Next image');
+    next.addEventListener('click', () => stepDetail(1));
+    const counter = document.createElement('span');
+    counter.className = 'detail-counter';
+    counter.textContent = `${String(index + 1).padStart(2, '0')} / ${String(items.length).padStart(2, '0')}`;
+    pager.append(previous, counter, next);
+    const originalLink = document.createElement('a');
+    originalLink.className = 'original-link';
+    originalLink.href = resultPath(item.id);
+    originalLink.target = '_blank';
+    originalLink.rel = 'noopener';
+    originalLink.textContent = language === 'ru' ? 'Открыть изображение целиком ↗' : 'Open full image ↗';
+    tools.append(pager, originalLink);
+    inner.append(top, pair, tools);
     dialogContent.append(inner);
-    dialog.showModal();
+    if (!dialog.open) dialog.showModal();
+    dialog.scrollTop = 0;
     document.body.classList.add('dialog-open');
+  }
+
+  function stepDetail(direction) {
+    if (!activeItem) return;
+    const orderedIds = portfolio.groups[activeItem.section].flatMap(group => group.ids);
+    const index = orderedIds.indexOf(activeItem.id);
+    const id = orderedIds[(index + direction + orderedIds.length) % orderedIds.length];
+    const item = portfolio.items.find(value => value.id === id);
+    openDetail(item);
+    const counter = dialog.querySelector('.detail-counter');
+    counter.textContent = `${String(orderedIds.indexOf(id) + 1).padStart(2, '0')} / ${String(orderedIds.length).padStart(2, '0')}`;
+    dialog.querySelector(direction > 0 ? '[aria-label="Next image"], [aria-label="Следующий кадр"]' : '[aria-label="Previous image"], [aria-label="Предыдущий кадр"]').focus({ preventScroll: true });
   }
 
   switchButton.addEventListener('click', () => {
     language = language === 'en' ? 'ru' : 'en';
-    localStorage.setItem('northstar-lang', language);
+    try { localStorage.setItem('northstar-lang', language); } catch (_) {}
     if (dialog.open) dialog.close();
     render();
   });
   document.getElementById('dialogClose').addEventListener('click', () => dialog.close());
   dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
   dialog.addEventListener('close', () => {
+    activeItem = null;
     document.body.classList.remove('dialog-open');
     dialogContent.replaceChildren();
     returnFocus?.focus();
+  });
+  dialog.addEventListener('keydown', event => {
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+      event.preventDefault();
+      stepDetail(event.key === 'ArrowRight' ? 1 : -1);
+    }
   });
   render();
 })();
