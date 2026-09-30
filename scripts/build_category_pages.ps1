@@ -1,16 +1,25 @@
+$ErrorActionPreference = 'Stop'
+$root = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
+$pages = @(
+  @{ File='vton.html'; Id='virtual-try-on'; Title='Virtual Try On' },
+  @{ File='food.html'; Id='food-design'; Title='Food Design' },
+  @{ File='jewelry.html'; Id='jewelry-watch'; Title='Jewelry & Watch' },
+  @{ File='furniture.html'; Id='furniture'; Title='Furniture' }
+)
+$template = @'
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f3ef">
-  <meta name="description" content="Selected Furniture work by Mikhail. Original product references and full-frame results.">
-  <link rel="canonical" href="https://ekkonwork.github.io/northstar-portfolio-pages/furniture.html">
+  <meta name="description" content="Selected TITLE work by Mikhail. Original product references and full-frame results.">
+  <link rel="canonical" href="https://ekkonwork.github.io/northstar-portfolio-pages/FILE">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/editorial.css">
-  <title>Furniture — Mikhail</title>
+  <title>TITLE — Mikhail</title>
 </head>
-<body data-page="furniture">
+<body data-page="ID">
   <a class="skip" href="#gallery">Skip to work</a>
   <header class="site-header" id="top">
     <a class="brand" href="index.html" aria-label="Mikhail — home">M<span class="brand-dot">.</span></a>
@@ -46,3 +55,8 @@
   <script src="js/editorial.js" defer></script>
 </body>
 </html>
+'@
+foreach ($page in $pages) {
+  $content = $template.Replace('TITLE',$page.Title).Replace('FILE',$page.File).Replace('ID',$page.Id)
+  [System.IO.File]::WriteAllText((Join-Path $root $page.File),$content,[System.Text.UTF8Encoding]::new($false))
+}

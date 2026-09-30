@@ -1,11 +1,31 @@
 /* Public curation only. Technical production records remain in the private repository. */
 window.PORTFOLIO = {
   sections: [
-    { id: 'virtual-try-on', number: '01', en: 'Virtual Try On', ru: 'Виртуальная примерка', noteEn: 'Garments in a new context, with their defining details in view.', noteRu: 'Одежда в новой среде, с вниманием к её узнаваемым деталям.' },
-    { id: 'food-design', number: '02', en: 'Food Design', ru: 'Фуд-дизайн', noteEn: 'Food, drinks and the atmosphere around them.', noteRu: 'Еда, напитки и атмосфера вокруг них.' },
-    { id: 'jewelry-watch', number: '03', en: 'Jewelry & Watch', ru: 'Украшения и часы', noteEn: 'Material, shape and light at a smaller scale.', noteRu: 'Материал, форма и свет в крупном плане.' },
-    { id: 'furniture', number: '04', en: 'Furniture', ru: 'Мебель', noteEn: 'The same object, seen in spaces with different moods.', noteRu: 'Один предмет в пространствах с разным характером.' }
+    { id: 'virtual-try-on', page: 'vton.html', cover: '01_outerwear_umbrella_rain_night', number: '01', en: 'Virtual Try On', ru: 'Виртуальная примерка', noteEn: 'Garments in a new context, with their defining details in view.', noteRu: 'Одежда в новой среде, с вниманием к её узнаваемым деталям.' },
+    { id: 'food-design', page: 'food.html', cover: '23_food_coffee_splash_motion', number: '02', en: 'Food Design', ru: 'Фуд-дизайн', noteEn: 'Food, drinks and the atmosphere around them.', noteRu: 'Еда, напитки и атмосфера вокруг них.' },
+    { id: 'jewelry-watch', page: 'jewelry.html', cover: '13_jewelry_silver_ring_ice', number: '03', en: 'Jewelry & Watch', ru: 'Украшения и часы', noteEn: 'Material, shape and light at a smaller scale.', noteRu: 'Материал, форма и свет в крупном плане.' },
+    { id: 'furniture', page: 'furniture.html', cover: '11_furniture_walnut_chair_hotel_lounge', number: '04', en: 'Furniture', ru: 'Мебель', noteEn: 'The same object, seen in spaces with different moods.', noteRu: 'Один предмет в пространствах с разным характером.' }
   ],
+  groups: {
+    'virtual-try-on': [
+      { en: 'Outerwear', ru: 'Верхняя одежда', ids: ['47_outerwear_jacket_flatlay_hero40','01_outerwear_umbrella_rain_night','02_outerwear_snow_wide'] },
+      { en: 'Activewear', ru: 'Спортивная одежда', ids: ['04_bottoms_patterned_leggings_studio','17_bottoms_patterned_leggings_rooftop'] },
+      { en: 'Intimates', ru: 'Бельё', ids: ['51_intimates_plum_flatlay_linen40','06_intimates_plum_window'] }
+    ],
+    'food-design': [
+      { en: 'Coffee', ru: 'Кофе', ids: ['08_food_takeaway_coffee_city','23_food_coffee_splash_motion'] },
+      { en: 'At the café', ru: 'В кафе', ids: ['21_food_walnut_cafe_salmon','10_food_walnut_cafe_pappardelle','09_food_walnut_cafe_tart'] },
+      { en: 'At the restaurant', ru: 'В ресторане', ids: ['22_food_lemon_tart_restaurant'] }
+    ],
+    'jewelry-watch': [
+      { en: 'Silver ring', ru: 'Серебряное кольцо', ids: ['13_jewelry_silver_ring_ice'] },
+      { en: 'Blue dial watch', ru: 'Часы с синим циферблатом', ids: ['63_watches_blue_dial_packshot_full40','43_watches_blue_dial_ultramacro40','15_watches_blue_dial_architecture','27_watches_blue_dial_car_interior'] }
+    ],
+    furniture: [
+      { en: 'The chair', ru: 'Кресло', ids: ['12_furniture_walnut_chair_studio','53_furniture_chair_weave_macro40'] },
+      { en: 'In a space', ru: 'В интерьере', ids: ['11_furniture_walnut_chair_hotel_lounge','24_furniture_walnut_chair_industrial_loft','40_furniture_walnut_chair_japandi_room40'] }
+    ]
+  },
   items: [
     { id: '01_outerwear_umbrella_rain_night', section: 'virtual-try-on', en: 'After the rain', ru: 'После дождя', noteEn: 'Outerwear / city night', noteRu: 'Верхняя одежда / вечерний город', source: 'jacket_phone_source.png' },
     { id: '02_outerwear_snow_wide', section: 'virtual-try-on', en: 'Winter crossing', ru: 'Зимний переход', noteEn: 'Outerwear / snow', noteRu: 'Верхняя одежда / снег', source: 'jacket_phone_source.png' },
