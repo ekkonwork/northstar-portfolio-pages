@@ -16,9 +16,6 @@ $sourceNames = @([regex]::Matches($curation, "source: '([^']+)'") |
   ForEach-Object { $_.Groups[1].Value } | Sort-Object -Unique)
 $additional = @{
   '65_food_takeaway_coffee_city_landscape' = 'portfolio_ready/Food Design/Takeaway Coffee/02_City_Landscape.png'
-  '66_food_walnut_cafe_pappardelle_landscape' = 'portfolio_ready/Food Design/One Table Landscape/01_Pappardelle.png'
-  '67_food_walnut_cafe_salmon_landscape' = 'portfolio_ready/Food Design/One Table Landscape/02_Salmon_Toast.png'
-  '68_food_walnut_cafe_tart_landscape' = 'portfolio_ready/Food Design/One Table Landscape/03_Lemon_Tart.png'
   '69_food_pappardelle_restaurant' = 'portfolio_ready/Food Design/Restaurant/01_Pappardelle.png'
 }
 
