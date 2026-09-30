@@ -4,7 +4,7 @@ A static, bilingual portfolio with four separate directions: Virtual Try On, Foo
 
 ## Visual design
 
-The interface combines a warm light background, graphite typography and an electric blue accent. The home scene contains two photographic prints in CSS perspective and a reflective sculpture rendered directly with WebGL. The canvas redraws on resize and pointer input, stops when hidden, and is capped at 540 pixels on its longest side. No 3D library, downloaded model or continuous render loop is required. The photographs and links remain usable without WebGL.
+The interface combines a warm light background, graphite typography and an electric blue accent. The home scene contains two photographic prints in CSS perspective and a reflective sculpture rendered directly with WebGL. Photo planes and sculpture share one eased pointer pose: entry ramps in over 240 ms, exit returns gently to neutral, and the animation stops when settled or hidden. Idle time never becomes a large first-frame timestep. Individual prints retain their stacking order on hover. The canvas is capped at 540 pixels on its longest side. No 3D library, downloaded model or perpetual render loop is required. The photographs and links remain usable without WebGL.
 
 Cross-document navigation uses progressive [CSS View Transitions](https://developer.chrome.com/docs/web-platform/view-transitions/cross-document). Browsers without support use ordinary navigation. Reduced motion disables the transitions, scroll animation, reveal motion and pointer parallax. Category pages include series navigation, image counts and a reference/result viewer with previous/next controls, arrow keys, Escape and focus restoration.
 
