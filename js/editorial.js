@@ -131,8 +131,8 @@
   function openDetail(item, trigger) {
     returnFocus = trigger;
     const section = portfolio.sections.find(value => value.id === item.section);
-    const sourceLabel = item.referenceKind === 'scene'
-      ? (language === 'ru' ? 'Референс сцены' : 'Scene reference')
+    const sourceLabel = item.referenceKind === 'model'
+      ? (language === 'ru' ? 'Исходная модель' : 'Original model')
       : (language === 'ru' ? 'Исходный товар' : 'Original product');
     const resultLabel = language === 'ru' ? 'Итоговый кадр' : 'Final image';
     dialogContent.replaceChildren();
@@ -158,14 +158,6 @@
       pair.append(figure);
     });
     inner.append(top, pair);
-    if (item.referenceKind === 'scene') {
-      const context = document.createElement('p');
-      context.className = 'detail-note';
-      context.textContent = language === 'ru'
-        ? 'Референс задаёт пространство и свет; исходное фото товара для этой серии не представлено.'
-        : 'The reference guides the setting and light; no original product photo is shown for this series.';
-      inner.append(context);
-    }
     dialogContent.append(inner);
     dialog.showModal();
     document.body.classList.add('dialog-open');
