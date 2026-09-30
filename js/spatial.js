@@ -48,31 +48,74 @@
   let renderScene = () => {};
   let frame = 0;
   let pointer = [0, 0];
+  let target = [0, 0];
+  let entryOrigin = [0, 0];
+  let entryStarted = 0;
+  let lastFrameTime = 0;
+  let pointerInside = false;
   let sceneVisible = true;
+
+  function animateScene(now) {
+    frame = 0;
+    if (!sceneVisible || document.hidden) { lastFrameTime = 0; return; }
+    // Restart with a small timestep after idle; elapsed idle time must never
+    // become a single large camera movement on the first pointer event.
+    const elapsed = lastFrameTime ? Math.min(32, now - lastFrameTime) : 16.67;
+    lastFrameTime = now;
+    const entry = pointerInside ? Math.min(1, Math.max(0, (now - entryStarted) / 240)) : 1;
+    const entryEase = entry * entry * (3 - 2 * entry);
+    const desired = pointerInside
+      ? target.map((value, axis) => entryOrigin[axis] + (value - entryOrigin[axis]) * entryEase)
+      : [0, 0];
+    const follow = 1 - Math.exp(-elapsed / 150);
+    pointer = reduced.matches ? [0, 0]
+      : pointer.map((value, axis) => value + (desired[axis] - value) * follow);
+    const moving = !reduced.matches &&
+      (entry < 1 || pointer.some((value, axis) => Math.abs(value - target[axis]) > .0004));
+    if (!moving) pointer = reduced.matches ? [0, 0] : [...target];
+    // The photo planes and shader use the same eased pose in the same frame.
+    scene.style.setProperty('--scene-x', pointer[0].toFixed(4));
+    scene.style.setProperty('--scene-y', pointer[1].toFixed(4));
+    renderScene();
+    if (moving) frame = requestAnimationFrame(animateScene);
+    else lastFrameTime = 0;
+  }
+
   function requestRender() {
     if (frame || !sceneVisible || document.hidden) return;
-    frame = requestAnimationFrame(() => { frame = 0; renderScene(); });
+    lastFrameTime = 0;
+    frame = requestAnimationFrame(animateScene);
   }
   function resetPointer() {
-    pointer = [0, 0];
-    scene.style.setProperty('--scene-x', 0);
-    scene.style.setProperty('--scene-y', 0);
+    pointerInside = false;
+    target = [0, 0];
     requestRender();
   }
-  scene.addEventListener('pointermove', event => {
-    if (reduced.matches || !finePointer.matches) return;
+  function updateTarget(event) {
+    if (reduced.matches || !finePointer.matches || event.pointerType === 'touch') return;
     const rect = scene.getBoundingClientRect();
-    pointer = [(event.clientX - rect.left) / rect.width * 2 - 1, (event.clientY - rect.top) / rect.height * 2 - 1];
-    scene.style.setProperty('--scene-x', pointer[0].toFixed(3));
-    scene.style.setProperty('--scene-y', pointer[1].toFixed(3));
+    target = [
+      Math.max(-1, Math.min(1, (event.clientX - rect.left) / rect.width * 2 - 1)),
+      Math.max(-1, Math.min(1, (event.clientY - rect.top) / rect.height * 2 - 1))
+    ];
+    if (!pointerInside) {
+      pointerInside = true;
+      entryOrigin = [...pointer];
+      entryStarted = performance.now();
+    }
     requestRender();
-  }, { passive: true });
+  }
+  scene.addEventListener('pointerenter', updateTarget, { passive: true });
+  scene.addEventListener('pointermove', updateTarget, { passive: true });
   scene.addEventListener('pointerleave', resetPointer);
+  scene.addEventListener('pointercancel', resetPointer);
   reduced.addEventListener('change', resetPointer);
+  finePointer.addEventListener('change', resetPointer);
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(entries => {
       sceneVisible = entries[0].isIntersecting;
       if (sceneVisible) requestRender();
+      else { cancelAnimationFrame(frame); frame = 0; lastFrameTime = 0; resetPointer(); }
     }).observe(scene);
   }
 
@@ -151,7 +194,11 @@
   if ('ResizeObserver' in window) new ResizeObserver(resize).observe(scene);
   else window.addEventListener('resize', resize, { passive: true });
   canvas.addEventListener('webglcontextlost', event => { event.preventDefault(); canvas.hidden = true; });
-  document.addEventListener('visibilitychange', () => { if (!document.hidden) requestRender(); });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      cancelAnimationFrame(frame); frame = 0; lastFrameTime = 0; resetPointer();
+    } else requestRender();
+  });
   scene.dataset.renderer = 'webgl';
   resize();
 })();
