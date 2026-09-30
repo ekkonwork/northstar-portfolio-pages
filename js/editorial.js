@@ -5,12 +5,112 @@
   const dialog = document.getElementById('detailDialog');
   const dialogContent = document.getElementById('dialogContent');
   const switchButton = document.getElementById('langSwitch');
+  const page = document.body.dataset.page || 'home';
   let language = localStorage.getItem('northstar-lang') === 'ru' ? 'ru' : 'en';
   let returnFocus = null;
 
   const label = (item, key) => item[key === 'note' ? (language === 'ru' ? 'noteRu' : 'noteEn') : language];
   const resultPath = id => `assets/curated/${id}.webp`;
   const sourcePath = name => `assets/curated/references/${name}`;
+
+  function createCard(item) {
+    const card = document.createElement('article');
+    card.className = 'work-card';
+    const button = document.createElement('button');
+    button.className = 'card-button';
+    button.type = 'button';
+    button.setAttribute('aria-label', `${label(item)} — ${language === 'ru' ? 'смотреть референс и результат' : 'view reference and result'}`);
+    const media = document.createElement('span');
+    media.className = 'card-media';
+    const image = document.createElement('img');
+    image.src = resultPath(item.id);
+    image.alt = label(item);
+    image.loading = 'lazy';
+    image.decoding = 'async';
+    media.append(image);
+    const caption = document.createElement('span');
+    caption.className = 'card-caption';
+    const words = document.createElement('span');
+    const title = document.createElement('strong');
+    title.textContent = label(item);
+    const note = document.createElement('small');
+    note.textContent = label(item, 'note');
+    words.append(title, note);
+    const arrow = document.createElement('span');
+    arrow.className = 'arrow';
+    arrow.setAttribute('aria-hidden', 'true');
+    arrow.textContent = '↗';
+    caption.append(words, arrow);
+    button.append(media, caption);
+    button.addEventListener('click', () => openDetail(item, button));
+    card.append(button);
+    return card;
+  }
+
+  function renderHome() {
+    gallery.className = 'sector-grid';
+    portfolio.sections.forEach(section => {
+      const link = document.createElement('a');
+      link.className = 'sector-card';
+      link.href = section.page;
+      const media = document.createElement('span');
+      media.className = 'sector-media';
+      const image = document.createElement('img');
+      image.src = resultPath(section.cover);
+      image.alt = label(section);
+      image.loading = 'lazy';
+      media.append(image);
+      const caption = document.createElement('span');
+      caption.className = 'sector-caption';
+      const number = document.createElement('small');
+      number.textContent = `${section.number} / 04`;
+      const title = document.createElement('strong');
+      title.textContent = label(section);
+      const note = document.createElement('span');
+      note.textContent = label(section, 'note');
+      const arrow = document.createElement('span');
+      arrow.className = 'sector-arrow';
+      arrow.textContent = '↗';
+      caption.append(number, title, note, arrow);
+      link.append(media, caption);
+      gallery.append(link);
+    });
+  }
+
+  function renderCategory(section) {
+    document.getElementById('categoryNumber').textContent = `${section.number} / 04`;
+    document.getElementById('categoryTitle').textContent = label(section);
+    document.getElementById('categoryNote').textContent = label(section, 'note');
+    document.title = `${label(section)} — Mikhail`;
+    document.querySelectorAll('.desktop-nav a, .mobile-sections a').forEach(link => {
+      if (link.getAttribute('href') === section.page) link.setAttribute('aria-current', 'page');
+    });
+    const groups = portfolio.groups[section.id] || [];
+    groups.forEach((group, index) => {
+      const block = document.createElement('section');
+      block.className = 'project-group';
+      const header = document.createElement('div');
+      header.className = 'group-header';
+      const number = document.createElement('span');
+      number.textContent = `${String(index + 1).padStart(2, '0')} / ${String(groups.length).padStart(2, '0')}`;
+      const title = document.createElement('h2');
+      title.textContent = label(group);
+      header.append(number, title);
+      const grid = document.createElement('div');
+      grid.className = 'project-grid';
+      group.ids.forEach(id => {
+        const item = portfolio.items.find(value => value.id === id);
+        if (!item) throw new Error(`Missing portfolio item: ${id}`);
+        grid.append(createCard(item));
+      });
+      block.append(header, grid);
+      gallery.append(block);
+    });
+    const next = portfolio.sections[(portfolio.sections.indexOf(section) + 1) % portfolio.sections.length];
+    const nextLink = document.getElementById('nextSection');
+    nextLink.href = next.page;
+    nextLink.textContent = `${language === 'ru' ? 'Следующий раздел' : 'Next direction'}: ${label(next)} ↗`;
+  }
 
   function render() {
     document.documentElement.lang = language;
@@ -20,55 +120,12 @@
     switchButton.textContent = language === 'ru' ? 'EN' : 'RU';
     switchButton.setAttribute('aria-label', language === 'ru' ? 'Switch to English' : 'Переключить на русский');
     gallery.replaceChildren();
-
-    portfolio.sections.forEach(section => {
-      const block = document.createElement('section');
-      block.className = 'portfolio-section';
-      block.id = section.id;
-      block.setAttribute('aria-labelledby', `${section.id}-heading`);
-      const header = document.createElement('div');
-      header.className = 'portfolio-section-head';
-      header.innerHTML = `<span class="number">${section.number} / 04</span><h3 id="${section.id}-heading">${label(section)}</h3><p>${label(section, 'note')}</p>`;
-      block.append(header);
-      const grid = document.createElement('div');
-      grid.className = 'grid';
-
-      portfolio.items.filter(item => item.section === section.id).forEach((item, index) => {
-        const card = document.createElement('article');
-        card.className = `work-card ${index === 0 ? 'feature' : index === 1 ? 'side' : index === 2 || index === 3 ? 'wide' : ''}`;
-        const button = document.createElement('button');
-        button.className = 'card-button';
-        button.type = 'button';
-        button.setAttribute('aria-label', `${label(item)} — ${language === 'ru' ? 'смотреть референс и результат' : 'view reference and result'}`);
-        const media = document.createElement('span');
-        media.className = 'card-media';
-        const picture = document.createElement('img');
-        picture.src = resultPath(item.id);
-        picture.alt = label(item);
-        picture.loading = 'lazy';
-        picture.decoding = 'async';
-        media.append(picture);
-        const caption = document.createElement('span');
-        caption.className = 'card-caption';
-        const words = document.createElement('span');
-        const title = document.createElement('strong');
-        title.textContent = label(item);
-        const note = document.createElement('small');
-        note.textContent = label(item, 'note');
-        words.append(title, note);
-        const arrow = document.createElement('span');
-        arrow.className = 'arrow';
-        arrow.setAttribute('aria-hidden', 'true');
-        arrow.textContent = '↗';
-        caption.append(words, arrow);
-        button.append(media, caption);
-        button.addEventListener('click', () => openDetail(item, button));
-        card.append(button);
-        grid.append(card);
-      });
-      block.append(grid);
-      gallery.append(block);
-    });
+    if (page === 'home') renderHome();
+    else {
+      const section = portfolio.sections.find(value => value.id === page);
+      if (!section) throw new Error(`Unknown portfolio page: ${page}`);
+      renderCategory(section);
+    }
   }
 
   function openDetail(item, trigger) {
@@ -76,9 +133,6 @@
     const section = portfolio.sections.find(value => value.id === item.section);
     const sourceLabel = language === 'ru' ? 'Исходный референс' : 'Original reference';
     const resultLabel = language === 'ru' ? 'Итоговый кадр' : 'Final image';
-    const note = language === 'ru'
-      ? 'Исходный снимок показывает предмет или блюдо, вокруг которого создан итоговый кадр.'
-      : 'The original photo shows the object or dish used as the starting reference for the final image.';
     dialogContent.replaceChildren();
     const inner = document.createElement('div');
     inner.className = 'detail-inner';
@@ -95,16 +149,13 @@
       const figure = document.createElement('figure');
       const figcaption = document.createElement('figcaption');
       figcaption.textContent = caption;
-      const img = document.createElement('img');
-      img.src = path;
-      img.alt = `${caption}: ${label(item)}`;
-      figure.append(figcaption, img);
+      const image = document.createElement('img');
+      image.src = path;
+      image.alt = `${caption}: ${label(item)}`;
+      figure.append(figcaption, image);
       pair.append(figure);
     });
-    const description = document.createElement('p');
-    description.className = 'detail-note';
-    description.textContent = note;
-    inner.append(top, pair, description);
+    inner.append(top, pair);
     dialogContent.append(inner);
     dialog.showModal();
     document.body.classList.add('dialog-open');

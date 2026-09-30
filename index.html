@@ -16,20 +16,27 @@
   <link rel="stylesheet" href="css/editorial.css">
   <title>Mikhail — AI image creator</title>
 </head>
-<body>
+<body data-page="home">
   <a class="skip" href="#work">Skip to work</a>
   <header class="site-header" id="top">
-    <a class="brand" href="#top" aria-label="Mikhail — home">M<span class="brand-dot">.</span></a>
+    <a class="brand" href="index.html" aria-label="Mikhail — home">M<span class="brand-dot">.</span></a>
     <nav class="desktop-nav" aria-label="Main navigation">
-      <a href="#work" data-en="Work" data-ru="Работы">Work</a>
-      <a href="#approach" data-en="Approach" data-ru="Подход">Approach</a>
-      <a href="#contact" data-en="Contact" data-ru="Контакт">Contact</a>
+      <a href="vton.html" data-en="Virtual Try On" data-ru="Примерка">Virtual Try On</a>
+      <a href="food.html" data-en="Food Design" data-ru="Фуд-дизайн">Food Design</a>
+      <a href="jewelry.html" data-en="Jewelry & Watch" data-ru="Украшения и часы">Jewelry &amp; Watch</a>
+      <a href="furniture.html" data-en="Furniture" data-ru="Мебель">Furniture</a>
     </nav>
     <div class="header-right">
       <button class="lang-switch" id="langSwitch" type="button" aria-label="Switch language">RU</button>
       <a class="header-contact" href="mailto:ekkonwork@gmail.com" data-en="Let's talk ↗" data-ru="Обсудим ↗">Let's talk ↗</a>
     </div>
   </header>
+  <nav class="mobile-sections" aria-label="Portfolio sections">
+    <a href="vton.html" data-en="Try On" data-ru="Примерка">Try On</a>
+    <a href="food.html" data-en="Food" data-ru="Еда">Food</a>
+    <a href="jewelry.html" data-en="Jewelry &amp; Watch" data-ru="Украшения и часы">Jewelry &amp; Watch</a>
+    <a href="furniture.html" data-en="Furniture" data-ru="Мебель">Furniture</a>
+  </nav>
 
   <main>
     <section class="intro wrap" aria-labelledby="introTitle">
@@ -48,14 +55,14 @@
     <section class="work wrap" id="work" aria-labelledby="workTitle">
       <div class="section-heading">
         <div><p class="eyebrow" data-en="Selected portfolio" data-ru="Избранные работы">Selected portfolio</p><h2 id="workTitle" data-en="Four ways of seeing." data-ru="Четыре направления.">Four ways of seeing.</h2></div>
-        <p data-en="A curated selection. Open an image to see the original reference alongside the final frame." data-ru="Отобранные кадры. Откройте работу, чтобы увидеть исходный референс рядом с результатом.">A curated selection. Open an image to see the original reference alongside the final frame.</p>
+        <p data-en="Choose a direction. Each has its own projects, references and full-frame results." data-ru="Выберите направление. Внутри — серии, исходники и кадры целиком.">Choose a direction. Each has its own projects, references and full-frame results.</p>
       </div>
-      <div class="section-nav" role="navigation" aria-label="Portfolio categories">
-        <a href="#virtual-try-on" data-en="01 <span>Virtual Try On</span>" data-ru="01 <span>Примерка</span>">01 <span>Virtual Try On</span></a>
-        <a href="#food-design" data-en="02 <span>Food Design</span>" data-ru="02 <span>Фуд-дизайн</span>">02 <span>Food Design</span></a>
-        <a href="#jewelry-watch" data-en="03 <span>Jewelry &amp; Watch</span>" data-ru="03 <span>Украшения и часы</span>">03 <span>Jewelry &amp; Watch</span></a>
-        <a href="#furniture" data-en="04 <span>Furniture</span>" data-ru="04 <span>Мебель</span>">04 <span>Furniture</span></a>
-      </div>
+      <nav class="section-nav" aria-label="Portfolio categories">
+        <a href="vton.html" data-en="01 <span>Virtual Try On</span>" data-ru="01 <span>Примерка</span>">01 <span>Virtual Try On</span></a>
+        <a href="food.html" data-en="02 <span>Food Design</span>" data-ru="02 <span>Фуд-дизайн</span>">02 <span>Food Design</span></a>
+        <a href="jewelry.html" data-en="03 <span>Jewelry &amp; Watch</span>" data-ru="03 <span>Украшения и часы</span>">03 <span>Jewelry &amp; Watch</span></a>
+        <a href="furniture.html" data-en="04 <span>Furniture</span>" data-ru="04 <span>Мебель</span>">04 <span>Furniture</span></a>
+      </nav>
       <div id="gallery"></div>
     </section>
 
