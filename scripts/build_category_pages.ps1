@@ -1,10 +1,10 @@
 $ErrorActionPreference = 'Stop'
 $root = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
 $pages = @(
-  @{ File='vton.html'; Id='virtual-try-on'; Title='Virtual Try On' },
-  @{ File='food.html'; Id='food-design'; Title='Food Design' },
-  @{ File='jewelry.html'; Id='jewelry-watch'; Title='Jewelry & Watch' },
-  @{ File='furniture.html'; Id='furniture'; Title='Furniture' }
+  @{ File='vton.html'; Id='virtual-try-on'; Title='Virtual Try On'; Cover='01_outerwear_umbrella_rain_night' },
+  @{ File='food.html'; Id='food-design'; Title='Food Design'; Cover='23_food_coffee_splash_motion' },
+  @{ File='jewelry.html'; Id='jewelry-watch'; Title='Jewelry & Watch'; Cover='62_jewelry_ring_linen_fold40' },
+  @{ File='furniture.html'; Id='furniture'; Title='Furniture'; Cover='11_furniture_walnut_chair_hotel_lounge' }
 )
 $template = @'
 <!doctype html>
@@ -12,11 +12,18 @@ $template = @'
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f4f4f0">
+  <meta name="theme-color" content="#f1f0eb">
   <meta name="description" content="Selected TITLE work by Mikhail. Original product references and full-frame results.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="TITLE — Mikhail">
+  <meta property="og:description" content="Selected commercial imagery. Explore the original reference and the world created around it.">
+  <meta property="og:image" content="https://ekkonwork.github.io/northstar-portfolio-pages/assets/curated/COVER.webp">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://ekkonwork.github.io/northstar-portfolio-pages/FILE">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/editorial.css">
+  <link rel="icon" href="favicon.svg?v=exhibition-6" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/editorial.css?v=exhibition-6">
   <title>TITLE — Mikhail</title>
 </head>
 <body data-page="ID">
@@ -51,13 +58,15 @@ $template = @'
     <button class="dialog-close" id="dialogClose" type="button" aria-label="Close">×</button>
     <div id="dialogContent"></div>
   </dialog>
-  <script src="js/curated.js" defer></script>
-  <script src="js/editorial.js" defer></script>
-  <script src="js/spatial.js" defer></script>
+  <script src="js/curated.js?v=exhibition-6" defer></script>
+  <script src="js/image-sizes.js?v=exhibition-6" defer></script>
+  <script src="js/editorial.js?v=exhibition-6" defer></script>
+  <script src="js/spatial.js?v=exhibition-6" defer></script>
 </body>
 </html>
 '@
 foreach ($page in $pages) {
-  $content = $template.Replace('TITLE',$page.Title).Replace('FILE',$page.File).Replace('ID',$page.Id)
+  $titleHtml = [System.Net.WebUtility]::HtmlEncode($page.Title)
+  $content = $template.Replace('TITLE',$titleHtml).Replace('FILE',$page.File).Replace('ID',$page.Id).Replace('COVER',$page.Cover)
   [System.IO.File]::WriteAllText((Join-Path $root $page.File),$content,[System.Text.UTF8Encoding]::new($false))
 }

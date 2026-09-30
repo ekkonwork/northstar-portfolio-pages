@@ -19,8 +19,22 @@
   updateProgress();
 
   let observer;
+  let seriesObserver;
   function revealWorks() {
     observer?.disconnect();
+    seriesObserver?.disconnect();
+    const groups = [...document.querySelectorAll('.project-group')];
+    if ('IntersectionObserver' in window && groups.length) {
+      seriesObserver = new IntersectionObserver(entries => {
+        const visible = entries.filter(entry => entry.isIntersecting).sort((a,b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+        if (!visible) return;
+        document.querySelectorAll('.project-index a').forEach(link => {
+          if (link.hash === `#${visible.target.id}`) link.setAttribute('aria-current','location');
+          else link.removeAttribute('aria-current');
+        });
+      }, { rootMargin: '-145px 0px -50% 0px' });
+      groups.forEach(group => seriesObserver.observe(group));
+    }
     if (reduced.matches || !('IntersectionObserver' in window)) return;
     observer = new IntersectionObserver(entries => {
       for (const entry of entries) {
@@ -128,18 +142,18 @@
     uniform vec2 pointer;
     mat2 turn(float a){float s=sin(a),c=cos(a);return mat2(c,-s,s,c);}
     float shape(vec3 p){
-      vec3 ring=p-vec3(.70,.88,-.05);
+      vec3 ring=p-vec3(-.76,.77,-.15);
       ring.yz=turn(.69+pointer.y*.1)*ring.yz;
       ring.xz=turn(-.43+pointer.x*.13)*ring.xz;
       float torus=length(vec2(length(ring.xy)-.49,ring.z))-.145;
-      float ball=length(p-vec3(.75,-.8,.05))-.22;
+      float ball=length(p-vec3(.70,-.86,.05))-.17;
       return min(torus,ball);
     }
     vec3 normalAt(vec3 p){vec2 e=vec2(.001,0);return normalize(vec3(shape(p+e.xyy)-shape(p-e.xyy),shape(p+e.yxy)-shape(p-e.yxy),shape(p+e.yyx)-shape(p-e.yyx)));}
     vec3 environment(vec3 r){
-      vec3 color=mix(vec3(.23,.30,.19),vec3(.90,.94,.86),smoothstep(-.65,.9,r.y));
+      vec3 color=mix(vec3(.28,.32,.30),vec3(.94,.95,.90),smoothstep(-.65,.9,r.y));
       color+=vec3(.9,.95,1.)*pow(max(0.,dot(r,normalize(vec3(-1.,1.3,1.)))),40.)*1.5;
-      color+=vec3(.75,.83,.97)*pow(max(0.,dot(r,normalize(vec3(.8,.15,1.)))),18.)*.85;
+      color+=vec3(.95,.76,.53)*pow(max(0.,dot(r,normalize(vec3(.8,.15,1.)))),18.)*.85;
       color-=vec3(.26)*pow(max(0.,dot(r,normalize(vec3(-.4,.1,-1.)))),6.);
       return color;
     }
@@ -154,7 +168,7 @@
       vec3 reflected=environment(reflect(rd,n));
       float diffuse=max(.0,dot(n,normalize(vec3(-.7,1.,1.2))));
       float fresnel=pow(1.-max(0.,dot(n,-rd)),4.);
-      vec3 color=reflected*.8+vec3(.08,.11,.045)*diffuse+vec3(.16)*fresnel;
+      vec3 color=reflected*.8+vec3(.08,.09,.065)*diffuse+vec3(.16)*fresnel;
       gl_FragColor=vec4(pow(max(color,vec3(0.)),vec3(.91)),1.);
     }`;
   function compile(type, source) {
