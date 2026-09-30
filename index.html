@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f4f4f0">
+  <meta name="theme-color" content="#f1f0eb">
   <meta name="description" content="Mikhail creates considered commercial imagery for fashion, food, jewelry, watches and interiors. Explore selected images alongside their original product references.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Mikhail — AI image creator">
@@ -11,9 +11,11 @@
   <meta property="og:image" content="https://ekkonwork.github.io/northstar-portfolio-pages/assets/curated/23_food_coffee_splash_motion.webp">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://ekkonwork.github.io/northstar-portfolio-pages/">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.svg?v=exhibition-6" type="image/svg+xml">
   <link rel="preload" as="image" href="assets/curated/23_food_coffee_splash_motion.webp" type="image/webp">
-  <link rel="stylesheet" href="css/editorial.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/editorial.css?v=exhibition-6">
   <title>Mikhail — AI image creator</title>
 </head>
 <body data-page="home">
@@ -41,72 +43,69 @@
   <main>
     <section class="intro wrap" aria-labelledby="introTitle">
       <div class="intro-copy">
-        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span><span data-en="Independent image creator" data-ru="Независимый AI-креатор">Independent image creator</span></p>
-        <h1 id="introTitle" data-en="Your product.<br><em>A new world.</em>" data-ru="Ваш продукт.<br><em>Новый мир.</em>">Your product.<br><em>A new world.</em></h1>
-        <p class="intro-description" data-en="I turn everyday references into imagery with atmosphere, intention and a point of view." data-ru="Превращаю простые референсы в коммерческие кадры с атмосферой, идеей и характером.">I turn everyday references into imagery with atmosphere, intention and a point of view.</p>
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span><span data-en="Mikhail / Independent AI image creator" data-ru="Михаил / Независимый AI-креатор">Mikhail / Independent AI image creator</span></p>
+        <h1 id="introTitle" data-en="Seen<br><em>differently.</em>" data-ru="Привычное.<br><em>По-новому.</em>">Seen<br><em>differently.</em></h1>
+        <p class="intro-description" data-en="A familiar object. An unexpected world.<br>Commercial imagery for brands with a point of view." data-ru="Знакомый предмет. Неожиданный мир.<br>Коммерческие кадры для брендов с характером.">A familiar object. An unexpected world.<br>Commercial imagery for brands with a point of view.</p>
         <a class="primary-link" href="#work"><span data-en="Explore the work" data-ru="Смотреть работы">Explore the work</span><span class="round-arrow" aria-hidden="true">↗</span></a>
-        <div class="hero-meta"><span data-en="Art direction &amp; AI imagery" data-ru="Арт-дирекшн и AI-фотография">Art direction &amp; AI imagery</span><span>2026 / <span data-en="Selected works" data-ru="Избранное">Selected works</span></span></div>
+        <div class="hero-meta"><span data-en="Art direction · Product · Atmosphere" data-ru="Идея · Продукт · Атмосфера">Art direction · Product · Atmosphere</span><span data-en="Selected work / 2026" data-ru="Избранное / 2026">Selected work / 2026</span></div>
       </div>
-      <div class="spatial-scene" id="spatialScene" aria-label="Selected commercial images in a spatial gallery">
-        <div class="scene-topline"><span data-en="A change of perspective" data-ru="Новый взгляд">A change of perspective</span><span aria-hidden="true">↗</span></div>
+      <div class="spatial-scene" id="spatialScene" data-world="food-design" role="tabpanel" tabindex="0" aria-labelledby="world-tab-1">
+        <div class="scene-topline"><span id="sceneCategory">02 / Food Design</span><span data-en="Visual study / 2026" data-ru="Визуальная серия / 2026">Visual study / 2026</span></div>
+        <div class="scene-word" id="sceneWord" aria-hidden="true">FOOD</div>
         <canvas id="sculptureCanvas" class="sculpture-canvas" aria-hidden="true"></canvas>
         <div class="scene-grid" aria-hidden="true"></div>
         <div class="scene-depth">
-          <a class="scene-print scene-print-main" href="food.html" aria-label="Explore Food Design">
-            <img src="assets/curated/23_food_coffee_splash_motion.webp" alt="Patterned takeaway coffee cup in a dynamic commercial campaign" width="1760" height="2368" fetchpriority="high">
-            <span><i>02</i><span data-en="Food Design" data-ru="Фуд-дизайн">Food Design</span> <b>↗</b></span>
+          <a class="scene-print scene-print-main" id="sceneResultLink" href="food.html" aria-label="Explore Food Design">
+            <img id="sceneResult" src="assets/curated/23_food_coffee_splash_motion.webp" alt="Coffee in motion" width="1760" height="2368" fetchpriority="high">
+            <span><i id="sceneNumber">02</i><span id="sceneResultTitle">Coffee in motion</span> <b>↗</b></span>
           </a>
-          <a class="scene-print scene-print-back" href="vton.html" aria-label="Explore Virtual Try On">
-            <img src="assets/curated/02_outerwear_snow_wide.webp" alt="Outerwear campaign on a snowy bridge" width="2720" height="1536" decoding="async">
-            <span><i>01</i><span data-en="Virtual Try On" data-ru="Примерка">Virtual Try On</span> <b>↗</b></span>
+          <a class="scene-print scene-print-back" id="sceneSourceLink" href="food.html" aria-label="Explore the original reference and final images">
+            <img id="sceneSource" src="assets/curated/reference-previews/takeaway_coffee_pattern_phone_source.webp" alt="Original product reference" width="900" height="1200" decoding="async">
+            <span data-en="The reference" data-ru="Исходник">The reference</span>
           </a>
         </div>
-        <div class="scene-bottomline"><span>01—04 / <span data-en="Visual worlds" data-ru="Визуальные миры">Visual worlds</span></span><span class="scene-pointer-hint" data-en="Move to explore" data-ru="Двигайте курсор">Move to explore</span></div>
+        <div class="scene-bottomline"><a id="sceneExplore" href="food.html"><span data-en="Enter this world" data-ru="Открыть серию">Enter this world</span> ↗</a><span class="scene-pointer-hint" data-en="Move to change perspective" data-ru="Двигайте курсор">Move to change perspective</span></div>
       </div>
     </section>
 
-    <div class="discipline-strip wrap" aria-hidden="true"><span>Fashion</span><span>Food</span><span>Jewelry</span><span>Interiors</span><span class="strip-star">✳</span></div>
+    <div class="world-selector wrap" id="worldSelector" role="tablist" aria-label="Explore four visual worlds"></div>
+    <p class="sr-only" id="worldStatus" aria-live="polite"></p>
 
     <section class="work wrap" id="work" aria-labelledby="workTitle">
       <div class="section-heading">
-        <div><p class="eyebrow" data-en="01 / Selected portfolio" data-ru="01 / Избранные работы">01 / Selected portfolio</p><h2 id="workTitle" data-en="Four directions.<br><em>One vision.</em>" data-ru="Четыре направления.<br><em>Один взгляд.</em>">Four directions.<br><em>One vision.</em></h2></div>
-        <p data-en="From the first reference to the final image. Explore each visual world, one series at a time." data-ru="От первого референса до итогового кадра. Выберите направление и познакомьтесь с каждой серией.">From the first reference to the final image. Explore each visual world, one series at a time.</p>
+        <div><p class="eyebrow" data-en="01 / Selected worlds" data-ru="01 / Избранные миры">01 / Selected worlds</p><h2 id="workTitle" data-en="Four worlds.<br><em>One point of view.</em>" data-ru="Четыре мира.<br><em>Один взгляд.</em>">Four worlds.<br><em>One point of view.</em></h2></div>
+        <p data-en="Fashion, food, precious objects and places.<br>{count} images. Every one begins with a reference." data-ru="Одежда, еда, драгоценные вещи и пространства.<br>{count} кадров. Каждый начинается с референса.">Fashion, food, precious objects and places.<br>38 images. Every one begins with a reference.</p>
       </div>
-      <nav class="section-nav" aria-label="Portfolio categories">
-        <a href="vton.html" data-en="01 <span>Virtual Try On</span>" data-ru="01 <span>Примерка</span>">01 <span>Virtual Try On</span></a>
-        <a href="food.html" data-en="02 <span>Food Design</span>" data-ru="02 <span>Фуд-дизайн</span>">02 <span>Food Design</span></a>
-        <a href="jewelry.html" data-en="03 <span>Jewelry &amp; Watch</span>" data-ru="03 <span>Украшения и часы</span>">03 <span>Jewelry &amp; Watch</span></a>
-        <a href="furniture.html" data-en="04 <span>Furniture</span>" data-ru="04 <span>Мебель</span>">04 <span>Furniture</span></a>
-      </nav>
       <div id="gallery"></div>
     </section>
 
     <section class="approach" id="approach" aria-labelledby="approachTitle">
       <div class="wrap approach-inner">
         <p class="eyebrow" data-en="02 / The approach" data-ru="02 / Подход">02 / The approach</p>
-        <h2 id="approachTitle" data-en="Recognisable.<br><em>Unexpected.</em>" data-ru="Узнаваемо.<br><em>Неожиданно.</em>">Recognisable.<br><em>Unexpected.</em></h2>
-        <p data-en="Every image starts with a real visual reference. I build the scene, light and composition around the details that make the object recognisable. The result should feel like a photograph made for that product." data-ru="Каждая работа начинается с визуального референса. Сцену, свет и композицию я выстраиваю вокруг деталей, по которым узнаётся сам предмет. Результат должен ощущаться как съёмка, сделанная именно для него.">Every image starts with a real visual reference. I build the scene, light and composition around the details that make the object recognisable. The result should feel like a photograph made for that product.</p>
+        <h2 id="approachTitle" data-en="One reference.<br><em>A world of possibilities.</em>" data-ru="Один референс.<br><em>Мир возможностей.</em>">One reference.<br><em>A world of possibilities.</em></h2>
+        <p data-en="It starts with the object you already have. I imagine the atmosphere around it: a new setting, a different light, a story worth looking at. Open any portfolio image to see where it began." data-ru="Всё начинается с предмета, который у вас уже есть. Я создаю атмосферу вокруг него: новую среду, другой свет, историю, которую хочется рассматривать. У каждой работы можно посмотреть её исходную фотографию.">It starts with the object you already have. I imagine the atmosphere around it: a new setting, a different light, a story worth looking at. Open any portfolio image to see where it began.</p>
         <div class="approach-example">
-          <figure><div class="approach-frame"><img src="assets/curated/references/takeaway_coffee_pattern_phone_source.png" alt="Original reference photograph of the patterned takeaway cup" loading="lazy" decoding="async"></div><figcaption><span data-en="The starting point" data-ru="Исходная фотография">The starting point</span><span>01</span></figcaption></figure>
+          <figure><div class="approach-frame"><img src="assets/curated/reference-previews/takeaway_coffee_pattern_phone_source.webp" alt="Original reference photograph of the patterned takeaway cup" loading="lazy" decoding="async"></div><figcaption><span data-en="The starting point" data-ru="Исходная фотография">The starting point</span><span>01</span></figcaption></figure>
           <span class="approach-arrow" aria-hidden="true">↗</span>
           <figure><a class="approach-frame" href="food.html" aria-label="Explore the food photography series"><img src="assets/curated/23_food_coffee_splash_motion.webp" alt="The same cup in a dynamic coffee campaign" loading="lazy" decoding="async"></a><figcaption><span data-en="A world around it" data-ru="Новый мир вокруг продукта">A world around it</span><span>02</span></figcaption></figure>
         </div>
       </div>
     </section>
 
+  </main>
     <footer class="site-footer wrap" id="contact">
-      <div><p class="eyebrow" data-en="03 / Start a conversation" data-ru="03 / Обсудим ваш проект">03 / Start a conversation</p><h2 data-en="Something<br><em>worth seeing.</em>" data-ru="То, что<br><em>хочется видеть.</em>">Something<br><em>worth seeing.</em></h2></div>
-      <a class="footer-email" href="mailto:ekkonwork@gmail.com">ekkonwork@gmail.com <span>↗</span></a>
+      <div><p class="eyebrow" data-en="03 / Your next visual world" data-ru="03 / Ваш следующий визуальный мир">03 / Your next visual world</p><h2 data-en="Let's make<br><em>someone look twice.</em>" data-ru="Создадим то,<br><em>что цепляет.</em>">Let's make<br><em>someone look twice.</em></h2></div>
+      <div class="footer-contact"><a class="contact-circle" href="mailto:ekkonwork@gmail.com" aria-label="Email Mikhail">↗</a><a class="footer-email" href="mailto:ekkonwork@gmail.com">ekkonwork@gmail.com</a><span data-en="Send a reference. Tell me the idea." data-ru="Пришлите референс. Расскажите идею.">Send a reference. Tell me the idea.</span></div>
       <div class="footer-bottom"><span>© Mikhail, 2026</span><a href="#top" data-en="Back to top ↑" data-ru="Наверх ↑">Back to top ↑</a></div>
     </footer>
-  </main>
 
   <dialog class="detail-dialog" id="detailDialog" aria-label="Project detail">
     <button class="dialog-close" id="dialogClose" type="button" aria-label="Close">×</button>
     <div id="dialogContent"></div>
   </dialog>
-  <script src="js/curated.js" defer></script>
-  <script src="js/editorial.js" defer></script>
-  <script src="js/spatial.js" defer></script>
+  <script src="js/curated.js?v=exhibition-6" defer></script>
+  <script src="js/image-sizes.js?v=exhibition-6" defer></script>
+  <script src="js/editorial.js?v=exhibition-6" defer></script>
+  <script src="js/spatial.js?v=exhibition-6" defer></script>
 </body>
 </html>

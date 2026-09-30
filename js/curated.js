@@ -8,12 +8,12 @@ window.PORTFOLIO = {
   ],
   groups: {
     'virtual-try-on': [
-      { en: 'Outerwear', ru: 'Верхняя одежда', ids: ['47_outerwear_jacket_flatlay_hero40','01_outerwear_umbrella_rain_night','02_outerwear_snow_wide','03_outerwear_riverside','16_outerwear_station_concourse'] },
-      { en: 'Activewear', ru: 'Спортивная одежда', ids: ['49_bottoms_leggings_flatlay_hero40','04_bottoms_patterned_leggings_studio','05_bottoms_patterned_leggings_park','17_bottoms_patterned_leggings_rooftop','18_bottoms_patterned_leggings_loft_stretch','34_bottoms_activewear_city_run40'] },
-      { en: 'Intimates', ru: 'Бельё', ids: ['51_intimates_plum_flatlay_linen40','06_intimates_plum_window','07_intimates_plum_studio_seated','19_intimates_plum_gym','20_intimates_plum_terrace'] },
+      { en: 'Outerwear', ru: 'Верхняя одежда', ids: ['01_outerwear_umbrella_rain_night','02_outerwear_snow_wide','03_outerwear_riverside','47_outerwear_jacket_flatlay_hero40','16_outerwear_station_concourse'] },
+      { en: 'Activewear', ru: 'Спортивная одежда', ids: ['04_bottoms_patterned_leggings_studio','17_bottoms_patterned_leggings_rooftop','05_bottoms_patterned_leggings_park','49_bottoms_leggings_flatlay_hero40','18_bottoms_patterned_leggings_loft_stretch','34_bottoms_activewear_city_run40'] },
+      { en: 'Intimates', ru: 'Бельё', ids: ['06_intimates_plum_window','07_intimates_plum_studio_seated','51_intimates_plum_flatlay_linen40','19_intimates_plum_gym','20_intimates_plum_terrace'] },
     ],
     'food-design': [
-      { en: 'Coffee', ru: 'Кофе', ids: ['08_food_takeaway_coffee_city','65_food_takeaway_coffee_city_landscape','23_food_coffee_splash_motion'] },
+      { en: 'Coffee', ru: 'Кофе', ids: ['23_food_coffee_splash_motion','08_food_takeaway_coffee_city','65_food_takeaway_coffee_city_landscape'] },
       { en: 'At the café', ru: 'В кафе', ids: ['21_food_walnut_cafe_salmon','10_food_walnut_cafe_pappardelle','09_food_walnut_cafe_tart'] },
       { en: 'At the restaurant', ru: 'В ресторане', ids: ['69_food_pappardelle_restaurant','22_food_lemon_tart_restaurant'] }
     ],
@@ -22,8 +22,8 @@ window.PORTFOLIO = {
       { en: 'Blue dial watch', ru: 'Часы с синим циферблатом', ids: ['63_watches_blue_dial_packshot_full40','43_watches_blue_dial_ultramacro40','28_watches_blue_dial_studio_flatlay','15_watches_blue_dial_architecture','44_watches_blue_dial_lifestyle_dining40'] }
     ],
     furniture: [
-      { en: 'The chair', ru: 'Кресло', ids: ['12_furniture_walnut_chair_studio','52_furniture_chair_packshot_studio40'] },
-      { en: 'In a space', ru: 'В интерьере', ids: ['11_furniture_walnut_chair_hotel_lounge','24_furniture_walnut_chair_industrial_loft','25_furniture_walnut_chair_executive_office','40_furniture_walnut_chair_japandi_room40','41_furniture_walnut_chair_library_nook40','42_furniture_walnut_chair_hearth_evening40'] }
+      { en: 'In a space', ru: 'В интерьере', ids: ['11_furniture_walnut_chair_hotel_lounge','40_furniture_walnut_chair_japandi_room40','24_furniture_walnut_chair_industrial_loft','41_furniture_walnut_chair_library_nook40','25_furniture_walnut_chair_executive_office','42_furniture_walnut_chair_hearth_evening40'] },
+      { en: 'The chair', ru: 'Кресло', ids: ['12_furniture_walnut_chair_studio','52_furniture_chair_packshot_studio40'] }
     ]
   },
   items: [
