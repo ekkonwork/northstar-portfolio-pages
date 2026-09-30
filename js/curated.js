@@ -15,12 +15,10 @@ window.PORTFOLIO = {
       { en: 'Loungewear editorial', ru: 'Домашние образы', ids: ['31_mens_loungewear_bedroom_morning40','32_mens_loungewear_terrace_coffee40','57_mens_loungewear_armchair_evening40','58_mens_loungewear_bedside_morning40'] }
     ],
     'food-design': [
-      { en: 'Coffee', ru: 'Кофе', ids: ['08_food_takeaway_coffee_city','23_food_coffee_splash_motion'] },
+      { en: 'Coffee', ru: 'Кофе', ids: ['08_food_takeaway_coffee_city','65_food_takeaway_coffee_city_landscape','23_food_coffee_splash_motion'] },
       { en: 'At the café', ru: 'В кафе', ids: ['21_food_walnut_cafe_salmon','10_food_walnut_cafe_pappardelle','09_food_walnut_cafe_tart'] },
-      { en: 'At the restaurant', ru: 'В ресторане', ids: ['22_food_lemon_tart_restaurant','39_food_pappardelle_candlelight_dining40'] },
-      { en: 'Japanese table', ru: 'Японская кухня', ids: ['35_food_japanese_ramen_authentic40','36_food_japanese_sushi_slate40'] },
-      { en: 'Bakery', ru: 'Пекарня', ids: ['37_food_artisan_croissant_bakery40'] },
-      { en: 'The table', ru: 'Сервировка', ids: ['61_campaign_food_table_set40'] }
+      { en: 'One table, three dishes', ru: 'Один стол, три блюда', ids: ['66_food_walnut_cafe_pappardelle_landscape','67_food_walnut_cafe_salmon_landscape','68_food_walnut_cafe_tart_landscape'] },
+      { en: 'At the restaurant', ru: 'В ресторане', ids: ['69_food_pappardelle_restaurant','22_food_lemon_tart_restaurant'] }
     ],
     'jewelry-watch': [
       { en: 'Silver ring', ru: 'Серебряное кольцо', ids: ['13_jewelry_silver_ring_ice','62_jewelry_ring_linen_fold40'] },
@@ -68,26 +66,26 @@ window.PORTFOLIO = {
     { id: '07_intimates_plum_studio_seated', section: 'virtual-try-on', en: 'Studio portrait', ru: 'Студийный портрет', noteEn: 'Intimates / studio', noteRu: 'Бельё / студия', source: 'underwear_phone_source.png' },
     { id: '19_intimates_plum_gym', section: 'virtual-try-on', en: 'After training', ru: 'После тренировки', noteEn: 'Intimates / studio gym', noteRu: 'Бельё / студия', source: 'underwear_phone_source.png' },
     { id: '20_intimates_plum_terrace', section: 'virtual-try-on', en: 'Terrace light', ru: 'Свет террасы', noteEn: 'Intimates / terrace', noteRu: 'Бельё / терраса', source: 'underwear_phone_source.png' },
-    { id: '29_business_smart_casual_glass_boardroom40', section: 'virtual-try-on', en: 'Glass boardroom', ru: 'Переговорная', noteEn: 'Editorial / business', noteRu: 'Имиджевая съёмка / деловой стиль', source: 'w2_boardroom_glass_ref.png', referenceKind: 'scene' },
-    { id: '30_business_smart_casual_atrium_commute40', section: 'virtual-try-on', en: 'Morning commute', ru: 'Утро в атриуме', noteEn: 'Editorial / business', noteRu: 'Имиджевая съёмка / деловой стиль', source: 'w2_atrium_daylight_ref.png', referenceKind: 'scene' },
-    { id: '54_business_smart_casual_boardroom_seated40', section: 'virtual-try-on', en: 'At the table', ru: 'За столом', noteEn: 'Editorial / business', noteRu: 'Имиджевая съёмка / деловой стиль', source: 'w3_boardroom_seated_ref.png', referenceKind: 'scene' },
-    { id: '55_business_smart_casual_glass_corridor40', section: 'virtual-try-on', en: 'Between meetings', ru: 'Между встречами', noteEn: 'Editorial / business', noteRu: 'Имиджевая съёмка / деловой стиль', source: 'w3_glass_corridor_ref.png', referenceKind: 'scene' },
-    { id: '56_business_smart_casual_window_portrait40', section: 'virtual-try-on', en: 'Window portrait', ru: 'Портрет у окна', noteEn: 'Editorial / business', noteRu: 'Имиджевая съёмка / деловой стиль', source: 'w3_office_window_ref.png', referenceKind: 'scene' },
-    { id: '31_mens_loungewear_bedroom_morning40', section: 'virtual-try-on', en: 'Slow morning', ru: 'Неспешное утро', noteEn: 'Editorial / loungewear', noteRu: 'Имиджевая съёмка / домашний стиль', source: 'w2_bedroom_soft_morning_ref.png', referenceKind: 'scene' },
-    { id: '32_mens_loungewear_terrace_coffee40', section: 'virtual-try-on', en: 'Terrace coffee', ru: 'Кофе на террасе', noteEn: 'Editorial / loungewear', noteRu: 'Имиджевая съёмка / домашний стиль', source: 'w2_terrace_greenery_ref.png', referenceKind: 'scene' },
-    { id: '57_mens_loungewear_armchair_evening40', section: 'virtual-try-on', en: 'Evening at home', ru: 'Домашний вечер', noteEn: 'Editorial / loungewear', noteRu: 'Имиджевая съёмка / домашний стиль', source: 'w3_evening_lounge_ref.png', referenceKind: 'scene' },
-    { id: '58_mens_loungewear_bedside_morning40', section: 'virtual-try-on', en: 'First light', ru: 'Первые лучи', noteEn: 'Editorial / loungewear', noteRu: 'Имиджевая съёмка / домашний стиль', source: 'w3_bedside_morning_ref.png', referenceKind: 'scene' },
-    { id: '35_food_japanese_ramen_authentic40', section: 'food-design', en: 'Ramen', ru: 'Рамен', noteEn: 'Japanese table / warm wood', noteRu: 'Японская кухня / тёплое дерево', source: 'w2_dark_timber_counter_ref.png', referenceKind: 'scene' },
-    { id: '36_food_japanese_sushi_slate40', section: 'food-design', en: 'Sushi on slate', ru: 'Суши на сланце', noteEn: 'Japanese table / dark slate', noteRu: 'Японская кухня / тёмный сланец', source: 'w2_matte_black_slate_ref.png', referenceKind: 'scene' },
-    { id: '37_food_artisan_croissant_bakery40', section: 'food-design', en: 'Bakery morning', ru: 'Утро в пекарне', noteEn: 'Pastry / morning light', noteRu: 'Выпечка / утренний свет', source: 'w2_bakery_warm_morning_ref.png', referenceKind: 'scene' },
-    { id: '39_food_pappardelle_candlelight_dining40', section: 'food-design', en: 'Candlelit dinner', ru: 'Ужин при свечах', noteEn: 'Pasta / restaurant', noteRu: 'Паста / ресторан', source: 'pappardelle_restaurant_phone_source.png' },
-    { id: '61_campaign_food_table_set40', section: 'food-design', en: 'A table to share', ru: 'Стол для компании', noteEn: 'Food / table setting', noteRu: 'Еда / сервировка', source: 'w3_cafetable_warm_ref.png', referenceKind: 'scene' },
+    { id: '29_business_smart_casual_glass_boardroom40', section: 'virtual-try-on', en: 'Glass boardroom', ru: 'Переговорная', noteEn: 'Editorial / business', noteRu: 'Имиджевая съёмка / деловой стиль', source: 'woman_leggings_model_source.png', referenceKind: 'model' },
+    { id: '30_business_smart_casual_atrium_commute40', section: 'virtual-try-on', en: 'Morning commute', ru: 'Утро в атриуме', noteEn: 'Editorial / business', noteRu: 'Имиджевая съёмка / деловой стиль', source: 'jacket_phone_source.png' },
+    { id: '54_business_smart_casual_boardroom_seated40', section: 'virtual-try-on', en: 'At the table', ru: 'За столом', noteEn: 'Editorial / business', noteRu: 'Имиджевая съёмка / деловой стиль', source: 'woman_leggings_model_source.png', referenceKind: 'model' },
+    { id: '55_business_smart_casual_glass_corridor40', section: 'virtual-try-on', en: 'Between meetings', ru: 'Между встречами', noteEn: 'Editorial / business', noteRu: 'Имиджевая съёмка / деловой стиль', source: 'woman_leggings_model_source.png', referenceKind: 'model' },
+    { id: '56_business_smart_casual_window_portrait40', section: 'virtual-try-on', en: 'Window portrait', ru: 'Портрет у окна', noteEn: 'Editorial / business', noteRu: 'Имиджевая съёмка / деловой стиль', source: 'woman_leggings_model_source.png', referenceKind: 'model' },
+    { id: '31_mens_loungewear_bedroom_morning40', section: 'virtual-try-on', en: 'Slow morning', ru: 'Неспешное утро', noteEn: 'Editorial / loungewear', noteRu: 'Имиджевая съёмка / домашний стиль', source: 'man_model_source.png', referenceKind: 'model' },
+    { id: '32_mens_loungewear_terrace_coffee40', section: 'virtual-try-on', en: 'Terrace coffee', ru: 'Кофе на террасе', noteEn: 'Editorial / loungewear', noteRu: 'Имиджевая съёмка / домашний стиль', source: 'man_model_source.png', referenceKind: 'model' },
+    { id: '57_mens_loungewear_armchair_evening40', section: 'virtual-try-on', en: 'Evening at home', ru: 'Домашний вечер', noteEn: 'Editorial / loungewear', noteRu: 'Имиджевая съёмка / домашний стиль', source: 'man_model_source.png', referenceKind: 'model' },
+    { id: '58_mens_loungewear_bedside_morning40', section: 'virtual-try-on', en: 'First light', ru: 'Первые лучи', noteEn: 'Editorial / loungewear', noteRu: 'Имиджевая съёмка / домашний стиль', source: 'man_model_source.png', referenceKind: 'model' },
     { id: '28_watches_blue_dial_studio_flatlay', section: 'jewelry-watch', en: 'Time in blue', ru: 'Время в синем', noteEn: 'Steel watch / studio', noteRu: 'Стальные часы / студия', source: 'watch_phone_source.png' },
     { id: '44_watches_blue_dial_lifestyle_dining40', section: 'jewelry-watch', en: 'Dinner hour', ru: 'Время ужина', noteEn: 'Steel watch / lifestyle', noteRu: 'Стальные часы / лайфстайл', source: 'watch_phone_source.png' },
     { id: '62_jewelry_ring_linen_fold40', section: 'jewelry-watch', en: 'On linen', ru: 'На льне', noteEn: 'Silver ring / detail', noteRu: 'Серебряное кольцо / детали', source: 'silver_ring_phone_source.png' },
     { id: '25_furniture_walnut_chair_executive_office', section: 'furniture', en: 'In the office', ru: 'В кабинете', noteEn: 'Lounge chair / office', noteRu: 'Кресло / кабинет', source: 'lounge_chair_phone_source.png' },
     { id: '41_furniture_walnut_chair_library_nook40', section: 'furniture', en: 'Reading nook', ru: 'Уголок для чтения', noteEn: 'Lounge chair / library', noteRu: 'Кресло / библиотека', source: 'lounge_chair_phone_source.png' },
     { id: '42_furniture_walnut_chair_hearth_evening40', section: 'furniture', en: 'By the fire', ru: 'У камина', noteEn: 'Lounge chair / evening', noteRu: 'Кресло / вечер', source: 'lounge_chair_phone_source.png' },
-    { id: '52_furniture_chair_packshot_studio40', section: 'furniture', en: 'Form and texture', ru: 'Форма и фактура', noteEn: 'Lounge chair / studio', noteRu: 'Кресло / студия', source: 'lounge_chair_phone_source.png' }
+    { id: '52_furniture_chair_packshot_studio40', section: 'furniture', en: 'Form and texture', ru: 'Форма и фактура', noteEn: 'Lounge chair / studio', noteRu: 'Кресло / студия', source: 'lounge_chair_phone_source.png' },
+    { id: '65_food_takeaway_coffee_city_landscape', section: 'food-design', en: 'Coffee after rain', ru: 'Кофе после дождя', noteEn: 'Takeaway / landscape', noteRu: 'Кофе с собой / горизонтальный кадр', source: 'takeaway_coffee_pattern_phone_source.png' },
+    { id: '66_food_walnut_cafe_pappardelle_landscape', section: 'food-design', en: 'Pappardelle at the café', ru: 'Паппарделле в кафе', noteEn: 'One table / pasta', noteRu: 'Один стол / паста', source: 'pappardelle_restaurant_phone_source.png' },
+    { id: '67_food_walnut_cafe_salmon_landscape', section: 'food-design', en: 'Salmon toast at the café', ru: 'Тост с лососем в кафе', noteEn: 'One table / breakfast', noteRu: 'Один стол / завтрак', source: 'salmon_toast_phone_source.png' },
+    { id: '68_food_walnut_cafe_tart_landscape', section: 'food-design', en: 'Lemon tart at the café', ru: 'Лимонный тарт в кафе', noteEn: 'One table / dessert', noteRu: 'Один стол / десерт', source: 'lemon_tart_restaurant_phone_source.png' },
+    { id: '69_food_pappardelle_restaurant', section: 'food-design', en: 'Dinner service', ru: 'Подача ужина', noteEn: 'Pasta / restaurant', noteRu: 'Паста / ресторан', source: 'pappardelle_restaurant_phone_source.png' }
   ]
 };
