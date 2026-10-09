@@ -29,7 +29,6 @@ Open `http://127.0.0.1:8000/`.
 - `js/image-sizes.js`: original dimensions, used to reserve image space before loading.
 - `js/curated.js`: the only public image selection and copy. Add or remove an item here to change the displayed portfolio.
 - `assets/curated/`: selected final WebP images and their original product reference photos.
-- `scripts/sync_curated_assets.ps1`: synchronises approved assets from the sibling private production repository using hardlinks on Windows. Run only in the local workspace; the site itself is static.
 - `scripts/build_category_pages.ps1`: keeps the four category page shells in sync.
 - `scripts/build_image_sizes.py`: reads original image dimensions with Pillow, without changing the photographs. Run after changing the selected assets.
 - `scripts/build_reference_previews.py`: creates smaller WebP display copies of the source photographs for the site. Original PNG files stay untouched and can be opened from the reference viewer. These display copies only resize and encode the photograph; no retouching or compositing is performed.
@@ -46,6 +45,6 @@ The content check covers the approved selection, series coverage, references, di
 
 When releasing CSS or JavaScript changes, update the resource version in `index.html` and `scripts/build_category_pages.ps1`, then regenerate the category pages. Commit directly to the configured publishing branch.
 
-The rejected images and review reasons are in the **private** production repository under `review/rejected/` and `review/portfolio_curation_2026-09-30.json`. They are intentionally absent from this site.
+The public repository contains the website and selected visual assets. Internal production records and review reports are maintained separately.
 
 Legacy `work.html` and `case.html` links redirect to the landing page. Historic assets and scripts remain in Git for now but are not loaded by the public pages.

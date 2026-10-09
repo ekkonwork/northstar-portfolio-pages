@@ -1,0 +1,9 @@
+# Keep internal production and agent records outside the public website.
+.agent/
+research/
+experiments/
+workflows/
+*-verification.json
+*-report.json
+verification.json
+asset-integrity.json
