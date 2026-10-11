@@ -5,6 +5,7 @@ from pathlib import Path
 import struct
 import zlib
 from PIL import Image
+from raster_container import inspect_jpeg, inspect_gif
 
 HARMLESS={'loop','duration','background','transparency','jfif','jfif_version',
           'jfif_unit','jfif_density','progressive','progression'}
@@ -12,7 +13,8 @@ HARMLESS={'loop','duration','background','transparency','jfif','jfif_version',
 
 def check(data):
     with Image.open(io.BytesIO(data)) as image:
-        if set(image.info)-HARMLESS:raise ValueError('image metadata present')
+        harmless=HARMLESS|({'version','extension'} if image.format=='GIF' else set())
+        if set(image.info)-harmless:raise ValueError('image metadata present')
         image.verify()
     if data.startswith(b'\x89PNG\r\n\x1a\n'):
         pos=8;ended=False
@@ -33,6 +35,10 @@ def check(data):
             if kind not in {b'VP8 ',b'VP8L',b'VP8X',b'ALPH',b'ANIM',b'ANMF'}:raise ValueError('ancillary WebP chunk present')
             pos+=8+size+(size&1)
         if pos!=end:raise ValueError('truncated WebP chunk')
+    elif data.startswith(b'\xff\xd8') or data[:6] in {b'GIF87a',b'GIF89a'}:
+        details=inspect_jpeg(data) if data.startswith(b'\xff\xd8') else inspect_gif(data)
+        if details['extra_chunks'] or details['trailing_bytes']:
+            raise ValueError('ancillary image block or trailing data present')
 
 
 def main():
