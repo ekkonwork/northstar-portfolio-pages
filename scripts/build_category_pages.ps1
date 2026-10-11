@@ -1,10 +1,12 @@
 $ErrorActionPreference = 'Stop'
 $root = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
+$assetRelease = [regex]::Match((Get-Content -LiteralPath (Join-Path $root 'index.html') -Raw), 'css/editorial\.css\?v=([^"\s]+)').Groups[1].Value
+if (-not $assetRelease) { throw 'Home page resource version is required' }
 $pages = @(
-  @{ File='vton.html'; Id='virtual-try-on'; Title='Virtual Try On'; Cover='01_outerwear_umbrella_rain_night' },
-  @{ File='food.html'; Id='food-design'; Title='Food Design'; Cover='23_food_coffee_splash_motion' },
-  @{ File='jewelry.html'; Id='jewelry-watch'; Title='Jewelry & Watch'; Cover='62_jewelry_ring_linen_fold40' },
-  @{ File='furniture.html'; Id='furniture'; Title='Furniture'; Cover='11_furniture_walnut_chair_hotel_lounge' }
+  @{ File='vton.html'; Id='virtual-try-on'; Title='Virtual Try On'; Cover='northstar_vton_01_1' },
+  @{ File='food.html'; Id='food-design'; Title='Food Design'; Cover='northstar_food_01_2' },
+  @{ File='jewelry.html'; Id='jewelry-watch'; Title='Jewelry & Watch'; Cover='northstar_jewelry_watch_01_2' },
+  @{ File='furniture.html'; Id='furniture'; Title='Furniture'; Cover='northstar_furniture_01_1' }
 )
 $template = @'
 <!doctype html>
@@ -23,7 +25,7 @@ $template = @'
   <link rel="icon" href="favicon.svg?v=exhibition-6" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="css/editorial.css?v=exhibition-6">
+  <link rel="stylesheet" href="css/editorial.css?v=VERSION">
   <title>TITLE — Mikhail</title>
 </head>
 <body data-page="ID">
@@ -58,15 +60,16 @@ $template = @'
     <button class="dialog-close" id="dialogClose" type="button" aria-label="Close">×</button>
     <div id="dialogContent"></div>
   </dialog>
-  <script src="js/curated.js?v=exhibition-6" defer></script>
-  <script src="js/image-sizes.js?v=exhibition-6" defer></script>
-  <script src="js/editorial.js?v=exhibition-6" defer></script>
-  <script src="js/spatial.js?v=exhibition-6" defer></script>
+  <script src="js/curated.js?v=VERSION" defer></script>
+  <script src="js/portfolio-additions.js?v=VERSION" defer></script>
+  <script src="js/image-sizes.js?v=VERSION" defer></script>
+  <script src="js/editorial.js?v=VERSION" defer></script>
+  <script src="js/spatial.js?v=VERSION" defer></script>
 </body>
 </html>
 '@
 foreach ($page in $pages) {
   $titleHtml = [System.Net.WebUtility]::HtmlEncode($page.Title)
-  $content = $template.Replace('TITLE',$titleHtml).Replace('FILE',$page.File).Replace('ID',$page.Id).Replace('COVER',$page.Cover)
+  $content = $template.Replace('TITLE',$titleHtml).Replace('FILE',$page.File).Replace('ID',$page.Id).Replace('COVER',$page.Cover).Replace('VERSION',$assetRelease)
   [System.IO.File]::WriteAllText((Join-Path $root $page.File),$content,[System.Text.UTF8Encoding]::new($false))
 }

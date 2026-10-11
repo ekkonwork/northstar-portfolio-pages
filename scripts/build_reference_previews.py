@@ -10,6 +10,7 @@ original_bytes = preview_bytes = 0
 for path in sorted(source_dir.glob('*.png')):
     with Image.open(path) as image:
         preview = ImageOps.contain(image, (1200, 1200), Image.Resampling.LANCZOS)
+        preview.info.clear()
         target = destination / (path.stem + '.webp')
         preview.save(target, 'WEBP', quality=90, method=6)
     original_bytes += path.stat().st_size

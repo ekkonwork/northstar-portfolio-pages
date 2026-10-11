@@ -1,6 +1,6 @@
 # Mikhail — selected work
 
-A static, bilingual portfolio with four separate directions: Virtual Try On, Food Design, Jewelry & Watch, and Furniture. The home page is an interactive exhibition of four visual worlds. The category pages keep all 38 approved images in clear product series, with their original references. Photographs are always fitted in full.
+A static, bilingual portfolio with four separate directions: Virtual Try On, Food Design, Jewelry & Watch, and Furniture. The home page is an interactive exhibition of four visual worlds. The category pages contain 104 approved images: the previous 38 plus 66 new stills grouped around 40 new product references. Photographs are always fitted in full.
 
 ## Visual design
 
@@ -27,8 +27,9 @@ Open `http://127.0.0.1:8000/`.
 - `css/editorial.css`, `js/editorial.js`: presentation and reference/result viewer.
 - `js/spatial.js`: WebGL sculpture, pointer depth, progressive reveals and scroll progress.
 - `js/image-sizes.js`: original dimensions, used to reserve image space before loading.
-- `js/curated.js`: the only public image selection and copy. Add or remove an item here to change the displayed portfolio.
-- `assets/curated/`: selected final WebP images and their original product reference photos.
+- `js/curated.js`: the original approved selection and section definitions.
+- `js/portfolio-additions.js`: the 66 approved additions, bilingual copy, series and links to lossless originals. It must load after the original selection and before the viewer.
+- `assets/curated/`: selected final WebP images, responsive previews and original product reference photos. `originals/` contains the approved full-resolution PNG files.
 - `scripts/build_category_pages.ps1`: keeps the four category page shells in sync.
 - `scripts/build_image_sizes.py`: reads original image dimensions with Pillow, without changing the photographs. Run after changing the selected assets.
 - `scripts/build_reference_previews.py`: creates smaller WebP display copies of the source photographs for the site. Original PNG files stay untouched and can be opened from the reference viewer. These display copies only resize and encode the photograph; no retouching or compositing is performed.
@@ -47,4 +48,4 @@ When releasing CSS or JavaScript changes, update the resource version in `index.
 
 The public repository contains the website and selected visual assets. Internal production records and review reports are maintained separately.
 
-Legacy `work.html` and `case.html` links redirect to the landing page. Historic assets and scripts remain in Git for now but are not loaded by the public pages.
+Legacy `work.html` and `case.html` links redirect to the landing page. Public media and reachable history were sanitized before this release. Never restore an old binary asset or diagnostic board without checking its metadata and visible annotations. Private production reports and history backups belong outside this repository. Two planned animated loops are not included in the still-image release.
