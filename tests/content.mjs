@@ -76,7 +76,7 @@ for (const page of ['index.html',...portfolio.sections.map(section => section.pa
   assert.deepEqual(scripts.map(match=>match[1]),['curated','portfolio-additions','image-sizes','editorial']);
   assert(scripts.every(match=>/\bdefer\b/.test(match[0])));
 }
-for (const internal of ['.agent','research','experiments','workflows','alignment-report.json','verification.json','scripts/sync_curated_assets.ps1']) {
+for (const internal of ['.agent','research','experiments','workflows','assets/proof','assets/web/proof','alignment-report.json','verification.json','scripts/sync_curated_assets.ps1']) {
   assert(!fs.existsSync(path.join(root,internal)),`Internal artifact in public tree: ${internal}`);
 }
 assert.equal(resourceVersions.size,1,'All page shells must use the same asset release.');
