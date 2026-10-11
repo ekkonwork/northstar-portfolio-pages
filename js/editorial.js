@@ -14,7 +14,7 @@
   let detailView = 'compare';
   let worldIndex = 1;
   let worldRequest = 0;
-  const companions = ['02_outerwear_snow_wide','65_food_takeaway_coffee_city_landscape','63_watches_blue_dial_packshot_full40','40_furniture_walnut_chair_japandi_room40'];
+  const companions = ['northstar_vton_06_1','northstar_food_10_2','northstar_jewelry_watch_02_2','northstar_furniture_09_1'];
   const worldWords = ['FASHION','FOOD','OBJECTS','SPACES'];
   const label = (item, key) => item[key === 'note' ? (language === 'ru' ? 'noteRu' : 'noteEn') : language];
   const text = (en, ru) => language === 'ru' ? ru : en;
@@ -34,6 +34,10 @@
     image.alt = label(item);
     image.loading = eager ? 'eager' : 'lazy';
     image.decoding = 'async';
+    if (item.responsive?.length) {
+      image.srcset = item.responsive.map(width => `assets/curated/previews/${item.id}-${width}.webp ${width}w`).join(', ') + `, ${resultPath(item.id)} ${window.IMAGE_SIZES[item.id][0]}w`;
+      image.sizes = '(max-width:560px) 100vw, (max-width:1000px) 50vw, 42vw';
+    }
     const size = window.IMAGE_SIZES?.[item.id];
     if (size) [image.width, image.height] = size;
     return image;
@@ -55,6 +59,7 @@
     button.setAttribute('aria-label',`${label(item)} — ${text('view reference and result','смотреть референс и результат')}`);
     const media = make('span','card-media');
     media.append(resultImage(item,eager));
+    if (item.motion) media.append(make('small','motion-badge',text('View loop','Смотреть ролик')));
     const caption = make('span','card-caption');
     const words = make('span');
     words.append(make('strong','',label(item)),make('small','',label(item,'note')));
@@ -288,7 +293,8 @@
     if (view) detailView = view;
     const section = portfolio.sections.find(value => value.id === item.section);
     const sourceLabel = item.referenceKind === 'model' ? text('Original model','Исходная модель') : text('Original product','Исходный товар');
-    const resultLabel = text('Final image','Итоговый кадр');
+    const resultLabel = item.motion ? text('Final loop','Итоговый ролик') : text('Final image','Итоговый кадр');
+    dialogContent.querySelectorAll('video').forEach(video => video.pause());
     dialogContent.replaceChildren();
     const inner = make('div','detail-inner');
     const top = make('div','detail-top');
@@ -300,9 +306,14 @@
     pair.dataset.view = detailView;
     [[sourceLabel,sourcePath(item.source)],[resultLabel,resultPath(item.id)]].forEach(([caption,path]) => {
       const figure = make('figure');
-      const image = make('img');
-      image.src = path;
-      image.alt = `${caption}: ${label(item)}`;
+      const image = make(item.motion && path === resultPath(item.id) ? 'video' : 'img');
+      if (image.tagName === 'VIDEO') {
+        image.controls = true; image.loop = true; image.muted = true; image.playsInline = true;
+        image.preload = 'none'; image.poster = path; image.src = item.motion.mp4;
+        image.setAttribute('aria-label',`${caption}: ${label(item)}`);
+        const size = window.IMAGE_SIZES[item.id];
+        if (size) [image.width,image.height] = size;
+      } else { image.src = path; image.alt = `${caption}: ${label(item)}`; }
       const figcaption = make('figcaption','',caption);
       figure.append(figcaption,image);
       pair.append(figure);
@@ -310,8 +321,8 @@
     const views = make('div','detail-view-tabs');
     let originalLink;
     const updateFullImageLink = () => {
-      originalLink.href = detailView === 'source' ? originalSourcePath(item.source) : resultPath(item.id);
-      originalLink.textContent = detailView === 'source' ? text('Open original reference ↗','Открыть исходную фотографию ↗') : text('Open full image ↗','Открыть изображение целиком ↗');
+      originalLink.href = detailView === 'source' ? originalSourcePath(item.source) : item.motion?.mp4 || item.original || resultPath(item.id);
+      originalLink.textContent = detailView === 'source' ? text('Open original reference ↗','Открыть исходную фотографию ↗') : item.motion ? text('Open full video ↗','Открыть ролик целиком ↗') : text('Open full image ↗','Открыть изображение целиком ↗');
     };
     views.setAttribute('role','group');
     views.setAttribute('aria-label',text('Image view','Режим просмотра'));
@@ -322,6 +333,7 @@
       button.addEventListener('click',() => {
         detailView = mode;
         pair.dataset.view = mode;
+        if (mode === 'source') pair.querySelectorAll('video').forEach(video => video.pause());
         views.querySelectorAll('button').forEach(tab => tab.setAttribute('aria-pressed',String(tab === button)));
         updateFullImageLink();
       });
@@ -346,6 +358,11 @@
     originalLink.target = '_blank';
     originalLink.rel = 'noopener';
     tools.append(pager,originalLink);
+    if (item.motion) {
+      const gif = make('a','original-link',text('Download GIF ↗','Скачать GIF ↗'));
+      gif.href = item.motion.gif; gif.download = `${item.id}.gif`;
+      tools.append(gif);
+    }
     inner.append(top,pair,tools);
     dialogContent.append(inner);
     if (!dialog.open) dialog.showModal();
@@ -370,6 +387,7 @@
   dialog.addEventListener('close',() => {
     activeItem = null;
     document.body.classList.remove('dialog-open');
+    dialogContent.querySelectorAll('video').forEach(video => video.pause());
     dialogContent.replaceChildren();
     if (returnFocus?.isConnected) returnFocus.focus({preventScroll:true});
   });

@@ -423,3 +423,9 @@ body[data-page='furniture'] .card-media { background:#e5e0d7; }
   .scene-pointer-hint { display:none; }
 }
 @media (pointer:coarse) { .scene-pointer-hint { display:none; } }
+
+/* Motion files are fetched only when the viewer is opened and played. */
+.card-media { position:relative; }
+.motion-badge { position:absolute; bottom:14px; left:14px; background:var(--ink,#171715); color:var(--paper,#f5f3ed); padding:7px 10px; font-size:10px; letter-spacing:.06em; }
+.detail-pair video { display:block; max-width:100%; width:100%; height:min(70svh,820px); object-fit:contain; background:#111; }
+@media (max-width:560px) { .detail-pair video { height:calc(100svh - 300px); } }

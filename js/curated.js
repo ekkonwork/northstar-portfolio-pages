@@ -1,10 +1,10 @@
 /* Public curation only. Technical production records remain in the private repository. */
 window.PORTFOLIO = {
   sections: [
-    { id: 'virtual-try-on', page: 'vton.html', cover: '01_outerwear_umbrella_rain_night', number: '01', en: 'Virtual Try On', ru: 'Виртуальная примерка', noteEn: 'Garments in a new context, with their defining details in view.', noteRu: 'Одежда в новой среде, с вниманием к её узнаваемым деталям.' },
-    { id: 'food-design', page: 'food.html', cover: '23_food_coffee_splash_motion', number: '02', en: 'Food Design', ru: 'Фуд-дизайн', noteEn: 'Food, drinks and the atmosphere around them.', noteRu: 'Еда, напитки и атмосфера вокруг них.' },
-    { id: 'jewelry-watch', page: 'jewelry.html', cover: '62_jewelry_ring_linen_fold40', number: '03', en: 'Jewelry & Watch', ru: 'Украшения и часы', noteEn: 'Material, shape and light at a smaller scale.', noteRu: 'Материал, форма и свет в крупном плане.' },
-    { id: 'furniture', page: 'furniture.html', cover: '11_furniture_walnut_chair_hotel_lounge', number: '04', en: 'Furniture', ru: 'Мебель', noteEn: 'The same object, seen in spaces with different moods.', noteRu: 'Один предмет в пространствах с разным характером.' }
+    { id: 'virtual-try-on', page: 'vton.html', cover: 'northstar_vton_01_1', number: '01', en: 'Virtual Try On', ru: 'Виртуальная примерка', noteEn: 'Garments in a new context, with their defining details in view.', noteRu: 'Одежда в новой среде, с вниманием к её узнаваемым деталям.' },
+    { id: 'food-design', page: 'food.html', cover: 'northstar_food_01_2', number: '02', en: 'Food Design', ru: 'Фуд-дизайн', noteEn: 'Food, drinks and the atmosphere around them.', noteRu: 'Еда, напитки и атмосфера вокруг них.' },
+    { id: 'jewelry-watch', page: 'jewelry.html', cover: 'northstar_jewelry_watch_01_2', number: '03', en: 'Jewelry & Watch', ru: 'Украшения и часы', noteEn: 'Material, shape and light at a smaller scale.', noteRu: 'Материал, форма и свет в крупном плане.' },
+    { id: 'furniture', page: 'furniture.html', cover: 'northstar_furniture_01_1', number: '04', en: 'Furniture', ru: 'Мебель', noteEn: 'The same object, seen in spaces with different moods.', noteRu: 'Один предмет в пространствах с разным характером.' }
   ],
   groups: {
     'virtual-try-on': [
