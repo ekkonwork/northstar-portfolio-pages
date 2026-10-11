@@ -40,6 +40,8 @@ Open `http://127.0.0.1:8000/`.
 node tests/content.mjs
 node tests/spatial-motion.mjs
 python scripts/build_image_sizes.py --check
+python tests/media-metadata.py
+python scripts/check_media_metadata.py
 ```
 
 The content check covers the approved selection, series coverage, references, dimensions, local links and resource versions. The motion test executes the actual scene script with controlled frame timing, checking edge entry, exit/re-entry, restart after idle, CSS/WebGL synchronization, visibility, reduced motion, touch and the absence of an idle render loop. Browser inspection is still required for visual changes.
