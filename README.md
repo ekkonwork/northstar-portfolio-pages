@@ -1,6 +1,6 @@
 # Mikhail — selected work
 
-A static, bilingual portfolio with four separate directions: Virtual Try On, Food Design, Jewelry & Watch, and Furniture. The home page is an interactive exhibition of four visual worlds. The category pages contain 104 approved images: the previous 38 plus 66 new stills grouped around 40 new product references. Photographs are always fitted in full.
+A static, bilingual portfolio with four separate directions: Virtual Try On, Food Design, Jewelry & Watch, and Furniture. The home page is an interactive exhibition of four visual worlds. The category pages contain 93 approved images: the previous 27 plus 66 new stills grouped around 40 new product references. Photographs are always fitted in full.
 
 ## Visual design
 

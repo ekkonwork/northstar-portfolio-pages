@@ -13,10 +13,10 @@ const portfolio = context.window.PORTFOLIO;
 const sizes = context.window.IMAGE_SIZES;
 assert.equal(portfolio.sections.length,4);
 const legacy = JSON.parse(fs.readFileSync(path.join(root,'tests/approved-legacy.json'),'utf8'));
-assert.equal(legacy.length,38);
+assert.equal(legacy.length,27);
 const additions=context.window.NORTHSTAR_ADDITIONS;
 assert.equal(additions.items.length,66,'Exactly the approved 66 new stills.');
-assert.equal(portfolio.items.length,104);
+assert.equal(portfolio.items.length,93);
 assert.equal(new Set(additions.items.map(item=>item.source)).size,40);
 for (const [section,count] of Object.entries({'virtual-try-on':22,'food-design':15,'jewelry-watch':15,'furniture':14})) {
   assert.equal(additions.items.filter(item=>item.section===section).length,count);
@@ -45,7 +45,7 @@ for (const item of portfolio.items) {
     assert(!/qwen|flux|srpo|denoise|sampling|workflow|\bstep(s)?\b|\bcfg\b|\blora\b/i.test(item[key]),`Production detail in public copy: ${item.id}`);
   }
 }
-assert(sources.size>=10,'Keep the original ten reference mappings.');
+assert(sources.size>=8,'Keep the original eight reference mappings.');
 for (const section of portfolio.sections) {
   assert(ids.has(section.cover),`Unknown cover ${section.cover}`);
   for (const group of portfolio.groups[section.id]) {
@@ -60,6 +60,9 @@ assert.equal(new Set(grouped).size,grouped.length,'A work occurs in more than on
 assert.deepEqual([...ids].sort(),[...grouped].sort(),'Every approved work must appear in a series.');
 const rejected = ['tactile detail','on ice','in transit','one table three dishes','rain from behind','business editorial','loungewear editorial'];
 for (const title of rejected) assert(!portfolio.items.some(item => item.en.toLowerCase() === title),`Rejected work returned: ${title}`);
+for (const groupTitle of ['activewear','intimates','спортивная одежда','бельё']) {
+  assert(!portfolio.groups['virtual-try-on'].some(group => group.en.toLowerCase() === groupTitle || group.ru.toLowerCase() === groupTitle),`Rejected series returned: ${groupTitle}`);
+}
 const resourceVersions = new Set();
 for (const page of ['index.html',...portfolio.sections.map(section => section.page)]) {
   const html = fs.readFileSync(path.join(root,page),'utf8');

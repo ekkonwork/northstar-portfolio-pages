@@ -8,9 +8,7 @@ window.PORTFOLIO = {
   ],
   groups: {
     'virtual-try-on': [
-      { en: 'Outerwear', ru: 'Верхняя одежда', ids: ['01_outerwear_umbrella_rain_night','02_outerwear_snow_wide','03_outerwear_riverside','47_outerwear_jacket_flatlay_hero40','16_outerwear_station_concourse'] },
-      { en: 'Activewear', ru: 'Спортивная одежда', ids: ['04_bottoms_patterned_leggings_studio','17_bottoms_patterned_leggings_rooftop','05_bottoms_patterned_leggings_park','49_bottoms_leggings_flatlay_hero40','18_bottoms_patterned_leggings_loft_stretch','34_bottoms_activewear_city_run40'] },
-      { en: 'Intimates', ru: 'Бельё', ids: ['06_intimates_plum_window','07_intimates_plum_studio_seated','51_intimates_plum_flatlay_linen40','19_intimates_plum_gym','20_intimates_plum_terrace'] },
+      { en: 'Outerwear', ru: 'Верхняя одежда', ids: ['01_outerwear_umbrella_rain_night','02_outerwear_snow_wide','03_outerwear_riverside','47_outerwear_jacket_flatlay_hero40','16_outerwear_station_concourse'] }
     ],
     'food-design': [
       { en: 'Coffee', ru: 'Кофе', ids: ['23_food_coffee_splash_motion','08_food_takeaway_coffee_city','65_food_takeaway_coffee_city_landscape'] },
@@ -29,11 +27,7 @@ window.PORTFOLIO = {
   items: [
     { id: '01_outerwear_umbrella_rain_night', section: 'virtual-try-on', en: 'After the rain', ru: 'После дождя', noteEn: 'Outerwear / city night', noteRu: 'Верхняя одежда / вечерний город', source: 'jacket_phone_source.png' },
     { id: '02_outerwear_snow_wide', section: 'virtual-try-on', en: 'Winter crossing', ru: 'Зимний переход', noteEn: 'Outerwear / snow', noteRu: 'Верхняя одежда / снег', source: 'jacket_phone_source.png' },
-    { id: '04_bottoms_patterned_leggings_studio', section: 'virtual-try-on', en: 'Movement study', ru: 'В движении', noteEn: 'Activewear / studio', noteRu: 'Спортивная одежда / студия', source: 'leggings_phone_source.png' },
-    { id: '06_intimates_plum_window', section: 'virtual-try-on', en: 'Soft daylight', ru: 'Мягкий свет', noteEn: 'Intimates / window light', noteRu: 'Бельё / дневной свет', source: 'underwear_phone_source.png' },
-    { id: '17_bottoms_patterned_leggings_rooftop', section: 'virtual-try-on', en: 'Open air', ru: 'На воздухе', noteEn: 'Activewear / rooftop', noteRu: 'Спортивная одежда / крыша', source: 'leggings_phone_source.png' },
     { id: '47_outerwear_jacket_flatlay_hero40', section: 'virtual-try-on', en: 'The jacket', ru: 'Куртка', noteEn: 'Garment / still life', noteRu: 'Одежда / натюрморт', source: 'jacket_phone_source.png' },
-    { id: '51_intimates_plum_flatlay_linen40', section: 'virtual-try-on', en: 'Plum on linen', ru: 'Сливовый на льне', noteEn: 'Intimates / still life', noteRu: 'Бельё / натюрморт', source: 'underwear_phone_source.png' },
 
     { id: '23_food_coffee_splash_motion', section: 'food-design', en: 'Coffee in motion', ru: 'Кофе в движении', noteEn: 'Takeaway / campaign', noteRu: 'Кофе с собой / кампания', source: 'takeaway_coffee_pattern_phone_source.png' },
     { id: '08_food_takeaway_coffee_city', section: 'food-design', en: 'Coffee, to go', ru: 'Кофе с собой', noteEn: 'Takeaway / city', noteRu: 'Кофе с собой / город', source: 'takeaway_coffee_pattern_phone_source.png' },
@@ -52,13 +46,6 @@ window.PORTFOLIO = {
     { id: '40_furniture_walnut_chair_japandi_room40', section: 'furniture', en: 'Quiet space', ru: 'Спокойное пространство', noteEn: 'Lounge chair / interior', noteRu: 'Кресло / интерьер', source: 'lounge_chair_phone_source.png' },
     { id: '03_outerwear_riverside', section: 'virtual-try-on', en: 'By the river', ru: 'У реки', noteEn: 'Outerwear / overcast', noteRu: 'Верхняя одежда / пасмурный день', source: 'jacket_phone_source.png' },
     { id: '16_outerwear_station_concourse', section: 'virtual-try-on', en: 'Departure', ru: 'Отправление', noteEn: 'Outerwear / station', noteRu: 'Верхняя одежда / вокзал', source: 'jacket_phone_source.png' },
-    { id: '05_bottoms_patterned_leggings_park', section: 'virtual-try-on', en: 'Park path', ru: 'Аллея парка', noteEn: 'Activewear / outdoors', noteRu: 'Спортивная одежда / улица', source: 'leggings_phone_source.png' },
-    { id: '18_bottoms_patterned_leggings_loft_stretch', section: 'virtual-try-on', en: 'Stretch', ru: 'Разминка', noteEn: 'Activewear / loft', noteRu: 'Спортивная одежда / лофт', source: 'leggings_phone_source.png' },
-    { id: '34_bottoms_activewear_city_run40', section: 'virtual-try-on', en: 'City run', ru: 'Пробежка по городу', noteEn: 'Activewear / movement', noteRu: 'Спортивная одежда / движение', source: 'leggings_phone_source.png' },
-    { id: '49_bottoms_leggings_flatlay_hero40', section: 'virtual-try-on', en: 'Pattern in full', ru: 'Узор целиком', noteEn: 'Activewear / still life', noteRu: 'Спортивная одежда / натюрморт', source: 'leggings_phone_source.png' },
-    { id: '07_intimates_plum_studio_seated', section: 'virtual-try-on', en: 'Studio portrait', ru: 'Студийный портрет', noteEn: 'Intimates / studio', noteRu: 'Бельё / студия', source: 'underwear_phone_source.png' },
-    { id: '19_intimates_plum_gym', section: 'virtual-try-on', en: 'After training', ru: 'После тренировки', noteEn: 'Intimates / studio gym', noteRu: 'Бельё / студия', source: 'underwear_phone_source.png' },
-    { id: '20_intimates_plum_terrace', section: 'virtual-try-on', en: 'Terrace light', ru: 'Свет террасы', noteEn: 'Intimates / terrace', noteRu: 'Бельё / терраса', source: 'underwear_phone_source.png' },
     { id: '28_watches_blue_dial_studio_flatlay', section: 'jewelry-watch', en: 'Time in blue', ru: 'Время в синем', noteEn: 'Steel watch / studio', noteRu: 'Стальные часы / студия', source: 'watch_phone_source.png' },
     { id: '44_watches_blue_dial_lifestyle_dining40', section: 'jewelry-watch', en: 'Dinner hour', ru: 'Время ужина', noteEn: 'Steel watch / lifestyle', noteRu: 'Стальные часы / лайфстайл', source: 'watch_phone_source.png' },
     { id: '62_jewelry_ring_linen_fold40', section: 'jewelry-watch', en: 'On linen', ru: 'На льне', noteEn: 'Silver ring / detail', noteRu: 'Серебряное кольцо / детали', source: 'silver_ring_phone_source.png' },
