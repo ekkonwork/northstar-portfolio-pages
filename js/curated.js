@@ -29,7 +29,7 @@ window.PORTFOLIO = {
     { id: '02_outerwear_snow_wide', section: 'virtual-try-on', en: 'Winter crossing', ru: 'Зимний переход', noteEn: 'Outerwear / snow', noteRu: 'Верхняя одежда / снег', source: 'jacket_phone_source.png' },
     { id: '47_outerwear_jacket_flatlay_hero40', section: 'virtual-try-on', en: 'The jacket', ru: 'Куртка', noteEn: 'Garment / still life', noteRu: 'Одежда / натюрморт', source: 'jacket_phone_source.png' },
 
-    { id: '23_food_coffee_splash_motion', section: 'food-design', en: 'Coffee in motion', ru: 'Кофе в движении', noteEn: 'Takeaway / campaign', noteRu: 'Кофе с собой / кампания', source: 'takeaway_coffee_pattern_phone_source.png' },
+    { id: '23_food_coffee_splash_motion', section: 'food-design', en: 'Coffee splash still', ru: 'Статичный кадр с кофе', noteEn: 'Takeaway / campaign still', noteRu: 'Статичная кампания с кофе', source: 'takeaway_coffee_pattern_phone_source.png' },
     { id: '08_food_takeaway_coffee_city', section: 'food-design', en: 'Coffee, to go', ru: 'Кофе с собой', noteEn: 'Takeaway / city', noteRu: 'Кофе с собой / город', source: 'takeaway_coffee_pattern_phone_source.png' },
     { id: '09_food_walnut_cafe_tart', section: 'food-design', en: 'A table for one', ru: 'Столик на одного', noteEn: 'Dessert / café', noteRu: 'Десерт / кафе', source: 'lemon_tart_restaurant_phone_source.png' },
     { id: '10_food_walnut_cafe_pappardelle', section: 'food-design', en: 'Lunch hour', ru: 'Время обеда', noteEn: 'Pasta / café', noteRu: 'Паста / кафе', source: 'pappardelle_restaurant_phone_source.png' },

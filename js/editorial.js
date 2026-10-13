@@ -29,6 +29,14 @@
   const sourcePath = name => `assets/curated/reference-previews/${name.replace(/\.png$/,'.webp')}`;
   const originalSourcePath = name => `assets/curated/references/${name}`;
   const itemById = id => portfolio.items.find(value => value.id === id);
+  const seriesFor = id => {
+    const item = itemById(id);
+    const index = item ? (portfolio.groups[item.section] || []).findIndex(group => group.ids.includes(id)) : -1;
+    return index < 0 ? '' : `series-${index + 1}`;
+  };
+  function track(name,params) {
+    document.dispatchEvent(new CustomEvent('portfolio:event',{detail:{name,params}}));
+  }
   const make = (tag, className, content) => {
     const node = document.createElement(tag);
     if (className) node.className = className;
@@ -43,7 +51,14 @@
     image.decoding = 'async';
     if (item.responsive?.length) {
       image.srcset = item.responsive.map(width => `assets/curated/previews/${item.id}-${width}.webp ${width}w`).join(', ') + `, ${resultPath(item.id)} ${window.IMAGE_SIZES[item.id][0]}w`;
-      image.sizes = '(max-width:560px) 100vw, (max-width:1000px) 50vw, 42vw';
+      const first = Boolean(eager);
+      const [width,height] = window.IMAGE_SIZES?.[item.id] || [2368,1760];
+      const ratio = width / height;
+      const wide = Math.round(Math.min(1600,670 * ratio));
+      const column = Math.round(Math.min(786,720 * ratio));
+      image.sizes = first
+        ? `(max-width:560px) calc(100vw - 36px), (max-width:820px) calc(100vw - 48px), min(${wide}px, calc(100vw - 96px))`
+        : `(max-width:560px) calc(100vw - 36px), (max-width:820px) calc((100vw - 56px) / 2), min(${column}px, calc((100vw - 124px) / 2))`;
     }
     const size = window.IMAGE_SIZES?.[item.id];
     if (size) [image.width, image.height] = size;
@@ -61,8 +76,11 @@
   function createCard(item, eager = false) {
     const card = make('article','work-card');
     card.dataset.item = item.id;
-    const button = make('button','card-button');
-    button.type = 'button';
+    const button = make('a','card-button');
+    button.href = resultPath(item.id);
+    button.dataset.itemId = item.id;
+    button.dataset.seriesId = seriesFor(item.id);
+    button.dataset.viewMode = 'auto';
     button.setAttribute('aria-label',`${label(item)} — ${text('view reference and result','смотреть референс и результат')}`);
     const media = make('span','card-media');
     media.append(resultImage(item,eager));
@@ -74,7 +92,6 @@
     arrow.setAttribute('aria-hidden','true');
     caption.append(words,arrow);
     button.append(media,caption);
-    button.addEventListener('click',() => openDetail(item,button,window.matchMedia('(max-width:560px)').matches ? 'result' : 'compare'));
     card.append(button);
     return card;
   }
@@ -141,6 +158,28 @@
       image.src = path;
     });
   }
+  function responsiveSource(item) {
+    return item.responsive?.length
+      ? item.responsive.map(width => `assets/curated/previews/${item.id}-${width}.webp ${width}w`).join(', ') + `, ${resultPath(item.id)} ${window.IMAGE_SIZES[item.id][0]}w`
+      : '';
+  }
+  function loadResponsiveImage(item,sizes) {
+    return new Promise((resolve,reject) => {
+      const image = new Image();
+      image.decoding = 'async';
+      const srcset = responsiveSource(item);
+      if (srcset) { image.sizes = sizes; image.srcset = srcset; }
+      image.onload = async () => { if (image.decode) await image.decode().catch(() => {}); resolve(image); };
+      image.onerror = reject;
+      image.src = resultPath(item.id);
+    });
+  }
+  function setResponsiveImage(image,item,sizes) {
+    const srcset = responsiveSource(item);
+    if (srcset) { image.sizes = sizes; image.srcset = srcset; }
+    else { image.removeAttribute('srcset'); image.removeAttribute('sizes'); }
+    image.src = resultPath(item.id);
+  }
   async function selectWorld(index,animate = true) {
     const request = ++worldRequest;
     const section = portfolio.sections[index];
@@ -156,11 +195,12 @@
     try {
       // Decode both photographs before changing the visible chapter. Fast
       // repeated selections must never insert a late image from an older one.
-      await Promise.all([loadImage(resultPath(item.id)),loadImage(sourcePath(item.source))]);
+      const sceneSizes = '(max-width:820px) 100vw, 42vw';
+      await Promise.all([loadResponsiveImage(item,sceneSizes),loadImage(sourcePath(item.source))]);
       if (request !== worldRequest) return;
       worldIndex = index;
       const image = document.getElementById('sceneResult');
-      image.src = resultPath(item.id);
+      setResponsiveImage(image,item,sceneSizes);
       image.alt = label(item);
       const size = window.IMAGE_SIZES?.[item.id];
       if (size) [image.width,image.height] = size;
@@ -208,8 +248,11 @@
     if (sources.length > 1) previews.classList.add('multiple');
     sources.forEach(source => {
       const item = group.ids.map(itemById).find(item => item.source === source);
-      const button = make('button','reference-preview');
-      button.type = 'button';
+      const button = make('a','reference-preview');
+      button.href = originalSourcePath(source);
+      button.dataset.referenceItem = item.id;
+      button.dataset.seriesId = `series-${(portfolio.groups[item.section] || []).findIndex(value => value.ids.includes(group.ids[0])) + 1}`;
+      button.dataset.viewMode = 'source';
       button.setAttribute('aria-label',`${text('View original reference','Посмотреть исходник')}: ${label(item)}`);
       const image = make('img','reference-image');
       image.src = sourcePath(source);
@@ -217,20 +260,22 @@
       image.loading = 'lazy';
       image.decoding = 'async';
       button.append(image);
-      button.addEventListener('click',() => openDetail(item,button,'source'));
       previews.append(button);
     });
     const copy = make('div','reference-copy');
     copy.append(make('strong','',sources.length === 1 ? text('The starting point','Исходная фотография') : text('The starting points','Исходные фотографии')),make('span','',text('A real reference. A different scene, light and atmosphere.','Реальный референс. Новая сцена, свет и атмосфера.')));
-    const open = make('button','reference-open',text('Compare','Сравнить'));
-    open.type = 'button';
+    const firstItem = itemById(group.ids[0]);
+    const open = make('a','reference-open',text('Compare','Сравнить'));
+    open.href = resultPath(firstItem.id);
+    open.dataset.referenceItem = firstItem.id;
+    open.dataset.seriesId = seriesFor(firstItem.id);
+    open.dataset.viewMode = 'compare';
     open.append(make('span','','↗'));
     open.setAttribute('aria-label',text('Compare the reference and final image','Сравнить исходник и итоговый кадр'));
-    open.addEventListener('click',() => openDetail(itemById(group.ids[0]),open,'compare'));
     strip.append(previews,copy,open);
     return strip;
   }
-  function renderCategory(section) {
+  function renderCategory(section,hydrate = false) {
     document.getElementById('categoryNumber').textContent = `${section.number} / 04`;
     document.getElementById('categoryTitle').textContent = label(section);
     document.getElementById('categoryNote').textContent = label(section,'note');
@@ -238,7 +283,15 @@
     document.querySelectorAll('.desktop-nav a,.mobile-sections a').forEach(link => {
       if (link.getAttribute('href') === section.page) link.setAttribute('aria-current','page');
     });
+    document.querySelector('.project-index')?.setAttribute('aria-label',text('Project series','Серии работ'));
     const groups = portfolio.groups[section.id] || [];
+    if (hydrate) {
+      document.querySelectorAll('.project-index a').forEach(link => {
+        link.setAttribute('aria-current',link.hash === window.location.hash ? 'location' : 'false');
+        if (link.getAttribute('aria-current') === 'false') link.removeAttribute('aria-current');
+      });
+      return;
+    }
     const count = portfolio.items.filter(item => item.section === section.id).length;
     const stats = make('div','category-stats');
     stats.append(make('span','',`${String(count).padStart(2,'0')} ${text('selected images',ruFrames(count))}`),make('span','',text('Original references included in every series','Исходные фотографии в каждой серии')));
@@ -278,6 +331,8 @@
     document.documentElement.lang = language;
     const total = portfolio.items.length;
     document.querySelectorAll('[data-en][data-ru]').forEach(element => { element.innerHTML = element.dataset[language].replace(/\{count\}\s*кадр(?:а|ов)?/,`${total} ${ruFrames(total)}`).replace('{count}',total); });
+    document.querySelectorAll('[data-label-en][data-label-ru]').forEach(element => { element.setAttribute('aria-label',element.dataset[`label${language === 'ru' ? 'Ru' : 'En'}`]); });
+    document.querySelectorAll('[data-alt-en][data-alt-ru]').forEach(element => { element.alt = element.dataset[`alt${language === 'ru' ? 'Ru' : 'En'}`]; });
     switchButton.textContent = language === 'ru' ? 'EN' : 'RU';
     switchButton.setAttribute('aria-label',text('Переключить на русский','Switch to English'));
     document.querySelector('.skip').textContent = text('Skip to work','Перейти к работам');
@@ -286,19 +341,25 @@
     document.querySelector('.mobile-sections').setAttribute('aria-label',text('Portfolio sections','Разделы портфолио'));
     document.getElementById('worldSelector')?.setAttribute('aria-label',text('Explore four visual worlds','Четыре визуальных мира'));
     document.getElementById('dialogClose').setAttribute('aria-label',text('Close image viewer','Закрыть просмотр'));
-    gallery.replaceChildren();
-    if (page === 'home') renderHome();
+    if (page === 'home') {
+      gallery.replaceChildren();
+      renderHome();
+    }
     else {
       const section = portfolio.sections.find(value => value.id === page);
       if (!section) throw new Error(`Unknown portfolio page: ${page}`);
-      renderCategory(section);
+      renderCategory(section,gallery.dataset.staticCategory === 'true');
     }
     document.dispatchEvent(new CustomEvent('portfolio:render'));
+    document.dispatchEvent(new CustomEvent('portfolio:language',{detail:{language}}));
   }
   function openDetail(item,trigger,view) {
     activeItem = item;
     if (trigger) returnFocus = trigger;
     if (view) detailView = view;
+    const seriesId = trigger?.dataset.seriesId || seriesFor(item.id);
+    track('image_open',{sector:item.section,series_id:seriesId,item_id:item.id,view_mode:detailView});
+    if (detailView === 'compare') track('reference_compare',{sector:item.section,series_id:seriesId,item_id:item.id,view_mode:detailView});
     const section = portfolio.sections.find(value => value.id === item.section);
     const sourceLabel = item.referenceKind === 'model' ? text('Original model','Исходная модель') : text('Original product','Исходный товар');
     const resultLabel = item.motion ? text('Final loop','Итоговый ролик') : text('Final image','Итоговый кадр');
@@ -344,6 +405,7 @@
         if (mode === 'source') pair.querySelectorAll('video').forEach(video => video.pause());
         views.querySelectorAll('button').forEach(tab => tab.setAttribute('aria-pressed',String(tab === button)));
         updateFullImageLink();
+        if (mode === 'compare') track('reference_compare',{sector:item.section,series_id:seriesId,item_id:item.id,view_mode:mode});
       });
       views.append(button);
     });
@@ -366,6 +428,13 @@
     originalLink.target = '_blank';
     originalLink.rel = 'noopener';
     tools.append(pager,originalLink);
+    const contact = make('a','viewer-contact',text('Discuss an image like this ↗','Обсудить похожие изображения ↗'));
+    contact.href = `contact.html?item=${encodeURIComponent(item.id)}`;
+    contact.dataset.contactPosition = 'viewer';
+    contact.dataset.ctaPosition = 'viewer';
+    contact.dataset.contactLink = '';
+    contact.dataset.itemId = item.id;
+    tools.append(contact);
     if (item.motion) {
       const gif = make('a','original-link',text('Download GIF ↗','Скачать GIF ↗'));
       gif.href = item.motion.gif; gif.download = `${item.id}.gif`;
@@ -377,6 +446,21 @@
     dialog.scrollTop = 0;
     document.body.classList.add('dialog-open');
   }
+  gallery.addEventListener('click',event => {
+    const link = event.target.closest('a[data-item-id],a[data-reference-item]');
+    if (!link || !gallery.contains(link) || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const item = itemById(link.dataset.itemId || link.dataset.referenceItem);
+    if (!item) return;
+    event.preventDefault();
+    const mode = !link.dataset.viewMode || link.dataset.viewMode === 'auto' ? (window.matchMedia('(max-width:560px)').matches ? 'result' : 'compare') : link.dataset.viewMode;
+    openDetail(item,link,mode);
+  });
+  gallery.addEventListener('click',event => {
+    const link = event.target.closest('.project-index a[href^="#series-"]');
+    if (!link) return;
+    gallery.querySelectorAll('.project-index a[aria-current="location"]').forEach(active => active.removeAttribute('aria-current'));
+    link.setAttribute('aria-current','location');
+  });
   function stepDetail(direction) {
     if (!activeItem) return;
     const ordered = portfolio.groups[activeItem.section].flatMap(group => group.ids);

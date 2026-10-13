@@ -8,6 +8,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const context = {window:{}};
 vm.runInNewContext(fs.readFileSync(path.join(root,'js/curated.js'),'utf8'), context);
 vm.runInNewContext(fs.readFileSync(path.join(root,'js/portfolio-additions.js'),'utf8'), context);
+vm.runInNewContext(fs.readFileSync(path.join(root,'js/responsive-previews.js'),'utf8'), context);
 vm.runInNewContext(fs.readFileSync(path.join(root,'js/image-sizes.js'),'utf8'), context);
 const portfolio = context.window.PORTFOLIO;
 const sizes = context.window.IMAGE_SIZES;
@@ -73,15 +74,28 @@ for (const page of ['index.html',...portfolio.sections.map(section => section.pa
   }
   assert(html.includes('editorial.css?v='));
   assert(html.includes('image-sizes.js?v='));
-  for (const match of html.matchAll(/(?:src|href)="(?:css\/editorial\.css|js\/(?:curated|image-sizes|editorial|spatial)\.js)\?v=([^"&]+)"/g)) resourceVersions.add(match[1]);
+  for (const match of html.matchAll(/(?:src|href)="(?:css\/(?:editorial|conversion)\.css|js\/(?:entry-priority|curated|portfolio-additions|responsive-previews|image-sizes|site-config|analytics|editorial|conversion|contact|spatial)\.js)\?v=([^"&]+)"/g)) resourceVersions.add(match[1]);
   assert(html.includes('mailto:ekkonwork@gmail.com'));
   assert(!/\uFFFD|вЂ|в†|вњ|В©|Г—|РџСЂ|Р¤Сѓ|РЈРє|РњРµ|РћР±/.test(html),`Encoding corruption in ${page}`);
   for (const ruText of ['data-ru="Примерка"','data-ru="Фуд-дизайн"','data-ru="Украшения и часы"','data-ru="Мебель"','data-ru="Обсудим ↗"']) {
     assert(html.includes(ruText),`Missing Russian copy (${ruText}) in ${page}`);
   }
-  const scripts=[...html.matchAll(/<script\b[^>]*src="js\/(curated|portfolio-additions|image-sizes|editorial)\.js[^>]*>/g)];
-  assert.deepEqual(scripts.map(match=>match[1]),['curated','portfolio-additions','image-sizes','editorial']);
-  assert(scripts.every(match=>/\bdefer\b/.test(match[0])));
+  const scripts=[...html.matchAll(/<script\b[^>]*src="js\/(entry-priority|curated|portfolio-additions|responsive-previews|image-sizes|site-config|analytics|editorial|conversion|contact|spatial)\.js[^>]*>/g)];
+  if (page !== 'index.html') {
+    assert.deepEqual(scripts.map(match=>match[1]),['entry-priority','curated','portfolio-additions','responsive-previews','image-sizes','site-config','analytics','editorial','conversion','contact','spatial']);
+    assert(scripts.every(match=>/\bdefer\b/.test(match[0])));
+    const section=portfolio.sections.find(value=>value.page===page);
+    const pageGroups=portfolio.groups[section.id];
+    const cards=[...html.matchAll(/data-item-id="([^"]+)"/g)].map(match=>match[1]);
+    const expected=Array.from(pageGroups).flatMap(group=>Array.from(group.ids));
+    assert.deepEqual(cards,expected,`Static card mapping changed in ${page}`);
+    assert(html.includes('id="categoryTitle"') && html.includes('id="categoryNote"'));
+    assert(html.includes('data-static-category="true"'));
+    assert.equal([...html.matchAll(/<section class="project-group" id="series-\d+"/g)].length,pageGroups.length);
+    assert(!/<div id="gallery"><\/div>/.test(html),`Empty JS-only gallery shell in ${page}`);
+    assert(html.includes('loading="lazy"'));
+    assert(html.includes('contact.html'));
+  }
 }
 for (const internal of ['.agent','research','experiments','workflows','assets/proof','assets/web/proof','alignment-report.json','verification.json','scripts/sync_curated_assets.ps1']) {
   assert(!fs.existsSync(path.join(root,internal)),`Internal artifact in public tree: ${internal}`);
