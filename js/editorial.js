@@ -43,7 +43,7 @@
     if (content !== undefined) node.textContent = content;
     return node;
   };
-  function resultImage(item, eager = false) {
+  function resultImage(item, eager = false, layout = 'column') {
     const image = make('img');
     image.src = resultPath(item.id);
     image.alt = label(item);
@@ -51,14 +51,11 @@
     image.decoding = 'async';
     if (item.responsive?.length) {
       image.srcset = item.responsive.map(width => `assets/curated/previews/${item.id}-${width}.webp ${width}w`).join(', ') + `, ${resultPath(item.id)} ${window.IMAGE_SIZES[item.id][0]}w`;
-      const first = Boolean(eager);
-      const [width,height] = window.IMAGE_SIZES?.[item.id] || [2368,1760];
-      const ratio = width / height;
-      const wide = Math.round(Math.min(1600,670 * ratio));
-      const column = Math.round(Math.min(786,720 * ratio));
-      image.sizes = first
-        ? `(max-width:560px) calc(100vw - 36px), (max-width:820px) calc(100vw - 48px), min(${wide}px, calc(100vw - 96px))`
-        : `(max-width:560px) calc(100vw - 36px), (max-width:820px) calc((100vw - 56px) / 2), min(${column}px, calc((100vw - 124px) / 2))`;
+      image.sizes = layout === 'wide'
+        ? '(max-width:560px) calc(100vw - 56px), (max-width:820px) calc(100vw - 72px), min(1564px, calc(100vw - 132px))'
+        : layout === 'single'
+          ? '(max-width:560px) calc(100vw - 56px), (max-width:820px) calc(72vw - 59px), min(1116px, calc(72vw - 105px))'
+          : '(max-width:560px) calc(100vw - 56px), (max-width:820px) calc(50vw - 58px), min(750px, calc(50vw - 98px))';
     }
     const size = window.IMAGE_SIZES?.[item.id];
     if (size) [image.width, image.height] = size;
@@ -73,7 +70,7 @@
     link.append(arrow);
     return link;
   }
-  function createCard(item, eager = false) {
+  function createCard(item, eager = false, layout = 'column') {
     const card = make('article','work-card');
     card.dataset.item = item.id;
     const button = make('a','card-button');
@@ -83,7 +80,7 @@
     button.dataset.viewMode = 'auto';
     button.setAttribute('aria-label',`${label(item)} — ${text('view reference and result','смотреть референс и результат')}`);
     const media = make('span','card-media');
-    media.append(resultImage(item,eager));
+    media.append(resultImage(item,eager,layout));
     if (item.motion) media.append(make('small','motion-badge',text('View loop','Смотреть ролик')));
     const caption = make('span','card-caption');
     const words = make('span');
@@ -314,7 +311,9 @@
       group.ids.forEach((id,i) => {
         const item = itemById(id);
         if (!item) throw new Error(`Missing portfolio item: ${id}`);
-        grid.append(createCard(item,index === 0 && i === 0));
+        const layout = group.ids.length === 1 ? 'single' : i === 0 ? 'wide' : 'column';
+        const priority = Boolean(window.__PORTFOLIO_ENTRY_PRIORITY__ === `series-${index + 1}` && i === 0);
+        grid.append(createCard(item,priority,layout));
       });
       block.append(header,referenceStrip(group),grid);
       gallery.append(block);

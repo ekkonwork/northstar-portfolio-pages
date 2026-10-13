@@ -5,6 +5,7 @@
   if (!groups.length) return;
   const match = window.location.hash.match(/^#series-(\d+)$/);
   const target = match ? groups.find(group => group.dataset.seriesIndex === match[1]) : groups[0];
+  if (target) window.__PORTFOLIO_ENTRY_PRIORITY__ = target.id;
   const image = target?.querySelector('.work-card img');
   if (!image) return;
   image.loading = 'eager';

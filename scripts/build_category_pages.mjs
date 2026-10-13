@@ -19,21 +19,16 @@ const ruFrames = n => n % 100 >= 11 && n % 100 <= 14 ? 'кадров' : n % 10 =
 const enImages = n => `${countText(n)} selected ${n === 1 ? 'image' : 'images'}`;
 const localizedCount = n => `data-count="${n}"`;
 function sectionCounts(count) { return `<span ${localizedCount(count)} class="category-count" data-en="${esc(enImages(count))}" data-ru="${esc(`${countText(count)} ${ruFrames(count)}`)}">${esc(enImages(count))}</span>`; }
-function sizesFor(item, first) {
-  const [width,height] = sizes[item.id] || [2368,1760];
-  const ratio = width / height;
-  // The first card spans the gallery but is capped at 670px high. Following
-  // cards share a column capped at 720px; mobile cards use the full viewport.
-  const wide = Math.round(Math.min(1600, 670 * ratio));
-  const column = Math.round(Math.min(786, 720 * ratio));
-  if (first) return `(max-width: 560px) calc(100vw - 36px), (max-width: 820px) calc(100vw - 48px), min(${wide}px, calc(100vw - 96px))`;
-  return `(max-width: 560px) calc(100vw - 36px), (max-width: 820px) calc((100vw - 56px) / 2), min(${column}px, calc((100vw - 124px) / 2))`;
+function sizesFor(layout) {
+  if (layout === 'wide') return '(max-width: 560px) calc(100vw - 56px), (max-width: 820px) calc(100vw - 72px), min(1564px, calc(100vw - 132px))';
+  if (layout === 'single') return '(max-width: 560px) calc(100vw - 56px), (max-width: 820px) calc(72vw - 59px), min(1116px, calc(72vw - 105px))';
+  return '(max-width: 560px) calc(100vw - 56px), (max-width: 820px) calc(50vw - 58px), min(750px, calc(50vw - 98px))';
 }
-function imageMarkup(item, {first=false, alt=null, className=''}={}) {
+function imageMarkup(item, {layout='column', alt=null, className=''}={}) {
   const [width,height] = sizes[item.id] || [2368,1760];
   const variants = item.responsive || [];
   const srcset = variants.map(value => `assets/curated/previews/${item.id}-${value}.webp ${value}w`).join(', ');
-  const srcsetAttr = srcset ? ` srcset="${srcset}, assets/curated/${item.id}.webp ${width}w" sizes="${esc(sizesFor(item,first))}"` : '';
+  const srcsetAttr = srcset ? ` srcset="${srcset}, assets/curated/${item.id}.webp ${width}w" sizes="${esc(sizesFor(layout))}"` : '';
   return `<img${className ? ` class="${className}"` : ''} src="assets/curated/${esc(item.id)}.webp"${srcsetAttr} width="${width}" height="${height}" alt="${esc(alt ?? item.en)}" loading="lazy" decoding="async">`;
 }
 function referenceStrip(group,index) {
@@ -55,9 +50,9 @@ function groupMarkup(group,index) {
   const cards = group.ids.map((id,itemIndex) => {
     const item = itemFor(id);
     if (!item) throw new Error(`Unknown item ${id}`);
-    const first = itemIndex === 0 && index === 0;
+    const layout = group.ids.length === 1 ? 'single' : itemIndex === 0 ? 'wide' : 'column';
     const href = `assets/curated/${item.id}.webp`;
-    const image = imageMarkup(item,{first});
+    const image = imageMarkup(item,{layout});
     const motionBadge = item.motion ? `<small class="motion-badge" data-en="View loop" data-ru="Смотреть ролик">View loop</small>` : '';
     return `<article class="work-card" data-item="${esc(item.id)}"><a class="card-button" href="${href}" data-item-id="${esc(item.id)}" data-series-id="series-${index + 1}" data-view-mode="auto" data-label-en="${esc(`${item.en} — view reference and result`)}" data-label-ru="${esc(`${item.ru} — смотреть исходник и результат`)}" aria-label="${esc(`${item.en} — view reference and result`)}"><span class="card-media">${image}${motionBadge}</span><span class="card-caption"><span><strong ${attr(item.en,item.ru)}>${esc(item.en)}</strong><small ${attr(item.noteEn,item.noteRu)}>${esc(item.noteEn)}</small></span><span class="arrow" aria-hidden="true">↗</span></span></a></article>`;
   }).join('');
