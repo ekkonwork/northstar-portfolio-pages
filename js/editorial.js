@@ -18,6 +18,13 @@
   const worldWords = ['FASHION','FOOD','OBJECTS','SPACES'];
   const label = (item, key) => item[key === 'note' ? (language === 'ru' ? 'noteRu' : 'noteEn') : language];
   const text = (en, ru) => language === 'ru' ? ru : en;
+  const ruFrames = count => {
+    const mod100 = count % 100, mod10 = count % 10;
+    if (mod100 >= 11 && mod100 <= 14) return 'кадров';
+    if (mod10 === 1) return 'кадр';
+    if (mod10 >= 2 && mod10 <= 4) return 'кадра';
+    return 'кадров';
+  };
   const resultPath = id => `assets/curated/${id}.webp`;
   const sourcePath = name => `assets/curated/reference-previews/${name.replace(/\.png$/,'.webp')}`;
   const originalSourcePath = name => `assets/curated/references/${name}`;
@@ -82,7 +89,7 @@
       titleLink.href = section.page;
       title.append(titleLink);
       const count = portfolio.items.filter(item => item.section === section.id).length;
-      copy.append(make('span','sector-number',`${section.number} / 04`),title,make('p','',label(section,'note')),make('span','sector-count',`${String(count).padStart(2,'0')} ${text('selected images','кадров')}`),roundLink(section));
+      copy.append(make('span','sector-number',`${section.number} / 04`),title,make('p','',label(section,'note')),make('span','sector-count',`${String(count).padStart(2,'0')} ${text('selected images',ruFrames(count))}`),roundLink(section));
       const art = make('div','sector-artworks');
       [section.cover,companions[index]].forEach(id => {
         const link = make('a','sector-media');
@@ -234,7 +241,7 @@
     const groups = portfolio.groups[section.id] || [];
     const count = portfolio.items.filter(item => item.section === section.id).length;
     const stats = make('div','category-stats');
-    stats.append(make('span','',`${String(count).padStart(2,'0')} ${text('selected images','кадров')}`),make('span','',text('Original references included in every series','Исходные фотографии в каждой серии')));
+    stats.append(make('span','',`${String(count).padStart(2,'0')} ${text('selected images',ruFrames(count))}`),make('span','',text('Original references included in every series','Исходные фотографии в каждой серии')));
     gallery.append(stats);
     const indexNav = make('nav','project-index');
     indexNav.setAttribute('aria-label',text('Project series','Серии работ'));
@@ -249,7 +256,7 @@
       const block = make('section','project-group');
       block.id = `series-${index + 1}`;
       const header = make('div','group-header');
-      header.append(make('span','',String(index + 1).padStart(2,'0')),make('h2','',label(group)),make('small','group-count',`${String(group.ids.length).padStart(2,'0')} ${text('images',group.ids.length === 1 ? 'кадр' : group.ids.length < 5 ? 'кадра' : 'кадров')}`));
+      header.append(make('span','',String(index + 1).padStart(2,'0')),make('h2','',label(group)),make('small','group-count',`${String(group.ids.length).padStart(2,'0')} ${text(group.ids.length === 1 ? 'image' : 'images',ruFrames(group.ids.length))}`));
       const grid = make('div','project-grid');
       group.ids.forEach((id,i) => {
         const item = itemById(id);
@@ -269,7 +276,8 @@
   }
   function render() {
     document.documentElement.lang = language;
-    document.querySelectorAll('[data-en][data-ru]').forEach(element => { element.innerHTML = element.dataset[language].replace('{count}',portfolio.items.length); });
+    const total = portfolio.items.length;
+    document.querySelectorAll('[data-en][data-ru]').forEach(element => { element.innerHTML = element.dataset[language].replace(/\{count\}\s*кадр(?:а|ов)?/,`${total} ${ruFrames(total)}`).replace('{count}',total); });
     switchButton.textContent = language === 'ru' ? 'EN' : 'RU';
     switchButton.setAttribute('aria-label',text('Переключить на русский','Switch to English'));
     document.querySelector('.skip').textContent = text('Skip to work','Перейти к работам');

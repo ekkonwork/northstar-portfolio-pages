@@ -75,6 +75,10 @@ for (const page of ['index.html',...portfolio.sections.map(section => section.pa
   assert(html.includes('image-sizes.js?v='));
   for (const match of html.matchAll(/(?:src|href)="(?:css\/editorial\.css|js\/(?:curated|image-sizes|editorial|spatial)\.js)\?v=([^"&]+)"/g)) resourceVersions.add(match[1]);
   assert(html.includes('mailto:ekkonwork@gmail.com'));
+  assert(!/\uFFFD|вЂ|в†|вњ|В©|Г—|РџСЂ|Р¤Сѓ|РЈРє|РњРµ|РћР±/.test(html),`Encoding corruption in ${page}`);
+  for (const ruText of ['data-ru="Примерка"','data-ru="Фуд-дизайн"','data-ru="Украшения и часы"','data-ru="Мебель"','data-ru="Обсудим ↗"']) {
+    assert(html.includes(ruText),`Missing Russian copy (${ruText}) in ${page}`);
+  }
   const scripts=[...html.matchAll(/<script\b[^>]*src="js\/(curated|portfolio-additions|image-sizes|editorial)\.js[^>]*>/g)];
   assert.deepEqual(scripts.map(match=>match[1]),['curated','portfolio-additions','image-sizes','editorial']);
   assert(scripts.every(match=>/\bdefer\b/.test(match[0])));

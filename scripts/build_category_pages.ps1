@@ -1,6 +1,7 @@
 $ErrorActionPreference = 'Stop'
 $root = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
-$assetRelease = [regex]::Match((Get-Content -LiteralPath (Join-Path $root 'index.html') -Raw), 'css/editorial\.css\?v=([^"\s]+)').Groups[1].Value
+$indexHtml = [System.IO.File]::ReadAllText((Join-Path $root 'index.html'), [System.Text.Encoding]::UTF8)
+$assetRelease = [regex]::Match($indexHtml, 'css/editorial\.css\?v=([^"\s]+)').Groups[1].Value
 if (-not $assetRelease) { throw 'Home page resource version is required' }
 $pages = @(
   @{ File='vton.html'; Id='virtual-try-on'; Title='Virtual Try On'; Cover='northstar_vton_01_1' },
@@ -68,6 +69,11 @@ $template = @'
 </body>
 </html>
 '@
+$expectedRu = [string][char]0x041F + [char]0x0440 + [char]0x0438 + [char]0x043C + [char]0x0435 + [char]0x0440 + [char]0x043A + [char]0x0430
+if (-not $template.Contains($expectedRu)) {
+  $template = [System.Text.Encoding]::UTF8.GetString([System.Text.Encoding]::Default.GetBytes($template))
+}
+if (-not $template.Contains($expectedRu)) { throw 'Template encoding corrupted' }
 foreach ($page in $pages) {
   $titleHtml = [System.Net.WebUtility]::HtmlEncode($page.Title)
   $content = $template.Replace('TITLE',$titleHtml).Replace('FILE',$page.File).Replace('ID',$page.Id).Replace('COVER',$page.Cover).Replace('VERSION',$assetRelease)
