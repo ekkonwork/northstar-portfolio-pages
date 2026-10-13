@@ -89,6 +89,7 @@ function shell(section,version) {
   <link rel="stylesheet" href="css/editorial.css?v=${version}">
   <link rel="stylesheet" href="css/conversion.css?v=${version}">
   <title>${esc(title)}</title>
+  <script>try{const h=location.hash;if(/^#series-\\d+$/.test(h)){window.__PORTFOLIO_INITIAL_HASH__=h;history.replaceState(history.state,'',location.pathname+location.search);const f=()=>{window.__PORTFOLIO_ENTRY_USER_INPUT__=true};window.addEventListener('wheel',f,{once:true,passive:true});window.addEventListener('touchstart',f,{once:true,passive:true});window.addEventListener('pointerdown',f,{once:true,passive:true});const k=e=>{if(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(e.key)){f();window.removeEventListener('keydown',k)}};window.addEventListener('keydown',k);window.addEventListener('hashchange',()=>{window.__PORTFOLIO_ENTRY_HASH_CHANGED__=true},{once:true})}}catch(_){}</script>
 </head>
 <body data-page="${section.id}">
   <a class="skip" href="#gallery" data-en="Skip to work" data-ru="Перейти к работам">Skip to work</a>
