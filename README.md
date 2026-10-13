@@ -54,6 +54,10 @@ The landing page includes a static selection and direct links before JavaScript 
 node tests/content.mjs
 node tests/spatial-motion.mjs
 node tests/analytics.mjs
+node tests/contact.mjs
+node tests/campaign-link.mjs
+node scripts/build_category_pages.mjs --check
+python scripts/build_responsive_previews.py --check
 python scripts/build_image_sizes.py --check
 python tests/media-metadata.py
 python scripts/check_media_metadata.py
@@ -61,7 +65,7 @@ python scripts/check_media_metadata.py
 
 The content check covers the approved selection, series coverage, references, dimensions, local links and resource versions. The analytics check covers consent gating, provider queues, sanitized URLs and event fields. The motion test executes the actual scene script with controlled frame timing, checking edge entry, exit/re-entry, restart after idle, CSS/WebGL synchronization, visibility, reduced motion, touch and the absence of an idle render loop. Browser inspection is still required for visual changes.
 
-When releasing CSS or JavaScript changes, update the resource version in `index.html` and `scripts/build_category_pages.ps1`, then regenerate the category pages. Commit directly to the configured publishing branch.
+When releasing CSS or JavaScript changes, update the shared resource version in the page shells and run `node scripts/build_category_pages.mjs` to regenerate the category pages. The generator reads the category resource version from `index.html`; `scripts/build_category_pages.ps1` is a wrapper for it. Commit directly to the configured publishing branch.
 
 The public repository contains the website and selected visual assets. Internal production records and review reports are maintained separately.
 
