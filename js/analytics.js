@@ -250,20 +250,22 @@
     return url;
   }
 
-  function propagateCampaign() {
+  function decorateCampaignLink(link) {
+    if (!link || link.hasAttribute('download') || link.matches('[data-no-campaign]') || /^mailto:|^tel:|^javascript:/i.test(link.getAttribute('href') || '')) return;
+    let url;
+    try { url = new URL(link.href, location.href); } catch (_) { return; }
     const origin = config.siteOrigin ? new URL(config.siteOrigin).origin : location.origin;
     const basePath = new URL(config.siteOrigin ? `${config.siteOrigin}${APP_BASE_PATH}` : `${location.origin}${APP_BASE_PATH}`).pathname;
-    document.querySelectorAll('a[href]').forEach(link => {
-      if (link.hasAttribute('download') || link.matches('[data-no-campaign]') || /^mailto:|^tel:|^javascript:/i.test(link.getAttribute('href') || '')) return;
-      let url;
-      try { url = new URL(link.href, location.href); } catch (_) { return; }
-      if (url.origin !== origin || !url.pathname.startsWith(basePath)) return;
-      const route = url.pathname.slice(basePath.length);
-      if (!APP_ROUTES.has(route)) return;
-      const previous = url.href;
-      const updated = campaignLink(url);
-      if (updated.href !== previous) link.href = updated.href;
-    });
+    if (url.origin !== origin || !url.pathname.startsWith(basePath)) return;
+    const route = url.pathname.slice(basePath.length);
+    if (!APP_ROUTES.has(route)) return;
+    const previous = url.href;
+    const updated = campaignLink(url);
+    if (updated.href !== previous) link.href = updated.href;
+  }
+
+  function propagateCampaign() {
+    document.querySelectorAll('a[href]').forEach(decorateCampaignLink);
   }
 
   function setConsent(allowed) {
@@ -322,6 +324,12 @@
       if (typeof detail.name === 'string') send(detail.name, detail.params);
     });
     document.addEventListener('portfolio:render', observeSeries);
+    for (const type of ['click', 'auxclick', 'contextmenu']) {
+      document.addEventListener(type, event => {
+        const link = event.target && event.target.closest && event.target.closest('a[href]');
+        if (link) decorateCampaignLink(link);
+      }, true);
+    }
     window.addEventListener('scroll', () => {
       if (engaged || window.scrollY < 250) return;
       if (send('engaged_visit', {})) engaged = true;

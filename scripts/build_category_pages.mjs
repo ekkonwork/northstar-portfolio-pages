@@ -103,7 +103,7 @@ function shell(section,version) {
     </nav>
     <div class="header-right">
       <button class="lang-switch" id="langSwitch" type="button" aria-label="Switch language">RU</button>
-      <a class="header-contact" href="contact.html" data-en="Let's talk ↗" data-ru="Обсудим ↗">Let's talk ↗</a>
+      <a class="header-contact" href="contact.html" data-contact-link data-cta-position="header" data-en="Let's talk ↗" data-ru="Обсудим ↗">Let's talk ↗</a>
     </div>
   </header>
   <nav class="mobile-sections" aria-label="Portfolio sections">
@@ -116,7 +116,7 @@ function shell(section,version) {
     <a class="back-link" href="index.html#work" data-en="← All directions" data-ru="← Все направления">← All directions</a>
     ${categoryMarkup(section)}
   </main>
-  <footer class="category-footer wrap"><a href="index.html">Mikhail</a><a href="mailto:ekkonwork@gmail.com" data-cta-position="footer">ekkonwork@gmail.com ↗</a><a href="privacy.html" data-en="Privacy" data-ru="Конфиденциальность">Privacy</a><button class="privacy-settings-link" type="button" data-privacy-settings data-en="Privacy settings" data-ru="Настройки приватности">Privacy settings</button><span>© 2026</span></footer>
+  <footer class="category-footer wrap"><a href="index.html">Mikhail</a><a href="contact.html" data-contact-link data-cta-position="footer" data-en="Discuss a project ↗" data-ru="Обсудить проект ↗">Discuss a project ↗</a><a href="privacy.html" data-en="Privacy" data-ru="Конфиденциальность">Privacy</a><button class="privacy-settings-link" type="button" data-privacy-settings data-en="Privacy settings" data-ru="Настройки приватности">Privacy settings</button><span>© 2026</span></footer>
   <dialog class="detail-dialog" id="detailDialog" aria-label="Project detail">
     <button class="dialog-close" id="dialogClose" type="button" aria-label="Close">×</button>
     <div id="dialogContent"></div>

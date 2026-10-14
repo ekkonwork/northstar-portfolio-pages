@@ -32,10 +32,10 @@ class Element extends Target {
   querySelectorAll() { return []; }
   append(...children) { this.children.push(...children); }
   click() { this.dispatchEvent({type: 'click', target: this}); }
-  closest(selector) { return selector === '[data-privacy-settings]' && this.dataset.privacySettings !== undefined ? this : null; }
-  hasAttribute() { return false; }
-  matches() { return false; }
-  getAttribute(name) { return name === 'href' ? this.href : null; }
+  closest(selector) { if (selector === '[data-privacy-settings]' && this.dataset.privacySettings !== undefined) return this; return selector === 'a[href]' && this.matches(selector) ? this : null; }
+  hasAttribute(name) { return name === 'href' ? Boolean(this.href) : Object.prototype.hasOwnProperty.call(this.attributes, name); }
+  matches(selector) { return selector === '[data-no-campaign]' ? this.dataset.noCampaign !== undefined : selector === 'a[href]' && Boolean(this.href); }
+  getAttribute(name) { return name === 'href' ? this.href : this.attributes[name] ?? null; }
   focus() { this.focused = true; }
   set innerHTML(_) {
     this.nodes = new Map();
@@ -106,6 +106,48 @@ assert.equal(banner.hidden, false, 'A visitor without a saved choice sees the co
 assert.equal(document.head.children.length, 0, 'Analytics providers are not loaded before consent.');
 const guardedPath = window.PORTFOLIO_ANALYTICS.safeLocation('https://ekkonwork.github.io/northstar-portfolio-pages/private@example.com?email=private@example.com#secret');
 assert.equal(guardedPath, 'https://ekkonwork.github.io/northstar-portfolio-pages/', 'Unknown paths and query text cannot become analytics page locations.');
+
+// Dynamic contact CTAs must receive the allowlisted campaign at activation time.
+const dynamicContact = new Element();
+dynamicContact.href = 'https://ekkonwork.github.io/northstar-portfolio-pages/contact.html?item=food-item-1&step=brief#projectForm';
+document.dispatchEvent({type: 'click', target: dynamicContact});
+const dynamicUrl = new URL(dynamicContact.href);
+assert.equal(dynamicUrl.searchParams.get('item'), 'food-item-1', 'Viewer item context survives campaign propagation.');
+assert.equal(dynamicUrl.searchParams.get('step'), 'brief', 'Existing query values survive campaign propagation.');
+assert.equal(dynamicUrl.hash, '#projectForm', 'Existing hash survives campaign propagation.');
+assert.equal(dynamicUrl.searchParams.get('utm_source'), 'outreach');
+assert.equal(dynamicUrl.searchParams.get('utm_medium'), 'email');
+assert.equal(dynamicUrl.searchParams.get('utm_campaign'), 'brand_oct26');
+assert.equal(dynamicUrl.searchParams.get('ref'), `${'A'.repeat(21)}Q`);
+const dynamicCategoryLink = new Element();
+dynamicCategoryLink.href = 'https://ekkonwork.github.io/northstar-portfolio-pages/contact.html';
+document.dispatchEvent({type: 'contextmenu', target: dynamicCategoryLink});
+assert.equal(new URL(dynamicCategoryLink.href).searchParams.get('utm_campaign'), 'brand_oct26', 'Dynamic category CTA is decorated before context-menu navigation.');
+
+const rejectedLinks = [
+  Object.assign(new Element(), {href: 'https://ekkonwork.github.io/northstar-portfolio-pages/contact.html', attributes: {download: ''}}),
+  Object.assign(new Element(), {href: 'https://ekkonwork.github.io/northstar-portfolio-pages/contact.html', dataset: {noCampaign: ''}}),
+  Object.assign(new Element(), {href: 'mailto:person@example.com'}),
+  Object.assign(new Element(), {href: 'https://ekkonwork.github.io/northstar-portfolio-pages/assets/file.pdf'}),
+  Object.assign(new Element(), {href: 'https://outside.example/contact.html'})
+];
+for (const link of rejectedLinks) {
+  const before = link.href;
+  document.dispatchEvent({type: 'click', target: link});
+  assert.equal(link.href, before, `Campaign was added to excluded link ${before}.`);
+}
+location.href = `https://ekkonwork.github.io/northstar-portfolio-pages/food.html?utm_source=outreach&utm_medium=email&utm_campaign=brand_oct26&ref=${'A'.repeat(21)}Q&email=private@example.com`;
+const invalidReferenceLink = new Element();
+invalidReferenceLink.href = 'https://ekkonwork.github.io/northstar-portfolio-pages/contact.html';
+document.dispatchEvent({type: 'click', target: invalidReferenceLink});
+assert(!new URL(invalidReferenceLink.href).searchParams.has('email'), 'PII from the current URL is never propagated.');
+location.href = `https://ekkonwork.github.io/northstar-portfolio-pages/food.html?utm_source=outreach&utm_medium=email&utm_campaign=brand_oct26&ref=${'A'.repeat(21)}Z`;
+const invalidRefLink = new Element();
+invalidRefLink.href = 'https://ekkonwork.github.io/northstar-portfolio-pages/contact.html?item=food-item-1';
+document.dispatchEvent({type: 'auxclick', target: invalidRefLink});
+assert.equal(new URL(invalidRefLink.href).searchParams.get('item'), 'food-item-1');
+assert.equal(new URL(invalidRefLink.href).searchParams.has('utm_source'), false, 'Invalid reference blocks campaign propagation.');
+location.href = `https://ekkonwork.github.io/northstar-portfolio-pages/food.html?utm_source=outreach&utm_medium=email&utm_campaign=brand_oct26&ref=${'A'.repeat(21)}Q&email=private@example.com`;
 
 // Explicit acceptance must load both configured providers and remove arbitrary query text first.
 banner.hidden = false;

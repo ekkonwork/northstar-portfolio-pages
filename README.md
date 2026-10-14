@@ -22,6 +22,8 @@ Open `http://127.0.0.1:8000/`.
 
 The landing page includes a static selection and direct links before JavaScript runs. The script-enhanced gallery replaces that selection when the portfolio data loads. The project discussion form is served by Formspree; its public endpoint is configured in `js/site-config.js` and its fallback remains a normal HTML form submission.
 
+Commercial contact links in the page headers, footers, case studies and image viewer open `contact.html`. Direct email remains available on that contact page. Valid campaign fields and the opaque reference also reach contact links created after page initialization, including the viewer; the selected work stays attached to the inquiry. Only a confirmed positive form response emits `brief_submit_success`, which is configured as a GA4 key event. Contact clicks do not count as successful inquiries.
+
 ## Content
 
 - `index.html`: landing page and four direction links.

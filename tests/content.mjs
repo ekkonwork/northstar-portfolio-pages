@@ -75,7 +75,7 @@ for (const page of ['index.html',...portfolio.sections.map(section => section.pa
   assert(html.includes('editorial.css?v='));
   assert(html.includes('image-sizes.js?v='));
   for (const match of html.matchAll(/(?:src|href)="(?:css\/(?:editorial|conversion)\.css|js\/(?:entry-priority|curated|portfolio-additions|responsive-previews|image-sizes|site-config|analytics|editorial|conversion|contact|spatial)\.js)\?v=([^"&]+)"/g)) resourceVersions.add(match[1]);
-  assert(html.includes('mailto:ekkonwork@gmail.com'));
+  assert(!html.includes('mailto:ekkonwork@gmail.com'), `${page} must route commercial contact links to the form.`);
   assert(!/\uFFFD|вЂ|в†|вњ|В©|Г—|РџСЂ|Р¤Сѓ|РЈРє|РњРµ|РћР±/.test(html),`Encoding corruption in ${page}`);
   for (const ruText of ['data-ru="Примерка"','data-ru="Фуд-дизайн"','data-ru="Украшения и часы"','data-ru="Мебель"','data-ru="Обсудим ↗"']) {
     assert(html.includes(ruText),`Missing Russian copy (${ruText}) in ${page}`);
